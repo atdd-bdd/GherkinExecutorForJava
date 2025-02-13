@@ -4,11 +4,36 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="This is the original" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="This is the original">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.exp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test.java.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test_data.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test_data.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test_glue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testbuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testbuilder.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -34,7 +59,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java",
+    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Simple_Test",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41582337"
@@ -42,14 +67,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Simple_Test" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main\java" />
     </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gherkinexecutor.Feature_Simple_Test" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Translate">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Translate" />
       <module name="GherkinExecutorForJava" />
@@ -57,9 +86,57 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="FeatureSimpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GherkinExecutorForJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Feature_Simple_Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Feature_Simple_Test" />
+      <option name="MAIN_CLASS_NAME" value="Feature_Simple_Test.FeatureSimpleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature_Simple_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GherkinExecutorForJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gherkinexecutor.Feature_Simple_Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Simple_Test" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Simple_Test.Feature_Simple_Test" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="featureSimpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GherkinExecutorForJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Feature_Simple_Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Feature_Simple_Test" />
+      <option name="MAIN_CLASS_NAME" value="Feature_Simple_Test.featureSimpleTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Translate" />
+        <item itemvalue="JUnit.Feature_Simple_Test" />
+        <item itemvalue="JUnit.FeatureSimpleTest" />
+        <item itemvalue="JUnit.featureSimpleTest" />
       </list>
     </recent_temporary>
   </component>
@@ -79,11 +156,34 @@
       <option name="project" value="LOCAL" />
       <updated>1738865700523</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="This is the original">
+      <created>1738867086439</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738867086442</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This is the original" />
     <option name="LAST_COMMIT_MESSAGE" value="This is the original" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

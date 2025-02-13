@@ -1,9 +1,9 @@
-public class ATest {
+public class BTest {
     private String anInt;
     private String aString;
     private String aDouble;
 
-    private ATest(Builder builder) {
+    private BTest(Builder builder) {
         this.anInt = builder.anInt;
         this.aString = builder.aString;
         this.aDouble = builder.aDouble;

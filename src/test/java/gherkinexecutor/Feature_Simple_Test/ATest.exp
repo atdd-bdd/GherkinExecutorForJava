@@ -1,0 +1,70 @@
+package gherkinexecutor.Feature_Simple_Test;
+
+public class ATest {
+
+    public String anInt = "0";
+    public String aString = " ";
+    public String aDouble = "1.2";
+
+    public ATest(String anInt, String aString, String aDouble) {
+        this.anInt = anInt;
+        this.aString = aString;
+        this.aDouble = aDouble;
+    }
+
+    @Override
+    public String toString() {
+        return "ATest {" +
+                "anInt='" + anInt + '\'' +
+                ", aString='" + aString + '\'' +
+                ", aDouble='" + aDouble + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ATest aTest = (ATest) o;
+        return
+                aTest.anInt.equals(anInt) &&
+                        aTest.equals(aString) &&
+                        aTest.equals(aDouble);
+    }
+
+
+
+    // Static inner Builder class
+    public static class Builder {
+        private String anInt = "0"; // Default value
+        private String aString = " "; // Default value
+        private String aDouble = "1.2"; // Default value
+
+        public Builder anInt(String anInt) {
+            this.anInt = anInt;
+            return this;
+        }
+
+        public Builder aString(String aString) {
+            this.aString = aString;
+            return this;
+        }
+
+        public Builder aDouble(String aDouble) {
+            this.aDouble = aDouble;
+            return this;
+        }
+
+        public ATest build() {
+            return new ATest(anInt, aString, aDouble);
+        }
+    }
+        public ATestInternal toATestInternal() {
+        return new ATestInternal(
+                Integer.parseInt(anInt),
+                aString,
+                Double.parseDouble(aDouble)
+        );
+    }
+}
+
