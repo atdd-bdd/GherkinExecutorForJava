@@ -31,7 +31,7 @@ public class Translate {
     private String dataDefinitionFilename = basePath + "DataDefinition" + ".tmp";
     private FileWriter dataDefinitionFile;
     private boolean featureActedOn = false; // Have found a feature step
-
+    private String featureName = "";
     public Translate() {
     }
 
@@ -106,7 +106,8 @@ public class Translate {
             error("Feature keyword duplicated - it is ignored " + fullName);
             return;
         }
-        String featureName = fullName;
+        featureName = fullName;
+
         featureActedOn = true;
         String testPathname = Configuration.testSubDirectory + featureName + "/" + featureName + ".java";
         System.out.println(" Writing " + testPathname);
@@ -139,11 +140,11 @@ public class Translate {
         testPrint("");
 
         templatePrint("package " + Configuration.packageName + "." + featureName + ";");
-        templatePrint("import kotlin.test.fail;");
+        templatePrint("import static org.junit.Assert.fail;");
+        templatePrint("import java.util.List;");
         templatePrint("");
         templatePrint("class " + glueClass + " {");
         templatePrint("");
-        dataDefinitionPrint("package " + Configuration.packageName + "." + featureName);
     }
 
     private String makeName(String input) {
@@ -179,15 +180,15 @@ public class Translate {
             firstScenario = false;
         } else {
             if (cleanup && addBackground) {
-                testPrint("        test_Cleanup()");
+                testPrint("        test_Cleanup();");
             }
             testPrint("        }"); // end previous scenario
         }
         testPrint("    @Test");
         testPrint("    void test_" + fullNameToUse + "(){");
-        testPrint("         " + glueClass + " " + glueObject + " = " + glueClass + "()");
+        testPrint("         " + glueClass + " " + glueObject + " = new " + glueClass + "();");
         if (background && addBackground) {
-            testPrint("        test_Background()");
+            testPrint("        test_Background();");
         }
     }
 
@@ -338,8 +339,8 @@ public class Translate {
         for (String line : table) {
             testPrint("            " + line);
         }
-        testPrint("            \"\"\".trimIndent()");
-        testPrint("        " + glueObject + "." + fullName + "(table" + s + ")");
+        testPrint("            \"\"\".trimIndent();");
+        testPrint("        " + glueObject + "." + fullName + "(table" + s + ");");
         // test_print("");
         makeFunctionTemplate("String", fullName);
     }
@@ -372,6 +373,7 @@ public class Translate {
         boolean inHeaderLine = true;
         List<List<String>> dataList = convertToListList(table, transpose);
         List<String> headers = new ArrayList<>();
+        boolean insertComma = false;
         for (List<String> row : dataList) {
             if (inHeaderLine) {
                 headers = row;
@@ -379,10 +381,13 @@ public class Translate {
                 continue;
             }
             List<String> values = row;
-            convertBarLineToParameter(headers, values, className);
+
+            convertBarLineToParameter(headers, values, className, insertComma);
+            if (!insertComma)
+                insertComma = true;
         }
-        testPrint("            )");
-        testPrint("        " + glueObject + "." + fullName + "(objectList" + s + ")");
+        testPrint("            );");
+        testPrint("        " + glueObject + "." + fullName + "(objectList" + s + ");");
         makeFunctionTemplate(dataType, fullName);
     }
 
@@ -398,20 +403,22 @@ public class Translate {
         return result;
     }
 
-    private void convertBarLineToParameter(List<String> headers, List<String> values, String className) {
+    private void convertBarLineToParameter(List<String> headers, List<String> values, String className, boolean insertComma) {
         trace("Headers " + headers);
         int size = headers.size();
         if (headers.size() > values.size()) {
             size = values.size();
             error("not sufficient values, using what is there" + values);
         }
-
-        testPrint("            new " + className + ".Builder()");
+        String comma = "";
+        if (insertComma) comma = ",";
+        testPrint("            "+ comma +" new " + className + ".Builder()");
         for (int i = 0; i < size; i++) {
             String value = "\"" + values.get(i).replace(Configuration.spaceCharacters, ' ') + "\"";
             testPrint("                ." + makeName(headers.get(i)) + "(" + value + ")");
         }
-        testPrint("                ),");
+        testPrint("                .build()");
+        testPrint("                ");
     }
 
     private void noParameter(String fullName) {
@@ -430,15 +437,15 @@ public class Translate {
         }
         glueFunctions.put(fullName, dataType);
         if (dataType.isEmpty()) {
-            templatePrint("    fun " + fullName + "(){");
+            templatePrint("    void " + fullName + "(){");
         } else {
-            templatePrint("    fun " + fullName + "( value " + ": " + dataType + ") {");
+            templatePrint("    void " + fullName + "(" + dataType + " value ) {");
         }
-        templatePrint("        println(\"*******\")");
+        templatePrint("        System.out.println(\"*******\");");
         if (!dataType.isEmpty()) {
-            templatePrint("        println(value)");
+            templatePrint("        System.out.println(value);");
         }
-        templatePrint("        fail(\"Must implement\")");
+        templatePrint("        fail(\"Must implement\");");
         templatePrint("    }");
         templatePrint("");
     }
@@ -547,19 +554,72 @@ public class Translate {
         }
         trace("Creating class for " + className);
         dataNames.put(className, "");
-        dataDefinitionPrint("data class " + className + "(");
+        // Put each in a new file
+        String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + className
+                 + "." + Configuration.dataDefinitionFileExtension;
+        System.out.println("Printing data on " + dataDefinitionPathname);
+        try {
+            dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
+        } catch (IOException e) {
+            error("IO Exception in setting up the files");
+            error(" Writing " + dataDefinitionPathname);
+
+        }
+
+        dataDefinitionPrint("package " + Configuration.packageName + "." + featureName);
+        dataDefinitionPrint("class " + className + "{");
         List<DataValues> variables = new ArrayList<>();
         boolean doInternal = createVariableList(table, variables);
         for (DataValues variable : variables) {
-            dataDefinitionPrint("    val " + makeName(variable.name) + ": String = \"" + variable.defaultVal + "\",");
+            dataDefinitionPrint("    String " + makeName(variable.name) + " = \"" + variable.defaultVal + "\";");
         }
-
-        dataDefinitionPrint("    )");
-
-        if (doInternal) {
+        createConstructor(variables, className);
+        createEqualsMethod(variables, className);
+        createBuilderMethod(variables, className);
+        createToStringMethod(variables, className);
+        dataDefinitionPrint("    }");
+        if (doInternal) 
             createConversionMethod(internalClassName, variables);
+        try {
+            dataDefinitionFile.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (doInternal) {
             createInternalClass(internalClassName, className, variables);
         }
+    }
+
+    private void createConstructor(List<DataValues> variables, String className) {
+//           public ATest(String anInt, String aString, String aDouble) {
+//            this.anInt = anInt;
+//            this.aString = aString;
+//            this.aDouble = aDouble;
+        dataDefinitionPrint("    public " + className + "(");
+        boolean printComma = false;
+        String comma ="";
+        for (DataValues variable : variables) {
+            dataDefinitionPrint("        " + comma + "String " + variable.name);
+            if (!printComma) {
+                printComma = true;
+                comma = ",";
+            }
+        }
+        dataDefinitionPrint("        ){");
+        for (DataValues variable : variables) {
+            dataDefinitionPrint("        this." +  variable.name + " = " + variable.name + ";");
+            if (!printComma)
+                printComma = true;
+        }
+        dataDefinitionPrint("        }");   }
+
+    private void createToStringMethod(List<DataValues> variables, String className) {
+    }
+
+    private void createBuilderMethod(List<DataValues> variables, String className) {
+    }
+
+    private void createEqualsMethod(List<DataValues> variables, String className) {
     }
 
     private void createConversionMethod(String internalClassName, List<DataValues> variables) {
@@ -632,7 +692,7 @@ public class Translate {
 
     private void endUp() {
         if (cleanup) {
-            testPrint("        test_Cleanup()");
+            testPrint("        test_Cleanup();");
         }
         testPrint("        }");   // End last scenario
         testPrint("    }"); // End the class

@@ -4,24 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="This is the original">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.exp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.exp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.exp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test.java.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test_data.tmpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test_data.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Feature_Simple_Test_glue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/testbuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/testbuilder.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,12 +148,20 @@
       <option name="project" value="LOCAL" />
       <updated>1738867086442</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do.">
+      <created>1739417584058</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1739417584059</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This is the original" />
-    <option name="LAST_COMMIT_MESSAGE" value="This is the original" />
+    <MESSAGE value="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do." />
+    <option name="LAST_COMMIT_MESSAGE" value="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -180,8 +173,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java</url>
-          <line>17</line>
+          <line>4</line>
           <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Translate.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
