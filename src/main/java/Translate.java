@@ -441,11 +441,13 @@ public class Translate {
         } else {
             templatePrint("    void " + fullName + "(" + dataType + " value ) {");
         }
+        templatePrint("        System.out.println(\"---  \" + " + quoteIt(fullName) + ");");
         templatePrint("        System.out.println(\"*******\");");
         if (!dataType.isEmpty()) {
             templatePrint("        System.out.println(value);");
         }
-        templatePrint("        fail(\"Must implement\");");
+        if (!Configuration.inTest)
+            templatePrint("        fail(\"Must implement\");");
         templatePrint("    }");
         templatePrint("");
     }
@@ -566,28 +568,29 @@ public class Translate {
 
         }
 
-        dataDefinitionPrint("package " + Configuration.packageName + "." + featureName);
-        dataDefinitionPrint("class " + className + "{");
+        dataPrintLn("package " + Configuration.packageName + "." + featureName + ";");
+        dataPrintLn("class " + className + "{");
         List<DataValues> variables = new ArrayList<>();
         boolean doInternal = createVariableList(table, variables);
         for (DataValues variable : variables) {
-            dataDefinitionPrint("    String " + makeName(variable.name) + " = \"" + variable.defaultVal + "\";");
+            dataPrintLn("    String " + makeName(variable.name) + " = \"" + variable.defaultVal + "\";");
         }
         createConstructor(variables, className);
         createEqualsMethod(variables, className);
         createBuilderMethod(variables, className);
         createToStringMethod(variables, className);
-        dataDefinitionPrint("    }");
-        if (doInternal) 
-            createConversionMethod(internalClassName, variables);
-        try {
-            dataDefinitionFile.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        if (doInternal) {
-            createInternalClass(internalClassName, className, variables);
-        }
+//        if (doInternal)
+//            createConversionMethod(internalClassName, variables);
+//        try {
+//            dataDefinitionFile.close();
+//        } catch (IOException e) {
+//            throw new RuntimeException(e);
+//        }
+//
+//        if (doInternal) {
+//            createInternalClass(internalClassName, className, variables);
+//        }
+        dataPrintLn("    }");
     }
 
     private void createConstructor(List<DataValues> variables, String className) {
@@ -595,43 +598,95 @@ public class Translate {
 //            this.anInt = anInt;
 //            this.aString = aString;
 //            this.aDouble = aDouble;
-        dataDefinitionPrint("    public " + className + "(");
-        boolean printComma = false;
+        dataPrintLn("    public " + className + "(");
         String comma ="";
         for (DataValues variable : variables) {
-            dataDefinitionPrint("        " + comma + "String " + variable.name);
-            if (!printComma) {
-                printComma = true;
-                comma = ",";
-            }
+            dataPrintLn("        " + comma + "String " + variable.name);
+            comma = ",";
         }
-        dataDefinitionPrint("        ){");
+        dataPrintLn("        ){");
         for (DataValues variable : variables) {
-            dataDefinitionPrint("        this." +  variable.name + " = " + variable.name + ";");
-            if (!printComma)
-                printComma = true;
+            dataPrintLn("        this." +  variable.name + " = " + variable.name + ";");
         }
-        dataDefinitionPrint("        }");   }
+        dataPrintLn("        }");   }
 
     private void createToStringMethod(List<DataValues> variables, String className) {
+        dataPrintLn("    @Override");
+        dataPrintLn("    public String toString() {");
+        dataPrintLn("        return " + quoteIt(className + " {"));
+        String add = "+";
+        String comma = "";
+        for (DataValues variable : variables) {
+            dataPrintLn("        " + add + quoteIt(variable.name + " = ")+ " + "+ variable.name + " + " + quoteIt(" "));
+        }
+        dataPrintLn("            + " + quoteIt("} ")  + "; }  ");
+
     }
 
     private void createBuilderMethod(List<DataValues> variables, String className) {
+        dataPrintLn("    public static class Builder {");
+        for (DataValues variable : variables){
+            dataPrintLn("        private String " + variable.name + " = " + quoteIt(variable.defaultVal) + ";");
+        }
+        for (DataValues variable : variables) {
+            dataPrintLn("        public Builder " + variable.name + "(String " + variable.name + ") {");
+            dataPrintLn("            this." + variable.name + " = " + variable.name + ";");
+            dataPrintLn("            return this;");
+            dataPrintLn("            }");
+        }
+        dataPrintLn("        public " + className + " build(){");
+        dataPrintLn("             return new " + className + "(");
+        String comma = "";
+        for (DataValues variable : variables){
+            dataPrintLn("                 " + comma + variable.name);
+            comma = ",";
+        }
+        dataPrintLn("                );   } ");
+        dataPrintLn("        } ");
+    }
+
+    private String quoteIt(String defaultVal) {
+        return "\"" + defaultVal + "\"";
     }
 
     private void createEqualsMethod(List<DataValues> variables, String className) {
+        dataPrintLn("    @Override");
+        dataPrintLn("    public boolean equals (Object o) {");
+        dataPrintLn("        if (this == o) return true;");
+        dataPrintLn("            if (o == null || getClass() != o.getClass()) return false;");
+        String variableName = "_" + className;
+        dataPrintLn("            " + className + " " + variableName + " = (" + className + ") o;");
+        for (DataValues variable : variables) {
+            dataPrintLn("            if (");
+            dataPrintLn("            !this." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + ")");
+            dataPrintLn("            && !" + variableName + "." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + "))");
+            dataPrintLn("                if (! " + variableName + "." + variable.name + ".equals(this." + variable.name + "))");
+            dataPrintLn("                     return false;");
+        }
+        dataPrintLn("         return true;  }");
+//        @Override
+//        public boolean equals(Object o) {
+//            if (this == o) return true;
+//            if (o == null || getClass() != o.getClass()) return false;
+//            ATest aTest = (ATest) o;
+//            return
+        //          if (!aTest.anInt.equals(Configuration. ..   && !
+//                        if (!aTest.anInt.equals(anInt) return false;
+//                            aTest.equals(aString) &&
+//                            aTest.equals(aDouble);
+//
     }
 
     private void createConversionMethod(String internalClassName, List<DataValues> variables) {
-        dataDefinitionPrint(" {");
-        dataDefinitionPrint("    fun to" + internalClassName + "() : " + internalClassName + "{");
-        dataDefinitionPrint("        return " + internalClassName + "(");
+        dataPrintLn(" {");
+        dataPrintLn("    "+ internalClassName + " to" + internalClassName + "() : " + internalClassName + "{");
+        dataPrintLn("        return " + internalClassName + "(");
         for (DataValues variable : variables) {
-            dataDefinitionPrint("        " + makeName(variable.name) + ".to" + variable.dataType + "(),");
+            dataPrintLn("        " + makeName(variable.name) + ".to" + variable.dataType + "(),");
         }
-        dataDefinitionPrint("        ) }"); // end function
+        dataPrintLn("        ) }"); // end function
 
-        dataDefinitionPrint("    }"); // end class
+        dataPrintLn("    }"); // end class
     }
 
     private boolean createVariableList(List<String> table, List<DataValues> variables) {
@@ -675,19 +730,19 @@ public class Translate {
         }
         trace("Creating internal class for " + classNameInternal);
         dataNames.put(classNameInternal, "");
-        dataDefinitionPrint("data class " + classNameInternal + "(");
+        dataPrintLn("data class " + classNameInternal + "(");
         for (DataValues variable : variables) {
-            dataDefinitionPrint("    val " + makeName(variable.name) + ": " + variable.dataType + "= \"" + variable.defaultVal + "\".to" + variable.dataType + "(),");
+            dataPrintLn("    val " + makeName(variable.name) + ": " + variable.dataType + "= \"" + variable.defaultVal + "\".to" + variable.dataType + "(),");
         }
-        dataDefinitionPrint("    ) {");
-        dataDefinitionPrint("    fun to" + otherClassName + "() : " + otherClassName + "{");
-        dataDefinitionPrint("        return " + otherClassName + "(");
+        dataPrintLn("    ) {");
+        dataPrintLn("    fun to" + otherClassName + "() : " + otherClassName + "{");
+        dataPrintLn("        return " + otherClassName + "(");
         for (DataValues variable : variables) {
-            dataDefinitionPrint("        " + makeName(variable.name) + ".toString(),");
+            dataPrintLn("        " + makeName(variable.name) + ".toString(),");
         }
-        dataDefinitionPrint("        ) }"); // end function
+        dataPrintLn("        ) }"); // end function
 
-        dataDefinitionPrint("    }"); // end class
+        dataPrintLn("    }"); // end class
     }
 
     private void endUp() {
@@ -781,7 +836,7 @@ public class Translate {
         }
     }
 
-    private void dataDefinitionPrint(String line) {
+    private void dataPrintLn(String line) {
         try {
             dataDefinitionFile.write(line);
             dataDefinitionFile.write("\n");
@@ -964,13 +1019,17 @@ public class Translate {
     }
 
     static class Configuration {
+
+        public static boolean  inTest = true;  // switch to true for development of Translator
         public static boolean traceOn = true; // Set to true to see trace
         public static char spaceCharacters = '^'; // Will replace with space in tables
+
+        public static String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
         public static String currentDirectory = "";
         public static String featureSubDirectory = "src/test/java/";
         public static String packageName = "gherkinexecutor";
         public static String testSubDirectory = "src/test/java/" + packageName + "/";
-        public static String dataDefinitionFileExtension = "tmpl"; // change to kt if altering data file
+        public static String dataDefinitionFileExtension = "java"; // "tmpl"; // change to java if altering data file
         public static List<String> featureFiles = new ArrayList<>();
 
         static {
