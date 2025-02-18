@@ -1,40 +1,29 @@
 package gherkinexecutor.Feature_Simple_Test;
-
-
-record ATestInternal(int anInt, String aString, double aDouble) {
-
-    public ATestInternal(int anInt, String aString, double aDouble) {
-        this.anInt = anInt;
-        this.aString = aString;
-        this.aDouble = aDouble;
-    }
-
-    public ATest toATest() {
+class ATestInternal{
+     Integer anInt = Integer.valueOf("0");
+     String aString = " ";
+     Double aDouble = Double.valueOf("1.2");
+     
+    ATest toATest() {
         return new ATest(
-                Integer.toString(anInt),
-                aString,
-                Double.toString(aDouble)
-        );
-    }
-
+        anInt.toString()
+        ,aString.toString()
+        ,aDouble.toString()
+        ); }
+    public ATestInternal(
+        Integer anInt
+        ,String aString
+        ,Double aDouble
+        ){
+        this.anInt = Integer.valueOf("0");
+        this.aString = " ";
+        this.aDouble = Double.valueOf("1.2");
+        }
     @Override
     public String toString() {
-        return "ATestInternal {" +
-                "anInt='" + anInt + '\'' +
-                ", aString='" + aString + '\'' +
-                ", aDouble='" + aDouble + '\'' +
-                '}';
+        return "ATestInternal {"
+        +"anInt = " + anInt + " "
+        +"aString = " + aString + " "
+        +"aDouble = " + aDouble + " "
+            + "} "; }  
     }
-    // Getters and setters
-    public int getAnInt() {
-        return anInt;
-    }
-
-    public String getAString() {
-        return aString;
-    }
-
-    public double getADouble() {
-        return aDouble;
-    }
-}

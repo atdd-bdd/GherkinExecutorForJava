@@ -63,4 +63,10 @@ class ATest{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
+    ATestInternal toATestInternal() {
+        return new ATestInternal(
+         Integer.valueOf(anInt)
+        , aString
+        , Double.valueOf(aDouble)
+        ); }
     }

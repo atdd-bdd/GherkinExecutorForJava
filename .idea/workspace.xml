@@ -7,13 +7,29 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Fixing up the data actions">
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Created toString, equals, builder for data classes.   Just for the string versions so far.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/ParseCSV.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/TableExample.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/background.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/data_definition.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/examples.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/fulltest.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/import.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/include.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/string.inc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tablesandstrings.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/tictactoe.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SimpleTest.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SimpleTest.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATesttmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_data.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datatype.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/testbuilder.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,38 +56,42 @@
       </MavenImportingSettings>
     </option>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2sg7pSGhlGhCETDVr6cjMALDDPE" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Simple_Test",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.41582337",
-    "run.code.analysis.last.selected.profile": "pProject Default"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.41582337&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Simple_Test" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java" />
+      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Simple_Test" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main\java" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Feature_Simple_Test">
+  <component name="RunManager" selected="Application.Translate">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Translate" />
       <module name="GherkinExecutorForJava" />
@@ -79,16 +99,31 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FeatureSimpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Background" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Feature_Simple_Test.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Background.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Feature_Simple_Test" />
-      <option name="MAIN_CLASS_NAME" value="Feature_Simple_Test.FeatureSimpleTest" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Background" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Background.Feature_Background" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Feature_Examples" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GherkinExecutorForJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gherkinexecutor.Feature_Examples.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Examples" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Examples.Feature_Examples" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -109,16 +144,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="featureSimpleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Tic_Tac_Toe_Game" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Feature_Simple_Test.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="Feature_Simple_Test" />
-      <option name="MAIN_CLASS_NAME" value="Feature_Simple_Test.featureSimpleTest" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game.Feature_Tic_Tac_Toe_Game" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -126,10 +161,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Feature_Simple_Test" />
         <item itemvalue="Application.Translate" />
-        <item itemvalue="JUnit.FeatureSimpleTest" />
-        <item itemvalue="JUnit.featureSimpleTest" />
+        <item itemvalue="JUnit.Feature_Tic_Tac_Toe_Game" />
+        <item itemvalue="JUnit.Feature_Examples" />
+        <item itemvalue="JUnit.Feature_Background" />
+        <item itemvalue="JUnit.Feature_Simple_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -170,14 +206,22 @@
       <option name="project" value="LOCAL" />
       <updated>1739421684032</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Created toString, equals, builder for data classes.   Just for the string versions so far.">
+      <created>1739822490611</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1739822490612</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="This is the original" />
     <MESSAGE value="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do." />
     <MESSAGE value="Fixing up the data actions" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixing up the data actions" />
+    <MESSAGE value="Created toString, equals, builder for data classes.   Just for the string versions so far." />
+    <option name="LAST_COMMIT_MESSAGE" value="Created toString, equals, builder for data classes.   Just for the string versions so far." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

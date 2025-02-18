@@ -7,7 +7,7 @@ class Feature_Simple_Test{
 
     @Test
     void test_Scenario_Simple(){
-         Feature_Simple_Test_glue Feature_Simple_Test_glue_object = new Feature_Simple_Test_glue();
+         Feature_Simple_Test_glue feature_Simple_Test_glue_object = new Feature_Simple_Test_glue();
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
@@ -17,7 +17,7 @@ class Feature_Simple_Test{
                 .build()
                 
             );
-        Feature_Simple_Test_glue_object.Given_table_is(objectList1);
+        feature_Simple_Test_glue_object.Given_table_is(objectList1);
         }
     }
 

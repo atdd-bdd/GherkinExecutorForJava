@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Map;
 
 public class Translate {
-    private Map<String, String> scenarios = new HashMap<>(); // used to check if duplicate scenario names
-    private Map<String, String> glueFunctions = new HashMap<>(); // used to make sure only one glue implementation
-    private Map<String, String> dataNames = new HashMap<>(); // used to check for duplicate data
-    private int stepCount = 0; // use to label duplicate scenarios
-    private String basePath = Configuration.testSubDirectory;
+    private final Map<String, String> scenarios = new HashMap<>(); // used to check if duplicate scenario names
+    private final Map<String, String> glueFunctions = new HashMap<>(); // used to make sure only one glue implementation
+    private final Map<String, String> dataNames = new HashMap<>(); // used to check for duplicate data
+    private final int stepCount = 0; // use to label duplicate scenarios
+    private final String basePath = Configuration.testSubDirectory;
     private String glueClass = "";  // glue class name
     private String glueObject = "";  // glue object name
     private int stepNumberInScenario = 0;  // use to label variables in scenario
@@ -150,7 +150,7 @@ public class Translate {
     private String makeName(String input) {
         if (input.isEmpty()) return "NAME_IS_EMPTY";
         String temp = input.replace(' ', '_');
-        return temp.charAt(0) + temp.substring(1);
+        return Character.toLowerCase(temp.charAt(0)) + temp.substring(1);
     }
 
 
@@ -243,7 +243,7 @@ public class Translate {
     private void stringToList(List<String> table, String fullName) {
         String s = Integer.toString(stepNumberInScenario);
         String dataType = "List<String>";
-        String dataTypeInitializer = "Arrays.asList";
+        String dataTypeInitializer = "List.of";
 
         testPrint("        List<String> stringList" + s + " = " + dataTypeInitializer + "(");
         for (String line : table) {
@@ -269,11 +269,13 @@ public class Translate {
     private void tableToListOfList(List<String> table, String fullName) {
         String s = Integer.toString(stepNumberInScenario);
         String dataType = "List<List<String>>";
-        String dataTypeInitializer = "Arrays.asList";
+        String dataTypeInitializer = "List.of";
 
         testPrint("        List<List<String>> stringListList" + s + " = " + dataTypeInitializer + "(");
+        String comma = "";
         for (String line : table) {
-            convertBarLineToList(line);
+            convertBarLineToList(line, comma);
+            comma = ",";
         }
         testPrint("            );");
         testPrint("        " + glueObject + "." + fullName + "(stringListList" + s + ");");
@@ -339,19 +341,22 @@ public class Translate {
         for (String line : table) {
             testPrint("            " + line);
         }
-        testPrint("            \"\"\".trimIndent();");
+        testPrint("            \"\"\".stripIndent();");
         testPrint("        " + glueObject + "." + fullName + "(table" + s + ");");
         // test_print("");
         makeFunctionTemplate("String", fullName);
     }
 
-    private void convertBarLineToList(String line) {
-        testPrint("           listOf<String>(");
+    private void convertBarLineToList(String line, String commaIn) {
+
+        testPrint("           " + commaIn + "List.of(");
         List<String> elements = parseLine(line);
+        String comma = "";
         for (String element : elements) {
-            testPrint("            \"" + element + "\",");
+            testPrint("            " + comma + quoteIt( element));
+            comma = ",";
         }
-        testPrint("            ),");
+        testPrint("            )");
     }
 
     private void convertBarLineToListOfObject(String line, String objectName) {
@@ -373,7 +378,7 @@ public class Translate {
         boolean inHeaderLine = true;
         List<List<String>> dataList = convertToListList(table, transpose);
         List<String> headers = new ArrayList<>();
-        boolean insertComma = false;
+        String comma = "";
         for (List<String> row : dataList) {
             if (inHeaderLine) {
                 headers = row;
@@ -382,9 +387,8 @@ public class Translate {
             }
             List<String> values = row;
 
-            convertBarLineToParameter(headers, values, className, insertComma);
-            if (!insertComma)
-                insertComma = true;
+            convertBarLineToParameter(headers, values, className, comma);
+            comma = ",";
         }
         testPrint("            );");
         testPrint("        " + glueObject + "." + fullName + "(objectList" + s + ");");
@@ -403,15 +407,13 @@ public class Translate {
         return result;
     }
 
-    private void convertBarLineToParameter(List<String> headers, List<String> values, String className, boolean insertComma) {
+    private void convertBarLineToParameter(List<String> headers, List<String> values, String className, String comma) {
         trace("Headers " + headers);
         int size = headers.size();
         if (headers.size() > values.size()) {
             size = values.size();
             error("not sufficient values, using what is there" + values);
         }
-        String comma = "";
-        if (insertComma) comma = ",";
         testPrint("            "+ comma +" new " + className + ".Builder()");
         for (int i = 0; i < size; i++) {
             String value = "\"" + values.get(i).replace(Configuration.spaceCharacters, ' ') + "\"";
@@ -422,7 +424,7 @@ public class Translate {
     }
 
     private void noParameter(String fullName) {
-        testPrint("        " + glueObject + "." + fullName + "()");
+        testPrint("        " + glueObject + "." + fullName + "();");
         makeFunctionTemplate("", fullName);
     }
 
@@ -557,16 +559,7 @@ public class Translate {
         trace("Creating class for " + className);
         dataNames.put(className, "");
         // Put each in a new file
-        String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + className
-                 + "." + Configuration.dataDefinitionFileExtension;
-        System.out.println("Printing data on " + dataDefinitionPathname);
-        try {
-            dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
-        } catch (IOException e) {
-            error("IO Exception in setting up the files");
-            error(" Writing " + dataDefinitionPathname);
-
-        }
+        startDataFile(className);
 
         dataPrintLn("package " + Configuration.packageName + "." + featureName + ";");
         dataPrintLn("class " + className + "{");
@@ -579,34 +572,59 @@ public class Translate {
         createEqualsMethod(variables, className);
         createBuilderMethod(variables, className);
         createToStringMethod(variables, className);
-//        if (doInternal)
-//            createConversionMethod(internalClassName, variables);
-//        try {
-//            dataDefinitionFile.close();
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//
-//        if (doInternal) {
-//            createInternalClass(internalClassName, className, variables);
-//        }
+        if (doInternal)
+            createConversionMethod(internalClassName, variables);
+        endDataFile();
+
+        if (doInternal) {
+           createInternalClass(internalClassName, className, variables);
+       }
         dataPrintLn("    }");
     }
 
+    private void endDataFile() {
+        try {
+            dataDefinitionFile.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void startDataFile(String className) {
+        String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + className
+                 + "." + Configuration.dataDefinitionFileExtension;
+        System.out.println("Printing data on " + dataDefinitionPathname);
+        try {
+            dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
+        } catch (IOException e) {
+            error("IO Exception in setting up the files");
+            error(" Writing " + dataDefinitionPathname);
+
+        }
+    }
+
     private void createConstructor(List<DataValues> variables, String className) {
-//           public ATest(String anInt, String aString, String aDouble) {
-//            this.anInt = anInt;
-//            this.aString = aString;
-//            this.aDouble = aDouble;
         dataPrintLn("    public " + className + "(");
         String comma ="";
         for (DataValues variable : variables) {
-            dataPrintLn("        " + comma + "String " + variable.name);
+            dataPrintLn("        " + comma + "String " + makeName(variable.name));
             comma = ",";
         }
         dataPrintLn("        ){");
         for (DataValues variable : variables) {
-            dataPrintLn("        this." +  variable.name + " = " + variable.name + ";");
+            dataPrintLn("        this." +  makeName(variable.name) + " = " + makeName(variable.name)  + ";");
+        }
+        dataPrintLn("        }");   }
+    private void createInternalConstructor(List<DataValues> variables, String className) {
+        dataPrintLn("    public " + className + "(");
+        String comma ="";
+        for (DataValues variable : variables) {
+            dataPrintLn("        " + comma + variable.dataType + " " + makeName(variable.name));
+            comma = ",";
+        }
+        dataPrintLn("        ){");
+        for (DataValues variable : variables) {
+            dataPrintLn("        this." +  makeName(variable.name) + " = " + makeFromString(variable)  + ";");
         }
         dataPrintLn("        }");   }
 
@@ -617,7 +635,7 @@ public class Translate {
         String add = "+";
         String comma = "";
         for (DataValues variable : variables) {
-            dataPrintLn("        " + add + quoteIt(variable.name + " = ")+ " + "+ variable.name + " + " + quoteIt(" "));
+            dataPrintLn("        " + add + quoteIt(makeName(variable.name) + " = ")+ " + "+ makeName(variable.name) + " + " + quoteIt(" "));
         }
         dataPrintLn("            + " + quoteIt("} ")  + "; }  ");
 
@@ -678,15 +696,108 @@ public class Translate {
     }
 
     private void createConversionMethod(String internalClassName, List<DataValues> variables) {
-        dataPrintLn(" {");
-        dataPrintLn("    "+ internalClassName + " to" + internalClassName + "() : " + internalClassName + "{");
-        dataPrintLn("        return " + internalClassName + "(");
+
+        dataPrintLn("    "+ internalClassName + " to" + internalClassName + "() " + "{");
+        dataPrintLn("        return new " + internalClassName + "(");
+        String comma = "";
         for (DataValues variable : variables) {
-            dataPrintLn("        " + makeName(variable.name) + ".to" + variable.dataType + "(),");
+            String initializer = makeToString(variable);
+            System.out.println(" Initializing " + initializer);
+            dataPrintLn("        " + comma + " " + initializer );
+            comma = ",";
         }
-        dataPrintLn("        ) }"); // end function
+        dataPrintLn("        ); }"); // end function
 
         dataPrintLn("    }"); // end class
+    }
+
+    private String makeToString(DataValues variable) {
+        System.out.println("Data type " + variable.dataType);
+        switch(variable.dataType) {
+            case "String":
+                return makeName(variable.name);
+            case "int":
+                return "Integer.parseInt("+ makeName(variable.name) + ")";
+            case "double":
+                return "Double.parseDouble("+ makeName(variable.name) + ")";
+            case "byte":
+                return "Byte.parseByte(" + makeName(variable.name) + ")";
+            case "short":
+                return "Short.parseShort(" + makeName(variable.name) + ")";
+            case "long":
+                return "Long.parseLong(" + makeName(variable.name) + ")";
+            case "float":
+                return "Float.parseFloat(" + makeName(variable.name) + ")";
+            case "boolean":
+                return "Boolean.parseBoolean(" + makeName(variable.name) + ")";
+            case "char":
+                return "( " + makeName(variable.name) + ".length() > 0 ?"
+                        + makeName(variable.name) + ".charAt(0) : ' ')";
+            case "Byte":
+                return "Byte.valueOf(" + makeName(variable.name) + ")";
+            case "Short":
+                    return "Short.valueOf(" + makeName(variable.name) + ")";
+            case "Integer":
+                return "Integer.valueOf(" + makeName(variable.name) + ")";
+            case "Long":
+                return "Long.valueOf(" + makeName(variable.name) + ")";
+            case "Float":
+                return "Float.valueOf(" + makeName(variable.name) + ")";
+            case "Double":
+                return "Double.valueOf(" + makeName(variable.name) + ")";
+            case "Boolean":
+                return "Boolean.valueOf(" + makeName(variable.name) + ")";
+            case "Character":
+                return "Character.valueOf( " + makeName(variable.name) + ".length() > 0 ?"
+                        + makeName(variable.name) + ".charAt(0) : ' ')";
+            default:
+                return makeName(variable.name);
+
+        }
+    }
+    private String makeFromString(DataValues variable) {
+        System.out.println("Data type " + variable.dataType);
+        switch(variable.dataType) {
+            case "String":
+                return quoteIt(variable.defaultVal);
+            case "int":
+                return "Integer.parseInt("+ quoteIt(variable.defaultVal) + ")";
+            case "double":
+                return "Double.parseDouble("+ quoteIt(variable.defaultVal) + ")";
+            case "byte":
+                return "Byte.parseByte(" + quoteIt(variable.defaultVal) + ")";
+            case "short":
+                return "Short.parseShort(" + quoteIt(variable.defaultVal) + ")";
+            case "long":
+                return "Long.parseLong(" + quoteIt(variable.defaultVal) + ")";
+            case "float":
+                return "Float.parseFloat(" + quoteIt(variable.defaultVal) + ")";
+            case "boolean":
+                return "Boolean.parseBoolean(" + quoteIt(variable.defaultVal) + ")";
+            case "char":
+                return "( " + quoteIt(variable.defaultVal) + ".length() > 0 ?"
+                        + quoteIt(variable.defaultVal) + ".charAt(0) : ' ')";
+            case "Byte":
+                return "Byte.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Short":
+                return "Short.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Integer":
+                return "Integer.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Long":
+                return "Long.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Float":
+                return "Float.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Double":
+                return "Double.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Boolean":
+                return "Boolean.valueOf(" + quoteIt(variable.defaultVal) + ")";
+            case "Character":
+                return "Character.valuoOf( " + quoteIt(variable.defaultVal) + ".length() > 0 ?"
+                        + quoteIt(variable.defaultVal) + ".charAt(0) : ' ')";
+            default:
+                return quoteIt(variable.defaultVal);
+
+        }
     }
 
     private boolean createVariableList(List<String> table, List<DataValues> variables) {
@@ -707,10 +818,10 @@ public class Translate {
                 continue;
             }
             if (elements.size() > 3)
-                variables.add(new DataValues(elements.get(0), elements.get(1), elements.get(2), elements.get(3)));
+                variables.add(new DataValues(makeName(elements.get(0)), elements.get(1), elements.get(2), elements.get(3)));
             else if (elements.size() > 2)
-                variables.add(new DataValues(elements.get(0), elements.get(1), elements.get(2)));
-            else variables.add(new DataValues(elements.get(0), elements.get(1)));
+                variables.add(new DataValues(makeName(elements.get(0)), elements.get(1), elements.get(2)));
+            else variables.add(new DataValues(makeName(elements.get(0)), elements.get(1)));
         }
         return doInternal;
     }
@@ -730,19 +841,32 @@ public class Translate {
         }
         trace("Creating internal class for " + classNameInternal);
         dataNames.put(classNameInternal, "");
-        dataPrintLn("data class " + classNameInternal + "(");
+        startDataFile(className);
+        dataPrintLn("package " + Configuration.packageName + "." + featureName + ";");
+        dataPrintLn("class " + className + "{");
         for (DataValues variable : variables) {
-            dataPrintLn("    val " + makeName(variable.name) + ": " + variable.dataType + "= \"" + variable.defaultVal + "\".to" + variable.dataType + "(),");
+            dataPrintLn("     " + variable.dataType + " " + makeName(variable.name) + " = " + makeFromString(variable) + ";");
         }
-        dataPrintLn("    ) {");
-        dataPrintLn("    fun to" + otherClassName + "() : " + otherClassName + "{");
-        dataPrintLn("        return " + otherClassName + "(");
-        for (DataValues variable : variables) {
-            dataPrintLn("        " + makeName(variable.name) + ".toString(),");
-        }
-        dataPrintLn("        ) }"); // end function
+        dataPrintLn("     ");
+        createToStringObject(otherClassName, variables);
+        createInternalConstructor(variables, className);
+        createToStringMethod(variables, className);
 
         dataPrintLn("    }"); // end class
+        endDataFile();
+    }
+
+    private void createToStringObject(String otherClassName, List<DataValues> variables) {
+        dataPrintLn("    " + otherClassName + " to" + otherClassName + "() " + "{");
+        dataPrintLn("        return new " + otherClassName + "(");
+        String comma = "";
+        for (DataValues variable : variables) {
+            // **** Need to create one that uses Double.toString(value), etc.
+            String method = makeName(variable.name) + ".toString()";
+            dataPrintLn("        " + comma + method);
+            comma = ",";
+        }
+        dataPrintLn("        ); }"); // end function
     }
 
     private void endUp() {
@@ -1034,6 +1158,13 @@ public class Translate {
 
         static {
             featureFiles.add("SimpleTest.feature");
+            featureFiles.add("background.feature");
+            featureFiles.add("examples.feature");
+            featureFiles.add("ParseCSV.feature");
+//            featureFiles.add("fulltest.feature");
+            featureFiles.add("include.feature");
+            featureFiles.add("datatype.feature");
+//            featureFiles.add("tictactoe.feature");
 //                featureFiles.add("tablesandstrings.feature");
 //                featureFiles.add("data_definition.feature");
 //                featureFiles.add("GherkinTranslatorFullTest.feature");

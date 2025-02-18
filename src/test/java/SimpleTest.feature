@@ -7,6 +7,6 @@ Given table is # ListOfObject ATest
 
 Data ATest 
 | Name     | Default  | Datatype  | Note  |
-| anInt    | 0        | Int       |       |
+| anInt    | 0        | Integer   |       |
 | aString  | ^        | String    |       |
 | aDouble  | 1.2      | Double    |       |
