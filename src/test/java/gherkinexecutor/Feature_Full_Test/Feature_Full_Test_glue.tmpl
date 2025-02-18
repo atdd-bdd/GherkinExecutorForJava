@@ -1,0 +1,130 @@
+package gherkinexecutor.Feature_Full_Test;
+import static org.junit.Assert.fail;
+import java.util.List;
+
+class Feature_Full_Test_glue {
+
+    void Given_a_string(String value ) {
+        System.out.println("---  " + "Given_a_string");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Then_a_table(List<List<String>> value ) {
+        System.out.println("---  " + "Then_a_table");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Given(String value ) {
+        System.out.println("---  " + "Given");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void When_converted_result_is(String value ) {
+        System.out.println("---  " + "When_converted_result_is");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Given_input_table(List<List<String>> value ) {
+        System.out.println("---  " + "Given_input_table");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void When_transposed_result_is(List<List<String>> value ) {
+        System.out.println("---  " + "When_transposed_result_is");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Given_Background_Function(){
+        System.out.println("---  " + "Given_Background_Function");
+        System.out.println("*******");
+    }
+
+    void Given_Cleanup_Function(){
+        System.out.println("---  " + "Given_Cleanup_Function");
+        System.out.println("*******");
+    }
+
+    void Given_a_regular_function(){
+        System.out.println("---  " + "Given_a_regular_function");
+        System.out.println("*******");
+    }
+
+    void Given_table_is(List<ATest> value ) {
+        System.out.println("---  " + "Given_table_is");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Given_a_step(List<MyClass> value ) {
+        System.out.println("---  " + "Given_a_step");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Given_list_of_numbers(List<LabelValue> value ) {
+        System.out.println("---  " + "Given_list_of_numbers");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void When_filtered_by_Label_with_value(List<List<String>> value ) {
+        System.out.println("---  " + "When_filtered_by_Label_with_value");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Then_sum_is(List<List<String>> value ) {
+        System.out.println("---  " + "Then_sum_is");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_multiline_string_to_a_string(String value ) {
+        System.out.println("---  " + "Star_A_multiline_string_to_a_string");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_multiline_string_to_a_List_of_String(List<String> value ) {
+        System.out.println("---  " + "Star_A_multiline_string_to_a_List_of_String");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_table_to_List_of_List_of_String(List<List<String>> value ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_List_of_String");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_table_to_List_of_Object(List<ExampleClass> value ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_Object");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_table_to_List_of_Object_with_Defaults(List<ExampleClass> value ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Defaults");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_table_to_List_of_Object_with_Blanks_in_Name(List<ExampleClassWithBlanks> value ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Blanks_in_Name");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    void Star_A_table_to_String(String value ) {
+        System.out.println("---  " + "Star_A_table_to_String");
+        System.out.println("*******");
+        System.out.println(value);
+    }
+
+    }
