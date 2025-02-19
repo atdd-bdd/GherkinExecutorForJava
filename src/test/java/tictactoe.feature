@@ -26,8 +26,8 @@ Given board is
 |   |   |   |
 |   |   |   |
 |   |   |   |
-When one move is # ListOfList Move
-| 1,2,X| 
+When one move is # 
+| 1,2,X | 
 Then board is now # String
 |   | X  |   |
 |   |    |   |

@@ -18,6 +18,7 @@ class Feature_Simple_Test{
                 
             );
         feature_Simple_Test_glue_object.Given_table_is(objectList1);
+
         }
     }
 

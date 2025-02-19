@@ -18,21 +18,21 @@ class DomainTermID{
             if (o == null || getClass() != o.getClass()) return false;
             DomainTermID _DomainTermID = (DomainTermID) o;
             if (
-            !this.value.equals("?DNC?")
-            && !_DomainTermID.value.equals("?DNC?"))
-                if (! _DomainTermID.value.equals(this.value))
-                     return false;
+                !this.value.equals("?DNC?")
+                && !_DomainTermID.value.equals("?DNC?"))
+                    if (! _DomainTermID.value.equals(this.value))
+                        return false;
             if (
-            !this.valid.equals("?DNC?")
-            && !_DomainTermID.valid.equals("?DNC?"))
-                if (! _DomainTermID.valid.equals(this.valid))
-                     return false;
+                !this.valid.equals("?DNC?")
+                && !_DomainTermID.valid.equals("?DNC?"))
+                    if (! _DomainTermID.valid.equals(this.valid))
+                        return false;
             if (
-            !this.notes.equals("?DNC?")
-            && !_DomainTermID.notes.equals("?DNC?"))
-                if (! _DomainTermID.notes.equals(this.notes))
-                     return false;
-         return true;  }
+                !this.notes.equals("?DNC?")
+                && !_DomainTermID.notes.equals("?DNC?"))
+                    if (! _DomainTermID.notes.equals(this.notes))
+                        return false;
+             return true;  }
     public static class Builder {
         private String value = "0";
         private String valid = "false";
@@ -47,6 +47,12 @@ class DomainTermID{
             }
         public Builder notes(String notes) {
             this.notes = notes;
+            return this;
+            }
+        public Builder  setCompare() {
+            value = "?DNC?";
+            valid = "?DNC?";
+            notes = "?DNC?";
             return this;
             }
         public DomainTermID build(){

@@ -2,7 +2,7 @@ package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 class Move{
     String row = "0";
     String column = "0";
-    String mark = " ";
+    String mark = "^";
     public Move(
         String row
         ,String column
@@ -18,25 +18,25 @@ class Move{
             if (o == null || getClass() != o.getClass()) return false;
             Move _Move = (Move) o;
             if (
-            !this.row.equals("?DNC?")
-            && !_Move.row.equals("?DNC?"))
-                if (! _Move.row.equals(this.row))
-                     return false;
+                !this.row.equals("?DNC?")
+                && !_Move.row.equals("?DNC?"))
+                    if (! _Move.row.equals(this.row))
+                        return false;
             if (
-            !this.column.equals("?DNC?")
-            && !_Move.column.equals("?DNC?"))
-                if (! _Move.column.equals(this.column))
-                     return false;
+                !this.column.equals("?DNC?")
+                && !_Move.column.equals("?DNC?"))
+                    if (! _Move.column.equals(this.column))
+                        return false;
             if (
-            !this.mark.equals("?DNC?")
-            && !_Move.mark.equals("?DNC?"))
-                if (! _Move.mark.equals(this.mark))
-                     return false;
-         return true;  }
+                !this.mark.equals("?DNC?")
+                && !_Move.mark.equals("?DNC?"))
+                    if (! _Move.mark.equals(this.mark))
+                        return false;
+             return true;  }
     public static class Builder {
         private String row = "0";
         private String column = "0";
-        private String mark = " ";
+        private String mark = "^";
         public Builder row(String row) {
             this.row = row;
             return this;
@@ -47,6 +47,12 @@ class Move{
             }
         public Builder mark(String mark) {
             this.mark = mark;
+            return this;
+            }
+        public Builder  setCompare() {
+            row = "?DNC?";
+            column = "?DNC?";
+            mark = "?DNC?";
             return this;
             }
         public Move build(){
@@ -65,8 +71,8 @@ class Move{
             + "} "; }  
     MoveInternal toMoveInternal() {
         return new MoveInternal(
-         row
-        , column
-        , mark
+         Integer.valueOf(row)
+        , Integer.valueOf(column)
+        , Character.valueOf( mark.length() > 0 ?mark.charAt(0) : ' ')
         ); }
     }

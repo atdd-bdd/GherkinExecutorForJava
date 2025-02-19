@@ -2,12 +2,25 @@ package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Tic_Tac_Toe_Game{
+void log(String value) {
+    try {
+        FileWriter mylog = new FileWriter("src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/log.txt", true);
+        mylog.write(value + "\n");
+        mylog.close();
+    } catch (IOException e) {
+    System.out.println("**** Cannot write to log ");
+    }
+    }
+
 
     @Test
     void test_Scenario_Make_a_move(){
          Feature_Tic_Tac_Toe_Game_glue feature_Tic_Tac_Toe_Game_glue_object = new Feature_Tic_Tac_Toe_Game_glue();
+        log("Scenario_Make_a_move");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -38,17 +51,18 @@ class Feature_Tic_Tac_Toe_Game{
             );
         feature_Tic_Tac_Toe_Game_glue_object.When_move_is(objectList2);
 
-        String table3 =
+        String table3 = 
             """
             |   | X  |   |
             |   |    |   |
             |   |    |   |
-            """; s
+            """.stripIndent();
         feature_Tic_Tac_Toe_Game_glue_object.Then_board_is_now(table3);
         }
     @Test
     void test_Scenario_Make_a_move_using_single_element(){
          Feature_Tic_Tac_Toe_Game_glue feature_Tic_Tac_Toe_Game_glue_object = new Feature_Tic_Tac_Toe_Game_glue();
+        log("Scenario_Make_a_move_using_single_element");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -69,24 +83,25 @@ class Feature_Tic_Tac_Toe_Game{
             );
         feature_Tic_Tac_Toe_Game_glue_object.Given_board_is(stringListList1);
 
-        List<List<Move>> objectListList2 =
+        List<List<String>> stringListList2 = List.of(
            List.of(
-            Move("1,2,X")
+            "1,2,X"
             )
-            ;
-        feature_Tic_Tac_Toe_Game_glue_object.When_one_move_is(objectListList2);
+            );
+        feature_Tic_Tac_Toe_Game_glue_object.When_one_move_is(stringListList2);
 
-        String table3 =
+        String table3 = 
             """
             |   | X  |   |
             |   |    |   |
             |   |    |   |
-            """.trimIndent();
+            """.stripIndent();
         feature_Tic_Tac_Toe_Game_glue_object.Then_board_is_now(table3);
         }
     @Test
     void test_Scenario_Make_multiple_moves(){
          Feature_Tic_Tac_Toe_Game_glue feature_Tic_Tac_Toe_Game_glue_object = new Feature_Tic_Tac_Toe_Game_glue();
+        log("Scenario_Make_multiple_moves");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -123,17 +138,18 @@ class Feature_Tic_Tac_Toe_Game{
             );
         feature_Tic_Tac_Toe_Game_glue_object.When_moves_are(objectList2);
 
-        val table3 =
+        String table3 = 
             """
             |   | X  |    |
             |   |    | O  |
             |   |    |    |
-            """.trimIndent();
+            """.stripIndent();
         feature_Tic_Tac_Toe_Game_glue_object.Then_board_is_now(table3);
         }
     @Test
     void test_Scenario_check_the_prints_to_see_how_it_works(){
          Feature_Tic_Tac_Toe_Game_glue feature_Tic_Tac_Toe_Game_glue_object = new Feature_Tic_Tac_Toe_Game_glue();
+        log("Scenario_check_the_prints_to_see_how_it_works");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -164,12 +180,12 @@ class Feature_Tic_Tac_Toe_Game{
             );
         feature_Tic_Tac_Toe_Game_glue_object.When_move_is(objectList2);
 
-        val table3 =
+        String table3 = 
             """
             | 0  | X  | 0  |
             | x  | 0  | x  |
             | 0  | x  | 0  |
-            """.trimIndent();
+            """.stripIndent();
         feature_Tic_Tac_Toe_Game_glue_object.Then_board_is_now(table3);
         }
     }

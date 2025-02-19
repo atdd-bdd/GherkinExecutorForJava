@@ -21,26 +21,26 @@ class AllTypes{
             if (o == null || getClass() != o.getClass()) return false;
             AllTypes _AllTypes = (AllTypes) o;
             if (
-            !this.anInt.equals("?DNC?")
-            && !_AllTypes.anInt.equals("?DNC?"))
-                if (! _AllTypes.anInt.equals(this.anInt))
-                     return false;
+                !this.anInt.equals("?DNC?")
+                && !_AllTypes.anInt.equals("?DNC?"))
+                    if (! _AllTypes.anInt.equals(this.anInt))
+                        return false;
             if (
-            !this.aDouble.equals("?DNC?")
-            && !_AllTypes.aDouble.equals("?DNC?"))
-                if (! _AllTypes.aDouble.equals(this.aDouble))
-                     return false;
+                !this.aDouble.equals("?DNC?")
+                && !_AllTypes.aDouble.equals("?DNC?"))
+                    if (! _AllTypes.aDouble.equals(this.aDouble))
+                        return false;
             if (
-            !this.aChar.equals("?DNC?")
-            && !_AllTypes.aChar.equals("?DNC?"))
-                if (! _AllTypes.aChar.equals(this.aChar))
-                     return false;
+                !this.aChar.equals("?DNC?")
+                && !_AllTypes.aChar.equals("?DNC?"))
+                    if (! _AllTypes.aChar.equals(this.aChar))
+                        return false;
             if (
-            !this.achar.equals("?DNC?")
-            && !_AllTypes.achar.equals("?DNC?"))
-                if (! _AllTypes.achar.equals(this.achar))
-                     return false;
-         return true;  }
+                !this.achar.equals("?DNC?")
+                && !_AllTypes.achar.equals("?DNC?"))
+                    if (! _AllTypes.achar.equals(this.achar))
+                        return false;
+             return true;  }
     public static class Builder {
         private String anInt = "0";
         private String aDouble = "0.0";
@@ -60,6 +60,13 @@ class AllTypes{
             }
         public Builder achar(String achar) {
             this.achar = achar;
+            return this;
+            }
+        public Builder  setCompare() {
+            anInt = "?DNC?";
+            aDouble = "?DNC?";
+            aChar = "?DNC?";
+            achar = "?DNC?";
             return this;
             }
         public AllTypes build(){

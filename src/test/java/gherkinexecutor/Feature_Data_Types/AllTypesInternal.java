@@ -7,10 +7,10 @@ class AllTypesInternal{
      
     AllTypes toAllTypes() {
         return new AllTypes(
-        anInt.toString()
-        ,Double.toString(aDouble)
-        ,aChar.toString()
-        ,Character.toString(achar)
+        String.valueOf(anInt)
+        ,String.valueOf(aDouble)
+        ,String.valueOf(aChar)
+        ,String.valueOf(achar)
         ); }
     public AllTypesInternal(
         Integer anInt
@@ -18,10 +18,10 @@ class AllTypesInternal{
         ,Character aChar
         ,char achar
         ){
-        this.anInt = Integer.valueOf("0");
-        this.aDouble = Double.parseDouble("0.0");
-        this.aChar = Character.valueOf( "x".length() > 0 ?"x".charAt(0) : ' ');
-        this.achar = ( "y".length() > 0 ?"y".charAt(0) : ' ');
+        this.anInt = anInt;
+        this.aDouble = aDouble;
+        this.aChar = aChar;
+        this.achar = achar;
         }
     @Override
     public String toString() {

@@ -1,7 +1,7 @@
 package gherkinexecutor.Feature_Simple_Test;
 class ATestInternal{
      Integer anInt = Integer.valueOf("0");
-     String aString = " ";
+     String aString = "^";
      Double aDouble = Double.valueOf("1.2");
      
     ATest toATest() {
@@ -16,7 +16,7 @@ class ATestInternal{
         ,Double aDouble
         ){
         this.anInt = Integer.valueOf("0");
-        this.aString = " ";
+        this.aString = "^";
         this.aDouble = Double.valueOf("1.2");
         }
     @Override

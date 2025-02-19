@@ -1,19 +1,19 @@
 package gherkinexecutor.Feature_Full_Test;
 class InternalClass{
      String one = "aaa";
-     Int two = "1";
+     Integer two = Integer.valueOf("1");
      
     MyClass toMyClass() {
         return new MyClass(
-        one.toString()
-        ,two.toString()
+        one
+        ,String.valueOf(two)
         ); }
     public InternalClass(
         String one
-        ,Int two
+        ,Integer two
         ){
-        this.one = "aaa";
-        this.two = "1";
+        this.one = one;
+        this.two = two;
         }
     @Override
     public String toString() {

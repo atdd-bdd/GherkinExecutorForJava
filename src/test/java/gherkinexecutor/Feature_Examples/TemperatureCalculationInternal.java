@@ -6,18 +6,18 @@ class TemperatureCalculationInternal{
      
     TemperatureCalculation toTemperatureCalculation() {
         return new TemperatureCalculation(
-        f.toString()
-        ,c.toString()
-        ,notes.toString()
+        String.valueOf(f)
+        ,String.valueOf(c)
+        ,notes
         ); }
     public TemperatureCalculationInternal(
         Integer f
         ,Integer c
         ,String notes
         ){
-        this.f = Integer.valueOf("0");
-        this.c = Integer.valueOf("0");
-        this.notes = "";
+        this.f = f;
+        this.c = c;
+        this.notes = notes;
         }
     @Override
     public String toString() {

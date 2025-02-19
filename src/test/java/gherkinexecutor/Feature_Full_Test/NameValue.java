@@ -12,19 +12,20 @@ class NameValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (o == null || getClass() != o.getClass())
+                return false;
             NameValue _NameValue = (NameValue) o;
             if (
-            !this.iD.equals("?DNC?")
-            && !_NameValue.iD.equals("?DNC?"))
-                if (! _NameValue.iD.equals(this.iD))
-                     return false;
+                !this.iD.equals("?DNC?")
+                && !_NameValue.iD.equals("?DNC?"))
+                    if (! _NameValue.iD.equals(this.iD))
+                        return false;
             if (
-            !this.value.equals("?DNC?")
-            && !_NameValue.value.equals("?DNC?"))
-                if (! _NameValue.value.equals(this.value))
-                     return false;
-         return true;  }
+                !this.value.equals("?DNC?")
+                && !_NameValue.value.equals("?DNC?"))
+                    if (! _NameValue.value.equals(this.value))
+                        return false;
+             return true;  }
     public static class Builder {
         private String iD = "";
         private String value = "0";
@@ -34,6 +35,11 @@ class NameValue{
             }
         public Builder value(String value) {
             this.value = value;
+            return this;
+            }
+        public Builder  setCompare() {
+        iD = "?DNC?";
+        value = "?DNC?";
             return this;
             }
         public NameValue build(){
@@ -48,3 +54,4 @@ class NameValue{
         +"iD = " + iD + " "
         +"value = " + value + " "
             + "} "; }  
+    }

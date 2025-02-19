@@ -1,23 +1,23 @@
 package gherkinexecutor.Feature_Full_Test;
 class ATestInternal{
-     Int anInt = "0";
-     String aString = " ";
-     Double aDouble = Double.valueOf("1.2");
+     Integer anInt = Integer.valueOf("0");
+     String aString = "^";
+     Double aDouble = Double.valueOf("4.0");
      
     ATest toATest() {
         return new ATest(
-        anInt.toString()
-        ,aString.toString()
-        ,aDouble.toString()
+        String.valueOf(anInt)
+        ,aString
+        ,String.valueOf(aDouble)
         ); }
     public ATestInternal(
-        Int anInt
+        Integer anInt
         ,String aString
         ,Double aDouble
         ){
-        this.anInt = "0";
-        this.aString = " ";
-        this.aDouble = Double.valueOf("1.2");
+        this.anInt = anInt;
+        this.aString = aString;
+        this.aDouble = aDouble;
         }
     @Override
     public String toString() {

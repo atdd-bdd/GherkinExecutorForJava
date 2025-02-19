@@ -22,7 +22,7 @@ class Feature_Tic_Tac_Toe_Game_glue {
         System.out.println(value);
     }
 
-    void When_one_move_is(List<List<Move>> value ) {
+    void When_one_move_is(List<List<String>> value ) {
         System.out.println("---  " + "When_one_move_is");
         System.out.println("*******");
         System.out.println(value);
@@ -34,4 +34,4 @@ class Feature_Tic_Tac_Toe_Game_glue {
         System.out.println(value);
     }
 
-    }
+}

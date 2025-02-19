@@ -44,8 +44,8 @@ Scenario: Here are table options
 
 * A table to List of Object with Blanks in Name # ListOfObject ExampleClassWithBlanks
 | Field 1  | Field 2  |
-| ^        | b        |
-| c        | ^        |
+| ~        | b        |
+| c        | ~        |
 
 * A table to String # String
 | aa  | bb  |
@@ -59,8 +59,8 @@ Data ExampleClass
 
 Data ExampleClassWithBlanks
 | Name     | Default  |
-| Field 1  | y        |
-| Field 2  | x        |
+| Field 1  | ~        |
+| Field 2  | ~        |
 
 
 

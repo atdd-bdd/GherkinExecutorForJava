@@ -15,16 +15,16 @@ class LabelValue{
             if (o == null || getClass() != o.getClass()) return false;
             LabelValue _LabelValue = (LabelValue) o;
             if (
-            !this.label.equals("?DNC?")
-            && !_LabelValue.label.equals("?DNC?"))
-                if (! _LabelValue.label.equals(this.label))
-                     return false;
+                !this.label.equals("?DNC?")
+                && !_LabelValue.label.equals("?DNC?"))
+                    if (! _LabelValue.label.equals(this.label))
+                        return false;
             if (
-            !this.value.equals("?DNC?")
-            && !_LabelValue.value.equals("?DNC?"))
-                if (! _LabelValue.value.equals(this.value))
-                     return false;
-         return true;  }
+                !this.value.equals("?DNC?")
+                && !_LabelValue.value.equals("?DNC?"))
+                    if (! _LabelValue.value.equals(this.value))
+                        return false;
+             return true;  }
     public static class Builder {
         private String label = "";
         private String value = "0";
@@ -34,6 +34,11 @@ class LabelValue{
             }
         public Builder value(String value) {
             this.value = value;
+            return this;
+            }
+        public Builder  setCompare() {
+            label = "?DNC?";
+            value = "?DNC?";
             return this;
             }
         public LabelValue build(){

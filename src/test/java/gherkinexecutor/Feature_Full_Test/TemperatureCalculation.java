@@ -18,21 +18,21 @@ class TemperatureCalculation{
             if (o == null || getClass() != o.getClass()) return false;
             TemperatureCalculation _TemperatureCalculation = (TemperatureCalculation) o;
             if (
-            !this.f.equals("?DNC?")
-            && !_TemperatureCalculation.f.equals("?DNC?"))
-                if (! _TemperatureCalculation.f.equals(this.f))
-                     return false;
+                !this.f.equals("?DNC?")
+                && !_TemperatureCalculation.f.equals("?DNC?"))
+                    if (! _TemperatureCalculation.f.equals(this.f))
+                        return false;
             if (
-            !this.c.equals("?DNC?")
-            && !_TemperatureCalculation.c.equals("?DNC?"))
-                if (! _TemperatureCalculation.c.equals(this.c))
-                     return false;
+                !this.c.equals("?DNC?")
+                && !_TemperatureCalculation.c.equals("?DNC?"))
+                    if (! _TemperatureCalculation.c.equals(this.c))
+                        return false;
             if (
-            !this.notes.equals("?DNC?")
-            && !_TemperatureCalculation.notes.equals("?DNC?"))
-                if (! _TemperatureCalculation.notes.equals(this.notes))
-                     return false;
-         return true;  }
+                !this.notes.equals("?DNC?")
+                && !_TemperatureCalculation.notes.equals("?DNC?"))
+                    if (! _TemperatureCalculation.notes.equals(this.notes))
+                        return false;
+             return true;  }
     public static class Builder {
         private String f = "0";
         private String c = "0";
@@ -47,6 +47,12 @@ class TemperatureCalculation{
             }
         public Builder notes(String notes) {
             this.notes = notes;
+            return this;
+            }
+        public Builder  setCompare() {
+            f = "?DNC?";
+            c = "?DNC?";
+            notes = "?DNC?";
             return this;
             }
         public TemperatureCalculation build(){

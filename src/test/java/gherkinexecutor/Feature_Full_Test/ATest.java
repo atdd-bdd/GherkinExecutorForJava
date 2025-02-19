@@ -1,8 +1,8 @@
 package gherkinexecutor.Feature_Full_Test;
 class ATest{
     String anInt = "0";
-    String aString = " ";
-    String aDouble = "1.2";
+    String aString = "^";
+    String aDouble = "4.0";
     public ATest(
         String anInt
         ,String aString
@@ -18,25 +18,25 @@ class ATest{
             if (o == null || getClass() != o.getClass()) return false;
             ATest _ATest = (ATest) o;
             if (
-            !this.anInt.equals("?DNC?")
-            && !_ATest.anInt.equals("?DNC?"))
-                if (! _ATest.anInt.equals(this.anInt))
-                     return false;
+                !this.anInt.equals("?DNC?")
+                && !_ATest.anInt.equals("?DNC?"))
+                    if (! _ATest.anInt.equals(this.anInt))
+                        return false;
             if (
-            !this.aString.equals("?DNC?")
-            && !_ATest.aString.equals("?DNC?"))
-                if (! _ATest.aString.equals(this.aString))
-                     return false;
+                !this.aString.equals("?DNC?")
+                && !_ATest.aString.equals("?DNC?"))
+                    if (! _ATest.aString.equals(this.aString))
+                        return false;
             if (
-            !this.aDouble.equals("?DNC?")
-            && !_ATest.aDouble.equals("?DNC?"))
-                if (! _ATest.aDouble.equals(this.aDouble))
-                     return false;
-         return true;  }
+                !this.aDouble.equals("?DNC?")
+                && !_ATest.aDouble.equals("?DNC?"))
+                    if (! _ATest.aDouble.equals(this.aDouble))
+                        return false;
+             return true;  }
     public static class Builder {
         private String anInt = "0";
-        private String aString = " ";
-        private String aDouble = "1.2";
+        private String aString = "^";
+        private String aDouble = "4.0";
         public Builder anInt(String anInt) {
             this.anInt = anInt;
             return this;
@@ -47,6 +47,12 @@ class ATest{
             }
         public Builder aDouble(String aDouble) {
             this.aDouble = aDouble;
+            return this;
+            }
+        public Builder  setCompare() {
+            anInt = "?DNC?";
+            aString = "?DNC?";
+            aDouble = "?DNC?";
             return this;
             }
         public ATest build(){
@@ -65,7 +71,7 @@ class ATest{
             + "} "; }  
     ATestInternal toATestInternal() {
         return new ATestInternal(
-         anInt
+         Integer.valueOf(anInt)
         , aString
         , Double.valueOf(aDouble)
         ); }

@@ -1,19 +1,42 @@
 package gherkinexecutor.Feature_Include;
 import static org.junit.Assert.fail;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class Feature_Include_glue {
+void log(String value) {
+    try {
+        FileWriter mylog = new FileWriter("src/test/java/gherkinexecutor/Feature_Include/log.txt", true);
+        mylog.write(value + "\n");
+        mylog.close();
+    } catch (IOException e) {
+    System.out.println("**** Cannot write to log ");
+    }
+    }
+
 
     void Given_a_string(String value ) {
         System.out.println("---  " + "Given_a_string");
         System.out.println("*******");
+        log("---  " + "Given_a_string");
+        log("*******");
+        log(value.toString());
         System.out.println(value);
     }
 
     void Then_a_table(List<List<String>> value ) {
         System.out.println("---  " + "Then_a_table");
         System.out.println("*******");
+        log("---  " + "Then_a_table");
+        log("*******");
+        log(value.toString());
         System.out.println(value);
+        for (List<List<String>> v : value){
+           System.out.println(v);
+           List<String>Internal i = v.toList<String>Internal();
+           System.out.println(i);
+              };
     }
 
     }

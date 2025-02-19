@@ -1,23 +1,23 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 class MoveInternal{
-     Int row = "0";
-     Int column = "0";
-     Char mark = " ";
+     Integer row = Integer.valueOf("0");
+     Integer column = Integer.valueOf("0");
+     Character mark = Character.valueOf( "^".length() > 0 ?"^".charAt(0) : ' ');
      
     Move toMove() {
         return new Move(
-        row.toString()
-        ,column.toString()
-        ,mark.toString()
+        String.valueOf(row)
+        ,String.valueOf(column)
+        ,String.valueOf(mark)
         ); }
     public MoveInternal(
-        Int row
-        ,Int column
-        ,Char mark
+        Integer row
+        ,Integer column
+        ,Character mark
         ){
-        this.row = "0";
-        this.column = "0";
-        this.mark = " ";
+        this.row = row;
+        this.column = column;
+        this.mark = mark;
         }
     @Override
     public String toString() {

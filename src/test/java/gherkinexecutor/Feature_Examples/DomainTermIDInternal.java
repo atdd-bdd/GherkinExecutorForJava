@@ -6,18 +6,18 @@ class DomainTermIDInternal{
      
     DomainTermID toDomainTermID() {
         return new DomainTermID(
-        value.toString()
-        ,valid.toString()
-        ,notes.toString()
+        value
+        ,String.valueOf(valid)
+        ,notes
         ); }
     public DomainTermIDInternal(
         String value
         ,Boolean valid
         ,String notes
         ){
-        this.value = "0";
-        this.valid = Boolean.valueOf("false");
-        this.notes = "";
+        this.value = value;
+        this.valid = valid;
+        this.notes = notes;
         }
     @Override
     public String toString() {

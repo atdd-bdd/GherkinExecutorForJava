@@ -15,16 +15,16 @@ class ExampleClass{
             if (o == null || getClass() != o.getClass()) return false;
             ExampleClass _ExampleClass = (ExampleClass) o;
             if (
-            !this.fieldA.equals("?DNC?")
-            && !_ExampleClass.fieldA.equals("?DNC?"))
-                if (! _ExampleClass.fieldA.equals(this.fieldA))
-                     return false;
+                !this.fieldA.equals("?DNC?")
+                && !_ExampleClass.fieldA.equals("?DNC?"))
+                    if (! _ExampleClass.fieldA.equals(this.fieldA))
+                        return false;
             if (
-            !this.fieldB.equals("?DNC?")
-            && !_ExampleClass.fieldB.equals("?DNC?"))
-                if (! _ExampleClass.fieldB.equals(this.fieldB))
-                     return false;
-         return true;  }
+                !this.fieldB.equals("?DNC?")
+                && !_ExampleClass.fieldB.equals("?DNC?"))
+                    if (! _ExampleClass.fieldB.equals(this.fieldB))
+                        return false;
+             return true;  }
     public static class Builder {
         private String fieldA = "y";
         private String fieldB = "x";
@@ -34,6 +34,11 @@ class ExampleClass{
             }
         public Builder fieldB(String fieldB) {
             this.fieldB = fieldB;
+            return this;
+            }
+        public Builder  setCompare() {
+            fieldA = "?DNC?";
+            fieldB = "?DNC?";
             return this;
             }
         public ExampleClass build(){
@@ -48,3 +53,4 @@ class ExampleClass{
         +"fieldA = " + fieldA + " "
         +"fieldB = " + fieldB + " "
             + "} "; }  
+    }

@@ -5,15 +5,15 @@ class LabelValueInternal{
      
     LabelValue toLabelValue() {
         return new LabelValue(
-        label.toString()
-        ,value.toString()
+        label
+        ,String.valueOf(value)
         ); }
     public LabelValueInternal(
         String label
         ,Integer value
         ){
-        this.label = "";
-        this.value = Integer.valueOf("0");
+        this.label = label;
+        this.value = value;
         }
     @Override
     public String toString() {
