@@ -22,8 +22,7 @@ class MyClass{
             if (
                 !this.two.equals("?DNC?")
                 && !_MyClass.two.equals("?DNC?"))
-                    if (! _MyClass.two.equals(this.two))
-                        return false;
+                return _MyClass.two.equals(this.two);
              return true;  }
     public static class Builder {
         private String one = "aaa";

@@ -8,11 +8,11 @@ import java.io.IOException;
 class Feature_Examples{
 void log(String value) {
     try {
-        FileWriter mylog = new FileWriter("src/test/java/gherkinexecutor/Feature_Examples/log.txt", true);
-        mylog.write(value + "\n");
-        mylog.close();
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Examples/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
     } catch (IOException e) {
-    System.out.println("**** Cannot write to log ");
+    System.err.println("*** Cannot write to log ");
     }
     }
 

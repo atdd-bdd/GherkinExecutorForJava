@@ -1,7 +1,9 @@
 package gherkinexecutor.Feature_Full_Test;
+import java.util.*;
 class LabelValue{
     String label = "";
     String value = "0";
+    public LabelValue() { }
     public LabelValue(
         String label
         ,String value
@@ -12,18 +14,16 @@ class LabelValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             LabelValue _LabelValue = (LabelValue) o;
             if (
                 !this.label.equals("?DNC?")
                 && !_LabelValue.label.equals("?DNC?"))
-                    if (! _LabelValue.label.equals(this.label))
-                        return false;
+                    return ( _LabelValue.label.equals(this.label));
             if (
                 !this.value.equals("?DNC?")
                 && !_LabelValue.value.equals("?DNC?"))
-                    if (! _LabelValue.value.equals(this.value))
-                        return false;
+                    return ( _LabelValue.value.equals(this.value));
              return true;  }
     public static class Builder {
         private String label = "";
@@ -53,7 +53,7 @@ class LabelValue{
         +"label = " + label + " "
         +"value = " + value + " "
             + "} "; }  
-    LabelValueInternal toLabelValueInternal() {
+    LabelValueInternal toLabelValueInternal() throws Exception {
         return new LabelValueInternal(
          label
         , Integer.valueOf(value)

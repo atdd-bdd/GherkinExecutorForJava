@@ -1,10 +1,10 @@
-package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
+package production;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class TicTacToeGame {
-    private List<List<String>> gameBoard = new ArrayList<>();
+    private final List<List<String>> gameBoard = new ArrayList<>();
 
     public TicTacToeGame() {
         gameBoard.add(new ArrayList<>());
@@ -14,9 +14,7 @@ public class TicTacToeGame {
         gameBoard.clear();
         for (List<String> row : value) {
             List<String> inRow = new ArrayList<>();
-            for (String cell : row) {
-                inRow.add(cell);
-            }
+            inRow.addAll(row);
             gameBoard.add(inRow);
         }
 
@@ -56,9 +54,7 @@ public class TicTacToeGame {
                 result.append(" ");
                 int numberSpaces = maxSizes.get(column) - cell.length() + 1;
                 result.append(cell);
-                for (int i = 0; i <= numberSpaces; i++) {
-                    result.append(" ");
-                }
+                result.append(" ".repeat(Math.max(0, numberSpaces + 1)));
                 result.append("|");
                 column++;
             }

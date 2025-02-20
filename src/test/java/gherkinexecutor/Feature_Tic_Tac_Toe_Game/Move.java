@@ -1,8 +1,10 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
+import java.util.*;
 class Move{
     String row = "0";
     String column = "0";
     String mark = "^";
+    public Move() { }
     public Move(
         String row
         ,String column
@@ -15,23 +17,20 @@ class Move{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             Move _Move = (Move) o;
             if (
                 !this.row.equals("?DNC?")
                 && !_Move.row.equals("?DNC?"))
-                    if (! _Move.row.equals(this.row))
-                        return false;
+                    return ( _Move.row.equals(this.row));
             if (
                 !this.column.equals("?DNC?")
                 && !_Move.column.equals("?DNC?"))
-                    if (! _Move.column.equals(this.column))
-                        return false;
+                    return ( _Move.column.equals(this.column));
             if (
                 !this.mark.equals("?DNC?")
                 && !_Move.mark.equals("?DNC?"))
-                    if (! _Move.mark.equals(this.mark))
-                        return false;
+                    return ( _Move.mark.equals(this.mark));
              return true;  }
     public static class Builder {
         private String row = "0";
@@ -69,7 +68,7 @@ class Move{
         +"column = " + column + " "
         +"mark = " + mark + " "
             + "} "; }  
-    MoveInternal toMoveInternal() {
+    MoveInternal toMoveInternal() throws Exception {
         return new MoveInternal(
          Integer.valueOf(row)
         , Integer.valueOf(column)

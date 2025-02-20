@@ -1,20 +1,28 @@
 package gherkinexecutor.Feature_Full_Test;
+import java.util.*;
 class ATestInternal{
      Integer anInt = Integer.valueOf("0");
-     String aString = " ";
-     Double aDouble = Double.valueOf("4.0");
+     String aString = "^";
+     Double aDouble = Double.valueOf("1.2");
      
-    ATest toATest() {
-        return new ATest(
+    public static String toDataTypeString() {
+        return "ATestInternal {"
+        +"Integer " 
+        +"String " 
+        +"Double " 
+            + "} "; }  
+    ATest0 toATest0() {
+        return new ATest0(
         String.valueOf(anInt)
         ,aString
         ,String.valueOf(aDouble)
         ); }
+    public ATestInternal() { }
     public ATestInternal(
         Integer anInt
         ,String aString
         ,Double aDouble
-        ){
+        )  {
         this.anInt = anInt;
         this.aString = aString;
         this.aDouble = aDouble;

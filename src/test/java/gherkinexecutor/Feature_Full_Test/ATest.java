@@ -1,8 +1,10 @@
 package gherkinexecutor.Feature_Full_Test;
+import java.util.*;
 class ATest{
     String anInt = "0";
     String aString = " ";
     String aDouble = "4.0";
+    public ATest() { }
     public ATest(
         String anInt
         ,String aString
@@ -15,23 +17,20 @@ class ATest{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             ATest _ATest = (ATest) o;
             if (
                 !this.anInt.equals("?DNC?")
                 && !_ATest.anInt.equals("?DNC?"))
-                    if (! _ATest.anInt.equals(this.anInt))
-                        return false;
+                    return ( _ATest.anInt.equals(this.anInt));
             if (
                 !this.aString.equals("?DNC?")
                 && !_ATest.aString.equals("?DNC?"))
-                    if (! _ATest.aString.equals(this.aString))
-                        return false;
+                    return ( _ATest.aString.equals(this.aString));
             if (
                 !this.aDouble.equals("?DNC?")
                 && !_ATest.aDouble.equals("?DNC?"))
-                    if (! _ATest.aDouble.equals(this.aDouble))
-                        return false;
+                    return ( _ATest.aDouble.equals(this.aDouble));
              return true;  }
     public static class Builder {
         private String anInt = "0";
@@ -69,7 +68,7 @@ class ATest{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
-    ATestInternal toATestInternal() {
+    ATestInternal toATestInternal() throws Exception {
         return new ATestInternal(
          Integer.valueOf(anInt)
         , aString

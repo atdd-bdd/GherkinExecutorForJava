@@ -1,9 +1,11 @@
 package gherkinexecutor.Feature_Data_Types;
+import java.util.*;
 class AllTypes{
     String anInt = "0";
     String aDouble = "0.0";
     String aChar = "x";
     String achar = "y";
+    public AllTypes() { }
     public AllTypes(
         String anInt
         ,String aDouble
@@ -18,28 +20,24 @@ class AllTypes{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             AllTypes _AllTypes = (AllTypes) o;
             if (
                 !this.anInt.equals("?DNC?")
                 && !_AllTypes.anInt.equals("?DNC?"))
-                    if (! _AllTypes.anInt.equals(this.anInt))
-                        return false;
+                    return ( _AllTypes.anInt.equals(this.anInt));
             if (
                 !this.aDouble.equals("?DNC?")
                 && !_AllTypes.aDouble.equals("?DNC?"))
-                    if (! _AllTypes.aDouble.equals(this.aDouble))
-                        return false;
+                    return ( _AllTypes.aDouble.equals(this.aDouble));
             if (
                 !this.aChar.equals("?DNC?")
                 && !_AllTypes.aChar.equals("?DNC?"))
-                    if (! _AllTypes.aChar.equals(this.aChar))
-                        return false;
+                    return ( _AllTypes.aChar.equals(this.aChar));
             if (
                 !this.achar.equals("?DNC?")
                 && !_AllTypes.achar.equals("?DNC?"))
-                    if (! _AllTypes.achar.equals(this.achar))
-                        return false;
+                    return ( _AllTypes.achar.equals(this.achar));
              return true;  }
     public static class Builder {
         private String anInt = "0";
@@ -85,7 +83,7 @@ class AllTypes{
         +"aChar = " + aChar + " "
         +"achar = " + achar + " "
             + "} "; }  
-    AllTypesInternal toAllTypesInternal() {
+    AllTypesInternal toAllTypesInternal() throws Exception {
         return new AllTypesInternal(
          Integer.valueOf(anInt)
         , Double.parseDouble(aDouble)

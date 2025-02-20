@@ -89,9 +89,8 @@ class Feature_Examples_glue {
         log("---  " + "Then_sum_is");
         log(values.toString());
         int expected = Integer.parseInt(values.get(0).get(0));
-        System.out.println("    expecting " + expected);
         int result = solution.sum();
-        assertEquals(expected, result);
+        assertEquals();
     }
 
 }

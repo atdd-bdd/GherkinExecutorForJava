@@ -1,8 +1,10 @@
 package gherkinexecutor.Feature_Full_Test;
+import java.util.*;
 class DomainTermID{
     String value = "0";
     String valid = "false";
     String notes = "";
+    public DomainTermID() { }
     public DomainTermID(
         String value
         ,String valid
@@ -15,23 +17,20 @@ class DomainTermID{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             DomainTermID _DomainTermID = (DomainTermID) o;
             if (
                 !this.value.equals("?DNC?")
                 && !_DomainTermID.value.equals("?DNC?"))
-                    if (! _DomainTermID.value.equals(this.value))
-                        return false;
+                    return ( _DomainTermID.value.equals(this.value));
             if (
                 !this.valid.equals("?DNC?")
                 && !_DomainTermID.valid.equals("?DNC?"))
-                    if (! _DomainTermID.valid.equals(this.valid))
-                        return false;
+                    return ( _DomainTermID.valid.equals(this.valid));
             if (
                 !this.notes.equals("?DNC?")
                 && !_DomainTermID.notes.equals("?DNC?"))
-                    if (! _DomainTermID.notes.equals(this.notes))
-                        return false;
+                    return ( _DomainTermID.notes.equals(this.notes));
              return true;  }
     public static class Builder {
         private String value = "0";
@@ -69,7 +68,7 @@ class DomainTermID{
         +"valid = " + valid + " "
         +"notes = " + notes + " "
             + "} "; }  
-    DomainTermIDInternal toDomainTermIDInternal() {
+    DomainTermIDInternal toDomainTermIDInternal() throws Exception {
         return new DomainTermIDInternal(
          value
         , Boolean.valueOf(valid)

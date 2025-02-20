@@ -1,4 +1,5 @@
 package gherkinexecutor.Feature_Include;
+import java.util.*;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
@@ -8,34 +9,29 @@ import java.io.IOException;
 class Feature_Include_glue {
 void log(String value) {
     try {
-        FileWriter mylog = new FileWriter("src/test/java/gherkinexecutor/Feature_Include/log.txt", true);
-        mylog.write(value + "\n");
-        mylog.close();
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Include/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
     } catch (IOException e) {
-    System.out.println("**** Cannot write to log ");
+    System.err.println("*** Cannot write to log ");
     }
     }
 
 
     void Given_a_string(String value ) {
         System.out.println("---  " + "Given_a_string");
-        System.out.println("*******");
         log("---  " + "Given_a_string");
-        log("*******");
         log(value.toString());
         System.out.println(value);
     }
 
-    void Then_a_table(List<List<String>> value ) {
+    void Then_a_table(List<List<String>> values ) {
         System.out.println("---  " + "Then_a_table");
-        System.out.println("*******");
         log("---  " + "Then_a_table");
-        log("*******");
-        log(value.toString());
-        System.out.println(value);
-        for (List<String> v : value){
-           System.out.println(v);
-              };
+        log(values.toString());
+        for (List<String> value : values){
+           System.out.println(value);
+              }
     }
 
     }

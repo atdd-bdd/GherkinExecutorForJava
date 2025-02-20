@@ -1,13 +1,30 @@
 package gherkinexecutor.Feature_Simple_Test;
+import java.util.*;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class Feature_Simple_Test_glue {
+void log(String value) {
+    try {
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Simple_Test/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
+    } catch (IOException e) {
+    System.err.println("*** Cannot write to log ");
+    }
+    }
 
-    void Given_table_is(List<ATest> value ) {
+
+    void Given_table_is(List<ATest> values ) {
         System.out.println("---  " + "Given_table_is");
-        System.out.println("*******");
-        System.out.println(value);
+        log("---  " + "Given_table_is");
+        log(values.toString());
+        for (ATest value : values){
+           System.out.println(value);
+              }
     }
 
     }

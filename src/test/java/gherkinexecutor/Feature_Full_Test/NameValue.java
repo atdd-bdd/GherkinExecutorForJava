@@ -23,8 +23,7 @@ class NameValue{
             if (
                 !this.value.equals("?DNC?")
                 && !_NameValue.value.equals("?DNC?"))
-                    if (! _NameValue.value.equals(this.value))
-                        return false;
+                return _NameValue.value.equals(this.value);
              return true;  }
     public static class Builder {
         private String iD = "";

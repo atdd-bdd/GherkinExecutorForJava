@@ -1,7 +1,9 @@
 package gherkinexecutor.Feature_Full_Test;
+import java.util.*;
 class ExampleClass{
     String fieldA = "y";
     String fieldB = "x";
+    public ExampleClass() { }
     public ExampleClass(
         String fieldA
         ,String fieldB
@@ -12,18 +14,16 @@ class ExampleClass{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass()) return false;
             ExampleClass _ExampleClass = (ExampleClass) o;
             if (
                 !this.fieldA.equals("?DNC?")
                 && !_ExampleClass.fieldA.equals("?DNC?"))
-                    if (! _ExampleClass.fieldA.equals(this.fieldA))
-                        return false;
+                    return ( _ExampleClass.fieldA.equals(this.fieldA));
             if (
                 !this.fieldB.equals("?DNC?")
                 && !_ExampleClass.fieldB.equals("?DNC?"))
-                    if (! _ExampleClass.fieldB.equals(this.fieldB))
-                        return false;
+                    return ( _ExampleClass.fieldB.equals(this.fieldB));
              return true;  }
     public static class Builder {
         private String fieldA = "y";
