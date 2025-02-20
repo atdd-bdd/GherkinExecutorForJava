@@ -1,0 +1,108 @@
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = q aString = something aDouble = r } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = q aString = something aDouble = r } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = q aString = something aDouble = r } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = q aString = something aDouble = r } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = q aString = something aDouble = r } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = 1 aString =   aDouble = b } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = 1 aString =   aDouble = b } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = 1 aString =   aDouble = b } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]
+Scenario_Simple_Table_with_int_bad
+---  Given_table_is
+*******
+[ATest {anInt = q aString = something aDouble = 1.1 } ]
+Scenario_Simple_Table_with_initializer_bad
+---  Given_table_is_bad_initializer
+*******
+[ATestBad {anInt = 1 aString =   aDouble = b } ]
+Scenario_Simple_Table_with_double_bad
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = r } ]

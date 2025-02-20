@@ -1,0 +1,24 @@
+Background
+---  Given_Background_Function
+*******
+Scenario_Should_have_Background_and_Cleanup
+Background
+---  Given_Background_Function
+*******
+---  Given_a_regular_function
+*******
+Cleanup
+---  Given_Cleanup_Function
+*******
+Cleanup
+---  Given_Cleanup_Function
+*******
+Scenario_Should_also_have_Background_and_Cleanup
+Background
+---  Given_Background_Function
+*******
+---  Given_a_regular_function
+*******
+Cleanup
+---  Given_Cleanup_Function
+*******

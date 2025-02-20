@@ -1,0 +1,176 @@
+Scenario_Simple
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+Scenario_One_with_Data_Transpose
+---  Given_a_step
+*******
+[MyClass {one = v1 two = v2 } , MyClass {one = v1a two = v1b } ]
+Scenario_One_with_Data
+---  Given_a_step
+*******
+[MyClass {one = v1 two = v2 } , MyClass {one = v1a two = v1b } ]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[true]]
+---  When_compared_to
+*******
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+*******
+[[false]]
+Scenario_Simple_Comparison
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+[[true]]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+[[false]]
