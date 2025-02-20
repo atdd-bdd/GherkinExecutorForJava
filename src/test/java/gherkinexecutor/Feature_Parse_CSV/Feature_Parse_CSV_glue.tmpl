@@ -1,5 +1,6 @@
 package gherkinexecutor.Feature_Parse_CSV;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -41,10 +42,8 @@ void log(String value) {
         log("*******");
         log(value.toString());
         System.out.println(value);
-        for (List<List<String>> v : value){
+        for (List<String> v : value){
            System.out.println(v);
-           List<String>Internal i = v.toList<String>Internal();
-           System.out.println(i);
               };
     }
 
@@ -55,10 +54,8 @@ void log(String value) {
         log("*******");
         log(value.toString());
         System.out.println(value);
-        for (List<List<String>> v : value){
+        for (List<String> v : value){
            System.out.println(v);
-           List<String>Internal i = v.toList<String>Internal();
-           System.out.println(i);
               };
     }
 

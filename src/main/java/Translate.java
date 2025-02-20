@@ -133,6 +133,8 @@ public class Translate {
             case "Arrange":
             case "Act":
             case "Assert":
+            case "Rule":
+            case "Calculation":
                 stepConstruct.actOnStep(fullName, comment);
                 break;
             case "Data":
@@ -833,10 +835,12 @@ public class Translate {
             if (!dataType.isEmpty()) {
                 templatePrint("        System.out.println(value);");
                 if (isList) {
-                    templatePrint("        for (" + dataType + " v : value){");
+                    templatePrint("        for (" + listElement + " v : value){");
                     templatePrint("           System.out.println(v);");
-                    templatePrint("           " + listElement + "Internal i = v.to" + listElement +"Internal();");
-                    templatePrint("           System.out.println(i);");
+//                    if (!dataType.equals("List<List<String>>")) {
+//                        templatePrint("           " + listElement + "Internal i = v.to" + listElement + "Internal();");
+//                        templatePrint("           System.out.println(i);");
+//                    }
                     templatePrint("              };");
                 }
             }
@@ -848,7 +852,7 @@ public class Translate {
         private void beginTemplate() {
             templatePrint("package " + Configuration.packageName + "." + featureName + ";");
             templatePrint("import static org.junit.Assert.fail;");
-            templatePrint("import java.util.List;");
+            templatePrint("import static org.junit.jupiter.api.Assertions.assertEquals;");                    templatePrint("import java.util.List;");
             if (Configuration.inTest) {
                 templatePrint("import java.io.FileWriter;");
                 templatePrint("import java.io.IOException;");

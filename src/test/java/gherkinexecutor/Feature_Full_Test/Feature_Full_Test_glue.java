@@ -1,5 +1,6 @@
 package gherkinexecutor.Feature_Full_Test;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,6 +33,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void Given(String value ) {
@@ -59,6 +63,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void When_transposed_result_is(List<List<String>> value ) {
@@ -68,6 +75,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void Given_Background_Function(){
@@ -98,6 +108,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (ATest v : value){
+            System.out.println(v);
+        };
     }
 
     void When_compared_to(List<ATest> value ) {
@@ -107,6 +120,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (ATest v : value){
+            System.out.println(v);
+        };
     }
 
     void Then_result_is(List<List<String>> value ) {
@@ -116,6 +132,33 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
+    }
+
+    void Calculation_Convert_F_to_C(List<TemperatureCalculation> value ) {
+        System.out.println("---  " + "Calculation_Convert_F_to_C");
+        System.out.println("*******");
+        log("---  " + "Calculation_Convert_F_to_C");
+        log("*******");
+        log(value.toString());
+        System.out.println(value);
+        for (TemperatureCalculation v : value){
+            System.out.println(v);
+        };
+    }
+
+    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<DomainTermID> value ) {
+        System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
+        System.out.println("*******");
+        log("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
+        log("*******");
+        log(value.toString());
+        System.out.println(value);
+        for (DomainTermID v : value){
+            System.out.println(v);
+        };
     }
 
     void Given_list_of_numbers(List<LabelValue> value ) {
@@ -125,6 +168,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (LabelValue v : value){
+            System.out.println(v);
+        };
     }
 
     void When_filtered_by_Label_with_value(List<List<String>> value ) {
@@ -134,6 +180,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void Then_sum_is(List<List<String>> value ) {
@@ -143,6 +192,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_multiline_string_to_a_string(String value ) {
@@ -161,6 +213,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (String v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_table_to_List_of_List_of_String(List<List<String>> value ) {
@@ -170,6 +225,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (List<String> v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_table_to_List_of_Object(List<ExampleClass> value ) {
@@ -179,6 +237,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (ExampleClass v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_table_to_List_of_Object_with_Defaults(List<ExampleClass> value ) {
@@ -188,6 +249,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (ExampleClass v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_table_to_List_of_Object_with_Blanks_in_Name(List<ExampleClassWithBlanks> value ) {
@@ -197,6 +261,9 @@ class Feature_Full_Test_glue {
         log("*******");
         log(value.toString());
         System.out.println(value);
+        for (ExampleClassWithBlanks v : value){
+            System.out.println(v);
+        };
     }
 
     void Star_A_table_to_String(String value ) {

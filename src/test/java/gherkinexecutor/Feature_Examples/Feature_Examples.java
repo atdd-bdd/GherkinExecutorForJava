@@ -21,11 +21,61 @@ void log(String value) {
     void test_Scenario_Temperature(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
         log("Scenario_Temperature");
+
+        List<TemperatureCalculation> objectList1 = List.of(
+             new TemperatureCalculation.Builder()
+                .f("32")
+                .c("0")
+                .notes("Freezing")
+                .build()
+                
+            , new TemperatureCalculation.Builder()
+                .f("212")
+                .c("100")
+                .notes("Boiling")
+                .build()
+                
+            , new TemperatureCalculation.Builder()
+                .f("-40")
+                .c("-40")
+                .notes("Below zero")
+                .build()
+                
+            );
+        feature_Examples_glue_object.Calculation_Convert_F_to_C(objectList1);
         }
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
         log("Scenario_Domain_Term_ID");
+
+        List<DomainTermID> objectList1 = List.of(
+             new DomainTermID.Builder()
+                .value("Q1234")
+                .valid("true")
+                .notes("")
+                .build()
+                
+            , new DomainTermID.Builder()
+                .value("Q123")
+                .valid("false")
+                .notes("Too short")
+                .build()
+                
+            , new DomainTermID.Builder()
+                .value("Q12345")
+                .valid("false")
+                .notes("Too long")
+                .build()
+                
+            , new DomainTermID.Builder()
+                .value("A1234")
+                .valid("false")
+                .notes("Must begin with Q")
+                .build()
+                
+            );
+        feature_Examples_glue_object.Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(objectList1);
         }
     @Test
     void test_Scenario_Filter_Data(){

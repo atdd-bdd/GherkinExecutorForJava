@@ -1,7 +1,7 @@
 package gherkinexecutor.Feature_Full_Test;
 class ATestInternal{
      Integer anInt = Integer.valueOf("0");
-     String aString = "^";
+     String aString = " ";
      Double aDouble = Double.valueOf("4.0");
      
     ATest toATest() {

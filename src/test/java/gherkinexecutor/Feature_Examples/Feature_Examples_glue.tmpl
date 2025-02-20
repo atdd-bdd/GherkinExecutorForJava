@@ -1,5 +1,6 @@
 package gherkinexecutor.Feature_Examples;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -16,6 +17,30 @@ void log(String value) {
     }
 
 
+    void Calculation_Convert_F_to_C(List<TemperatureCalculation> value ) {
+        System.out.println("---  " + "Calculation_Convert_F_to_C");
+        System.out.println("*******");
+        log("---  " + "Calculation_Convert_F_to_C");
+        log("*******");
+        log(value.toString());
+        System.out.println(value);
+        for (TemperatureCalculation v : value){
+           System.out.println(v);
+              };
+    }
+
+    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<DomainTermID> value ) {
+        System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
+        System.out.println("*******");
+        log("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
+        log("*******");
+        log(value.toString());
+        System.out.println(value);
+        for (DomainTermID v : value){
+           System.out.println(v);
+              };
+    }
+
     void Given_list_of_numbers(List<LabelValue> value ) {
         System.out.println("---  " + "Given_list_of_numbers");
         System.out.println("*******");
@@ -23,10 +48,8 @@ void log(String value) {
         log("*******");
         log(value.toString());
         System.out.println(value);
-        for (List<LabelValue> v : value){
+        for (LabelValue v : value){
            System.out.println(v);
-           LabelValueInternal i = v.toLabelValueInternal();
-           System.out.println(i);
               };
     }
 
@@ -37,10 +60,8 @@ void log(String value) {
         log("*******");
         log(value.toString());
         System.out.println(value);
-        for (List<List<String>> v : value){
+        for (List<String> v : value){
            System.out.println(v);
-           List<String>Internal i = v.toList<String>Internal();
-           System.out.println(i);
               };
     }
 
@@ -51,10 +72,8 @@ void log(String value) {
         log("*******");
         log(value.toString());
         System.out.println(value);
-        for (List<List<String>> v : value){
+        for (List<String> v : value){
            System.out.println(v);
-           List<String>Internal i = v.toList<String>Internal();
-           System.out.println(i);
               };
     }
 

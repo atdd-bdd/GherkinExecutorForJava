@@ -1,7 +1,7 @@
 package gherkinexecutor.Feature_Full_Test;
 class ATest{
     String anInt = "0";
-    String aString = "^";
+    String aString = " ";
     String aDouble = "4.0";
     public ATest(
         String anInt
@@ -35,7 +35,7 @@ class ATest{
              return true;  }
     public static class Builder {
         private String anInt = "0";
-        private String aString = "^";
+        private String aString = " ";
         private String aDouble = "4.0";
         public Builder anInt(String anInt) {
             this.anInt = anInt;
