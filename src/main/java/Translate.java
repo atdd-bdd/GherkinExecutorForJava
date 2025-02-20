@@ -154,12 +154,12 @@ public class Translate {
 
         featureActedOn = true;
         String testPathname = Configuration.testSubDirectory + featureName + "/" + featureName + ".java";
-        System.out.println(" Writing " + testPathname);
+        printFlow(" Writing " + testPathname);
         String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + featureName + "_data." + Configuration.dataDefinitionFileExtension;
         String templateFilename = Configuration.testSubDirectory + featureName + "/" + featureName + "_glue.tmpl";
 //        cleanFiles();
         directoryName = Configuration.testSubDirectory + featureName;
-        System.out.println("Directory " + directoryName + " ");
+        printFlow("Directory " + directoryName + " ");
         try {
             boolean result = new File(directoryName).mkdirs();
             testFile = new FileWriter(testPathname, false);
@@ -246,7 +246,6 @@ public class Translate {
     private String logIt(String pathname) {
         if (Configuration.inTest) {
             String filename = directoryName + "/log.txt";
-            System.out.println(" Filename " + filename);
             String logFunction =
                 "void log(String value) {" + System.lineSeparator() +
                 "    try {" +System.lineSeparator() +
@@ -271,6 +270,10 @@ public class Translate {
 
     private void error(String value) {
         System.out.println("*** " + value);
+    }
+
+    private static void printFlow(String value){
+        System.out.println(value);
     }
 
     private void testPrint(String line) {
@@ -366,16 +369,16 @@ public class Translate {
     }
 
     public static void main(String[] args) {
-        System.out.println("Gherkin Executor");
+        printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
-        System.out.println("Arguments");
+        printFlow("Arguments");
         for (String arg : args) {
-            System.out.println("   " + arg);
+            printFlow("   " + arg);
             Configuration.featureFiles.add(arg);
         }
         for (String name : Configuration.featureFiles) {
             Translate translate = new Translate();
-            System.out.println("Translating " + name);
+            printFlow("Translating " + name);
             translate.translateInTests(name);
         }
     }
@@ -395,7 +398,7 @@ public class Translate {
         }
 
         private void readFile(String fileName, int includeCount) {
-            System.out.println("Reading file " + fileName);
+            printFlow("Reading file " + fileName);
             includeCount++;
             if (includeCount > 20) {
                 error("Too many levels of include");
@@ -403,7 +406,7 @@ public class Translate {
             }
             try {
                 String filepath = Configuration.featureSubDirectory + fileName;
-                System.out.println("Path is " + filepath);
+                printFlow("Path is " + filepath);
                 List<String> raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
                 for (String line : raw) {
                     if (line.startsWith("Include")) {
@@ -506,7 +509,7 @@ public class Translate {
 
         private void trace(String value) {
             if (Configuration.traceOn) {
-                System.out.println(value);
+                System.out.println("   " + value);
             }
         }
 
@@ -804,7 +807,7 @@ public class Translate {
                 glueTemplateFile.write(line);
                 glueTemplateFile.write("\n");
             } catch (IOException e) {
-                System.out.println("IO ERROR");
+                error("IO ERROR");
             }
         }
         private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
@@ -956,7 +959,7 @@ public class Translate {
         private void startDataFile(String className) {
             String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + className
                     + "." + Configuration.dataDefinitionFileExtension;
-            System.out.println("Printing data on " + dataDefinitionPathname);
+            printFlow("Printing data on " + dataDefinitionPathname);
             try {
                 dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
             } catch (IOException e) {
@@ -1075,7 +1078,6 @@ public class Translate {
             String comma = "";
             for (DataValues variable : variables) {
                 String initializer = makeValueFromString(variable, MakeDataValue.Name);
-                System.out.println(" Initializing " + initializer);
                 dataPrintLn("        " + comma + " " + initializer);
                 comma = ",";
             }
@@ -1089,7 +1091,6 @@ public class Translate {
                 value = makeName(variable.name);
             else if (which == MakeDataValue.Value)
                 value = quoteIt(variable.defaultVal);
-            System.out.println("Data type " + variable.dataType);
             switch (variable.dataType) {
                 case "String":
                     return value;
@@ -1128,7 +1129,7 @@ public class Translate {
                     return "Character.valueOf( " + value + ".length() > 0 ?"
                             + value + ".charAt(0) : ' ')";
                 default:
-                    return makeName(variable.name) + "// Data type not found";
+                    return "new " + variable.dataType + "(" + value + ")";  // Data type not found;
 
             }
         }
@@ -1221,7 +1222,6 @@ public class Translate {
                 value = makeName(variable.name);
             else if (which == MakeDataValue.Value)
                 value = quoteIt(variable.defaultVal);
-            System.out.println("Data type " + variable.dataType);
             switch (variable.dataType) {
                 case "String":
                     return value;

@@ -7,20 +7,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Added comparision for less than entire object.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/ID.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/TemperatureCalculations.java" afterDir="false" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changed conversion to internal">
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/TicTacToeGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/glue-save.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Include/Feature_Include_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Include/Feature_Include_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Parse_CSV/Feature_Parse_CSV_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Parse_CSV/Feature_Parse_CSV_glue.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Data_Types/Feature_Data_Types_data.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/MoveIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/Feature_Tic_Tac_Toe_Game_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/Feature_Tic_Tac_Toe_Game_glue.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,25 +80,10 @@
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Feature_Data_Types">
+  <component name="RunManager" selected="Application.Translate">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Translate" />
       <module name="GherkinExecutorForJava" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Feature_Data_Definition" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="GherkinExecutorForJava" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gherkinexecutor.Feature_Data_Definition.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Data_Definition" />
-      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Data_Definition.Feature_Data_Definition" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -155,13 +133,28 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Feature_Tic_Tac_Toe_Game" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="GherkinExecutorForJava" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Tic_Tac_Toe_Game.Feature_Tic_Tac_Toe_Game" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Translate" />
+        <item itemvalue="JUnit.Feature_Tic_Tac_Toe_Game" />
         <item itemvalue="JUnit.Feature_Data_Types" />
         <item itemvalue="JUnit.Feature_Full_Test" />
-        <item itemvalue="Application.Translate" />
         <item itemvalue="JUnit.Feature_Examples" />
-        <item itemvalue="JUnit.Feature_Data_Definition" />
       </list>
     </recent_temporary>
   </component>
@@ -223,7 +216,14 @@
       <option name="project" value="LOCAL" />
       <updated>1740009595870</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Changed conversion to internal">
+      <created>1740012636058</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1740012636058</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -233,7 +233,8 @@
     <MESSAGE value="Created toString, equals, builder for data classes.   Just for the string versions so far." />
     <MESSAGE value="Updating the way the initializers work" />
     <MESSAGE value="Added comparision for less than entire object." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added comparision for less than entire object." />
+    <MESSAGE value="Changed conversion to internal" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed conversion to internal" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -252,6 +253,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/Translate.java</url>
           <line>164</line>
           <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/TicTacToeGame.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
