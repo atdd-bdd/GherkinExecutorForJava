@@ -12,8 +12,9 @@ public class Translate {
     private final Map<String, String> glueFunctions = new HashMap<>(); // used to make sure only one glue implementation
     private final Map<String, String> dataNames = new HashMap<>(); // used to check for duplicate data
     private final Map<String, String> dataNamesInternal = new HashMap<>(); // used to check for duplicate data
+    private final Map<String, String> importNames = new HashMap<>(); // used to hold conversion functions for imports
     private final int stepCount = 0; // use to label duplicate scenarios
-//    private final String basePath = Configuration.testSubDirectory;
+    //    private final String basePath = Configuration.testSubDirectory;
     private String glueClass = "";  // glue class name
     private String glueObject = "";  // glue object name
     private int stepNumberInScenario = 0;  // use to label variables in scenario
@@ -40,6 +41,8 @@ public class Translate {
     private final TemplateConstruct templateConstruct = new TemplateConstruct();
 
     private final StepConstruct stepConstruct = new StepConstruct();
+
+    private final ImportConstruct importConstruct = new ImportConstruct();
 
     public Translate() {
     }
@@ -159,11 +162,14 @@ public class Translate {
                 stepConstruct.actOnStep(fullName, comment);
                 break;
             case "Data":
-                if (pass != 3)
+                if (pass != 2)
                     break;
                 dataConstruct.actOnData(words);
                 break;
             case "Import":
+                if (pass != 1)
+                    break;
+                importConstruct.actOnImport(words);
             case "Define":
                 if (pass != 1)
                     break;
@@ -200,7 +206,6 @@ public class Translate {
         featureName = fullName;
         featureActedOn = true;
         packagePath = Configuration.packageName + "." + featureName;
-        System.out.println("*** Setting package Path " + packagePath);
         String testPathname = Configuration.testSubDirectory + featureName + "/" + featureName + ".java";
         printFlow(" Writing " + testPathname);
         String templateFilename = Configuration.testSubDirectory + featureName + "/" + featureName + "_glue.tmpl";
@@ -680,21 +685,6 @@ public class Translate {
             templateConstruct.makeFunctionTemplate(dataType, fullName, true, "List<String>");
         }
 
-//        Need to think about the use of this
-//        private void tableToListOfListOfObject(List<String> table, String fullName, String objectName) {
-//            String s = Integer.toString(stepNumberInScenario);
-//            String dataType = "List<List<" + objectName + ">>";
-//            String dataTypeInitializer = "Arrays.asList";
-//
-//            testPrint("        List<List<" + objectName + ">> objectListList" + s + " = " + dataTypeInitializer + "(");
-//            for (String line : table) {
-//                convertBarLineToListOfObject(line, objectName);
-//            }
-//            testPrint("            );");
-//            testPrint("        " + glueObject + "." + fullName + "(objectListList" + s + ");");
-//            templateConstruct.makeFunctionTemplate(dataType, fullName);
-//        }
-
 
         private void createTheTable(List<String> comment, List<String> table, String fullName) {
             String option = "ListOfList";
@@ -762,14 +752,6 @@ public class Translate {
             testPrint("            )");
         }
 
-//        private void convertBarLineToListOfObject(String line, String objectName) {
-//            testPrint("           listOf<" + objectName + ">(");
-//            List<String> elements = parseLine(line);
-//            for (String element : elements) {
-//                testPrint("            " + objectName + "(\"" + element + "\"),");
-//            }
-//            testPrint("            ),");
-//        }
 
         private void tableToListOfObject(List<String> table, String fullName, String className, boolean transpose, boolean compare) {
             trace("TableToListOfObject classNames " + className);
@@ -794,6 +776,7 @@ public class Translate {
             }
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(objectList" + s + ");");
+
             templateConstruct.makeFunctionTemplate(dataType, fullName, true, className);
         }
 
@@ -898,7 +881,7 @@ public class Translate {
                     templatePrint("           System.out.println(value);");
                     if (!dataType.equals("List<List<String>>")
                             && !listElement.equals("String")
-                    && dataNamesInternal.containsKey(name)) {
+                            && (dataNamesInternal.containsKey(name))) {
                         templatePrint("                try {");
                         templatePrint("                " + name + " i = value.to" + name + "();");
                         templatePrint("                  System.out.println(i);");
@@ -1062,14 +1045,13 @@ public class Translate {
         }
 
         private void createInternalConstructor(List<DataValues> variables, String className) {
-            dataPrintLn("    public " + className + "() { }");
             dataPrintLn("    public " + className + "(");
             String comma = "";
             for (DataValues variable : variables) {
                 dataPrintLn("        " + comma + variable.dataType + " " + makeName(variable.name));
                 comma = ",";
             }
-            dataPrintLn("        ) "  + " {");
+            dataPrintLn("        ) " + " {");
             for (DataValues variable : variables) {
                 dataPrintLn("        this." + makeName(variable.name) + " = " + variable.name + ";");
             }
@@ -1207,9 +1189,21 @@ public class Translate {
                     return "Character.valueOf( " + value + ".length() > 0 ?"
                             + value + ".charAt(0) : ' ')";
                 default:
+                    String result = fromImportData(variable.dataType, value);
+                    if (!result.isEmpty())
+                        return result;
                     return "new " + variable.dataType + "(" + value + ")";  // Data type not found;
 
             }
+        }
+
+        private String fromImportData(String dataType, String value) {
+            if (importNames.containsKey(dataType)) {
+                String conversionMethod = importNames.get(dataType);
+                conversionMethod = conversionMethod.replace("$", value);
+                return conversionMethod;
+            } else
+                return "";
         }
 
         private boolean createVariableList(List<String> table, List<DataValues> variables) {
@@ -1272,7 +1266,7 @@ public class Translate {
             }
             dataPrintLn("class " + className + "{");
             for (DataValues variable : variables) {
-                dataPrintLn("     " + variable.dataType + " " + makeName(variable.name) + " = " + makeValueFromString(variable, MakeDataValue.Value) + ";");
+                dataPrintLn("     " + variable.dataType + " " + makeName(variable.name) + ";");
             }
             dataPrintLn("     ");
             createDataTypeToStringObject(className, variables);
@@ -1350,6 +1344,96 @@ public class Translate {
         }
     }
 
+    private class ImportConstruct {
+
+        class ImportData {
+            public final String dataType;
+            public final String importName;
+            public final String conversionMethod;
+            public final String notes;
+
+            public ImportData(String dataType, String conversionMethod, String importName, String notes) {
+                this.dataType = dataType;
+                this.importName = importName;
+                this.conversionMethod = conversionMethod;
+                this.notes = notes;
+            }
+
+            public ImportData(String dataType, String conversionMethod, String importName) {
+                this(dataType, conversionMethod, importName, "");
+            }
+
+            public ImportData(String dataType, String conversionMethod) {
+
+                this(dataType, conversionMethod, "", "");
+            }
+        }
+
+        private void actOnImport(List<String> words) {
+
+            Pair<String, List<String>> follow = lookForFollow();
+            String followType = follow.getFirst();
+            List<String> table = follow.getSecond();
+            if (!followType.equals("TABLE")) {
+                error("Error table does not follow import " + words.get(0) + " " + words.get(1));
+                return;
+            }
+            List<ImportData> imports = new ArrayList<>();
+            createImportList(table, imports);
+            for (ImportData im : imports) {
+                if (importNames.containsKey(im.dataType)) {
+                    error("Data type is duplicated, has been renamed " + im.dataType);
+                    continue;
+                }
+                if (!im.conversionMethod.isEmpty())
+                    importNames.put(im.dataType, im.conversionMethod);
+                else {
+                    String methodName = im.dataType + "($)";
+                    importNames.put(im.dataType, methodName);
+                }
+
+            }
+            for (ImportData im : imports) {
+                if (!im.importName.isEmpty()) {
+                    String value = "import " + im.importName + ";";
+                    Configuration.linesToAddForDataAndGlue.add(value);
+                }
+            }
+        }
+
+        private void createImportList(List<String> table, List<ImportData> variables) {
+            boolean headerLine = true;
+            for (String line : table) {
+                if (headerLine) {
+                    List<String> headers = parseLine(line);
+                    checkHeaders(headers);
+                    headerLine = false;
+                    continue;
+                }
+                List<String> elements = parseLine(line);
+                if (elements.size() < 2) {
+                    error(" Data line has less than 2 entries " + line);
+                    continue;
+                }
+                if (elements.size() > 3)
+                    variables.add(new ImportData(elements.get(0), elements.get(1), elements.get(2), elements.get(3)));
+                else if (elements.size() > 2)
+                    variables.add(new ImportData(elements.get(0), elements.get(1), elements.get(2)));
+                else variables.add(new ImportData(elements.get(0), elements.get(1)));
+            }
+
+        }
+
+        private void checkHeaders(List<String> headers) {
+            List<String> expected = List.of("Datatype", "ConversionMethod", "Import", "Notes");
+            if (!(headers.get(0).equals(expected.get(0)) && headers.get(1).equals(expected.get(1)))) {
+                error("Headers should start with " + expected);
+            }
+        }
+
+
+    }
+
     static class Configuration {
 
         public static final boolean inTest = true;  // switch to true for development of Translator
@@ -1373,21 +1457,23 @@ public class Translate {
         public static final List<String> featureFiles = new ArrayList<>();
 
         static {
-            featureFiles.add("data_definition_error.feature");
-            featureFiles.add("simple_test.feature");
-            featureFiles.add("background.feature");
-            featureFiles.add("examples.feature");
-            featureFiles.add("parse_CSV.feature");
-            featureFiles.add("tables_and_strings.feature");
-            featureFiles.add("full_test.feature");
-            featureFiles.add("include.feature");
-            featureFiles.add("datatype.feature");
-            featureFiles.add("tic_tac_toe.feature");
-            featureFiles.add("data_definition.feature");
+//            featureFiles.add("data_definition_error.feature");
+//            featureFiles.add("simple_test.feature");
+//            featureFiles.add("background.feature");
+//            featureFiles.add("examples.feature");
+//            featureFiles.add("parse_CSV.feature");
+//            featureFiles.add("tables_and_strings.feature");
+//            featureFiles.add("full_test.feature");
+//            featureFiles.add("include.feature");
+//            featureFiles.add("datatype.feature");
+//            featureFiles.add("tic_tac_toe.feature");
+//            featureFiles.add("data_definition.feature");
             featureFiles.add("import.feature");
             featureFiles.add("GherkinTranslatorFullTest.feature");
         }
     }
+
+
 }
 
 

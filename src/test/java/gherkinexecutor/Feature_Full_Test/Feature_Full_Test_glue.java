@@ -21,7 +21,7 @@ class Feature_Full_Test_glue {
     void Given_a_string(String value ) {
         System.out.println("---  " + "Given_a_string");
         log("---  " + "Given_a_string");
-        log(value.toString());
+        log(value);
         System.out.println(value);
     }
 
@@ -124,7 +124,7 @@ class Feature_Full_Test_glue {
     void Star_A_multiline_string_to_a_string(String value ) {
         System.out.println("---  " + "Star_A_multiline_string_to_a_string");
         log("---  " + "Star_A_multiline_string_to_a_string");
-        log(value.toString());
+        log(value);
         System.out.println(value);
     }
 
@@ -176,7 +176,7 @@ class Feature_Full_Test_glue {
     void Star_A_table_to_String(String value ) {
         System.out.println("---  " + "Star_A_table_to_String");
         log("---  " + "Star_A_table_to_String");
-        log(value.toString());
+        log(value);
         System.out.println(value);
     }
 

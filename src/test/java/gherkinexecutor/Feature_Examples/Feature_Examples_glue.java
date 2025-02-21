@@ -8,7 +8,7 @@ import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Feature_Examples_glue {
-    SolutionForListOfNumber solution = new SolutionForListOfNumber();
+    final SolutionForListOfNumber solution = new SolutionForListOfNumber();
 
     void log(String value) {
         try {
@@ -48,14 +48,14 @@ class Feature_Examples_glue {
             boolean expected = Boolean.valueOf(value.valid);
             try {
                 new ID(value.value);
-                  if (!expected) {
+                if (!expected) {
                     fail("Invalid value did not throw exeception "
                             + value.value + " " + value.notes);
                 }
             } catch (Exception e) {
                 if (expected)
                     fail("Valid value threw exeception "
-                        + value.value + " " + value.notes);
+                            + value.value + " " + value.notes);
             }
         }
     }
