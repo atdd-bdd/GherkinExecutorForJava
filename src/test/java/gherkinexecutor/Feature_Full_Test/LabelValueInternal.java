@@ -1,8 +1,8 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 class LabelValueInternal{
-     String label = "";
-     Integer value = Integer.valueOf("0");
+     String label;
+     Integer value;
      
     public static String toDataTypeString() {
         return "LabelValueInternal {"
@@ -14,7 +14,6 @@ class LabelValueInternal{
         label
         ,String.valueOf(value)
         ); }
-    public LabelValueInternal() { }
     public LabelValueInternal(
         String label
         ,Integer value

@@ -7,15 +7,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Fixed up Equals method.  Eliminated some code style issues.    &#10;Made it 3 pass in prepartion for the Import statement">
-      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Weekday.java" afterDir="false" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changed pass # for the DataConstruct to 2.">
+      <change afterPath="$PROJECT_DIR$/src/test/java/GherkinTranslatorFullTest.feature" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.exp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/InternalClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/MyClass.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/import.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/import.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/DomainTermIDInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/DomainTermIDInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValueInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValueInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TemperatureCalculationInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TemperatureCalculationInternal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,25 +62,28 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Examples",
+    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41582337",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "two.files.diff.last.used.file": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/log.exp"
+    "two.files.diff.last.used.file": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Examples" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Full_Test" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java" />
+      <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Examples" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java\gherkinexecutor\Feature_Simple_Test" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\test\java" />
       <recent name="C:\Users\user\ideaprojects\GherkinExecutorForJava\src\main\java" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="gherkinexecutor" />
     </key>
     <key name="CopyKotlinDeclarationDialog.RECENTS_KEY">
       <recent name="gherkinexecutor.Feature_Examples" />
@@ -86,9 +93,9 @@
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Translate">
+  <component name="RunManager" selected="JUnit.Feature_Gherkin_Translator_Full_Test">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Translate" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Translate" />
       <module name="GherkinExecutorForJava" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -124,16 +131,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature_Full_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Gherkin_Translator_Full_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gherkinexecutor.Feature_Full_Test.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Gherkin_Translator_Full_Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Full_Test" />
-      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Full_Test.Feature_Full_Test" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Gherkin_Translator_Full_Test" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Gherkin_Translator_Full_Test.Feature_Gherkin_Translator_Full_Test" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -156,11 +163,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
         <item itemvalue="Application.Translate" />
         <item itemvalue="JUnit.Feature_Import" />
         <item itemvalue="JUnit.Feature_Examples" />
         <item itemvalue="JUnit.Feature_Data_Definition" />
-        <item itemvalue="JUnit.Feature_Full_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -243,7 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1740082711458</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Changed pass # for the DataConstruct to 2.">
+      <created>1740102445465</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1740102445465</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Changed pass # for the DataConstruct to 2.">
+      <created>1740102562920</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1740102562920</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -256,7 +277,8 @@
     <MESSAGE value="Changed conversion to internal" />
     <MESSAGE value="New TicTacToeGame added MoveIn class" />
     <MESSAGE value="Fixed up Equals method.  Eliminated some code style issues.    &#10;Made it 3 pass in prepartion for the Import statement" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed up Equals method.  Eliminated some code style issues.    &#10;Made it 3 pass in prepartion for the Import statement" />
+    <MESSAGE value="Changed pass # for the DataConstruct to 2." />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed pass # for the DataConstruct to 2." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -267,8 +289,8 @@
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Translate.java</url>
-          <line>292</line>
+          <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
+          <line>291</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">

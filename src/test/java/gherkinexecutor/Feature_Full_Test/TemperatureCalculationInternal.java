@@ -1,9 +1,9 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 class TemperatureCalculationInternal{
-     Integer f = Integer.valueOf("0");
-     Integer c = Integer.valueOf("0");
-     String notes = "";
+     Integer f;
+     Integer c;
+     String notes;
      
     public static String toDataTypeString() {
         return "TemperatureCalculationInternal {"
@@ -17,7 +17,6 @@ class TemperatureCalculationInternal{
         ,String.valueOf(c)
         ,notes
         ); }
-    public TemperatureCalculationInternal() { }
     public TemperatureCalculationInternal(
         Integer f
         ,Integer c

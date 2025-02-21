@@ -7,6 +7,7 @@ import java.util.List;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+
 class Feature_Examples_glue {
     final SolutionForListOfNumber solution = new SolutionForListOfNumber();
 
