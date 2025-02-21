@@ -816,6 +816,7 @@ public class Translate {
         }
 
 
+        @SuppressWarnings("ForLoopReplaceableByForEach")
         public List<List<String>> transpose(List<List<String>> matrix) {
             List<List<String>> transposed = new ArrayList<>();
             for (int i = 0; i < matrix.get(0).size(); i++) {
@@ -1145,6 +1146,7 @@ public class Translate {
 
         }
 
+        @SuppressWarnings("SameParameterValue")
         private String makeValueFromString(DataValues variable, MakeDataValue which) {
             String value = "NOT DETERMINED";
             if (which == MakeDataValue.Name)
@@ -1301,6 +1303,7 @@ public class Translate {
             dataPrintLn("        ); }"); // end function
         }
 
+        @SuppressWarnings("SameParameterValue")
         private String makeValueToString(DataValues variable, MakeDataValue which) {
             String value = "NOT DETERMINED";
             if (which == MakeDataValue.Name)
