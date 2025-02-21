@@ -1,0 +1,45 @@
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_fail
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = SOMEONE } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_fail
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = SOMEONE } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_fail
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = SOMEONE } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_fail
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = SOMEONE } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_also_fail
+---  Given_this_data
+[Imports {myURL = ht://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http:atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_fail
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = SOMEONE } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Use_an_import
+---  Given_this_data
+[Imports {myURL = http://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http://atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
+Scenario_Should_also_fail
+---  Given_this_data
+[Imports {myURL = ht://kenpugh.com myPattern = a.* myWeekday = MONDAY } , Imports {myURL = http:atdd-bdd.com myPattern = [ab] myWeekday = SUNDAY } ]
