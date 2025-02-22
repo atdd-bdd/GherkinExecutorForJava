@@ -5,7 +5,7 @@ import java.util.List;
 
 
 public class SolutionForListOfNumber {
-    private final List<LabelValueInternal> values = new ArrayList <LabelValueInternal>();
+    private final List<LabelValueInternal> values = new ArrayList <>();
     private String filterValue = "";
     void add(LabelValueInternal value) {
         values.add(value);

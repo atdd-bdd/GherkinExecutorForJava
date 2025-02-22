@@ -15,15 +15,15 @@ class LabelValue{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            LabelValue _LabelValue = (LabelValue) o;
-            if (
-                !this.label.equals("?DNC?")
+        LabelValue _LabelValue = (LabelValue) o;
+         if (
+             !this.label.equals("?DNC?")
                 && !_LabelValue.label.equals("?DNC?"))
-                    return ( _LabelValue.label.equals(this.label));
-            if (
-                !this.value.equals("?DNC?")
+                return ( _LabelValue.label.equals(this.label));
+         if (
+             !this.value.equals("?DNC?")
                 && !_LabelValue.value.equals("?DNC?"))
-                    return ( _LabelValue.value.equals(this.value));
+                return ( _LabelValue.value.equals(this.value));
              return true;  }
     public static class Builder {
         private String label = "";

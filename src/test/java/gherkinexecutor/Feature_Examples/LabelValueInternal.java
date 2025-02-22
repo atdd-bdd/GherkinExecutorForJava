@@ -1,8 +1,10 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
 class LabelValueInternal{
-     String label = "";
-     Integer value = Integer.valueOf("0");
+     String label;
+     Integer value;
      
     public static String toDataTypeString() {
         return "LabelValueInternal {"
@@ -14,7 +16,6 @@ class LabelValueInternal{
         label
         ,String.valueOf(value)
         ); }
-    public LabelValueInternal() { }
     public LabelValueInternal(
         String label
         ,Integer value

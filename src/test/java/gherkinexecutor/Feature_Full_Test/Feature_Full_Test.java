@@ -298,7 +298,7 @@ void log(String value) {
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Name(objectList5);
 
-        String table6 = 
+        String table6 =
             """
             | aa  | bb  |
             | cc  | dd  |
@@ -320,7 +320,7 @@ void log(String value) {
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
-        test_Cleanup(); // at the end 
+        test_Cleanup(); // at the end
         }
     }
 

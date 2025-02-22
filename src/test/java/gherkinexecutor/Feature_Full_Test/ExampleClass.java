@@ -15,15 +15,15 @@ class ExampleClass{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            ExampleClass _ExampleClass = (ExampleClass) o;
-            if (
-                !this.fieldA.equals("?DNC?")
+        ExampleClass _ExampleClass = (ExampleClass) o;
+         if (
+             !this.fieldA.equals("?DNC?")
                 && !_ExampleClass.fieldA.equals("?DNC?"))
-                    return ( _ExampleClass.fieldA.equals(this.fieldA));
-            if (
-                !this.fieldB.equals("?DNC?")
+                return ( _ExampleClass.fieldA.equals(this.fieldA));
+         if (
+             !this.fieldB.equals("?DNC?")
                 && !_ExampleClass.fieldB.equals("?DNC?"))
-                    return ( _ExampleClass.fieldB.equals(this.fieldB));
+                return ( _ExampleClass.fieldB.equals(this.fieldB));
              return true;  }
     public static class Builder {
         private String fieldA = "y";

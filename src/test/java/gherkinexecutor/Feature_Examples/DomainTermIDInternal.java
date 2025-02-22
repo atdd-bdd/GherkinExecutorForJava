@@ -1,9 +1,11 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
 class DomainTermIDInternal{
-     String value = "0";
-     Boolean valid = Boolean.valueOf("false");
-     String notes = "";
+     String value;
+     Boolean valid;
+     String notes;
      
     public static String toDataTypeString() {
         return "DomainTermIDInternal {"
@@ -17,7 +19,6 @@ class DomainTermIDInternal{
         ,String.valueOf(valid)
         ,notes
         ); }
-    public DomainTermIDInternal() { }
     public DomainTermIDInternal(
         String value
         ,Boolean valid

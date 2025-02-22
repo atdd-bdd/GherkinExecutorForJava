@@ -599,7 +599,7 @@ public class Translate {
 
     private void endUp() {
         if (finalCleanup) {
-            testPrint("        test_Cleanup(); // at the end ");
+            testPrint("        test_Cleanup(); // at the end");
         }
         testPrint("        }");   // End last scenario
         testPrint("    }"); // End the class
@@ -691,16 +691,14 @@ public class Translate {
             String option = "ListOfList";
             if (comment.size() > 0 && !comment.get(0).isEmpty()) option = comment.get(0);
             switch (option) {
-                case "ListOfList" ->
-//                if (comment.size() > 1 && !comment.get(1).isEmpty()) {
-//                    String objectName = comment.get(1);
-//                    tableToListOfListOfObject(table, fullName, objectName);
-//                } else {
+                case "ListOfList":
                         tableToListOfList(table, fullName);
-
-//                }
-                case "String", "string" -> tableToString(table, fullName);
-                case "ListOfObject" -> {
+                        break;
+                case "String":
+                case "string":
+                    tableToString(table, fullName);
+                    break;
+                case "ListOfObject":
                     if (comment.size() < 2) {
                         error("No class name specified");
                         return;
@@ -719,18 +717,18 @@ public class Translate {
                         }
                     }
                     tableToListOfObject(table, fullName, className, transpose, compare);
-                }
-                default -> {
+                    break;
+                default:
                     error("Option not found, default to ListOfList " + option);
                     tableToListOfList(table, fullName);
-                }
+                    break;
             }
         }
 
 
         private void tableToString(List<String> table, String fullName) {
             String s = Integer.toString(stepNumberInScenario);
-            testPrint("        String table" + s + " = ");
+            testPrint("        String table" + s + " =");
             testPrint("            \"\"\"");
             for (String line : table) {
                 testPrint("            " + line);
@@ -937,7 +935,7 @@ public class Translate {
         private FileWriter dataDefinitionFile;
         final String throwString = "throws Exception ";
 
-        public static class DataValues {
+        public class DataValues {
             public final String name;
             public final String defaultVal;
             public final String dataType;
@@ -1113,12 +1111,12 @@ public class Translate {
             dataPrintLn("        if (o == null || getClass() != o.getClass()) return false;");
 
             String variableName = "_" + className;
-            dataPrintLn("            " + className + " " + variableName + " = (" + className + ") o;");
+            dataPrintLn("        " + className + " " + variableName + " = (" + className + ") o;");
             for (DataValues variable : variables) {
-                dataPrintLn("            if (");
-                dataPrintLn("                !this." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + ")");
+                dataPrintLn("         if (");
+                dataPrintLn("             !this." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + ")");
                 dataPrintLn("                && !" + variableName + "." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + "))");
-                dataPrintLn("                    return ( " + variableName + "." + variable.name + ".equals(this." + variable.name + "));");
+                dataPrintLn("                return ( " + variableName + "." + variable.name + ".equals(this." + variable.name + "));");
             }
             dataPrintLn("             return true;  }");
 //        @Override

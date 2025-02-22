@@ -18,19 +18,19 @@ class DomainTermID{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            DomainTermID _DomainTermID = (DomainTermID) o;
-            if (
-                !this.value.equals("?DNC?")
+        DomainTermID _DomainTermID = (DomainTermID) o;
+         if (
+             !this.value.equals("?DNC?")
                 && !_DomainTermID.value.equals("?DNC?"))
-                    return ( _DomainTermID.value.equals(this.value));
-            if (
-                !this.valid.equals("?DNC?")
+                return ( _DomainTermID.value.equals(this.value));
+         if (
+             !this.valid.equals("?DNC?")
                 && !_DomainTermID.valid.equals("?DNC?"))
-                    return ( _DomainTermID.valid.equals(this.valid));
-            if (
-                !this.notes.equals("?DNC?")
+                return ( _DomainTermID.valid.equals(this.valid));
+         if (
+             !this.notes.equals("?DNC?")
                 && !_DomainTermID.notes.equals("?DNC?"))
-                    return ( _DomainTermID.notes.equals(this.notes));
+                return ( _DomainTermID.notes.equals(this.notes));
              return true;  }
     public static class Builder {
         private String value = "0";

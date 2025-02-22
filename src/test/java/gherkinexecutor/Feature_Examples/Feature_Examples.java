@@ -28,19 +28,16 @@ void log(String value) {
                 .c("0")
                 .notes("Freezing")
                 .build()
-                
             , new TemperatureCalculation.Builder()
                 .f("212")
                 .c("100")
                 .notes("Boiling")
                 .build()
-                
             , new TemperatureCalculation.Builder()
                 .f("-40")
                 .c("-40")
                 .notes("Below zero")
                 .build()
-                
             );
         feature_Examples_glue_object.Calculation_Convert_F_to_C(objectList1);
         }
@@ -55,25 +52,21 @@ void log(String value) {
                 .valid("true")
                 .notes("")
                 .build()
-                
             , new DomainTermID.Builder()
                 .value("Q123")
                 .valid("false")
                 .notes("Too short")
                 .build()
-                
             , new DomainTermID.Builder()
                 .value("Q12345")
                 .valid("false")
                 .notes("Too long")
                 .build()
-                
             , new DomainTermID.Builder()
                 .value("A1234")
                 .valid("false")
                 .notes("Must begin with Q")
                 .build()
-                
             );
         feature_Examples_glue_object.Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(objectList1);
         }
@@ -87,17 +80,14 @@ void log(String value) {
                 .label("a")
                 .value("1")
                 .build()
-                
             , new LabelValue.Builder()
                 .label("b")
                 .value("2")
                 .build()
-                
             , new LabelValue.Builder()
                 .label("a")
                 .value("3")
                 .build()
-                
             );
         feature_Examples_glue_object.Given_list_of_numbers(objectList1);
 

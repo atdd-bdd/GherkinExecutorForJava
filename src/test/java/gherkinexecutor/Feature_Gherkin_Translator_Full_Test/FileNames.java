@@ -17,15 +17,15 @@ class FileNames{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            FileNames _FileNames = (FileNames) o;
-            if (
-                !this.expected.equals("?DNC?")
+        FileNames _FileNames = (FileNames) o;
+         if (
+             !this.expected.equals("?DNC?")
                 && !_FileNames.expected.equals("?DNC?"))
-                    return ( _FileNames.expected.equals(this.expected));
-            if (
-                !this.actual.equals("?DNC?")
+                return ( _FileNames.expected.equals(this.expected));
+         if (
+             !this.actual.equals("?DNC?")
                 && !_FileNames.actual.equals("?DNC?"))
-                    return ( _FileNames.actual.equals(this.actual));
+                return ( _FileNames.actual.equals(this.actual));
              return true;  }
     public static class Builder {
         private String expected = "NoFileName";

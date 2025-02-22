@@ -20,19 +20,19 @@ class Imports{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            Imports _Imports = (Imports) o;
-            if (
-                !this.myURL.equals("?DNC?")
+        Imports _Imports = (Imports) o;
+         if (
+             !this.myURL.equals("?DNC?")
                 && !_Imports.myURL.equals("?DNC?"))
-                    return ( _Imports.myURL.equals(this.myURL));
-            if (
-                !this.myPattern.equals("?DNC?")
+                return ( _Imports.myURL.equals(this.myURL));
+         if (
+             !this.myPattern.equals("?DNC?")
                 && !_Imports.myPattern.equals("?DNC?"))
-                    return ( _Imports.myPattern.equals(this.myPattern));
-            if (
-                !this.myWeekday.equals("?DNC?")
+                return ( _Imports.myPattern.equals(this.myPattern));
+         if (
+             !this.myWeekday.equals("?DNC?")
                 && !_Imports.myWeekday.equals("?DNC?"))
-                    return ( _Imports.myWeekday.equals(this.myWeekday));
+                return ( _Imports.myWeekday.equals(this.myWeekday));
              return true;  }
     public static class Builder {
         private String myURL = "http://kenpugh.com";

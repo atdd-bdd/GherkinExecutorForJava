@@ -28,13 +28,11 @@ void log(String value) {
                 .myPattern("a.*")
                 .myWeekday("MONDAY")
                 .build()
-                
             , new Imports.Builder()
                 .myURL("http://atdd-bdd.com")
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .build()
-                
             );
         feature_Import_glue_object.Given_this_data(objectList1);
         }
@@ -49,13 +47,11 @@ void log(String value) {
                 .myPattern("a.*")
                 .myWeekday("SOMEONE")
                 .build()
-                
             , new Imports.Builder()
                 .myURL("http://atdd-bdd.com")
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .build()
-                
             );
         feature_Import_glue_object.Given_this_data(objectList1);
         }
@@ -70,13 +66,11 @@ void log(String value) {
                 .myPattern("a.*")
                 .myWeekday("MONDAY")
                 .build()
-                
             , new Imports.Builder()
                 .myURL("http:atdd-bdd.com")
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .build()
-                
             );
         feature_Import_glue_object.Given_this_data(objectList1);
         }

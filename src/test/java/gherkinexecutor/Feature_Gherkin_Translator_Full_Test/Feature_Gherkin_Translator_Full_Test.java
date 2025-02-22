@@ -36,7 +36,6 @@ void log(String value) {
                 .expected("gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp")
                 .actual("gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java")
                 .build()
-                
             );
         feature_Gherkin_Translator_Full_Test_glue_object.Then_test_file_should_match_expected(objectList3);
 
@@ -45,7 +44,6 @@ void log(String value) {
                 .expected("gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.exp")
                 .actual("gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl")
                 .build()
-                
             );
         feature_Gherkin_Translator_Full_Test_glue_object.And_glue_template_file_should_match_expected(objectList4);
         }

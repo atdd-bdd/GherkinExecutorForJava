@@ -1,5 +1,7 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
 import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.List;
@@ -24,6 +26,13 @@ void log(String value) {
         log(values.toString());
         for (TemperatureCalculation value : values){
            System.out.println(value);
+                try {
+                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
+                  System.out.println(i);
+                      }
+                     catch(Exception e){
+                         System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
+                         }
               }
     }
 
@@ -33,6 +42,13 @@ void log(String value) {
         log(values.toString());
         for (DomainTermID value : values){
            System.out.println(value);
+                try {
+                DomainTermIDInternal i = value.toDomainTermIDInternal();
+                  System.out.println(i);
+                      }
+                     catch(Exception e){
+                         System.err.println("Argument Error " + value.toString() + DomainTermIDInternal.toDataTypeString());
+                         }
               }
     }
 
@@ -42,6 +58,13 @@ void log(String value) {
         log(values.toString());
         for (LabelValue value : values){
            System.out.println(value);
+                try {
+                LabelValueInternal i = value.toLabelValueInternal();
+                  System.out.println(i);
+                      }
+                     catch(Exception e){
+                         System.err.println("Argument Error " + value.toString() + LabelValueInternal.toDataTypeString());
+                         }
               }
     }
 
