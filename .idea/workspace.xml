@@ -7,7 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Added a new example using tables in the steps." />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment=".exp values updated" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -288,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1740271062730</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=".exp values updated">
+      <created>1740271726849</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1740271726849</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -306,7 +313,8 @@
     <MESSAGE value="made switch the old style so it is compatible with earlier versions" />
     <MESSAGE value="Add equals for internal class.    For a named other class, only create a .tmpl file, not a .java file.    This allows use of existing classes." />
     <MESSAGE value="Added a new example using tables in the steps." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added a new example using tables in the steps." />
+    <MESSAGE value=".exp values updated" />
+    <option name="LAST_COMMIT_MESSAGE" value=".exp values updated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
