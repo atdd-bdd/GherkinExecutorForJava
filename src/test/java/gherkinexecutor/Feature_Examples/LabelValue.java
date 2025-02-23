@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.net.URL;
-import java.util.regex.Pattern;
 class LabelValue{
     String label = "";
     String value = "0";

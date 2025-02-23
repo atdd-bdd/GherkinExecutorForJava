@@ -41,6 +41,32 @@ When filtered by Label with value
 Then sum is 
 | 4 | 
 
+Scenario: Filter Data Another Way  
+# filters data 
+Given list of numbers # ListOfObject LabelValue
+| Label | Value  |
+| a     | 1      |
+| b     | 2      |
+| a     | 3      |
+When filtered by # ListOfObject FilterValue transpose
+| Name   | Label  |
+| Value  | a      |
+Then result # ListOfObject ResultValue 
+| Sum  |
+| 4    |
+
+Data FilterValue 
+| Name   | Default  | DataType  | Notes  |
+| Name   |          | String    |        |
+| Value  | 0        | String    |        |
+
+Data ResultValue 
+| Name  | Default  | DataType  | Notes  |
+| Sum   |          | Integer   |        |
+
+
+
+
 Data LabelValue 
 | Name   | Default  | DataType  | Notes  |
 | Label  |          | String    |        |

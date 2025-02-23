@@ -26,3 +26,11 @@ Data ATest
 | aString  | ~        | String    |       |
 | aDouble  | 4.0      | Double    |       |
 
+Data TestIn Existing 
+| Name    | Default  | Datatype  | Note  |
+| aValue  | 0        | int       |       |
+| bValue  | ~        | String    |       |
+| cValue  | 4.0      | double    |       |
+
+
+

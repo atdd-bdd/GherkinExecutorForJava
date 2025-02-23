@@ -97,3 +97,72 @@ Background
 ---  Given_a_regular_function
 Cleanup
 ---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_list_of_numbers
+[LabelValue {label = a value = 1 } , LabelValue {label = b value = 2 } , LabelValue {label = a value = 3 } ]
+---  When_filtered_by_Label_with_value
+[[a]]
+---  Then_sum_is
+[[4]]
+---  Given_Cleanup_Function
+---  Given_a_string
+This is an include string
+
+---  Then_a_table
+[[a, b,c, d,], [1, 2, 3]]
+---  Given_Background_Function
+---  Star_A_table_to_List_of_List_of_String
+[[aa, bb], [cc, dd]]
+---  Star_A_table_to_List_of_Object
+[ExampleClass {fieldA = a fieldB = b } , ExampleClass {fieldA = c fieldB = d } ]
+---  Star_A_table_to_List_of_Object
+[ExampleClass {fieldA = a fieldB = b } , ExampleClass {fieldA = c fieldB = d } ]
+---  Star_A_table_to_List_of_Object_with_Defaults
+[ExampleClass {fieldA = a fieldB = x } , ExampleClass {fieldA = c fieldB = x } ]
+---  Star_A_table_to_List_of_Object_with_Blanks_in_Name
+[ExampleClassWithBlanks {field_1 =   field_2 = b } , ExampleClassWithBlanks {field_1 = c field_2 =   } ]
+---  Star_A_table_to_String
+| aa  | bb  |
+| cc  | dd  |
+
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_table_is
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_Background_Function
+---  Rule_ID_must_have_exactly_5_letters_and_begin_with_Q
+[DomainTermID {value = Q1234 valid = true notes =  } , DomainTermID {value = Q123 valid = false notes = Too short } , DomainTermID {value = Q12345 valid = false notes = Too long } , DomainTermID {value = A1234 valid = false notes = Must begin with Q } ]
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Star_A_multiline_string_to_a_string
+One line
+Two line
+
+---  Star_A_multiline_string_to_a_List_of_String
+[Three line, Four line]
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Calculation_Convert_F_to_C
+[TemperatureCalculation {f = 32 c = 0 notes = Freezing } , TemperatureCalculation {f = 212 c = 100 notes = Boiling } , TemperatureCalculation {f = -40 c = -40 notes = Below zero } ]
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_a_regular_function
+---  Given_Cleanup_Function
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_table_is
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+[[true]]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+[[false]]
+---  Given_Cleanup_Function
+---  Given_Background_Function
+---  Given_a_regular_function
+---  Given_Cleanup_Function

@@ -27,6 +27,16 @@ class TemperatureCalculationInternal{
         this.notes = notes;
         }
     @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TemperatureCalculationInternal _TemperatureCalculationInternal = (TemperatureCalculationInternal) o;
+         return 
+                ( _TemperatureCalculationInternal.f.equals(this.f))
+                 && ( _TemperatureCalculationInternal.c.equals(this.c))
+                 && ( _TemperatureCalculationInternal.notes.equals(this.notes))
+             ;  }
+    @Override
     public String toString() {
         return "TemperatureCalculationInternal {"
         +"f = " + f + " "

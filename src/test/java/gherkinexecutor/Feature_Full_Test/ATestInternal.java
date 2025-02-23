@@ -27,6 +27,16 @@ class ATestInternal{
         this.aDouble = aDouble;
         }
     @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ATestInternal _ATestInternal = (ATestInternal) o;
+         return 
+                ( _ATestInternal.anInt.equals(this.anInt))
+                 && ( _ATestInternal.aString.equals(this.aString))
+                 && ( _ATestInternal.aDouble.equals(this.aDouble))
+             ;  }
+    @Override
     public String toString() {
         return "ATestInternal {"
         +"anInt = " + anInt + " "

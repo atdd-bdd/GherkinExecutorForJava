@@ -94,5 +94,37 @@ class Feature_Examples_glue {
         int result = solution.sum();
         assertEquals(expected, result);
     }
+    void When_filtered_by(List<FilterValue> values ) {
+        System.out.println("---  " + "When_filtered_by");
+        for (FilterValue value : values){
+            System.out.println(value);
+            try {
+                FilterValueInternal i = value.toFilterValueInternal();
+                System.out.println("Filter is " + value.value);
+                solution.setFilterValue(value.value);
+            }
+            catch(Exception e){
+                System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
+            }
+        }
+
+    }
+
+    void Then_result(List<ResultValue> values ) {
+        System.out.println("---  " + "Then_result");
+        for (ResultValue value : values){
+            System.out.println(value);
+            try {
+                ResultValueInternal i = value.toResultValueInternal();
+                int actual = solution.sum();
+                assertEquals(i.sum, actual);
+
+            }
+            catch(Exception e){
+                System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
+            }
+        }
+    }
+
 
 }

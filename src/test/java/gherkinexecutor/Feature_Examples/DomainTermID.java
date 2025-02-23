@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.net.URL;
-import java.util.regex.Pattern;
 class DomainTermID{
     String value = "0";
     String valid = "false";

@@ -2,25 +2,13 @@ package gherkinexecutor.Feature_Full_Test;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Full_Test{
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Full_Test/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
     @Test
     void test_Scenario_Some_scenario_here(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Some_scenario_here");
 
         String string1 =
             """
@@ -45,21 +33,18 @@ void log(String value) {
     @Test
     void test_Background(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Background");
 
         feature_Full_Test_glue_object.Given_Background_Function();
         }
     @Test
     void test_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Cleanup");
 
         feature_Full_Test_glue_object.Given_Cleanup_Function();
         }
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Should_have_Background_and_Cleanup");
         test_Background();
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -68,7 +53,6 @@ void log(String value) {
     @Test
     void test_Scenario_Should_also_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Should_also_have_Background_and_Cleanup");
         test_Background();
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -77,7 +61,6 @@ void log(String value) {
     @Test
     void test_Scenario_Simple_Comparison(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Simple_Comparison");
         test_Background();
 
         List<ATest> objectList1 = List.of(
@@ -123,7 +106,6 @@ void log(String value) {
     @Test
     void test_Scenario_Temperature(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Temperature");
         test_Background();
 
         List<TemperatureCalculation> objectList1 = List.of(
@@ -149,7 +131,6 @@ void log(String value) {
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Domain_Term_ID");
         test_Background();
 
         List<DomainTermID> objectList1 = List.of(
@@ -180,7 +161,6 @@ void log(String value) {
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Filter_Data");
         test_Background();
 
         List<LabelValue> objectList1 = List.of(
@@ -217,7 +197,6 @@ void log(String value) {
     @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Here_are_string_options");
         test_Background();
 
         String string1 =
@@ -237,7 +216,6 @@ void log(String value) {
     @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Here_are_table_options");
         test_Background();
 
         List<List<String>> stringListList1 = List.of(
@@ -309,7 +287,6 @@ void log(String value) {
     @Test
     void test_Scenario_Simple(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        log("Scenario_Simple");
         test_Background();
 
         List<ATest> objectList1 = List.of(
