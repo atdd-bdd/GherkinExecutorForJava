@@ -195,6 +195,43 @@ class Feature_Full_Test{
         test_Cleanup(); // from previous
         }
     @Test
+    void test_Scenario_Filter_Data_Another_Way(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background();
+
+        List<LabelValue> objectList1 = List.of(
+             new LabelValue.Builder()
+                .label("a")
+                .value("1")
+                .build()
+            , new LabelValue.Builder()
+                .label("b")
+                .value("2")
+                .build()
+            , new LabelValue.Builder()
+                .label("a")
+                .value("3")
+                .build()
+            );
+        feature_Full_Test_glue_object.Given_list_of_numbers(objectList1);
+
+        List<FilterValue> objectList2 = List.of(
+             new FilterValue.Builder()
+                .name("Label")
+                .value("a")
+                .build()
+            );
+        feature_Full_Test_glue_object.When_filtered_by(objectList2);
+
+        List<ResultValue> objectList3 = List.of(
+             new ResultValue.Builder()
+                .sum("4")
+                .build()
+            );
+        feature_Full_Test_glue_object.Then_result(objectList3);
+        test_Cleanup(); // from previous
+        }
+    @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background();
