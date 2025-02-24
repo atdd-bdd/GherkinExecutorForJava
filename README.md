@@ -471,7 +471,7 @@ an Exception if the value is not valid.
 
 ```
 The construction might look like: 
-```agsl
+```
    public ID(String value){
 
         if (value.length() < 5 )
@@ -667,13 +667,13 @@ will be set to the default value.
 ### Spaces in a Value 
 
 A blank element in a table is translated as the empty string `""`.  
-You can put spaces into the table by using the `^` character.  There
-will be one space for every `^`. For example:
+You can put spaces into the table by using the `~` character.  There
+will be one space for every `~`. For example:
 ```
 * A table to List of Object with Blanks in Name # ListOfObject ExampleClassWithBlanks
   | Field 1  | Field 2  |
-  | ^        | b        |
-  | c        | ^        |
+  | ~        | b        |
+  | c        | ~        |
 
 Data ExampleClassWithBlanks
 | Name     | Default  |
@@ -741,7 +741,7 @@ Then sum is
 ## Strings 
 You can pass a multiline string to the glue code. If you include `ListOfString`, the glue code
 will receive the string as a List<String>, instead of a String.  
-```agsl
+```
 Scenario: Here are string options
 
 * A multiline string to a string
@@ -760,7 +760,7 @@ Scenario: Here are string options
 
 ## Import 
 One final statment is the `Import` statement.  It appears like this:
-```agsl
+```
 Import 
 | Datatype    | ConversionMethod    | Import                   | Notes                 |
 | URL         | new URL($)          | java.net.URL             |                       |
@@ -818,7 +818,7 @@ These values should work for the default JetBrains layout.  You can alter them f
 ```
         val inTest = false  // switch to true for development of Translator
         var traceOn = false // set to true to see trace
-        var spaceCharacters = '^'  // Will replace with space in tables
+        var spaceCharacters = '~'  // Will replace with space in tables
         var currentDirectory = ""
         var featureSubDirectory = "src\\test\\kotlin\\"
         var packageName = "gherkinexecutor"

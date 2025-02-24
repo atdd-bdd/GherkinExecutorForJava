@@ -934,3 +934,43 @@ Scenario_Make_multiple_moves
 |   |    | O  |
 |   |    |    |
 
+Scenario_check_the_prints_to_see_how_it_works
+---  Given_board_is
+[[0, x, 0], [x, 0, x], [0, x, 0]]
+---  When_move_is
+[Move {row = 1 column = 2 mark = X } ]
+---  Then_board_is_now
+| 0  | X  | 0  |
+| x  | 0  | x  |
+| 0  | x  | 0  |
+
+Scenario_Make_a_move_using_single_element
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_one_move_is
+[[1,2,X]]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+Scenario_Make_a_move
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_move_is
+[Move {row = 1 column = 2 mark = X } ]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+Scenario_Make_multiple_moves
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_moves_are
+[Move {row = 1 column = 2 mark = X } , Move {row = 2 column = 3 mark = O } ]
+---  Then_board_is_now
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+

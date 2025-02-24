@@ -22,3 +22,15 @@ Background
 Cleanup
 ---  Given_Cleanup_Function
 *******
+---  Given_Background_Function
+*******
+---  Given_a_regular_function
+*******
+---  Given_Cleanup_Function
+*******
+---  Given_Background_Function
+*******
+---  Given_a_regular_function
+*******
+---  Given_Cleanup_Function
+*******

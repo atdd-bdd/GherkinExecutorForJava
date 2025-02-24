@@ -82,22 +82,18 @@ class Feature_Full_Test{
             );
         feature_Full_Test_glue_object.When_transposed_result_is(stringListList2);
         }
-    @Test
-    void test_Background(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+    void test_Background(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
         feature_Full_Test_glue_object.Given_Background_Function();
         }
-    @Test
-    void test_Cleanup(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+    void test_Cleanup(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
         feature_Full_Test_glue_object.Given_Cleanup_Function();
         }
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
         test_Cleanup(); // from previous
@@ -105,7 +101,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_also_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
         test_Cleanup(); // from previous
@@ -113,7 +109,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Comparison(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
@@ -158,7 +154,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Temperature(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<TemperatureCalculation> objectList1 = List.of(
              new TemperatureCalculation.Builder()
@@ -183,7 +179,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
@@ -213,7 +209,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -249,7 +245,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -286,7 +282,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         String string1 =
             """
@@ -305,7 +301,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -376,7 +372,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()

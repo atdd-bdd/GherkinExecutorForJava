@@ -1,11 +1,13 @@
 Feature: Include 
 
-Scenario: Some scenario here 
-Given a string
+Scenario: An include 
+Given a string include
 """ 
 Include "string.inc"
 """
-Then a table 
+
+Scenario: An include of CSV file
+Given a table 
 Include "TableExample.csv"
 
 

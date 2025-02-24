@@ -206,7 +206,7 @@ public class Translate {
 
     private boolean actOnFeatureFirstHalf(String fullName) {
         if (featureActedOn) {
-            error("Feature keyword duplicated - it is ignored " + fullName);
+            warning("Feature keyword duplicated - it is ignored " + fullName);
             return true;
         }
         featureName = fullName;
@@ -273,18 +273,22 @@ public class Translate {
         } else {
             // Finishing up previous scenario
             if (addCleanup && !inCleanup) {
-                testPrint("        test_Cleanup(); // from previous");
+                testPrint("        test_Cleanup("+glueObject + "); // from previous");
             }
             testPrint("        }"); // end previous scenario
         }
-        testPrint("    @Test");
-        testPrint("    void test_" + fullNameToUse + "(){");
-        testPrint("         " + glueClass + " " + glueObject + " = new " + glueClass + "();");
+        if (!fullNameToUse.startsWith("Background") && !fullNameToUse.startsWith("Cleanup")) {
+            testPrint("    @Test");
+            testPrint("    void test_" + fullNameToUse + "(){");
+            testPrint("         " + glueClass + " " + glueObject + " = new " + glueClass + "();");
+        } else
+            testPrint("    void test_" + fullNameToUse + "(" + glueClass + " " + glueObject + "){");
+
         if (Configuration.inTest) {
             testPrint("        log(" + "\"" + fullNameToUse + "\"" + ");");
         }
         if (addBackground) {
-            testPrint("        test_Background();");
+            testPrint("        test_Background(" + glueObject + ");");
         }
     }
 
@@ -312,7 +316,12 @@ public class Translate {
         }
     }
 
+    boolean errorOccured = false;
     private void error(String value) {
+        System.err.println("[GherkinExecutor] " + value);
+        errorOccured = true;
+    }
+    private void warning(String value) {
         System.err.println("[GherkinExecutor] " + value);
     }
 
@@ -606,7 +615,7 @@ public class Translate {
 
     private void endUp() {
         if (finalCleanup) {
-            testPrint("        test_Cleanup(); // at the end");
+            testPrint("        test_Cleanup("+glueObject +"); // at the end");
         }
         testPrint("        }");   // End last scenario
         testPrint("    }"); // End the class
@@ -618,6 +627,10 @@ public class Translate {
         }
 
         templateConstruct.endTemplate();
+        if (errorOccured) {
+            System.err.println("*** Error in translation, scan the output");
+                System.exit(-1);
+        }
     }
 
     class StepConstruct {
@@ -1516,8 +1529,9 @@ public class Translate {
 
         static {
             featureFiles.add("import.feature");
-            featureFiles.add("full_test.feature");
-            featureFiles.add("GherkinTranslatorFullTest.feature");
+            featureFiles.add("include.feature");
+//            featureFiles.add("full_test.feature");
+//            featureFiles.add("GherkinTranslatorFullTest.feature");
         }
     }
 

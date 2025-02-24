@@ -15,8 +15,8 @@ class Feature_Full_Test_glue {
         fail("Must implement");
     }
 
-    void Then_a_table(List<List<String>> values ) {
-        System.out.println("---  " + "Then_a_table");
+    void Given_a_table(List<List<String>> values ) {
+        System.out.println("---  " + "Given_a_table");
         for (List<String> value : values){
             System.out.println(value);
         }

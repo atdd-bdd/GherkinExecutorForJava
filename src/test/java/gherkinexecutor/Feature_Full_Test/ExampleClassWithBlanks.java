@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ExampleClassWithBlanks{
     String field_1 = " ";
     String field_2 = " ";

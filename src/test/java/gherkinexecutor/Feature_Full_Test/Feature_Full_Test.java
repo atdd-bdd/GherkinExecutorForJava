@@ -7,7 +7,7 @@ class Feature_Full_Test{
 
 
     @Test
-    void test_Scenario_Some_scenario_here(){
+    void test_Scenario_An_include(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
 
         String string1 =
@@ -15,8 +15,12 @@ class Feature_Full_Test{
             This is an include string
             """.stripIndent();
         feature_Full_Test_glue_object.Given_a_string(string1);
+        }
+    @Test
+    void test_Scenario_An_include_of_CSV_file(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
 
-        List<List<String>> stringListList2 = List.of(
+        List<List<String>> stringListList1 = List.of(
            List.of(
             "a"
             ,"b,c"
@@ -28,7 +32,7 @@ class Feature_Full_Test{
             ,"3"
             )
             );
-        feature_Full_Test_glue_object.Then_a_table(stringListList2);
+        feature_Full_Test_glue_object.Given_a_table(stringListList1);
         }
     @Test
     void test_Scenario_Convert_a_CSV_file_to_Gherkin_Table(){
@@ -82,38 +86,34 @@ class Feature_Full_Test{
             );
         feature_Full_Test_glue_object.When_transposed_result_is(stringListList2);
         }
-    @Test
-    void test_Background(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+    void test_Background(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
         feature_Full_Test_glue_object.Given_Background_Function();
         }
-    @Test
-    void test_Cleanup(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+    void test_Cleanup(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
         feature_Full_Test_glue_object.Given_Cleanup_Function();
         }
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Should_also_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Simple_Comparison(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
@@ -153,12 +153,12 @@ class Feature_Full_Test{
             )
             );
         feature_Full_Test_glue_object.Then_result_is(stringListList5);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Temperature(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<TemperatureCalculation> objectList1 = List.of(
              new TemperatureCalculation.Builder()
@@ -178,12 +178,12 @@ class Feature_Full_Test{
                 .build()
             );
         feature_Full_Test_glue_object.Calculation_Convert_F_to_C(objectList1);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
@@ -208,12 +208,12 @@ class Feature_Full_Test{
                 .build()
             );
         feature_Full_Test_glue_object.Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(objectList1);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -244,12 +244,12 @@ class Feature_Full_Test{
             )
             );
         feature_Full_Test_glue_object.Then_sum_is(stringListList3);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -281,12 +281,12 @@ class Feature_Full_Test{
                 .build()
             );
         feature_Full_Test_glue_object.Then_result(objectList3);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         String string1 =
             """
@@ -300,12 +300,12 @@ class Feature_Full_Test{
             ,"Four line"
             );
         feature_Full_Test_glue_object.Star_A_multiline_string_to_a_List_of_String(stringList2);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -371,12 +371,12 @@ class Feature_Full_Test{
             | cc  | dd  |
             """.stripIndent();
         feature_Full_Test_glue_object.Star_A_table_to_String(table6);
-        test_Cleanup(); // from previous
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
     void test_Scenario_Simple(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background();
+        test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
@@ -386,7 +386,7 @@ class Feature_Full_Test{
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
-        test_Cleanup(); // at the end
+        test_Cleanup(feature_Full_Test_glue_object); // at the end
         }
     }
 

@@ -1,36 +1,27 @@
 package gherkinexecutor.Feature_Background;
 import java.util.*;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 
 class Feature_Background_glue {
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Background/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
     void Given_Background_Function(){
         System.out.println("---  " + "Given_Background_Function");
-        log("---  " + "Given_Background_Function");
+        fail("Must implement");
     }
 
     void Given_Cleanup_Function(){
         System.out.println("---  " + "Given_Cleanup_Function");
-        log("---  " + "Given_Cleanup_Function");
+        fail("Must implement");
     }
 
     void Given_a_regular_function(){
         System.out.println("---  " + "Given_a_regular_function");
-        log("---  " + "Given_a_regular_function");
+        fail("Must implement");
     }
 
     }

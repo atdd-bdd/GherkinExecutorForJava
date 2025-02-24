@@ -1,37 +1,26 @@
 package gherkinexecutor.Feature_Include;
 import java.util.*;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 
 class Feature_Include_glue {
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Include/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
-    void Given_a_string(String value ) {
-        System.out.println("---  " + "Given_a_string");
-        log("---  " + "Given_a_string");
-        log(value.toString());
+    void Given_a_string_include(String value ) {
+        System.out.println("---  " + "Given_a_string_include");
         System.out.println(value);
+        fail("Must implement");
     }
 
-    void Then_a_table(List<List<String>> values ) {
-        System.out.println("---  " + "Then_a_table");
-        log("---  " + "Then_a_table");
-        log(values.toString());
+    void Given_a_table(List<List<String>> values ) {
+        System.out.println("---  " + "Given_a_table");
         for (List<String> value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     }

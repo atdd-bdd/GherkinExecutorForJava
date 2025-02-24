@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class TemperatureCalculation{
     String f = "0";
     String c = "0";
