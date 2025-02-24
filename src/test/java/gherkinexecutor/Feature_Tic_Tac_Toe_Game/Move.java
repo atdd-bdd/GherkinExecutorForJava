@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class Move{
     String row = "0";
     String column = "0";
@@ -18,19 +21,19 @@ class Move{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            Move _Move = (Move) o;
-            if (
-                !this.row.equals("?DNC?")
+        Move _Move = (Move) o;
+         if (
+             !this.row.equals("?DNC?")
                 && !_Move.row.equals("?DNC?"))
-                    return ( _Move.row.equals(this.row));
-            if (
-                !this.column.equals("?DNC?")
+                return ( _Move.row.equals(this.row));
+         if (
+             !this.column.equals("?DNC?")
                 && !_Move.column.equals("?DNC?"))
-                    return ( _Move.column.equals(this.column));
-            if (
-                !this.mark.equals("?DNC?")
+                return ( _Move.column.equals(this.column));
+         if (
+             !this.mark.equals("?DNC?")
                 && !_Move.mark.equals("?DNC?"))
-                    return ( _Move.mark.equals(this.mark));
+                return ( _Move.mark.equals(this.mark));
              return true;  }
     public static class Builder {
         private String row = "0";

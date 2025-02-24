@@ -13,26 +13,17 @@ class Feature_Data_Types_glue {
             myLog.write(value + "\n");
             myLog.close();
         } catch (IOException e) {
-            System.out.println("**** Cannot write to log ");
+            System.err.println("*** Cannot write to log ");
         }
     }
 
 
     void Given_type_values_are(List<AllTypes> values ) {
         System.out.println("---  " + "Given_type_values_are");
-        System.out.println("*******");
         log("---  " + "Given_type_values_are");
-        log("*******");
         log(values.toString());
         for (AllTypes value : values){
             System.out.println(value);
-            try {
-                AllTypesInternal i = value.toAllTypesInternal();
-                System.out.println(i);
-            }
-            catch(Exception e){
-                System.err.println("Argument Error " + value.toString() + AllTypesInternal.toDataTypeString());
-            }
         }
     }
 

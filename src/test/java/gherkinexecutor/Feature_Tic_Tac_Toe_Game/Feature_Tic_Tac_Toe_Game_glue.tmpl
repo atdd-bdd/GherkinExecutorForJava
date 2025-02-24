@@ -1,64 +1,64 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 
 class Feature_Tic_Tac_Toe_Game_glue {
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
     void Given_board_is(List<List<String>> values ) {
         System.out.println("---  " + "Given_board_is");
-        log("---  " + "Given_board_is");
-        log(values.toString());
         for (List<String> value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     void When_move_is(List<Move> values ) {
         System.out.println("---  " + "When_move_is");
-        log("---  " + "When_move_is");
-        log(values.toString());
         for (Move value : values){
            System.out.println(value);
+                try {
+                MoveInternal i = value.toMoveInternal();
+                  System.out.println(i);
+                      }
+                     catch(Exception e){
+                         System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
+                         }
               }
+        fail("Must implement");
     }
 
     void Then_board_is_now(String value ) {
         System.out.println("---  " + "Then_board_is_now");
-        log("---  " + "Then_board_is_now");
-        log(value.toString());
         System.out.println(value);
+        fail("Must implement");
     }
 
     void When_one_move_is(List<List<String>> values ) {
         System.out.println("---  " + "When_one_move_is");
-        log("---  " + "When_one_move_is");
-        log(values.toString());
         for (List<String> value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     void When_moves_are(List<Move> values ) {
         System.out.println("---  " + "When_moves_are");
-        log("---  " + "When_moves_are");
-        log(values.toString());
         for (Move value : values){
            System.out.println(value);
+                try {
+                MoveInternal i = value.toMoveInternal();
+                  System.out.println(i);
+                      }
+                     catch(Exception e){
+                         System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
+                         }
               }
+        fail("Must implement");
     }
 
     }

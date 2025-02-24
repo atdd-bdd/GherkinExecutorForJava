@@ -1,9 +1,12 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class MoveInternal{
-     Integer row = Integer.valueOf("0");
-     Integer column = Integer.valueOf("0");
-     Character mark = Character.valueOf( "^".length() > 0 ?"^".charAt(0) : ' ');
+     Integer row;
+     Integer column;
+     Character mark;
      
     public static String toDataTypeString() {
         return "MoveInternal {"
@@ -17,7 +20,6 @@ class MoveInternal{
         ,String.valueOf(column)
         ,String.valueOf(mark)
         ); }
-    public MoveInternal() { }
     public MoveInternal(
         Integer row
         ,Integer column
@@ -27,6 +29,16 @@ class MoveInternal{
         this.column = column;
         this.mark = mark;
         }
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MoveInternal _MoveInternal = (MoveInternal) o;
+         return 
+                ( _MoveInternal.row.equals(this.row))
+                 && ( _MoveInternal.column.equals(this.column))
+                 && ( _MoveInternal.mark.equals(this.mark))
+             ;  }
     @Override
     public String toString() {
         return "MoveInternal {"

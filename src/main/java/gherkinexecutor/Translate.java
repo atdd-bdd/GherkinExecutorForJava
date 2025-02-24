@@ -15,6 +15,8 @@ public class Translate {
     private final Map<String, String> dataNames = new HashMap<>(); // used to check for duplicate data
     private final Map<String, String> dataNamesInternal = new HashMap<>(); // used to check for duplicate data
     private final Map<String, String> importNames = new HashMap<>(); // used to hold conversion functions for imports
+
+    private final Map<String, String> defineNames = new HashMap<>();
     private final int stepCount = 0; // use to label duplicate scenarios
     //    private final String basePath = Configuration.testSubDirectory;
     private String glueClass = "";  // glue class name
@@ -38,7 +40,7 @@ public class Translate {
     private String directoryName = "";
     String packagePath = "Not Set";
 
-    private List<String> classDataNames = new ArrayList<>();
+    private final List<String> classDataNames = new ArrayList<>();
 
     private final DataConstruct dataConstruct = new DataConstruct();
 
@@ -47,6 +49,7 @@ public class Translate {
     private final StepConstruct stepConstruct = new StepConstruct();
 
     private final ImportConstruct importConstruct = new ImportConstruct();
+    private final DefineConstruct defineConstruct = new DefineConstruct();
 
     public Translate() {
     }
@@ -178,7 +181,7 @@ public class Translate {
             case "Define":
                 if (pass != 1)
                     break;
-                error("Not Yet Implemented" + keyword);
+                defineConstruct.actOnDefine(words);
                 break;
             default:
                 // line not used this pass or bad line
@@ -273,7 +276,7 @@ public class Translate {
         } else {
             // Finishing up previous scenario
             if (addCleanup && !inCleanup) {
-                testPrint("        test_Cleanup("+glueObject + "); // from previous");
+                testPrint("        test_Cleanup(" + glueObject + "); // from previous");
             }
             testPrint("        }"); // end previous scenario
         }
@@ -317,10 +320,12 @@ public class Translate {
     }
 
     boolean errorOccured = false;
+
     private void error(String value) {
         System.err.println("[GherkinExecutor] " + value);
         errorOccured = true;
     }
+
     private void warning(String value) {
         System.err.println("[GherkinExecutor] " + value);
     }
@@ -362,6 +367,7 @@ public class Translate {
         for (String element : elements) {
             String current = element.trim();
             current = current.replace(Configuration.spaceCharacters, ' ');
+            current = replaceDefines(current);
             elementsTrimmed.add(current);
         }
         return elementsTrimmed;
@@ -396,7 +402,7 @@ public class Translate {
         while (!line.isEmpty() && (line.charAt(0) == '|' || line.charAt(0) == '#')) {
             line = dataIn.next().trim();
             line = line.split("#")[0].trim();
-             if (line.charAt(0) == '|' && line.endsWith("|")) {
+            if (line.charAt(0) == '|' && line.endsWith("|")) {
                 retValue.add(line);
             } else {
                 error("Invalid line in table " + line);
@@ -417,6 +423,22 @@ public class Translate {
             line = dataIn.next();
         }
         return retValue;
+    }
+
+    private String replaceDefines(String in) {
+        boolean didReplacement = true;
+        String changeString = in;
+        while (didReplacement) {
+            didReplacement = false;
+            for (String name : defineNames.keySet()) {
+                if (changeString.contains(name)) {
+                    didReplacement = true;
+                    String replacement = defineNames.get(name);
+                    changeString = changeString.replace(name, replacement);
+                }
+            }
+        }
+        return changeString;
     }
 
     private int countIndent(String firstLine) {
@@ -615,7 +637,7 @@ public class Translate {
 
     private void endUp() {
         if (finalCleanup) {
-            testPrint("        test_Cleanup("+glueObject +"); // at the end");
+            testPrint("        test_Cleanup(" + glueObject + "); // at the end");
         }
         testPrint("        }");   // End last scenario
         testPrint("    }"); // End the class
@@ -629,7 +651,7 @@ public class Translate {
         templateConstruct.endTemplate();
         if (errorOccured) {
             System.err.println("*** Error in translation, scan the output");
-                System.exit(-1);
+            System.exit(-1);
         }
     }
 
@@ -786,9 +808,9 @@ public class Translate {
             for (List<String> row : dataList) {
                 if (inHeaderLine) {
                     headers = row;
-                    for (String dataName : row){
-                        if (!findDataClassName(className, makeName(dataName))){
-                            error("Data name " +  dataName + " not in Data for " + className);
+                    for (String dataName : row) {
+                        if (!findDataClassName(className, makeName(dataName))) {
+                            error("Data name " + dataName + " not in Data for " + className);
                         }
                     }
 
@@ -817,14 +839,15 @@ public class Translate {
             return result;
         }
 
-        private boolean findDataClassName(String className, String dataName){
+        private boolean findDataClassName(String className, String dataName) {
             String compare = className + "#" + dataName;
-            for (String value : classDataNames){
+            for (String value : classDataNames) {
                 if (value.equals(compare))
                     return true;
             }
             return false;
         }
+
         private void convertBarLineToParameter(List<String> headers, List<String> values, String className, String comma, boolean compare) {
             trace("Headers " + headers);
             int size = headers.size();
@@ -1029,7 +1052,7 @@ public class Translate {
             List<DataValues> variables = new ArrayList<>();
             boolean doInternal = createVariableList(table, variables);
             for (DataValues variable : variables) {
-                classDataNames.add(className + "#"+variable.name);
+                classDataNames.add(className + "#" + variable.name);
                 dataPrintLn("    String " + makeName(variable.name) + " = \"" + variable.defaultVal + "\";");
             }
             createConstructor(variables, className);
@@ -1504,6 +1527,73 @@ public class Translate {
 
     }
 
+    private class DefineConstruct {
+
+        class DefineData {
+            public final String name;
+            public final String value;
+
+            public DefineData(String name, String value) {
+                this.name = name;
+                this.value = value;
+            }
+
+            @Override
+            public String toString() {
+                return " name = " + name + " value = " + value;
+            }
+
+        }
+
+        private void actOnDefine(List<String> words) {
+            Pair<String, List<String>> follow = lookForFollow();
+            String followType = follow.getFirst();
+            List<String> table = follow.getSecond();
+            if (!followType.equals("TABLE")) {
+                error("Error table does not follow define " + words.get(0) + " " + words.get(1));
+                return;
+            }
+            List<DefineData> defines = new ArrayList<>();
+            createDefineList(table, defines);
+            for (DefineData im : defines) {
+                if (defineNames.containsKey(im.name)) {
+                    warning("Define is duplicated will be skipped " + im.name + " = " + im.value);
+                    continue;
+                }
+                if (im.value.isEmpty()) {
+                    warning("Empty value for define ");
+                }
+                defineNames.put(im.name, im.value);
+            }
+        }
+
+        private void createDefineList(List<String> table, List<DefineData> variables) {
+            boolean headerLine = true;
+            for (String line : table) {
+                if (headerLine) {
+                    List<String> headers = parseLine(line);
+                    checkHeaders(headers);
+                    headerLine = false;
+                    continue;
+                }
+                List<String> elements = parseLine(line);
+                if (elements.size() < 2) {
+                    error(" Data line has less than 2 entries " + line);
+                } else variables.add(new DefineData(elements.get(0), elements.get(1)));
+            }
+
+        }
+
+        private void checkHeaders(List<String> headers) {
+            List<String> expected = List.of("Name", "Value", "Notes");
+            if (!(headers.get(0).equals(expected.get(0)) && headers.get(1).equals(expected.get(1)))) {
+                error("Headers should start with " + expected);
+            }
+        }
+
+
+    }
+
     static class Configuration {
 
         public static final boolean inTest = false;  // switch to true for development of Translator
@@ -1523,7 +1613,7 @@ public class Translate {
         // Must include  semicolon if needed
         static {
             linesToAddForDataAndGlue.add("import java.util.*;");
-         }
+        }
 
         public static final List<String> featureFiles = new ArrayList<>();
 

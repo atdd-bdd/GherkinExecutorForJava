@@ -55,16 +55,13 @@ Data Move
 
 
 Scenario:  check the prints to see how it works
+# Note this is just to test the equality of two boards. 
 Given board is
 | 0  | x  | 0  |
 | x  | 0  | x  |
 | 0  | x  | 0  |
-When move is # ListOfObject Move transpose
-| Row     | 1  |
-| Column  | 2  |
-| Mark    | X  |
 Then board is now # String
-| 0  | X  | 0  |
+| 0  | x  | 0  |
 | x  | 0  | x  |
 | 0  | x  | 0  |
 
