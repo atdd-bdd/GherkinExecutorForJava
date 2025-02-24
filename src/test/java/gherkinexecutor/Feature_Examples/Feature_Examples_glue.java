@@ -39,11 +39,11 @@ class Feature_Examples_glue {
         }
     }
 
-    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<DomainTermID> values) {
+    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values) {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
         log("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
         log(values.toString());
-        for (DomainTermID value : values) {
+        for (ValueValid value : values) {
             System.out.println(value);
             boolean result = false;
             boolean expected = Boolean.valueOf(value.valid);

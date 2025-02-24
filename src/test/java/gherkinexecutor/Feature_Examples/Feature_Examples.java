@@ -33,23 +33,23 @@ class Feature_Examples{
     void test_Scenario_Domain_Term_ID(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
 
-        List<DomainTermID> objectList1 = List.of(
-             new DomainTermID.Builder()
+        List<ValueValid> objectList1 = List.of(
+             new ValueValid.Builder()
                 .value("Q1234")
                 .valid("true")
                 .notes("")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("Q123")
                 .valid("false")
                 .notes("Too short")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("Q12345")
                 .valid("false")
                 .notes("Too long")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("A1234")
                 .valid("false")
                 .notes("Must begin with Q")

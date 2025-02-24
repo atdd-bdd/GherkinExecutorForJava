@@ -2,54 +2,40 @@ package gherkinexecutor.Feature_Gherkin_Translator_Full_Test;
 import java.util.*;
 import java.net.URL;
 import java.util.regex.Pattern;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.math.BigInteger;
+ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 
 class Feature_Gherkin_Translator_Full_Test_glue {
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
     void Given_feature_file_is(List<List<String>> values ) {
         System.out.println("---  " + "Given_feature_file_is");
-        log("---  " + "Given_feature_file_is");
-        log(values.toString());
         for (List<String> value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     void When_translated(){
         System.out.println("---  " + "When_translated");
-        log("---  " + "When_translated");
+        fail("Must implement");
     }
 
     void Then_test_file_should_match_expected(List<FileNames> values ) {
         System.out.println("---  " + "Then_test_file_should_match_expected");
-        log("---  " + "Then_test_file_should_match_expected");
-        log(values.toString());
         for (FileNames value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     void And_glue_template_file_should_match_expected(List<FileNames> values ) {
         System.out.println("---  " + "And_glue_template_file_should_match_expected");
-        log("---  " + "And_glue_template_file_should_match_expected");
-        log(values.toString());
         for (FileNames value : values){
            System.out.println(value);
               }
+        fail("Must implement");
     }
 
     }

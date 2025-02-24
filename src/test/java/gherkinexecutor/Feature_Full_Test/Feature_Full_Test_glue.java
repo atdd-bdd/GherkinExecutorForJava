@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
+import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
@@ -14,6 +17,34 @@ class Feature_Full_Test_glue {
 
     void Then_a_table(List<List<String>> values ) {
         System.out.println("---  " + "Then_a_table");
+        for (List<String> value : values){
+            System.out.println(value);
+        }
+        fail("Must implement");
+    }
+
+    void Given(String value ) {
+        System.out.println("---  " + "Given");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void When_converted_result_is(String value ) {
+        System.out.println("---  " + "When_converted_result_is");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_input_table(List<List<String>> values ) {
+        System.out.println("---  " + "Given_input_table");
+        for (List<String> value : values){
+            System.out.println(value);
+        }
+        fail("Must implement");
+    }
+
+    void When_transposed_result_is(List<List<String>> values ) {
+        System.out.println("---  " + "When_transposed_result_is");
         for (List<String> value : values){
             System.out.println(value);
         }
@@ -88,16 +119,16 @@ class Feature_Full_Test_glue {
         fail("Must implement");
     }
 
-    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<DomainTermID> values ) {
+    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values ) {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
-        for (DomainTermID value : values){
+        for (ValueValid value : values){
             System.out.println(value);
             try {
-                DomainTermIDInternal i = value.toDomainTermIDInternal();
+                ValueValidInternal i = value.toValueValidInternal();
                 System.out.println(i);
             }
             catch(Exception e){
-                System.err.println("Argument Error " + value.toString() + DomainTermIDInternal.toDataTypeString());
+                System.err.println("Argument Error " + value.toString() + ValueValidInternal.toDataTypeString());
             }
         }
         fail("Must implement");

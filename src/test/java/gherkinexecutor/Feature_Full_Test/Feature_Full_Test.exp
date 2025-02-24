@@ -31,6 +31,58 @@ class Feature_Full_Test{
         feature_Full_Test_glue_object.Then_a_table(stringListList2);
         }
     @Test
+    void test_Scenario_Convert_a_CSV_file_to_Gherkin_Table(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+
+        String string1 =
+            """
+            a,"b,c","c"","
+            1,2,"3,""b,"",,"
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given(string1);
+
+        String string2 =
+            """
+            |a|b,c|c",|
+            |1|2|3,"b,",,|
+            """.stripIndent();
+        feature_Full_Test_glue_object.When_converted_result_is(string2);
+        }
+    @Test
+    void test_Scenario_Transpose_a_table(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+
+        List<List<String>> stringListList1 = List.of(
+           List.of(
+            "a"
+            ,"b"
+            ,"c"
+            )
+           ,List.of(
+            "d"
+            ,"e"
+            ,"f"
+            )
+            );
+        feature_Full_Test_glue_object.Given_input_table(stringListList1);
+
+        List<List<String>> stringListList2 = List.of(
+           List.of(
+            "a"
+            ,"d"
+            )
+           ,List.of(
+            "b"
+            ,"e"
+            )
+           ,List.of(
+            "c"
+            ,"f"
+            )
+            );
+        feature_Full_Test_glue_object.When_transposed_result_is(stringListList2);
+        }
+    @Test
     void test_Background(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
 
@@ -133,23 +185,23 @@ class Feature_Full_Test{
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background();
 
-        List<DomainTermID> objectList1 = List.of(
-             new DomainTermID.Builder()
+        List<ValueValid> objectList1 = List.of(
+             new ValueValid.Builder()
                 .value("Q1234")
                 .valid("true")
                 .notes("")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("Q123")
                 .valid("false")
                 .notes("Too short")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("Q12345")
                 .valid("false")
                 .notes("Too long")
                 .build()
-            , new DomainTermID.Builder()
+            , new ValueValid.Builder()
                 .value("A1234")
                 .valid("false")
                 .notes("Must begin with Q")

@@ -16,14 +16,14 @@ Data TemperatureCalculation
 | Notes  |          | String    |        |
 
 Scenario: Domain Term ID 
-Rule ID must have exactly 5 letters and begin with Q # ListOfObject DomainTermID
+Rule ID must have exactly 5 letters and begin with Q # ListOfObject ValueValid
 | Value   | Valid  | Notes              |
 | Q1234   | true   |                    |
 | Q123    | false  | Too short          |
 | Q12345  | false  | Too long           |
 | A1234   | false  | Must begin with Q  |
 
-Data DomainTermID
+Data ValueValid
 | Name   | Default  | DataType  |
 | Value  | 0        | String    |
 | Valid  | false    | Boolean   |
