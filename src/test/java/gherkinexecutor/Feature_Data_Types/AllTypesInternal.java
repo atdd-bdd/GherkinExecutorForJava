@@ -1,10 +1,12 @@
 package gherkinexecutor.Feature_Data_Types;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class AllTypesInternal{
-     Integer anInt = Integer.valueOf("0");
-     double aDouble = Double.parseDouble("0.0");
-     Character aChar = Character.valueOf( "x".length() > 0 ?"x".charAt(0) : ' ');
-     char achar = ( "y".length() > 0 ?"y".charAt(0) : ' ');
+     Integer anInt;
+     double aDouble;
+     Character aChar;
+     char achar;
      
     public static String toDataTypeString() {
         return "AllTypesInternal {"
@@ -20,7 +22,6 @@ class AllTypesInternal{
         ,String.valueOf(aChar)
         ,String.valueOf(achar)
         ); }
-    public AllTypesInternal() { }
     public AllTypesInternal(
         Integer anInt
         ,double aDouble
@@ -32,6 +33,17 @@ class AllTypesInternal{
         this.aChar = aChar;
         this.achar = achar;
         }
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AllTypesInternal _AllTypesInternal = (AllTypesInternal) o;
+         return 
+                ( _AllTypesInternal.anInt.equals(this.anInt))
+                 && ( _AllTypesInternal.aDouble == (this.aDouble))
+                 && ( _AllTypesInternal.aChar == (this.aChar))
+                 && ( _AllTypesInternal.achar == (this.achar))
+             ;  }
     @Override
     public String toString() {
         return "AllTypesInternal {"

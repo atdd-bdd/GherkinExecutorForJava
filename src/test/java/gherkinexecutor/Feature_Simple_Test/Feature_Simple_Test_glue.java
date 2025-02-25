@@ -1,14 +1,30 @@
 package gherkinexecutor.Feature_Simple_Test;
+import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Simple_Test_glue {
+    final String DNCString = "?DNC?";
 
-    void Given_table_is(List<ATest> value ) {
+
+    void Given_table_is(List<ATest> values ) {
         System.out.println("---  " + "Given_table_is");
-        System.out.println("*******");
-        System.out.println(value);
-        fail("unimplemented");
+        for (ATest value : values){
+            System.out.println(value);
+            // TODO: Add calls to production code and asserts
+            try {
+                ATestInternal i = value.toATestInternal();
+                System.out.println(i);
+            }
+            catch(IllegalArgumentException e){
+                System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
+            }
+        }
+        fail("Must implement");
     }
 
 }

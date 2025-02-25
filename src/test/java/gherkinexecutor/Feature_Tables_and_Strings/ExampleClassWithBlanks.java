@@ -1,5 +1,9 @@
 package gherkinexecutor.Feature_Tables_and_Strings;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ExampleClassWithBlanks{
     String field_1 = " ";
     String field_2 = " ";
@@ -15,15 +19,15 @@ class ExampleClassWithBlanks{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            ExampleClassWithBlanks _ExampleClassWithBlanks = (ExampleClassWithBlanks) o;
-            if (
-                !this.field_1.equals("?DNC?")
+        ExampleClassWithBlanks _ExampleClassWithBlanks = (ExampleClassWithBlanks) o;
+         if (
+             !this.field_1.equals("?DNC?")
                 && !_ExampleClassWithBlanks.field_1.equals("?DNC?"))
-                    return ( _ExampleClassWithBlanks.field_1.equals(this.field_1));
-            if (
-                !this.field_2.equals("?DNC?")
+                return ( _ExampleClassWithBlanks.field_1.equals(this.field_1));
+         if (
+             !this.field_2.equals("?DNC?")
                 && !_ExampleClassWithBlanks.field_2.equals("?DNC?"))
-                    return ( _ExampleClassWithBlanks.field_2.equals(this.field_2));
+                return ( _ExampleClassWithBlanks.field_2.equals(this.field_2));
              return true;  }
     public static class Builder {
         private String field_1 = " ";

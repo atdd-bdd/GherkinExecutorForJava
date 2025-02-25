@@ -1,16 +1,16 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
  import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Full_Test_glue {
+    final String DNCString = "?DNC?";
 
 
-    void Given_a_string(String value ) {
-        System.out.println("---  " + "Given_a_string");
+    void Given_a_string_include(String value ) {
+        System.out.println("---  " + "Given_a_string_include");
         System.out.println(value);
         fail("Must implement");
     }
@@ -19,6 +19,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Given_a_table");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -39,6 +40,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Given_input_table");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -47,6 +49,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "When_transposed_result_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -70,11 +73,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Given_table_is");
         for (ATest value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 ATestInternal i = value.toATestInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
                          }
               }
@@ -85,11 +89,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "When_compared_to");
         for (ATest value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 ATestInternal i = value.toATestInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
                          }
               }
@@ -100,6 +105,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Then_result_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -108,11 +114,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Calculation_Convert_F_to_C");
         for (TemperatureCalculation value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
                          }
               }
@@ -123,11 +130,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
         for (ValueValid value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 ValueValidInternal i = value.toValueValidInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + ValueValidInternal.toDataTypeString());
                          }
               }
@@ -138,11 +146,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Given_list_of_numbers");
         for (LabelValue value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 LabelValueInternal i = value.toLabelValueInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + LabelValueInternal.toDataTypeString());
                          }
               }
@@ -153,6 +162,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "When_filtered_by_Label_with_value");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -161,6 +171,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Then_sum_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -169,11 +180,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "When_filtered_by");
         for (FilterValue value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 FilterValueInternal i = value.toFilterValueInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
                          }
               }
@@ -184,11 +196,12 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Then_result");
         for (ResultValue value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 ResultValueInternal i = value.toResultValueInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
                          }
               }
@@ -205,6 +218,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Star_A_multiline_string_to_a_List_of_String");
         for (String value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -213,6 +227,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Star_A_table_to_List_of_List_of_String");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -221,6 +236,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Star_A_table_to_List_of_Object");
         for (ExampleClass value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -229,6 +245,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Defaults");
         for (ExampleClass value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -237,6 +254,7 @@ class Feature_Full_Test_glue {
         System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Blanks_in_Name");
         for (ExampleClassWithBlanks value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }

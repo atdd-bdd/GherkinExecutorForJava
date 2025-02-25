@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class TestIn{
@@ -71,7 +70,7 @@ class TestIn{
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
             + "} "; }  
-    Existing toExisting() throws Exception {
+    Existing toExisting() throws IllegalArgumentException {
         return new Existing(
          Integer.parseInt(aValue)
         , bValue

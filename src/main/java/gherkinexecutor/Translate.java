@@ -319,15 +319,15 @@ public class Translate {
         }
     }
 
-    boolean errorOccured = false;
+    boolean errorOccurred = false;
 
     private void error(String value) {
-        System.err.println("[GherkinExecutor] " + value);
-        errorOccured = true;
+        System.err.println("[GherkinExecutor] " + " Error "+ value);
+        errorOccurred = true;
     }
 
     private void warning(String value) {
-        System.err.println("[GherkinExecutor] " + value);
+        System.err.println("[GherkinExecutor] " + "Warning "+ value);
     }
 
     private static void printFlow(String value) {
@@ -446,12 +446,45 @@ public class Translate {
         return firstLine.length() - line.length();
     }
 
-    public static void main(String[] args) {
+
+        public static List<String> findFeatureFiles(String directory) {
+            List<String> featureFiles = new ArrayList<>();
+            collectFeatureFiles(new File(directory), featureFiles);
+            return featureFiles;
+        }
+
+        private static void collectFeatureFiles(File dir, List<String> featureFiles) {
+            String remove = Configuration.featureSubDirectory;
+            remove = remove.replace ("/", "\\");
+            if (dir.isDirectory()) {
+                File[] files = dir.listFiles();
+                if (files != null) {
+                    for (File file : files) {
+                        if (file.isDirectory()) {
+                            collectFeatureFiles(file, featureFiles);
+                        } else if (file.getName().endsWith(".feature")) {
+                            String path = file.getPath();
+                            path = path.replace(remove, "");
+                            featureFiles.add(path);
+                        }
+                    }
+                }
+            }
+        }
+
+        @SuppressWarnings("ConstantValue")
+        public static void main(String[] args) {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
         printFlow("Arguments");
+        if (!Configuration.startingFeatureDirectory.isEmpty()) {
+            List<String> filesInTree = findFeatureFiles(Configuration.startingFeatureDirectory);
+            printFlow("Adding directory tree files");
+            filesInTree.forEach(System.out::println);
+            Configuration.featureFiles.addAll(filesInTree);
+        }
         for (String arg : args) {
-            printFlow("   " + arg);
+            printFlow("Program argument: " + arg);
             Configuration.featureFiles.add(arg);
         }
         for (String name : Configuration.featureFiles) {
@@ -600,6 +633,7 @@ public class Translate {
         }
 
         private void error(String value) {
+
             System.err.println("[GherkinExecutor]" + value);
         }
 
@@ -649,7 +683,7 @@ public class Translate {
         }
 
         templateConstruct.endTemplate();
-        if (errorOccured) {
+        if (errorOccurred) {
             System.err.println("*** Error in translation, scan the output");
             System.exit(-1);
         }
@@ -936,6 +970,7 @@ public class Translate {
                     String name = listElement + "Internal";
                     templatePrint("        for (" + listElement + " value : values){");
                     templatePrint("           System.out.println(value);");
+                    templatePrint("             // Add calls to production code and asserts");
                     if (!dataType.equals("List<List<String>>")
                             && !listElement.equals("String")
                             && (dataNamesInternal.containsKey(name))) {
@@ -943,7 +978,7 @@ public class Translate {
                         templatePrint("                " + name + " i = value.to" + name + "();");
                         templatePrint("                  System.out.println(i);");
                         templatePrint("                      }");
-                        templatePrint("                     catch(Exception e){");
+                        templatePrint("                     catch(IllegalArgumentException e){");
                         templatePrint("                         System.err.println(\"Argument Error \" + value.toString() + " + name + ".toDataTypeString());");
                         templatePrint("                         }");
                     }
@@ -961,7 +996,7 @@ public class Translate {
             for (String line : Configuration.linesToAddForDataAndGlue) {
                 templatePrint(line);
             }
-            templatePrint(" import static org.junit.jupiter.api.Assertions.*;");
+            templatePrint("import static org.junit.jupiter.api.Assertions.*;");
             templatePrint("import java.util.List;");
             if (Configuration.inTest) {
                 templatePrint("import java.io.FileWriter;");
@@ -969,6 +1004,8 @@ public class Translate {
             }
             templatePrint("");
             templatePrint("class " + glueClass + " {");
+            templatePrint("    final String DNCString = "
+                    + "\"" + Configuration.doNotCompare + "\";");
             templatePrint(logIt());
 
             templatePrint("");
@@ -989,7 +1026,7 @@ public class Translate {
     class DataConstruct {
         //        private final String dataDefinitionFilename = basePath + "DataDefinition" + ".tmp";
         private FileWriter dataDefinitionFile;
-        final String throwString = "throws Exception ";
+        final String throwString = "throws IllegalArgumentException ";
 
         public class DataValues {
             public final String name;
@@ -1036,9 +1073,9 @@ public class Translate {
                 return;
             }
             if (dataNames.containsKey(className)) {
-                error("Data name is duplicated, has been renamed " + className);
                 className += stepCount;
-            }
+                warning("Data name is duplicated, has been renamed " + className);
+             }
             trace("Creating class for " + className);
             dataNames.put(className, "");
             // Put each in a new file
@@ -1311,7 +1348,7 @@ public class Translate {
                                          boolean providedClassName) {
             String classNameInternal = className;
             if (dataNames.containsKey(classNameInternal)) {
-                error("Data name is duplicated, has been renamed " + classNameInternal);
+                warning("Data name is duplicated, has been renamed " + classNameInternal);
                 classNameInternal += stepCount;
             }
             trace("Creating internal class for " + classNameInternal);
@@ -1604,6 +1641,9 @@ public class Translate {
         public static String currentDirectory = "";
 
         public static final String featureSubDirectory = "src/test/java/";
+            // where features are stored
+        public static final String startingFeatureDirectory = featureSubDirectory;
+            // where the directory tree of features is to be found.
         public static final String packageName = "gherkinexecutor";
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
         public static final String dataDefinitionFileExtension = "java"; // "tmpl"; // change to java if altering data file

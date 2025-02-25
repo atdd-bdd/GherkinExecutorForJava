@@ -1,9 +1,11 @@
 package gherkinexecutor.Feature_Data_Definition_Error;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ATestInternal{
-     Integer anInt = Integer.valueOf("0");
-     String aString = " ";
-     Double aDouble = Double.valueOf("4.0");
+     Integer anInt;
+     String aString;
+     Double aDouble;
      
     public static String toDataTypeString() {
         return "ATestInternal {"
@@ -17,7 +19,6 @@ class ATestInternal{
         ,aString
         ,String.valueOf(aDouble)
         ); }
-    public ATestInternal() { }
     public ATestInternal(
         Integer anInt
         ,String aString
@@ -27,6 +28,16 @@ class ATestInternal{
         this.aString = aString;
         this.aDouble = aDouble;
         }
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ATestInternal _ATestInternal = (ATestInternal) o;
+         return 
+                ( _ATestInternal.anInt.equals(this.anInt))
+                 && ( _ATestInternal.aString.equals(this.aString))
+                 && ( _ATestInternal.aDouble.equals(this.aDouble))
+             ;  }
     @Override
     public String toString() {
         return "ATestInternal {"

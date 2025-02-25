@@ -1,5 +1,7 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ATest{
     String anInt = "0";
     String aString = " ";
@@ -68,7 +70,7 @@ class ATest{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
-    ATestInternal toATestInternal() throws Exception {
+    ATestInternal toATestInternal() throws IllegalArgumentException {
         return new ATestInternal(
          Integer.valueOf(anInt)
         , aString

@@ -1,18 +1,21 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
-import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
  import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Tic_Tac_Toe_Game_glue {
+    final String DNCString = "?DNC?";
 
 
     void Given_board_is(List<List<String>> values ) {
         System.out.println("---  " + "Given_board_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -21,11 +24,12 @@ class Feature_Tic_Tac_Toe_Game_glue {
         System.out.println("---  " + "When_move_is");
         for (Move value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 MoveInternal i = value.toMoveInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
                          }
               }
@@ -42,6 +46,7 @@ class Feature_Tic_Tac_Toe_Game_glue {
         System.out.println("---  " + "When_one_move_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -50,11 +55,12 @@ class Feature_Tic_Tac_Toe_Game_glue {
         System.out.println("---  " + "When_moves_are");
         for (Move value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
                 try {
                 MoveInternal i = value.toMoveInternal();
                   System.out.println(i);
                       }
-                     catch(Exception e){
+                     catch(IllegalArgumentException e){
                          System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
                          }
               }

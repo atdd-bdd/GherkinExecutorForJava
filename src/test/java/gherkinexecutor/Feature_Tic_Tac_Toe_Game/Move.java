@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
-import java.net.URL;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class Move{
@@ -71,7 +72,7 @@ class Move{
         +"column = " + column + " "
         +"mark = " + mark + " "
             + "} "; }  
-    MoveInternal toMoveInternal() throws Exception {
+    MoveInternal toMoveInternal() throws IllegalArgumentException {
         return new MoveInternal(
          Integer.valueOf(row)
         , Integer.valueOf(column)

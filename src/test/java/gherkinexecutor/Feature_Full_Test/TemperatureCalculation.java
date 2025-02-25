@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class TemperatureCalculation{
@@ -71,7 +70,7 @@ class TemperatureCalculation{
         +"c = " + c + " "
         +"notes = " + notes + " "
             + "} "; }  
-    TemperatureCalculationInternal toTemperatureCalculationInternal() throws Exception {
+    TemperatureCalculationInternal toTemperatureCalculationInternal() throws IllegalArgumentException {
         return new TemperatureCalculationInternal(
          Integer.valueOf(f)
         , Integer.valueOf(c)

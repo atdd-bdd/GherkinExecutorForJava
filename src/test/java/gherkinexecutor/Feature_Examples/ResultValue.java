@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class ResultValue{
@@ -41,7 +40,7 @@ class ResultValue{
         return "ResultValue {"
         +"sum = " + sum + " "
             + "} "; }  
-    ResultValueInternal toResultValueInternal() throws Exception {
+    ResultValueInternal toResultValueInternal() throws IllegalArgumentException {
         return new ResultValueInternal(
          Integer.valueOf(sum)
         ); }

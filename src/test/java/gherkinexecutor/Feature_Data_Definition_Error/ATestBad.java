@@ -1,5 +1,7 @@
 package gherkinexecutor.Feature_Data_Definition_Error;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ATestBad{
     String anInt = "a";
     String aString = " ";
@@ -18,19 +20,19 @@ class ATestBad{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-            ATestBad _ATestBad = (ATestBad) o;
-            if (
-                !this.anInt.equals("?DNC?")
+        ATestBad _ATestBad = (ATestBad) o;
+         if (
+             !this.anInt.equals("?DNC?")
                 && !_ATestBad.anInt.equals("?DNC?"))
-                    return ( _ATestBad.anInt.equals(this.anInt));
-            if (
-                !this.aString.equals("?DNC?")
+                return ( _ATestBad.anInt.equals(this.anInt));
+         if (
+             !this.aString.equals("?DNC?")
                 && !_ATestBad.aString.equals("?DNC?"))
-                    return ( _ATestBad.aString.equals(this.aString));
-            if (
-                !this.aDouble.equals("?DNC?")
+                return ( _ATestBad.aString.equals(this.aString));
+         if (
+             !this.aDouble.equals("?DNC?")
                 && !_ATestBad.aDouble.equals("?DNC?"))
-                    return ( _ATestBad.aDouble.equals(this.aDouble));
+                return ( _ATestBad.aDouble.equals(this.aDouble));
              return true;  }
     public static class Builder {
         private String anInt = "a";
@@ -68,7 +70,7 @@ class ATestBad{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
-    ATestBadInternal toATestBadInternal() throws Exception {
+    ATestBadInternal toATestBadInternal() throws IllegalArgumentException {
         return new ATestBadInternal(
          Integer.valueOf(anInt)
         , aString

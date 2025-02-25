@@ -7,10 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Full_Test_glue {
+    final String DNCString = "?DNC?";
 
 
-    void Given_a_string(String value ) {
-        System.out.println("---  " + "Given_a_string");
+    void Given_a_string_include(String value ) {
+        System.out.println("---  " + "Given_a_string_include");
         System.out.println(value);
         fail("Must implement");
     }
@@ -74,7 +75,7 @@ class Feature_Full_Test_glue {
                 ATestInternal i = value.toATestInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
             }
         }
@@ -89,7 +90,7 @@ class Feature_Full_Test_glue {
                 ATestInternal i = value.toATestInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
             }
         }
@@ -112,7 +113,7 @@ class Feature_Full_Test_glue {
                 TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
             }
         }
@@ -127,7 +128,7 @@ class Feature_Full_Test_glue {
                 ValueValidInternal i = value.toValueValidInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + ValueValidInternal.toDataTypeString());
             }
         }
@@ -142,7 +143,7 @@ class Feature_Full_Test_glue {
                 LabelValueInternal i = value.toLabelValueInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + LabelValueInternal.toDataTypeString());
             }
         }
@@ -173,7 +174,7 @@ class Feature_Full_Test_glue {
                 FilterValueInternal i = value.toFilterValueInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
             }
         }
@@ -188,7 +189,7 @@ class Feature_Full_Test_glue {
                 ResultValueInternal i = value.toResultValueInternal();
                 System.out.println(i);
             }
-            catch(Exception e){
+            catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
             }
         }

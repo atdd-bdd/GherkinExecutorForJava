@@ -1,46 +1,46 @@
 package gherkinexecutor.Feature_Import;
-
+import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
-import static org.testng.AssertJUnit.fail;
-
 class Feature_Import_glue {
+    final String DNCString = "?DNC?";
 
 
-    void Given_this_data(List<Imports> values) {
+    void Given_this_data(List<Imports> values ) {
         System.out.println("---  " + "Given_this_data");
-        boolean good = true;
-        for (Imports value : values) {
+        boolean valid = true;
+        for (Imports value : values){
             System.out.println(value);
             try {
                 ImportsInternal i = value.toImportsInternal();
                 System.out.println(i);
-            } catch (Exception e) {
+            }
+            catch(IllegalArgumentException e){
+                valid = false;
                 System.err.println("Argument Error " + value.toString() + ImportsInternal.toDataTypeString());
-                System.err.println("Message " + e.getMessage() + " cause " + e.getCause() + " " +e.toString());
-                good = false;
             }
         }
-        if (!good)
-           fail("Data is valid, but not accepted ");
+        assertTrue(valid, "Values should be valid");
     }
 
-    public void Given_this_data_should_fail(List<Imports> values) {
+    void Given_this_data_should_fail(List<Imports> values ) {
         System.out.println("---  " + "Given_this_data_should_fail");
-        boolean good = true;
-        for (Imports value : values) {
+        boolean valid = true;
+        for (Imports value : values){
             System.out.println(value);
             try {
                 ImportsInternal i = value.toImportsInternal();
                 System.out.println(i);
-            } catch (Exception e) {
+            }
+            catch(IllegalArgumentException e){
+                valid = false;
                 System.err.println("Argument Error " + value.toString() + ImportsInternal.toDataTypeString());
-                System.err.println("Message " + e.getMessage() + " cause " + e.getCause() + " " +e.toString());
-                good = false;
             }
         }
-        if (good)
-            fail("Data is invalid, but accepted as good");
-
+        assertFalse(valid, "One argument should have been invalid");
     }
+
 }

@@ -1,5 +1,7 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class ATestInternal{
      Integer anInt;
      String aString;

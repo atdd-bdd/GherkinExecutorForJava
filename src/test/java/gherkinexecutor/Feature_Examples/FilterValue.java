@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class FilterValue{
@@ -56,7 +55,7 @@ class FilterValue{
         +"name = " + name + " "
         +"value = " + value + " "
             + "} "; }  
-    FilterValueInternal toFilterValueInternal() throws Exception {
+    FilterValueInternal toFilterValueInternal() throws IllegalArgumentException {
         return new FilterValueInternal(
          name
         , value

@@ -14,7 +14,7 @@ class Feature_Full_Test{
             """
             This is an include string
             """.stripIndent();
-        feature_Full_Test_glue_object.Given_a_string(string1);
+        feature_Full_Test_glue_object.Given_a_string_include(string1);
         }
     @Test
     void test_Scenario_An_include_of_CSV_file(){

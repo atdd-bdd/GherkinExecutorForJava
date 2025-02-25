@@ -1,18 +1,19 @@
 package gherkinexecutor.Feature_Gherkin_Translator_Full_Test;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
  import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Gherkin_Translator_Full_Test_glue {
+    final String DNCString = "?DNC?";
 
 
     void Given_feature_file_is(List<List<String>> values ) {
         System.out.println("---  " + "Given_feature_file_is");
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -26,6 +27,7 @@ class Feature_Gherkin_Translator_Full_Test_glue {
         System.out.println("---  " + "Then_test_file_should_match_expected");
         for (FileNames value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }
@@ -34,6 +36,7 @@ class Feature_Gherkin_Translator_Full_Test_glue {
         System.out.println("---  " + "And_glue_template_file_should_match_expected");
         for (FileNames value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
         fail("Must implement");
     }

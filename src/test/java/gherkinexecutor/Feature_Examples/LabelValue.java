@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class LabelValue{
@@ -56,7 +55,7 @@ class LabelValue{
         +"label = " + label + " "
         +"value = " + value + " "
             + "} "; }  
-    LabelValueInternal toLabelValueInternal() throws Exception {
+    LabelValueInternal toLabelValueInternal() throws IllegalArgumentException {
         return new LabelValueInternal(
          label
         , Integer.valueOf(value)

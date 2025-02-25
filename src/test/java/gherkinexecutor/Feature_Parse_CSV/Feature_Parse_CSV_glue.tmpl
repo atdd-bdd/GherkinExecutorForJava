@@ -1,53 +1,44 @@
 package gherkinexecutor.Feature_Parse_CSV;
 import java.util.*;
-import static org.junit.Assert.fail;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
+ import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 
 class Feature_Parse_CSV_glue {
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Parse_CSV/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
+    final String DNCString = "?DNC?";
 
 
     void Given(String value ) {
         System.out.println("---  " + "Given");
-        log("---  " + "Given");
-        log(value.toString());
         System.out.println(value);
+        fail("Must implement");
     }
 
     void When_converted_result_is(String value ) {
         System.out.println("---  " + "When_converted_result_is");
-        log("---  " + "When_converted_result_is");
-        log(value.toString());
         System.out.println(value);
+        fail("Must implement");
     }
 
     void Given_input_table(List<List<String>> values ) {
         System.out.println("---  " + "Given_input_table");
-        log("---  " + "Given_input_table");
-        log(values.toString());
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
+        fail("Must implement");
     }
 
     void When_transposed_result_is(List<List<String>> values ) {
         System.out.println("---  " + "When_transposed_result_is");
-        log("---  " + "When_transposed_result_is");
-        log(values.toString());
         for (List<String> value : values){
            System.out.println(value);
+             // TODO: Add calls to production code and asserts
               }
+        fail("Must implement");
     }
 
     }

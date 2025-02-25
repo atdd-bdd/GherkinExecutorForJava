@@ -1,5 +1,7 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
+import java.util.regex.Pattern;
+import java.math.BigInteger;
 class TestIn{
     String aValue = "0";
     String bValue = " ";
@@ -68,7 +70,7 @@ class TestIn{
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
             + "} "; }  
-    Existing toExisting() throws Exception {
+    Existing toExisting() throws IllegalArgumentException {
         return new Existing(
          Integer.parseInt(aValue)
         , bValue

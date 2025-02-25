@@ -1,6 +1,5 @@
 package gherkinexecutor.Feature_Gherkin_Translator_Full_Test;
 import java.util.*;
-import java.net.URL;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
 class FileNames{
