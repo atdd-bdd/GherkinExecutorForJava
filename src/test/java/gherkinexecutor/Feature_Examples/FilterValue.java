@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class FilterValue{
     String name = "";
     String value = "0";

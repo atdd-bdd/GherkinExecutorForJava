@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class LabelValue{
     String label = "";
     String value = "0";

@@ -1,9 +1,5 @@
 package gherkinexecutor.Feature_Simple_Test;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ATestInternal{
      Integer anInt;
      String aString;

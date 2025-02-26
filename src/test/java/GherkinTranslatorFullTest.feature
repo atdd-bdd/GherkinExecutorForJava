@@ -4,7 +4,7 @@ Feature: Gherkin Translator Full Test
 Scenario: Run the Test and check the output 
 
 Given feature file is 
-| full_test.feature |
+| full_test.feature.sav |
 
 When translated
 

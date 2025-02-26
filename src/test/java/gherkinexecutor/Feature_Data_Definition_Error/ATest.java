@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Data_Definition_Error;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ATest{
     String anInt = "0";
     String aString = " ";

@@ -12,7 +12,7 @@ class Feature_Gherkin_Translator_Full_Test{
 
         List<List<String>> stringListList1 = List.of(
            List.of(
-            "full_test.feature"
+            "full_test.feature.sav"
             )
             );
         feature_Gherkin_Translator_Full_Test_glue_object.Given_feature_file_is(stringListList1);

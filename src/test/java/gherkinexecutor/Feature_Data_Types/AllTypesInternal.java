@@ -1,7 +1,5 @@
 package gherkinexecutor.Feature_Data_Types;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class AllTypesInternal{
      Integer anInt;
      double aDouble;

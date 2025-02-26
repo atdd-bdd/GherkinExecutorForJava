@@ -9,7 +9,7 @@ Import
 | BigInteger  | new BigInteger($)   | java.math.BigInteger     |                       |
 
 Scenario: Use an import
-Given this data # ListOfObject Imports 
+Given this data should be okay # ListOfObject Imports 
 | myPattern  | myWeekday  | myBigInt     |
 | a.*        | MONDAY     | 1            |
 | [ab]       | SUNDAY     | 10000000000  |

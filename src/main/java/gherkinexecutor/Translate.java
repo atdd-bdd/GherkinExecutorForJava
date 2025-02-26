@@ -16,11 +16,13 @@ public class Translate {
     private final Map<String, String> dataNamesInternal = new HashMap<>(); // used to check for duplicate data
     private final Map<String, String> importNames = new HashMap<>(); // used to hold conversion functions for imports
 
+    private final List<String> linesToAddForDataAndGlue = new ArrayList();
     private final Map<String, String> defineNames = new HashMap<>();
     private final int stepCount = 0; // use to label duplicate scenarios
     //    private final String basePath = Configuration.testSubDirectory;
     private String glueClass = "";  // glue class name
     private String glueObject = "";  // glue object name
+
     private int stepNumberInScenario = 0;  // use to label variables in scenario
     private InputIterator dataIn = new InputIterator("");
     private boolean firstScenario = true; // If first scenario
@@ -38,6 +40,10 @@ public class Translate {
     private String featureName = "";
 
     private String directoryName = "";
+
+    private String featureDirectory = ""; // if feature file is in a directory
+
+    private String featurePackagePath = "";
     String packagePath = "Not Set";
 
     private final List<String> classDataNames = new ArrayList<>();
@@ -55,6 +61,9 @@ public class Translate {
     }
 
     public void translateInTests(String name) {
+        findFeatureDirectory(name);
+
+        linesToAddForDataAndGlue.addAll(Configuration.linesToAddForDataAndGlue);
         dataIn = new InputIterator(name);
         if (dataIn.isEmpty())
             return;
@@ -71,6 +80,20 @@ public class Translate {
             }
         }
         endUp();
+    }
+
+    private void findFeatureDirectory(String name){
+        String directory = "";
+        int indexForward = name.lastIndexOf('/');
+        int indexBack = name.lastIndexOf('\\');
+        int index = (indexForward > indexBack ? indexForward: indexBack);
+        if (index >= 0)
+            directory = name.substring(0,index + 1);
+        featureDirectory = directory;
+        featurePackagePath = featureDirectory.replace("\\",".").replace("/",".");
+        System.out.println("Directory **** " +featureDirectory);
+        System.out.println("Package " + featurePackagePath);
+        return;
     }
 
     private void actOnLine(String line, int pass) {
@@ -195,7 +218,7 @@ public class Translate {
         testPrint("import org.junit.jupiter.api.Test;");
         testPrint("import org.junit.jupiter.api.TestInstance;");
         testPrint("import java.util.List;");
-        if (Configuration.inTest) {
+        if (Configuration.logIt) {
             testPrint("import java.io.FileWriter;");
             testPrint("import java.io.IOException;");
         }
@@ -214,12 +237,14 @@ public class Translate {
         }
         featureName = fullName;
         featureActedOn = true;
-        packagePath = Configuration.packageName + "." + featureName;
-        String testPathname = Configuration.testSubDirectory + featureName + "/" + featureName + ".java";
+        packagePath = Configuration.packageName + "." + featurePackagePath + featureName;
+        String testPathname = Configuration.testSubDirectory + featureDirectory + featureName + "/" +
+                featureName + ".java";
         printFlow(" Writing " + testPathname);
-        String templateFilename = Configuration.testSubDirectory + featureName + "/" + featureName + "_glue.tmpl";
+        String templateFilename = Configuration.testSubDirectory + featureDirectory + featureName + "/" +
+                featureName + "_glue.tmpl";
 //        cleanFiles();
-        directoryName = Configuration.testSubDirectory + featureName;
+        directoryName = Configuration.testSubDirectory + featureDirectory + featureName;
         printFlow("Directory " + directoryName + " ");
         try {
             boolean result = new File(directoryName).mkdirs();
@@ -287,7 +312,7 @@ public class Translate {
         } else
             testPrint("    void test_" + fullNameToUse + "(" + glueClass + " " + glueObject + "){");
 
-        if (Configuration.inTest) {
+        if (Configuration.logIt) {
             testPrint("        log(" + "\"" + fullNameToUse + "\"" + ");");
         }
         if (addBackground) {
@@ -297,7 +322,7 @@ public class Translate {
 
 
     private String logIt() {
-        if (Configuration.inTest) {
+        if (Configuration.logIt) {
             String filename = directoryName + "/log.txt";
             return "void log(String value) {" + System.lineSeparator() +
                     "    try {" + System.lineSeparator() +
@@ -954,7 +979,7 @@ public class Translate {
                     templatePrint("    void " + fullName + "(" + dataType + " value ) {");
             }
             templatePrint("        System.out.println(\"---  \" + " + "\"" + fullName + "\"" + ");");
-            if (Configuration.inTest) {
+            if (Configuration.logIt) {
                 templatePrint("        log(\"---  \" + " + "\"" + fullName + "\"" + ");");
                 if (!dataType.isEmpty()) {
                     if (isList)
@@ -993,12 +1018,12 @@ public class Translate {
 
         private void beginTemplate() {
             templatePrint("package " + packagePath + ";");
-            for (String line : Configuration.linesToAddForDataAndGlue) {
+            for (String line : linesToAddForDataAndGlue) {
                 templatePrint(line);
             }
             templatePrint("import static org.junit.jupiter.api.Assertions.*;");
             templatePrint("import java.util.List;");
-            if (Configuration.inTest) {
+            if (Configuration.logIt) {
                 templatePrint("import java.io.FileWriter;");
                 templatePrint("import java.io.IOException;");
             }
@@ -1082,7 +1107,7 @@ public class Translate {
             startDataFile(className, false);
 
             dataPrintLn("package " + packagePath + ";");
-            for (String line : Configuration.linesToAddForDataAndGlue) {
+            for (String line : linesToAddForDataAndGlue) {
                 dataPrintLn(line);
             }
             dataPrintLn("class " + className + "{");
@@ -1120,7 +1145,8 @@ public class Translate {
             String extension = Configuration.dataDefinitionFileExtension;
             if (createTmpl)
                 extension = "tmpl";
-            String dataDefinitionPathname = Configuration.testSubDirectory + featureName + "/" + className
+            String dataDefinitionPathname = Configuration.testSubDirectory + featureDirectory +
+                    featureName + "/" + className
                     + "." + extension;
             try {
                 dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
@@ -1348,14 +1374,14 @@ public class Translate {
                                          boolean providedClassName) {
             String classNameInternal = className;
             if (dataNames.containsKey(classNameInternal)) {
-                warning("Data name is duplicated, has been renamed " + classNameInternal);
                 classNameInternal += stepCount;
+                warning("Data name is duplicated, has been renamed " + classNameInternal);
             }
             trace("Creating internal class for " + classNameInternal);
             dataNames.put(classNameInternal, "");
             startDataFile(className, providedClassName);
             dataPrintLn("package " + packagePath + ";");
-            for (String line : Configuration.linesToAddForDataAndGlue) {
+            for (String line : linesToAddForDataAndGlue) {
                 dataPrintLn(line);
             }
             dataPrintLn("class " + className + "{");
@@ -1500,7 +1526,7 @@ public class Translate {
         }
 
         private void actOnImport(List<String> words) {
-
+            System.out.println("**** Importing *****");
             Pair<String, List<String>> follow = lookForFollow();
             String followType = follow.getFirst();
             List<String> table = follow.getSecond();
@@ -1526,7 +1552,7 @@ public class Translate {
             for (ImportData im : imports) {
                 if (!im.importName.isEmpty()) {
                     String value = "import " + im.importName + ";";
-                    Configuration.linesToAddForDataAndGlue.add(value);
+                    linesToAddForDataAndGlue.add(value);
                 }
             }
         }
@@ -1633,7 +1659,10 @@ public class Translate {
 
     static class Configuration {
 
-        public static final boolean inTest = false;  // switch to true for development of Translator
+        public static final boolean logIt = false;
+            // Set to true for logging during the tests to log.txt
+        public static final boolean inTest = true;
+             // switch to true for development of Translator
         public static final boolean traceOn = false; // Set to true to see trace
         public static final char spaceCharacters = '~'; // Will replace with space in tables
 
@@ -1658,10 +1687,9 @@ public class Translate {
         public static final List<String> featureFiles = new ArrayList<>();
 
         static {
-            featureFiles.add("import.feature");
+            featureFiles.add("simple_test.feature");
             featureFiles.add("include.feature");
-//            featureFiles.add("full_test.feature");
-//            featureFiles.add("GherkinTranslatorFullTest.feature");
+//            featureFiles.add("full_test.feature.sav");
         }
     }
 

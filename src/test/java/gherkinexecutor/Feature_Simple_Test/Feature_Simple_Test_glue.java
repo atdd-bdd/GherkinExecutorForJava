@@ -15,7 +15,7 @@ class Feature_Simple_Test_glue {
         System.out.println("---  " + "Given_table_is");
         for (ATest value : values){
             System.out.println(value);
-            // TODO: Add calls to production code and asserts
+            // Add calls to production code and asserts
             try {
                 ATestInternal i = value.toATestInternal();
                 System.out.println(i);

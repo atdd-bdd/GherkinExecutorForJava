@@ -1,8 +1,6 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
- import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
 class Feature_Data_Definition_glue {
@@ -13,7 +11,7 @@ class Feature_Data_Definition_glue {
         System.out.println("---  " + "Given_table_is");
         for (ATest value : values){
            System.out.println(value);
-             // TODO: Add calls to production code and asserts
+             // Add calls to production code and asserts
                 try {
                 ATestInternal i = value.toATestInternal();
                   System.out.println(i);
@@ -22,14 +20,13 @@ class Feature_Data_Definition_glue {
                          System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
                          }
               }
-        fail("Must implement");
     }
 
     void When_compared_to(List<ATest> values ) {
         System.out.println("---  " + "When_compared_to");
         for (ATest value : values){
            System.out.println(value);
-             // TODO: Add calls to production code and asserts
+             // Add calls to production code and asserts
                 try {
                 ATestInternal i = value.toATestInternal();
                   System.out.println(i);
@@ -38,16 +35,14 @@ class Feature_Data_Definition_glue {
                          System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
                          }
               }
-        fail("Must implement");
     }
 
     void Then_result_is(List<List<String>> values ) {
         System.out.println("---  " + "Then_result_is");
         for (List<String> value : values){
            System.out.println(value);
-             // TODO: Add calls to production code and asserts
+             // Add calls to production code and asserts
               }
-        fail("Must implement");
     }
 
     }

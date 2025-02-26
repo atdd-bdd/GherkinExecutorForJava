@@ -1,9 +1,5 @@
 package gherkinexecutor.Feature_Tables_and_Strings;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ExampleClassWithBlanks{
     String field_1 = " ";
     String field_2 = " ";
