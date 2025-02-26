@@ -12,7 +12,7 @@ class Feature_Include{
 
         String string1 =
             """
-            This is an include string
+            This is an include string from the main directory
             """.stripIndent();
         feature_Include_glue_object.Given_a_string_include(string1);
         }

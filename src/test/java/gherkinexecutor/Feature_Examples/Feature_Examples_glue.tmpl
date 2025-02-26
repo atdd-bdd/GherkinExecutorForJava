@@ -10,52 +10,34 @@ class Feature_Examples_glue {
     void Calculation_Convert_F_to_C(List<TemperatureCalculation> values ) {
         System.out.println("---  " + "Calculation_Convert_F_to_C");
         for (TemperatureCalculation value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + TemperatureCalculationInternal.toDataTypeString());
-                         }
+              TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
               }
     }
 
     void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values ) {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
         for (ValueValid value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                ValueValidInternal i = value.toValueValidInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + ValueValidInternal.toDataTypeString());
-                         }
+              ValueValidInternal i = value.toValueValidInternal();
               }
     }
 
     void Given_list_of_numbers(List<LabelValue> values ) {
         System.out.println("---  " + "Given_list_of_numbers");
         for (LabelValue value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                LabelValueInternal i = value.toLabelValueInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + LabelValueInternal.toDataTypeString());
-                         }
+              LabelValueInternal i = value.toLabelValueInternal();
               }
     }
 
     void When_filtered_by_Label_with_value(List<List<String>> values ) {
         System.out.println("---  " + "When_filtered_by_Label_with_value");
         for (List<String> value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
               }
     }
@@ -63,7 +45,7 @@ class Feature_Examples_glue {
     void Then_sum_is(List<List<String>> values ) {
         System.out.println("---  " + "Then_sum_is");
         for (List<String> value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
               }
     }
@@ -71,30 +53,18 @@ class Feature_Examples_glue {
     void When_filtered_by(List<FilterValue> values ) {
         System.out.println("---  " + "When_filtered_by");
         for (FilterValue value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                FilterValueInternal i = value.toFilterValueInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + FilterValueInternal.toDataTypeString());
-                         }
+              FilterValueInternal i = value.toFilterValueInternal();
               }
     }
 
     void Then_result(List<ResultValue> values ) {
         System.out.println("---  " + "Then_result");
         for (ResultValue value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                ResultValueInternal i = value.toResultValueInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + ResultValueInternal.toDataTypeString());
-                         }
+              ResultValueInternal i = value.toResultValueInternal();
               }
     }
 

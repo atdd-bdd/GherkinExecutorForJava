@@ -10,3 +10,19 @@ Scenario_Transpose_a_table
 *******
 ---  When_transposed_result_is
 *******
+---  Given
+*******
+---  When_converted_result_is
+*******
+---  Given_input_table
+*******
+---  When_transposed_result_is
+*******
+---  Given
+*******
+---  When_converted_result_is
+*******
+---  Given_input_table
+*******
+---  When_transposed_result_is
+*******

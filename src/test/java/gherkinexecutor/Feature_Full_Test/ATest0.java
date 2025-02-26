@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ATest0{
     String anInt = "0";
     String aString = "^";
@@ -21,21 +19,23 @@ class ATest0{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ATest0 _ATest0 = (ATest0) o;
+            boolean result = true;
          if (
              !this.anInt.equals("?DNC?")
                 && !_ATest0.anInt.equals("?DNC?"))
-                return ( _ATest0.anInt.equals(this.anInt));
+                if (! _ATest0.anInt.equals(this.anInt)) result = false;
          if (
              !this.aString.equals("?DNC?")
                 && !_ATest0.aString.equals("?DNC?"))
-                return ( _ATest0.aString.equals(this.aString));
+                if (! _ATest0.aString.equals(this.aString)) result = false;
          if (
              !this.aDouble.equals("?DNC?")
                 && !_ATest0.aDouble.equals("?DNC?"))
-                return ( _ATest0.aDouble.equals(this.aDouble));
-             return true;  }
+                if (! _ATest0.aDouble.equals(this.aDouble)) result = false;
+             return result;  }
     public static class Builder {
         private String anInt = "0";
         private String aString = "^";
@@ -72,7 +72,7 @@ class ATest0{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
-    ATestInternal toATestInternal() throws IllegalArgumentException {
+    ATestInternal toATestInternal() {
         return new ATestInternal(
          Integer.valueOf(anInt)
         , aString

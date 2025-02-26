@@ -1,1 +1,5 @@
 Scenario_Use_the_data_types
+---  Given_type_values_are
+[AllTypes {anInt = 0 aDouble = 0.0 aChar = x achar = y } , AllTypes {anInt = 111 aDouble = 222.2 aChar = q achar =  } , AllTypes {anInt =  aDouble =  aChar =  achar =  } ]
+---  Given_type_values_are
+[AllTypes {anInt = 0 aDouble = 0.0 aChar = x achar = y } , AllTypes {anInt = 111 aDouble = 222.2 aChar = q achar =  } , AllTypes {anInt =  aDouble =  aChar =  achar =  } ]

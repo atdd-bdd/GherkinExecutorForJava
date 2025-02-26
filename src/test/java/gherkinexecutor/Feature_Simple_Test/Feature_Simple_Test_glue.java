@@ -1,9 +1,5 @@
 package gherkinexecutor.Feature_Simple_Test;
 import java.util.*;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
@@ -21,10 +17,9 @@ class Feature_Simple_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
             }
         }
-        fail("Must implement");
     }
 
 }

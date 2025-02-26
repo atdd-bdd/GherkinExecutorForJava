@@ -55,7 +55,7 @@ class LabelValue{
         +"label = " + label + " "
         +"value = " + value + " "
             + "} "; }  
-    LabelValueInternal toLabelValueInternal() throws IllegalArgumentException {
+    LabelValueInternal toLabelValueInternal() {
         return new LabelValueInternal(
          label
         , Integer.valueOf(value)

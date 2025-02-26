@@ -85,7 +85,7 @@ class AllTypes{
         +"aChar = " + aChar + " "
         +"achar = " + achar + " "
             + "} "; }  
-    AllTypesInternal toAllTypesInternal() throws IllegalArgumentException {
+    AllTypesInternal toAllTypesInternal() {
         return new AllTypesInternal(
          Integer.valueOf(anInt)
         , Double.parseDouble(aDouble)

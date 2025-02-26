@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ResultValue{
     String sum = "";
     public ResultValue() { }
@@ -15,13 +13,15 @@ class ResultValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ResultValue _ResultValue = (ResultValue) o;
+            boolean result = true;
          if (
              !this.sum.equals("?DNC?")
                 && !_ResultValue.sum.equals("?DNC?"))
-                return ( _ResultValue.sum.equals(this.sum));
-             return true;  }
+                if (! _ResultValue.sum.equals(this.sum)) result = false;
+             return result;  }
     public static class Builder {
         private String sum = "";
         public Builder sum(String sum) {
@@ -42,7 +42,7 @@ class ResultValue{
         return "ResultValue {"
         +"sum = " + sum + " "
             + "} "; }  
-    ResultValueInternal toResultValueInternal() throws IllegalArgumentException {
+    ResultValueInternal toResultValueInternal() {
         return new ResultValueInternal(
          Integer.valueOf(sum)
         ); }

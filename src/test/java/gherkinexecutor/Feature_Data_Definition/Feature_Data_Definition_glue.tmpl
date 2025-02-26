@@ -10,37 +10,25 @@ class Feature_Data_Definition_glue {
     void Given_table_is(List<ATest> values ) {
         System.out.println("---  " + "Given_table_is");
         for (ATest value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                ATestInternal i = value.toATestInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
-                         }
+              ATestInternal i = value.toATestInternal();
               }
     }
 
     void When_compared_to(List<ATest> values ) {
         System.out.println("---  " + "When_compared_to");
         for (ATest value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                ATestInternal i = value.toATestInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
-                         }
+              ATestInternal i = value.toATestInternal();
               }
     }
 
     void Then_result_is(List<List<String>> values ) {
         System.out.println("---  " + "Then_result_is");
         for (List<String> value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
               }
     }

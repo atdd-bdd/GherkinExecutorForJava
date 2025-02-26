@@ -70,7 +70,7 @@ class TemperatureCalculation{
         +"c = " + c + " "
         +"notes = " + notes + " "
             + "} "; }  
-    TemperatureCalculationInternal toTemperatureCalculationInternal() throws IllegalArgumentException {
+    TemperatureCalculationInternal toTemperatureCalculationInternal() {
         return new TemperatureCalculationInternal(
          Integer.valueOf(f)
         , Integer.valueOf(c)

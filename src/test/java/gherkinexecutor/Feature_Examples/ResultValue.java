@@ -40,7 +40,7 @@ class ResultValue{
         return "ResultValue {"
         +"sum = " + sum + " "
             + "} "; }  
-    ResultValueInternal toResultValueInternal() throws IllegalArgumentException {
+    ResultValueInternal toResultValueInternal() {
         return new ResultValueInternal(
          Integer.valueOf(sum)
         ); }

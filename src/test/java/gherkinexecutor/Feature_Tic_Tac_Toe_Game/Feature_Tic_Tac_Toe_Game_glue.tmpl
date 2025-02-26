@@ -10,7 +10,7 @@ class Feature_Tic_Tac_Toe_Game_glue {
     void Given_board_is(List<List<String>> values ) {
         System.out.println("---  " + "Given_board_is");
         for (List<String> value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
               }
     }
@@ -18,15 +18,9 @@ class Feature_Tic_Tac_Toe_Game_glue {
     void When_move_is(List<Move> values ) {
         System.out.println("---  " + "When_move_is");
         for (Move value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                MoveInternal i = value.toMoveInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
-                         }
+              MoveInternal i = value.toMoveInternal();
               }
     }
 
@@ -38,7 +32,7 @@ class Feature_Tic_Tac_Toe_Game_glue {
     void When_one_move_is(List<List<String>> values ) {
         System.out.println("---  " + "When_one_move_is");
         for (List<String> value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
               }
     }
@@ -46,15 +40,9 @@ class Feature_Tic_Tac_Toe_Game_glue {
     void When_moves_are(List<Move> values ) {
         System.out.println("---  " + "When_moves_are");
         for (Move value : values){
-           System.out.println(value);
+             System.out.println(value);
              // Add calls to production code and asserts
-                try {
-                MoveInternal i = value.toMoveInternal();
-                  System.out.println(i);
-                      }
-                     catch(IllegalArgumentException e){
-                         System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
-                         }
+              MoveInternal i = value.toMoveInternal();
               }
     }
 

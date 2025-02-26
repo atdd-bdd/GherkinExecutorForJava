@@ -1,1 +1,1 @@
-This is an include string
+This is an include string from the main directory

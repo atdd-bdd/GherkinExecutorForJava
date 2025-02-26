@@ -70,7 +70,7 @@ class Move{
         +"column = " + column + " "
         +"mark = " + mark + " "
             + "} "; }  
-    MoveInternal toMoveInternal() throws IllegalArgumentException {
+    MoveInternal toMoveInternal() {
         return new MoveInternal(
          Integer.valueOf(row)
         , Integer.valueOf(column)

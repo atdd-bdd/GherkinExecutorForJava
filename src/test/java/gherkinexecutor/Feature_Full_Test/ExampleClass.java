@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class ExampleClass{
     String fieldA = "y";
     String fieldB = "x";
@@ -18,17 +16,19 @@ class ExampleClass{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ExampleClass _ExampleClass = (ExampleClass) o;
+            boolean result = true;
          if (
              !this.fieldA.equals("?DNC?")
                 && !_ExampleClass.fieldA.equals("?DNC?"))
-                return ( _ExampleClass.fieldA.equals(this.fieldA));
+                if (! _ExampleClass.fieldA.equals(this.fieldA)) result = false;
          if (
              !this.fieldB.equals("?DNC?")
                 && !_ExampleClass.fieldB.equals("?DNC?"))
-                return ( _ExampleClass.fieldB.equals(this.fieldB));
-             return true;  }
+                if (! _ExampleClass.fieldB.equals(this.fieldB)) result = false;
+             return result;  }
     public static class Builder {
         private String fieldA = "y";
         private String fieldB = "x";

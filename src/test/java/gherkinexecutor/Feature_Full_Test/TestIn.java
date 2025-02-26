@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class TestIn{
     String aValue = "0";
     String bValue = " ";
@@ -21,21 +19,23 @@ class TestIn{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         TestIn _TestIn = (TestIn) o;
+            boolean result = true;
          if (
              !this.aValue.equals("?DNC?")
                 && !_TestIn.aValue.equals("?DNC?"))
-                return ( _TestIn.aValue.equals(this.aValue));
+                if (! _TestIn.aValue.equals(this.aValue)) result = false;
          if (
              !this.bValue.equals("?DNC?")
                 && !_TestIn.bValue.equals("?DNC?"))
-                return ( _TestIn.bValue.equals(this.bValue));
+                if (! _TestIn.bValue.equals(this.bValue)) result = false;
          if (
              !this.cValue.equals("?DNC?")
                 && !_TestIn.cValue.equals("?DNC?"))
-                return ( _TestIn.cValue.equals(this.cValue));
-             return true;  }
+                if (! _TestIn.cValue.equals(this.cValue)) result = false;
+             return result;  }
     public static class Builder {
         private String aValue = "0";
         private String bValue = " ";
@@ -72,7 +72,7 @@ class TestIn{
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
             + "} "; }  
-    Existing toExisting() throws IllegalArgumentException {
+    Existing toExisting() {
         return new Existing(
          Integer.parseInt(aValue)
         , bValue

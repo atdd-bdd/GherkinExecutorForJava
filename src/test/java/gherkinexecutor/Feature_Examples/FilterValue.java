@@ -55,7 +55,7 @@ class FilterValue{
         +"name = " + name + " "
         +"value = " + value + " "
             + "} "; }  
-    FilterValueInternal toFilterValueInternal() throws IllegalArgumentException {
+    FilterValueInternal toFilterValueInternal() {
         return new FilterValueInternal(
          name
         , value

@@ -70,7 +70,7 @@ class TestIn{
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
             + "} "; }  
-    Existing toExisting() throws IllegalArgumentException {
+    Existing toExisting() {
         return new Existing(
          Integer.parseInt(aValue)
         , bValue

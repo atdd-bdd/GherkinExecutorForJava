@@ -72,7 +72,7 @@ class Imports{
         +"myWeekday = " + myWeekday + " "
         +"myBigInt = " + myBigInt + " "
             + "} "; }  
-    ImportsInternal toImportsInternal() throws IllegalArgumentException {
+    ImportsInternal toImportsInternal() {
         return new ImportsInternal(
          Pattern.compile(myPattern)
         , Weekday.valueOf(myWeekday)

@@ -196,3 +196,25 @@ Scenario_Simple_Comparison
 [ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
 ---  Then_result_is
 [[false]]
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+[[true]]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+[[false]]
+---  Given_table_is
+*******
+[ATest {anInt = 1 aString = something aDouble = 1.2 } ]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } ]
+---  Then_result_is
+[[true]]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something else aDouble = ?DNC? } ]
+---  Then_result_is
+[[false]]

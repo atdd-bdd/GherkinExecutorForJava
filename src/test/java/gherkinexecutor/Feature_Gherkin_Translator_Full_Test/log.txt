@@ -135,3 +135,14 @@ Scenario_Run_the_Test_and_check_the_output
 ---  Given_feature_file_is
 ---  When_translated
 ---  Then_test_file_should_match_expected
+---  Given_feature_file_is
+---  When_translated
+---  Then_test_file_should_match_expected
+---  Given_feature_file_is
+---  When_translated
+---  Then_test_file_should_match_expected
+---  And_glue_template_file_should_match_expected
+---  Given_feature_file_is
+---  When_translated
+---  Then_test_file_should_match_expected
+---  And_glue_template_file_should_match_expected

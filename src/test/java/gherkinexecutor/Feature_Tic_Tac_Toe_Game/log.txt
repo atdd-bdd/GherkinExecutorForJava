@@ -1008,3 +1008,71 @@ Scenario_Make_multiple_moves
 |   |    | O  |
 |   |    |    |
 
+---  Given_board_is
+[[0, x, 0], [x, 0, x], [0, x, 0]]
+---  Then_board_is_now
+| 0  | x  | 0  |
+| x  | 0  | x  |
+| 0  | x  | 0  |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_one_move_is
+[[1,2,X]]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_move_is
+[Move {row = 1 column = 2 mark = X } ]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_moves_are
+[Move {row = 1 column = 2 mark = X } , Move {row = 2 column = 3 mark = O } ]
+---  Then_board_is_now
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+
+---  Given_board_is
+[[0, x, 0], [x, 0, x], [0, x, 0]]
+---  Then_board_is_now
+| 0  | x  | 0  |
+| x  | 0  | x  |
+| 0  | x  | 0  |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_one_move_is
+[[1,2,X]]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_move_is
+[Move {row = 1 column = 2 mark = X } ]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_moves_are
+[Move {row = 1 column = 2 mark = X } , Move {row = 2 column = 3 mark = O } ]
+---  Then_board_is_now
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+

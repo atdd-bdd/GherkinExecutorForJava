@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class TemperatureCalculation{
     String f = "0";
     String c = "0";
@@ -21,21 +19,23 @@ class TemperatureCalculation{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         TemperatureCalculation _TemperatureCalculation = (TemperatureCalculation) o;
+            boolean result = true;
          if (
              !this.f.equals("?DNC?")
                 && !_TemperatureCalculation.f.equals("?DNC?"))
-                return ( _TemperatureCalculation.f.equals(this.f));
+                if (! _TemperatureCalculation.f.equals(this.f)) result = false;
          if (
              !this.c.equals("?DNC?")
                 && !_TemperatureCalculation.c.equals("?DNC?"))
-                return ( _TemperatureCalculation.c.equals(this.c));
+                if (! _TemperatureCalculation.c.equals(this.c)) result = false;
          if (
              !this.notes.equals("?DNC?")
                 && !_TemperatureCalculation.notes.equals("?DNC?"))
-                return ( _TemperatureCalculation.notes.equals(this.notes));
-             return true;  }
+                if (! _TemperatureCalculation.notes.equals(this.notes)) result = false;
+             return result;  }
     public static class Builder {
         private String f = "0";
         private String c = "0";
@@ -72,7 +72,7 @@ class TemperatureCalculation{
         +"c = " + c + " "
         +"notes = " + notes + " "
             + "} "; }  
-    TemperatureCalculationInternal toTemperatureCalculationInternal() throws IllegalArgumentException {
+    TemperatureCalculationInternal toTemperatureCalculationInternal() {
         return new TemperatureCalculationInternal(
          Integer.valueOf(f)
         , Integer.valueOf(c)

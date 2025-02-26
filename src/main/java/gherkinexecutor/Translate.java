@@ -24,7 +24,7 @@ public class Translate {
     private String glueObject = "";  // glue object name
 
     private int stepNumberInScenario = 0;  // use to label variables in scenario
-    private InputIterator dataIn = new InputIterator("");
+    private InputIterator dataIn = new InputIterator("","");
     private boolean firstScenario = true; // If first scenario
     private boolean addBackground = false;  // Have seen Background
     private boolean addCleanup = false;  // have seen Cleanup
@@ -64,7 +64,7 @@ public class Translate {
         findFeatureDirectory(name);
 
         linesToAddForDataAndGlue.addAll(Configuration.linesToAddForDataAndGlue);
-        dataIn = new InputIterator(name);
+        dataIn = new InputIterator(name, featureDirectory);
         if (dataIn.isEmpty())
             return;
         for (int pass = 1; pass <= 3; pass++) {
@@ -524,8 +524,10 @@ public class Translate {
 
         public static final String EOF = "EOF";
 
-        public InputIterator(String name) {
+        final private String featureDirectory;
+        public InputIterator(String name, String featureDirectory) {
             index = 0;
+            this.featureDirectory = featureDirectory;
             if (!name.isEmpty()) {
                 readFile(name, 0);
             }
@@ -552,15 +554,22 @@ public class Translate {
                     if (line.startsWith("Include")) {
                         String[] parts = line.split("\"");
                         trace("Parts are " + String.join(", ", parts));
+                        boolean localFile = true;
                         if (parts.length < 2) {
-                            error("Error filename not surrounded by quotes: " + line);
-                            continue;
-                        }
+                            parts = line.split("'");
+                            localFile = false;
+                             if (parts.length < 2) {
+                                   error("Error filename not surrounded by quotes: " + line);
+                                 continue;
+                             }
+                             }
                         if (parts[1].isEmpty()) {
                             error("Error zero length filename " + line);
                             continue;
                         }
                         String includedFileName = parts[1].trim();
+                        if (localFile)
+                            includedFileName = featureDirectory + includedFileName;
                         trace("Including " + includedFileName);
                         if (includedFileName.endsWith(".csv")) {
                             includeCSVFile(includedFileName);
@@ -991,18 +1000,13 @@ public class Translate {
                 if (isList) {
                     String name = listElement + "Internal";
                     templatePrint("        for (" + listElement + " value : values){");
-                    templatePrint("           System.out.println(value);");
+                    templatePrint("             System.out.println(value);");
                     templatePrint("             // Add calls to production code and asserts");
                     if (!dataType.equals("List<List<String>>")
                             && !listElement.equals("String")
                             && (dataNamesInternal.containsKey(name))) {
-                        templatePrint("                try {");
-                        templatePrint("                " + name + " i = value.to" + name + "();");
-                        templatePrint("                  System.out.println(i);");
-                        templatePrint("                      }");
-                        templatePrint("                     catch(IllegalArgumentException e){");
-                        templatePrint("                         System.err.println(\"Argument Error \" + value + " + name + ".toDataTypeString());");
-                        templatePrint("                         }");
+                    // Removed try/catch genreation
+                    templatePrint("              " + name + " i = value.to" + name + "();");
                     }
                     templatePrint("              }");
                 }
@@ -1048,7 +1052,7 @@ public class Translate {
     class DataConstruct {
         //        private final String dataDefinitionFilename = basePath + "DataDefinition" + ".tmp";
         private FileWriter dataDefinitionFile;
-        final String throwString = "throws IllegalArgumentException ";
+        final String throwString = ""; // needed if want to catch errors in converstins methods
 
         public class DataValues {
             public final String name;

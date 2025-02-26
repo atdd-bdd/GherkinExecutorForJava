@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 class FilterValue{
     String name = "";
     String value = "0";
@@ -18,17 +16,19 @@ class FilterValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         FilterValue _FilterValue = (FilterValue) o;
+            boolean result = true;
          if (
              !this.name.equals("?DNC?")
                 && !_FilterValue.name.equals("?DNC?"))
-                return ( _FilterValue.name.equals(this.name));
+                if (! _FilterValue.name.equals(this.name)) result = false;
          if (
              !this.value.equals("?DNC?")
                 && !_FilterValue.value.equals("?DNC?"))
-                return ( _FilterValue.value.equals(this.value));
-             return true;  }
+                if (! _FilterValue.value.equals(this.value)) result = false;
+             return result;  }
     public static class Builder {
         private String name = "";
         private String value = "0";
@@ -57,7 +57,7 @@ class FilterValue{
         +"name = " + name + " "
         +"value = " + value + " "
             + "} "; }  
-    FilterValueInternal toFilterValueInternal() throws IllegalArgumentException {
+    FilterValueInternal toFilterValueInternal() {
         return new FilterValueInternal(
          name
         , value

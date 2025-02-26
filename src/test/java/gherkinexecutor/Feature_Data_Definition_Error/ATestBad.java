@@ -70,7 +70,7 @@ class ATestBad{
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
             + "} "; }  
-    ATestBadInternal toATestBadInternal() throws IllegalArgumentException {
+    ATestBadInternal toATestBadInternal() {
         return new ATestBadInternal(
          Integer.valueOf(anInt)
         , aString
