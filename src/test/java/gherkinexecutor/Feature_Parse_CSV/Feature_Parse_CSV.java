@@ -1,8 +1,6 @@
 package gherkinexecutor.Feature_Parse_CSV;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Parse_CSV{
 
 

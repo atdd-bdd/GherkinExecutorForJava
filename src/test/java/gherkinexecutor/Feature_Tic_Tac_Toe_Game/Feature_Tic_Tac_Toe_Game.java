@@ -1,8 +1,6 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Tic_Tac_Toe_Game{
 
 

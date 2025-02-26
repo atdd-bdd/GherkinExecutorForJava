@@ -1,8 +1,6 @@
 package gherkinexecutor.Feature_Background;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Background{
 
 

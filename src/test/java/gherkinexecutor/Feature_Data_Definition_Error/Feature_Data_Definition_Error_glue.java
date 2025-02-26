@@ -17,7 +17,7 @@ class Feature_Data_Definition_Error_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
             }
         }
     }
@@ -32,7 +32,7 @@ class Feature_Data_Definition_Error_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestBadInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestBadInternal.toDataTypeString());
             }
         }
     }

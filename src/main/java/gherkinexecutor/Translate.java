@@ -24,7 +24,7 @@ public class Translate {
     private String glueObject = "";  // glue object name
 
     private int stepNumberInScenario = 0;  // use to label variables in scenario
-    private InputIterator dataIn = new InputIterator("","");
+    private InputIterator dataIn = new InputIterator("", "");
     private boolean firstScenario = true; // If first scenario
     private boolean addBackground = false;  // Have seen Background
     private boolean addCleanup = false;  // have seen Cleanup
@@ -212,14 +212,21 @@ public class Translate {
     private void actOnFeature(String fullName) {
         if (actOnFeatureFirstHalf(fullName)) return;
         testPrint("package " + packagePath + ";");
-        testPrint("import org.junit.jupiter.api.Test;");
-        testPrint("import org.junit.jupiter.api.TestInstance;");
+        switch (Configuration.testFramework) {
+            case "JUnit4":
+                testPrint("import org.junit.Test;");
+                break;
+            case "TestNG":
+                testPrint("import org.testng.annotations.Test;");
+                break;
+            default:
+                testPrint("import org.junit.jupiter.api.Test;");
+        }
         testPrint("import java.util.List;");
         if (Configuration.logIt) {
             testPrint("import java.io.FileWriter;");
             testPrint("import java.io.IOException;");
         }
-        testPrint("@TestInstance(TestInstance.Lifecycle.PER_CLASS)");
         testPrint("class " + fullName + "{");
         testPrint(logIt());
         testPrint("");
@@ -525,6 +532,7 @@ public class Translate {
         public static final String EOF = "EOF";
 
         final private String featureDirectory;
+
         public InputIterator(String name, String featureDirectory) {
             index = 0;
             this.featureDirectory = featureDirectory;
@@ -558,11 +566,11 @@ public class Translate {
                         if (parts.length < 2) {
                             parts = line.split("'");
                             localFile = false;
-                             if (parts.length < 2) {
-                                   error("Error filename not surrounded by quotes: " + line);
-                                 continue;
-                             }
-                             }
+                            if (parts.length < 2) {
+                                error("Error filename not surrounded by quotes: " + line);
+                                continue;
+                            }
+                        }
                         if (parts[1].isEmpty()) {
                             error("Error zero length filename " + line);
                             continue;
@@ -1005,8 +1013,8 @@ public class Translate {
                     if (!dataType.equals("List<List<String>>")
                             && !listElement.equals("String")
                             && (dataNamesInternal.containsKey(name))) {
-                    // Removed try/catch genreation
-                    templatePrint("              " + name + " i = value.to" + name + "();");
+                        // Removed try/catch genreation
+                        templatePrint("              " + name + " i = value.to" + name + "();");
                     }
                     templatePrint("              }");
                 }
@@ -1022,7 +1030,16 @@ public class Translate {
             for (String line : linesToAddForDataAndGlue) {
                 templatePrint(line);
             }
-            templatePrint("import static org.junit.jupiter.api.Assertions.*;");
+            switch (Configuration.testFramework) {
+                case "JUnit4":
+                    templatePrint("import static org.junit.Assert.*;");
+                    break;
+                case "TestNG":
+                    templatePrint("import static org.testng.Assert.*;");
+                    break;
+                default:
+                    templatePrint("import static org.junit.jupiter.api.Assertions.*;");
+            }
             templatePrint("import java.util.List;");
             if (Configuration.logIt) {
                 templatePrint("import java.io.FileWriter;");
@@ -1666,32 +1683,36 @@ public class Translate {
         public static final boolean inTest = true;
         // switch to true for development of Translator
         public static final boolean traceOn = false; // Set to true to see trace
-        public static final char spaceCharacters = '~'; // Will replace with space in tables
+        public static final char spaceCharacters = '~'; // Will replace this character with space in tables
 
         public static final String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
-        public static String currentDirectory = "";
+        public static String currentDirectory = ""; // To keep for testing and or setup issues
 
         public static final String featureSubDirectory = "src/test/java/";
         // where features are stored
         public static final String startingFeatureDirectory = featureSubDirectory;
         // where the directory tree of features is to be found.
         public static final String packageName = "gherkinexecutor";
+
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
-        public static final String dataDefinitionFileExtension = "java"; // "tmpl"; // change to java if altering data file
+        // used to put the test files in the directory corresponding to the packageName.
+        public static final String dataDefinitionFileExtension = "java"; // "tmpl";
+                // change to tmpl if you are altering the data classes to avoid overwriting them
+
+        public static String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
 
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
-
+        // Imports or other lines to add to data class and glue class
         // Must include  semicolon if needed
         static {
-            linesToAddForDataAndGlue.add("import java.util.*;");
+            linesToAddForDataAndGlue.add("import java.util.*;"); // as an example
         }
 
         public static final List<String> featureFiles = new ArrayList<>();
 
         static {
-            featureFiles.add("simple_test.feature");
-            featureFiles.add("include.feature");
-//            featureFiles.add("full_test.feature.sav");
+            featureFiles.add("simple_test.feature");     // Something to try out after setup
+//            featureFiles.add("full_test.feature.sav"); // used for testing Translate
         }
     }
 

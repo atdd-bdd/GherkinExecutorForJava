@@ -1,8 +1,6 @@
 package gherkinexecutor.Feature_Gherkin_Translator_Full_Test;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Gherkin_Translator_Full_Test{
 
 

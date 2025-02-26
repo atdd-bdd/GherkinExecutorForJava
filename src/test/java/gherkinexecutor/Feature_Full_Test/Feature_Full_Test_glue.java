@@ -33,7 +33,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
             }
         }
     }
@@ -48,7 +48,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
             }
         }
     }
@@ -71,7 +71,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ATestBadInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ATestBadInternal.toDataTypeString());
             }
         }
     }
@@ -102,7 +102,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + TemperatureCalculationInternal.toDataTypeString());
             }
         }
     }
@@ -117,7 +117,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ValueValidInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ValueValidInternal.toDataTypeString());
             }
         }
     }
@@ -132,7 +132,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + LabelValueInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + LabelValueInternal.toDataTypeString());
             }
         }
     }
@@ -163,7 +163,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + FilterValueInternal.toDataTypeString());
             }
         }
     }
@@ -178,7 +178,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ResultValueInternal.toDataTypeString());
             }
         }
     }
@@ -193,7 +193,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ImportsInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ImportsInternal.toDataTypeString());
             }
         }
     }
@@ -208,7 +208,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + ImportsInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + ImportsInternal.toDataTypeString());
             }
         }
     }
@@ -320,7 +320,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
             }
         }
     }
@@ -348,7 +348,7 @@ class Feature_Full_Test_glue {
                 System.out.println(i);
             }
             catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value.toString() + MoveInternal.toDataTypeString());
+                System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
             }
         }
     }

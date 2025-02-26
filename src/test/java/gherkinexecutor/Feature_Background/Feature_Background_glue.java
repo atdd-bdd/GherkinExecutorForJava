@@ -9,6 +9,7 @@ class Feature_Background_glue {
 
     void Given_Background_Function(){
         System.out.println("---  " + "Given_Background_Function");
+        assertEquals("a", "b");
     }
 
     void Given_Cleanup_Function(){
