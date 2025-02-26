@@ -14,17 +14,19 @@ class FileNames{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         FileNames _FileNames = (FileNames) o;
+            boolean result = true;
          if (
              !this.expected.equals("?DNC?")
                 && !_FileNames.expected.equals("?DNC?"))
-                return ( _FileNames.expected.equals(this.expected));
+                if (! _FileNames.expected.equals(this.expected)) result = false;
          if (
              !this.actual.equals("?DNC?")
                 && !_FileNames.actual.equals("?DNC?"))
-                return ( _FileNames.actual.equals(this.actual));
-             return true;  }
+                if (! _FileNames.actual.equals(this.actual)) result = false;
+             return result;  }
     public static class Builder {
         private String expected = "NoFileName";
         private String actual = "NoFileName";

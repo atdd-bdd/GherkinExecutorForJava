@@ -14,17 +14,19 @@ class LabelValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         LabelValue _LabelValue = (LabelValue) o;
+            boolean result = true;
          if (
              !this.label.equals("?DNC?")
                 && !_LabelValue.label.equals("?DNC?"))
-                return ( _LabelValue.label.equals(this.label));
+                if (! _LabelValue.label.equals(this.label)) result = false;
          if (
              !this.value.equals("?DNC?")
                 && !_LabelValue.value.equals("?DNC?"))
-                return ( _LabelValue.value.equals(this.value));
-             return true;  }
+                if (! _LabelValue.value.equals(this.value)) result = false;
+             return result;  }
     public static class Builder {
         private String label = "";
         private String value = "0";

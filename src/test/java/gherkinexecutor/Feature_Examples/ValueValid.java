@@ -17,21 +17,23 @@ class ValueValid{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ValueValid _ValueValid = (ValueValid) o;
+            boolean result = true;
          if (
              !this.value.equals("?DNC?")
                 && !_ValueValid.value.equals("?DNC?"))
-                return ( _ValueValid.value.equals(this.value));
+                if (! _ValueValid.value.equals(this.value)) result = false;
          if (
              !this.valid.equals("?DNC?")
                 && !_ValueValid.valid.equals("?DNC?"))
-                return ( _ValueValid.valid.equals(this.valid));
+                if (! _ValueValid.valid.equals(this.valid)) result = false;
          if (
              !this.notes.equals("?DNC?")
                 && !_ValueValid.notes.equals("?DNC?"))
-                return ( _ValueValid.notes.equals(this.notes));
-             return true;  }
+                if (! _ValueValid.notes.equals(this.notes)) result = false;
+             return result;  }
     public static class Builder {
         private String value = "0";
         private String valid = "false";
@@ -71,7 +73,7 @@ class ValueValid{
     ValueValidInternal toValueValidInternal() throws IllegalArgumentException {
         return new ValueValidInternal(
          value
-        , Boolean.valueOf(valid)
+        , Boolean.parseBoolean(valid)
         , notes
         ); }
     }

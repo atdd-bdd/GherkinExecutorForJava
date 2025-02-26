@@ -17,21 +17,23 @@ class Move{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         Move _Move = (Move) o;
+            boolean result = true;
          if (
              !this.row.equals("?DNC?")
                 && !_Move.row.equals("?DNC?"))
-                return ( _Move.row.equals(this.row));
+                if (! _Move.row.equals(this.row)) result = false;
          if (
              !this.column.equals("?DNC?")
                 && !_Move.column.equals("?DNC?"))
-                return ( _Move.column.equals(this.column));
+                if (! _Move.column.equals(this.column)) result = false;
          if (
              !this.mark.equals("?DNC?")
                 && !_Move.mark.equals("?DNC?"))
-                return ( _Move.mark.equals(this.mark));
-             return true;  }
+                if (! _Move.mark.equals(this.mark)) result = false;
+             return result;  }
     public static class Builder {
         private String row = "0";
         private String column = "0";

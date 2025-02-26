@@ -20,25 +20,27 @@ class AllTypes{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         AllTypes _AllTypes = (AllTypes) o;
+            boolean result = true;
          if (
              !this.anInt.equals("?DNC?")
                 && !_AllTypes.anInt.equals("?DNC?"))
-                return ( _AllTypes.anInt.equals(this.anInt));
+                if (! _AllTypes.anInt.equals(this.anInt)) result = false;
          if (
              !this.aDouble.equals("?DNC?")
                 && !_AllTypes.aDouble.equals("?DNC?"))
-                return ( _AllTypes.aDouble.equals(this.aDouble));
+                if (! _AllTypes.aDouble.equals(this.aDouble)) result = false;
          if (
              !this.aChar.equals("?DNC?")
                 && !_AllTypes.aChar.equals("?DNC?"))
-                return ( _AllTypes.aChar.equals(this.aChar));
+                if (! _AllTypes.aChar.equals(this.aChar)) result = false;
          if (
              !this.achar.equals("?DNC?")
                 && !_AllTypes.achar.equals("?DNC?"))
-                return ( _AllTypes.achar.equals(this.achar));
-             return true;  }
+                if (! _AllTypes.achar.equals(this.achar)) result = false;
+             return result;  }
     public static class Builder {
         private String anInt = "0";
         private String aDouble = "0.0";

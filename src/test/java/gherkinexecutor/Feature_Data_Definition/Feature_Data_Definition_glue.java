@@ -21,6 +21,13 @@ class Feature_Data_Definition_glue {
 
 
     void Given_table_is(List<ATest> values ) {
+//        ATest one = new ATest("a", "b", "c");
+//        ATest two = new ATest ("a", "b", "c");
+//        ATest three = new ATest("a", "b", "d");
+//        System.out.println("*********");
+//        System.out.println( one.equals(two));
+//        System.out.println( two.equals(three));
+//        System.out.println(three.equals(one));
         System.out.println("---  " + "Given_table_is");
         System.out.println("*******");
         log("---  " + "Given_table_is");

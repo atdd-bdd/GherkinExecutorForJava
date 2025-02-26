@@ -19,21 +19,23 @@ class Imports{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         Imports _Imports = (Imports) o;
+            boolean result = true;
          if (
              !this.myPattern.equals("?DNC?")
                 && !_Imports.myPattern.equals("?DNC?"))
-                return ( _Imports.myPattern.equals(this.myPattern));
+                if (! _Imports.myPattern.equals(this.myPattern)) result = false;
          if (
              !this.myWeekday.equals("?DNC?")
                 && !_Imports.myWeekday.equals("?DNC?"))
-                return ( _Imports.myWeekday.equals(this.myWeekday));
+                if (! _Imports.myWeekday.equals(this.myWeekday)) result = false;
          if (
              !this.myBigInt.equals("?DNC?")
                 && !_Imports.myBigInt.equals("?DNC?"))
-                return ( _Imports.myBigInt.equals(this.myBigInt));
-             return true;  }
+                if (! _Imports.myBigInt.equals(this.myBigInt)) result = false;
+             return result;  }
     public static class Builder {
         private String myPattern = "a.*";
         private String myWeekday = "MONDAY";

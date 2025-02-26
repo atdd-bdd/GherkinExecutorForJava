@@ -2,6 +2,7 @@ package gherkinexecutor.Feature_Data_Definition;
 class MyClass{
     String one = "aaa";
     String two = "1";
+    public MyClass(){}
     public MyClass(
         String one
         ,String two
@@ -12,7 +13,8 @@ class MyClass{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
+            if (o == null || getClass() != o.getClass())
+                return false;
             MyClass _MyClass = (MyClass) o;
             if (
                 !this.one.equals("?DNC?")

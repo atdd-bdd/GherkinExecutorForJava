@@ -11,9 +11,9 @@ class Feature_Tic_Tac_Toe_Game_glue {
     final TicTacToeGame game = new TicTacToeGame();
     void log(String value) {
         try {
-            FileWriter mylog = new FileWriter("src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/log.txt", true);
-            mylog.write(value + "\n");
-            mylog.close();
+            FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Tic_Tac_Toe_Game/log.txt", true);
+            myLog.write(value + "\n");
+            myLog.close();
         } catch (IOException e) {
             System.err.println("**** Cannot write to log ");
         }

@@ -16,7 +16,7 @@ public class Translate {
     private final Map<String, String> dataNamesInternal = new HashMap<>(); // used to check for duplicate data
     private final Map<String, String> importNames = new HashMap<>(); // used to hold conversion functions for imports
 
-    private final List<String> linesToAddForDataAndGlue = new ArrayList();
+    private final List<String> linesToAddForDataAndGlue = new ArrayList<>();
     private final Map<String, String> defineNames = new HashMap<>();
     private final int stepCount = 0; // use to label duplicate scenarios
     //    private final String basePath = Configuration.testSubDirectory;
@@ -82,18 +82,15 @@ public class Translate {
         endUp();
     }
 
-    private void findFeatureDirectory(String name){
+    private void findFeatureDirectory(String name) {
         String directory = "";
         int indexForward = name.lastIndexOf('/');
         int indexBack = name.lastIndexOf('\\');
-        int index = (indexForward > indexBack ? indexForward: indexBack);
+        int index = (Math.max(indexForward, indexBack));
         if (index >= 0)
-            directory = name.substring(0,index + 1);
+            directory = name.substring(0, index + 1);
         featureDirectory = directory;
-        featurePackagePath = featureDirectory.replace("\\",".").replace("/",".");
-        System.out.println("Directory **** " +featureDirectory);
-        System.out.println("Package " + featurePackagePath);
-        return;
+        featurePackagePath = featureDirectory.replace("\\", ".").replace("/", ".");
     }
 
     private void actOnLine(String line, int pass) {
@@ -347,12 +344,12 @@ public class Translate {
     boolean errorOccurred = false;
 
     private void error(String value) {
-        System.err.println("[GherkinExecutor] " + " Error "+ value);
+        System.err.println("[GherkinExecutor] " + " Error " + value);
         errorOccurred = true;
     }
 
     private void warning(String value) {
-        System.err.println("[GherkinExecutor] " + "Warning "+ value);
+        System.err.println("[GherkinExecutor] " + "Warning " + value);
     }
 
     private static void printFlow(String value) {
@@ -472,33 +469,33 @@ public class Translate {
     }
 
 
-        public static List<String> findFeatureFiles(String directory) {
-            List<String> featureFiles = new ArrayList<>();
-            collectFeatureFiles(new File(directory), featureFiles);
-            return featureFiles;
-        }
+    public static List<String> findFeatureFiles(String directory) {
+        List<String> featureFiles = new ArrayList<>();
+        collectFeatureFiles(new File(directory), featureFiles);
+        return featureFiles;
+    }
 
-        private static void collectFeatureFiles(File dir, List<String> featureFiles) {
-            String remove = Configuration.featureSubDirectory;
-            remove = remove.replace ("/", "\\");
-            if (dir.isDirectory()) {
-                File[] files = dir.listFiles();
-                if (files != null) {
-                    for (File file : files) {
-                        if (file.isDirectory()) {
-                            collectFeatureFiles(file, featureFiles);
-                        } else if (file.getName().endsWith(".feature")) {
-                            String path = file.getPath();
-                            path = path.replace(remove, "");
-                            featureFiles.add(path);
-                        }
+    private static void collectFeatureFiles(File dir, List<String> featureFiles) {
+        String remove = Configuration.featureSubDirectory;
+        remove = remove.replace("/", "\\");
+        if (dir.isDirectory()) {
+            File[] files = dir.listFiles();
+            if (files != null) {
+                for (File file : files) {
+                    if (file.isDirectory()) {
+                        collectFeatureFiles(file, featureFiles);
+                    } else if (file.getName().endsWith(".feature")) {
+                        String path = file.getPath();
+                        path = path.replace(remove, "");
+                        featureFiles.add(path);
                     }
                 }
             }
         }
+    }
 
-        @SuppressWarnings("ConstantValue")
-        public static void main(String[] args) {
+    @SuppressWarnings("ConstantValue")
+    public static void main(String[] args) {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
         printFlow("Arguments");
@@ -1004,7 +1001,7 @@ public class Translate {
                         templatePrint("                  System.out.println(i);");
                         templatePrint("                      }");
                         templatePrint("                     catch(IllegalArgumentException e){");
-                        templatePrint("                         System.err.println(\"Argument Error \" + value.toString() + " + name + ".toDataTypeString());");
+                        templatePrint("                         System.err.println(\"Argument Error \" + value + " + name + ".toDataTypeString());");
                         templatePrint("                         }");
                     }
                     templatePrint("              }");
@@ -1100,7 +1097,7 @@ public class Translate {
             if (dataNames.containsKey(className)) {
                 className += stepCount;
                 warning("Data name is duplicated, has been renamed " + className);
-             }
+            }
             trace("Creating class for " + className);
             dataNames.put(className, "");
             // Put each in a new file
@@ -1236,17 +1233,19 @@ public class Translate {
             dataPrintLn("    @Override");
             dataPrintLn("    public boolean equals (Object o) {");
             dataPrintLn("        if (this == o) return true;");
-            dataPrintLn("        if (o == null || getClass() != o.getClass()) return false;");
+            dataPrintLn("        if (o == null || getClass() != o.getClass())");
+            dataPrintLn("             return false;");
 
             String variableName = "_" + className;
             dataPrintLn("        " + className + " " + variableName + " = (" + className + ") o;");
+            dataPrintLn("            boolean result = true;");
             for (DataValues variable : variables) {
                 dataPrintLn("         if (");
                 dataPrintLn("             !this." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + ")");
                 dataPrintLn("                && !" + variableName + "." + variable.name + ".equals(" + quoteIt(Configuration.doNotCompare) + "))");
-                dataPrintLn("                return ( " + variableName + "." + variable.name + ".equals(this." + variable.name + "));");
+                dataPrintLn("                if (! " + variableName + "." + variable.name + ".equals(this." + variable.name + ")) result = false;");
             }
-            dataPrintLn("             return true;  }");
+            dataPrintLn("             return result;  }");
         }
 
         private void createConversionMethod(String internalClassName, List<DataValues> variables) {
@@ -1286,6 +1285,7 @@ public class Translate {
                 case "float":
                     return "Float.parseFloat(" + value + ")";
                 case "boolean":
+                case "Boolean":
                     return "Boolean.parseBoolean(" + value + ")";
                 case "char":
                     return "( " + value + ".length() > 0 ?"
@@ -1302,8 +1302,6 @@ public class Translate {
                     return "Float.valueOf(" + value + ")";
                 case "Double":
                     return "Double.valueOf(" + value + ")";
-                case "Boolean":
-                    return "Boolean.valueOf(" + value + ")";
                 case "Character":
                     return "Character.valueOf( " + value + ".length() > 0 ?"
                             + value + ".charAt(0) : ' ')";
@@ -1409,8 +1407,8 @@ public class Translate {
             dataPrintLn("        " + className + " " + variableName + " = (" + className + ") o;");
             dataPrintLn("         return ");
             String and = "";
-            String comparison = ".equals";
             for (DataValues variable : variables) {
+                String comparison = ".equals";
                 if (primitiveDataType(variable))
                     comparison = " == ";
                 dataPrintLn("                " + and + "( " + variableName + "." + variable.name + comparison + "(this." + variable.name + "))");
@@ -1660,9 +1658,9 @@ public class Translate {
     static class Configuration {
 
         public static final boolean logIt = false;
-            // Set to true for logging during the tests to log.txt
+        // Set to true for logging during the tests to log.txt
         public static final boolean inTest = true;
-             // switch to true for development of Translator
+        // switch to true for development of Translator
         public static final boolean traceOn = false; // Set to true to see trace
         public static final char spaceCharacters = '~'; // Will replace with space in tables
 
@@ -1670,9 +1668,9 @@ public class Translate {
         public static String currentDirectory = "";
 
         public static final String featureSubDirectory = "src/test/java/";
-            // where features are stored
+        // where features are stored
         public static final String startingFeatureDirectory = featureSubDirectory;
-            // where the directory tree of features is to be found.
+        // where the directory tree of features is to be found.
         public static final String packageName = "gherkinexecutor";
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
         public static final String dataDefinitionFileExtension = "java"; // "tmpl"; // change to java if altering data file

@@ -49,7 +49,7 @@ class Feature_Examples_glue {
             try {
                 new ID(value.value);
                   if (!expected) {
-                    fail("Invalid value did not throw exeception "
+                    fail("Invalid value did not throw exception "
                             + value.value + " " + value.notes);
                 }
             } catch (Exception e) {

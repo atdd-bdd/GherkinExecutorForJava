@@ -14,17 +14,19 @@ class ExampleClassWithBlanks{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ExampleClassWithBlanks _ExampleClassWithBlanks = (ExampleClassWithBlanks) o;
+            boolean result = true;
          if (
              !this.field_1.equals("?DNC?")
                 && !_ExampleClassWithBlanks.field_1.equals("?DNC?"))
-                return ( _ExampleClassWithBlanks.field_1.equals(this.field_1));
+                if (! _ExampleClassWithBlanks.field_1.equals(this.field_1)) result = false;
          if (
              !this.field_2.equals("?DNC?")
                 && !_ExampleClassWithBlanks.field_2.equals("?DNC?"))
-                return ( _ExampleClassWithBlanks.field_2.equals(this.field_2));
-             return true;  }
+                if (! _ExampleClassWithBlanks.field_2.equals(this.field_2)) result = false;
+             return result;  }
     public static class Builder {
         private String field_1 = " ";
         private String field_2 = " ";

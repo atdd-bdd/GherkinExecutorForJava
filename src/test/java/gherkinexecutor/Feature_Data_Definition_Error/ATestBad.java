@@ -17,21 +17,23 @@ class ATestBad{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         ATestBad _ATestBad = (ATestBad) o;
+            boolean result = true;
          if (
              !this.anInt.equals("?DNC?")
                 && !_ATestBad.anInt.equals("?DNC?"))
-                return ( _ATestBad.anInt.equals(this.anInt));
+                if (! _ATestBad.anInt.equals(this.anInt)) result = false;
          if (
              !this.aString.equals("?DNC?")
                 && !_ATestBad.aString.equals("?DNC?"))
-                return ( _ATestBad.aString.equals(this.aString));
+                if (! _ATestBad.aString.equals(this.aString)) result = false;
          if (
              !this.aDouble.equals("?DNC?")
                 && !_ATestBad.aDouble.equals("?DNC?"))
-                return ( _ATestBad.aDouble.equals(this.aDouble));
-             return true;  }
+                if (! _ATestBad.aDouble.equals(this.aDouble)) result = false;
+             return result;  }
     public static class Builder {
         private String anInt = "a";
         private String aString = " ";

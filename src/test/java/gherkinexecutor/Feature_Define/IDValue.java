@@ -14,17 +14,19 @@ class IDValue{
     @Override
     public boolean equals (Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (o == null || getClass() != o.getClass())
+             return false;
         IDValue _IDValue = (IDValue) o;
+            boolean result = true;
          if (
              !this.iD.equals("?DNC?")
                 && !_IDValue.iD.equals("?DNC?"))
-                return ( _IDValue.iD.equals(this.iD));
+                if (! _IDValue.iD.equals(this.iD)) result = false;
          if (
              !this.value.equals("?DNC?")
                 && !_IDValue.value.equals("?DNC?"))
-                return ( _IDValue.value.equals(this.value));
-             return true;  }
+                if (! _IDValue.value.equals(this.value)) result = false;
+             return result;  }
     public static class Builder {
         private String iD = "";
         private String value = "";

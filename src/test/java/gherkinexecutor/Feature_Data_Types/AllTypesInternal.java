@@ -39,7 +39,7 @@ class AllTypesInternal{
          return 
                 ( _AllTypesInternal.anInt.equals(this.anInt))
                  && ( _AllTypesInternal.aDouble == (this.aDouble))
-                 && ( _AllTypesInternal.aChar == (this.aChar))
+                 && ( _AllTypesInternal.aChar.equals(this.aChar))
                  && ( _AllTypesInternal.achar == (this.achar))
              ;  }
     @Override
