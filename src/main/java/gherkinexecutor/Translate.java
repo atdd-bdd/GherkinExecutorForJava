@@ -517,21 +517,39 @@ public class Translate {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
         printFlow("Arguments");
-//        processArguments(args);
+        processArguments(args);
         if (Configuration.searchTree && !Configuration.startingFeatureDirectory.isEmpty()) {
             List<String> filesInTree = findFeatureFiles(Configuration.startingFeatureDirectory);
             printFlow("Adding directory tree files");
             filesInTree.forEach(System.out::println);
             Configuration.featureFiles.addAll(filesInTree);
         }
-        for (String arg : args) {
-            printFlow("Program argument: " + arg);
-            Configuration.featureFiles.add(arg);
-        }
         for (String name : Configuration.featureFiles) {
             Translate translate = new Translate();
             printFlow("Translating " + name);
             translate.translateInTests(name);
+        }
+    }
+
+    private static void processArguments(String[] args) {
+        for (String arg : args) {
+            printFlow("Program argument: " + arg);
+            switch(arg) {
+                case "logIt":
+                    Configuration.logIt = true;
+                    break;
+                case "inTest":
+                    Configuration.inTest = true;
+                    break;
+                case "traceOn":
+                    Configuration.traceOn = true;
+                    break;
+                case "searchTree":
+                    Configuration.searchTree = true;
+                    break;
+            default:
+                Configuration.featureFiles.add(arg);
+            }
         }
     }
 
@@ -964,7 +982,6 @@ public class Translate {
         template = template.replace("CLASS", toClass);
         template = template.replace("CONVERT", convert);
         linesToAddToEndOfGlue.add(template);
-        System.out.println(template);
         }
 
 
@@ -1638,7 +1655,6 @@ public class Translate {
         }
 
         private void actOnImport(List<String> words) {
-            System.out.println("**** Importing *****");
             Pair<String, List<String>> follow = lookForFollow();
             String followType = follow.getFirst();
             List<String> table = follow.getSecond();
@@ -1771,12 +1787,12 @@ public class Translate {
 
     static class Configuration {
 
-        public static final boolean logIt = false;
+        public static boolean logIt = false;
         // Set to true for logging during the tests to log.txt
-        public static final boolean inTest = false;
+        public static boolean inTest = false;
         // switch to
         // true for development of Translator
-        public static final boolean traceOn = false; // Set to true to see trace
+        public static boolean traceOn = false; // Set to true to see trace
         public static final char spaceCharacters = '~'; // Will replace this character with space in tables
 
         public static boolean addLineToString = true; // add a \n to the toString method
