@@ -214,7 +214,7 @@ public class Translate {
     }
 
     private static String makeFullName(List<String> words) {
-        String temp =  String.join("_", words);
+        String temp = String.join("_", words);
         Pattern p = Pattern.compile("[^A-Za-z0-9_]");
         Matcher m = p.matcher(temp);
         return m.replaceAll("_");
@@ -224,9 +224,11 @@ public class Translate {
         if (actOnFeatureFirstHalf(fullName)) return;
         testPrint("package " + packagePath + ";");
         switch (Configuration.testFramework) {
+            //noinspection DataFlowIssue
             case "JUnit4":
                 testPrint("import org.junit.Test;");
                 break;
+            //noinspection DataFlowIssue
             case "TestNG":
                 testPrint("import org.testng.annotations.Test;");
                 break;
@@ -283,7 +285,7 @@ public class Translate {
         return Character.toLowerCase(temp.charAt(0)) + temp.substring(1);
     }
 
-
+//    Is needed for kotlin to reverse initialization of variables
 //    private void cleanFiles()  {
 //        try {
 //            testFile.close();
@@ -534,7 +536,7 @@ public class Translate {
     private static void processArguments(String[] args) {
         for (String arg : args) {
             printFlow("Program argument: " + arg);
-            switch(arg) {
+            switch (arg) {
                 case "logIt":
                     Configuration.logIt = true;
                     break;
@@ -547,8 +549,8 @@ public class Translate {
                 case "searchTree":
                     Configuration.searchTree = true;
                     break;
-            default:
-                Configuration.featureFiles.add(arg);
+                default:
+                    Configuration.featureFiles.add(arg);
             }
         }
     }
@@ -556,6 +558,7 @@ public class Translate {
     public String quoteIt(String defaultVal) {
         return "\"" + defaultVal + "\"";
     }
+
     public String fromImportData(String dataType, String value) {
         if (importNames.containsKey(dataType)) {
             String conversionMethod = importNames.get(dataType);
@@ -616,6 +619,7 @@ public class Translate {
 
         }
     }
+
     static class InputIterator {
         private final List<String> linesIn = new ArrayList<>();
         @SuppressWarnings("UnusedAssignment")
@@ -864,7 +868,7 @@ public class Translate {
             }
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(stringList" + s + ");");
-            templateConstruct.makeFunctionTemplate(dataType, fullName, true, "String");
+            templateConstruct.makeFunctionTemplateIsList(dataType, fullName, "String");
         }
 
         private void stringToString(List<String> table, String fullName) {
@@ -876,7 +880,7 @@ public class Translate {
             }
             testPrint("            \"\"\".stripIndent();");
             testPrint("        " + glueObject + "." + fullName + "(string" + s + ");");
-            templateConstruct.makeFunctionTemplate("String", fullName, false, "");
+            templateConstruct.makeFunctionTemplate("String", fullName);
         }
 
         private void tableToListOfListOfObject(List<String> table, String fullName, String className) {
@@ -892,9 +896,10 @@ public class Translate {
             }
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(stringListList" + s + ");");
-            templateConstruct.makeFunctionTemplateObject(dataType, fullName, "" + className );
-            createConvertTableToListOfListOfObjectMethod(table,className);
+            templateConstruct.makeFunctionTemplateObject(dataType, fullName, "" + className);
+            createConvertTableToListOfListOfObjectMethod(className);
         }
+
         private void tableToListOfList(List<String> table, String fullName) {
             String s = Integer.toString(stepNumberInScenario);
             String dataType = "List<List<String>>";
@@ -908,7 +913,7 @@ public class Translate {
             }
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(stringListList" + s + ");");
-            templateConstruct.makeFunctionTemplate(dataType, fullName, true, "List<String>");
+            templateConstruct.makeFunctionTemplateIsList(dataType, fullName, "List<String>");
         }
 
 
@@ -960,28 +965,27 @@ public class Translate {
         }
 
 
+        private void createConvertTableToListOfListOfObjectMethod(String toClass) {
+            DataConstruct.DataValues variable = new DataConstruct.DataValues("s", "s", toClass);
+            String convert = makeValueFromString(variable, true);
 
-        private void createConvertTableToListOfListOfObjectMethod(List<String> table, String toClass) {
-        DataConstruct.DataValues variable = new DataConstruct.DataValues("s", "s",toClass);
-        String convert = makeValueFromString(variable, true);
-
-        String template =
-                """
-                        public static List<List<CLASS>> convertList(List<List<String>> stringList) {
-                            List<List<CLASS>> classList = new ArrayList<>();
-                            for (List<String> innerList : stringList) {
-                                List<CLASS> innerClassList = new ArrayList<>();
-                                for (String s : innerList) {
-                                    innerClassList.add(CONVERT);
-                                }
-                                classList.add(innerClassList);
-                            }
-                        return classList;
-                        }
-                """.stripIndent();
-        template = template.replace("CLASS", toClass);
-        template = template.replace("CONVERT", convert);
-        linesToAddToEndOfGlue.add(template);
+            String template =
+                    """
+                                    public static List<List<CLASS>> convertList(List<List<String>> stringList) {
+                                        List<List<CLASS>> classList = new ArrayList<>();
+                                        for (List<String> innerList : stringList) {
+                                            List<CLASS> innerClassList = new ArrayList<>();
+                                            for (String s : innerList) {
+                                                innerClassList.add(CONVERT);
+                                            }
+                                            classList.add(innerClassList);
+                                        }
+                                    return classList;
+                                    }
+                            """.stripIndent();
+            template = template.replace("CLASS", toClass);
+            template = template.replace("CONVERT", convert);
+            linesToAddToEndOfGlue.add(template);
         }
 
 
@@ -995,7 +999,7 @@ public class Translate {
             testPrint("            \"\"\".stripIndent();");
             testPrint("        " + glueObject + "." + fullName + "(table" + s + ");");
             // test_print("");
-            templateConstruct.makeFunctionTemplate("String", fullName, false, "");
+            templateConstruct.makeFunctionTemplate("String", fullName);
         }
 
         private void convertBarLineToList(String lineIn, String commaIn) {
@@ -1041,7 +1045,7 @@ public class Translate {
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(objectList" + s + ");");
 
-            templateConstruct.makeFunctionTemplate(dataType, fullName, true, className);
+            templateConstruct.makeFunctionTemplateIsList(dataType, fullName, className);
         }
 
         private List<List<String>> convertToListList(List<String> table, boolean transpose) {
@@ -1147,6 +1151,7 @@ public class Translate {
             return false;
         }
 
+        @SuppressWarnings("SameParameterValue")
         private void makeFunctionTemplateNothing(String dataType, String fullName) {
             if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
             glueFunctions.put(fullName, dataType);
@@ -1160,43 +1165,43 @@ public class Translate {
             templatePrint("");
         }
 
-        private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
+        private void makeFunctionTemplateIsList(String dataType, String fullName, String listElement) {
             if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
             glueFunctions.put(fullName, dataType);
-            if (dataType.isEmpty()) {
-                templatePrint("    void " + fullName + "(){");
-            } else {
-                if (isList)
-                    templatePrint("    void " + fullName + "(" + dataType + " values ) {");
-                else
-                    templatePrint("    void " + fullName + "(" + dataType + " value ) {");
-            }
+            templatePrint("    void " + fullName + "(" + dataType + " values ) {");
             templatePrint("        System.out.println(\"---  \" + " + "\"" + fullName + "\"" + ");");
             if (Configuration.logIt) {
                 templatePrint("        log(\"---  \" + " + "\"" + fullName + "\"" + ");");
-                if (!dataType.isEmpty()) {
-                    if (isList)
-                        templatePrint("        log(values.toString());");
-                    else
-                        templatePrint("        log(value.toString());");
-                }
+                templatePrint("        log(values.toString());");
             }
-            if (!dataType.isEmpty()) {
-                if (!isList)
-                    templatePrint("        System.out.println(value);");
-                if (isList) {
-                    String name = listElement + "Internal";
-                    templatePrint("        for (" + listElement + " value : values){");
-                    templatePrint("             System.out.println(value);");
-                    templatePrint("             // Add calls to production code and asserts");
-                    if (!dataType.equals("List<List<String>>")
-                            && !listElement.equals("String")
-                            && (dataNamesInternal.containsKey(name))) {
-                        templatePrint("              " + name + " i = value.to" + name + "();");
-                    }
-                    templatePrint("              }");
-                }
+            String name = listElement + "Internal";
+            templatePrint("        for (" + listElement + " value : values){");
+            templatePrint("             System.out.println(value);");
+            templatePrint("             // Add calls to production code and asserts");
+            if (!dataType.equals("List<List<String>>")
+                    && !listElement.equals("String")
+                    && (dataNamesInternal.containsKey(name))) {
+                templatePrint("              " + name + " i = value.to" + name + "();");
             }
+            templatePrint("              }");
+
+            if (!Configuration.inTest)
+                templatePrint("        fail(\"Must implement\");");
+            templatePrint("    }");
+            templatePrint("");
+        }
+
+        @SuppressWarnings("SameParameterValue")
+        private void makeFunctionTemplate(String dataType, String fullName) {
+            if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
+            glueFunctions.put(fullName, dataType);
+            templatePrint("    void " + fullName + "(" + dataType + " value ) {");
+            templatePrint("        System.out.println(\"---  \" + " + "\"" + fullName + "\"" + ");");
+            if (Configuration.logIt) {
+                templatePrint("        log(\"---  \" + " + "\"" + fullName + "\"" + ");");
+                templatePrint("        log(value.toString());");
+            }
+            templatePrint("        System.out.println(value);");
             if (!Configuration.inTest)
                 templatePrint("        fail(\"Must implement\");");
             templatePrint("    }");
@@ -1209,9 +1214,11 @@ public class Translate {
                 templatePrint(line);
             }
             switch (Configuration.testFramework) {
+                //noinspection DataFlowIssue
                 case "JUnit4":
                     templatePrint("import static org.junit.Assert.*;");
                     break;
+                //noinspection DataFlowIssue
                 case "TestNG":
                     templatePrint("import static org.testng.Assert.*;");
                     break;
@@ -1233,7 +1240,7 @@ public class Translate {
         }
 
         private void endTemplate() {
-            for (String line : linesToAddToEndOfGlue){
+            for (String line : linesToAddToEndOfGlue) {
                 templatePrint(line);
             }
             templatePrint("    }");   // End the class
@@ -1252,6 +1259,7 @@ public class Translate {
         private FileWriter dataDefinitionFile;
         final String throwString = ""; // needed if you want to catch errors in conversion methods
 
+        @SuppressWarnings("unused")
         public static class DataValues {
             public final String name;
             public final String defaultVal;
@@ -1397,7 +1405,7 @@ public class Translate {
             String lineMark = "";
             if (Configuration.addLineToString)
                 lineMark = "\\n";
-            dataPrintLn("            + " +   quoteIt("} ") + " + "  + quoteIt(lineMark) +  "; }  ");
+            dataPrintLn("            + " + quoteIt("} ") + " + " + quoteIt(lineMark) + "; }  ");
 
         }
 
@@ -1462,8 +1470,6 @@ public class Translate {
             dataPrintLn("        ); }"); // end function
 
         }
-
-
 
 
         private boolean createVariableList(List<String> table, List<DataValues> variables) {
@@ -1643,6 +1649,7 @@ public class Translate {
 
     private class ImportConstruct {
 
+        @SuppressWarnings("unused")
         class ImportData {
             public final String dataType;
             public final String importName;
@@ -1797,6 +1804,7 @@ public class Translate {
 
     }
 
+    @SuppressWarnings("unused")
     static class Configuration {
 
         public static boolean logIt = false;
@@ -1822,11 +1830,12 @@ public class Translate {
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
         // used to put the test files in the directory corresponding to the packageName.
         public static final String dataDefinitionFileExtension = "java"; // "tmpl";
-                // change to tmpl if you are altering the data classes to avoid overwriting them
+        // change to tmpl if you are altering the data classes to avoid overwriting them
 
         public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
 
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
+
         // Imports or other lines to add to data class and glue class
         // Must include  semicolon if needed
         static {
