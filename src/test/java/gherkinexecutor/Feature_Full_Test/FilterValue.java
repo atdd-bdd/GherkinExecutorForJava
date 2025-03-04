@@ -56,7 +56,7 @@ class FilterValue{
         return "FilterValue {"
         +"name = " + name + " "
         +"value = " + value + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     FilterValueInternal toFilterValueInternal() {
         return new FilterValueInternal(
          name

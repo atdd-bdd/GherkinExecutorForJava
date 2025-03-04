@@ -71,7 +71,7 @@ class TemperatureCalculation{
         +"f = " + f + " "
         +"c = " + c + " "
         +"notes = " + notes + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     TemperatureCalculationInternal toTemperatureCalculationInternal() {
         return new TemperatureCalculationInternal(
          Integer.valueOf(f)

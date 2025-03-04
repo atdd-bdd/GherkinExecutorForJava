@@ -44,5 +44,5 @@ class ValueValidInternal{
         +"value = " + value + " "
         +"valid = " + valid + " "
         +"notes = " + notes + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

@@ -892,8 +892,8 @@ public class Translate {
             }
             testPrint("            );");
             testPrint("        " + glueObject + "." + fullName + "(stringListList" + s + ");");
-            templateConstruct.makeFunctionTemplateObject(dataType, fullName, true, "" + className );
-            createConvertTabletoListOfListOfObjectMethod(table,className);
+            templateConstruct.makeFunctionTemplateObject(dataType, fullName, "" + className );
+            createConvertTableToListOfListOfObjectMethod(table,className);
         }
         private void tableToListOfList(List<String> table, String fullName) {
             String s = Integer.toString(stepNumberInScenario);
@@ -961,7 +961,7 @@ public class Translate {
 
 
 
-        private void createConvertTabletoListOfListOfObjectMethod(List<String> table, String toClass) {
+        private void createConvertTableToListOfListOfObjectMethod(List<String> table, String toClass) {
         DataConstruct.DataValues variable = new DataConstruct.DataValues("s", "s",toClass);
         String convert = makeValueFromString(variable, true);
 
@@ -977,7 +977,7 @@ public class Translate {
                                 classList.add(innerClassList);
                             }
                         return classList;
-                        }        
+                        }
                 """.stripIndent();
         template = template.replace("CLASS", toClass);
         template = template.replace("CONVERT", convert);
@@ -1118,7 +1118,7 @@ public class Translate {
             }
         }
 
-        private void makeFunctionTemplateObject(String dataType, String fullName, boolean isList, String listElement) {
+        private void makeFunctionTemplateObject(String dataType, String fullName, String listElement) {
             if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
             glueFunctions.put(fullName, dataType);
             templatePrint("    void " + fullName + "(" + dataType + " values ) {");
@@ -1146,6 +1146,7 @@ public class Translate {
             }
             return false;
         }
+
 
         private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
             if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
@@ -1238,7 +1239,7 @@ public class Translate {
     class DataConstruct {
         //        private final String dataDefinitionFilename = basePath + "DataDefinition" + ".tmp";
         private FileWriter dataDefinitionFile;
-        final String throwString = ""; // needed if want to catch errors in converstins methods
+        final String throwString = ""; // needed if you want to catch errors in converstins methods
 
         public static class DataValues {
             public final String name;

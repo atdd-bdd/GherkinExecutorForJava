@@ -71,7 +71,7 @@ class ATest{
         +"anInt = " + anInt + " "
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     ATestInternal toATestInternal() {
         return new ATestInternal(
          Integer.valueOf(anInt)

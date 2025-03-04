@@ -71,7 +71,7 @@ class ValueValid{
         +"value = " + value + " "
         +"valid = " + valid + " "
         +"notes = " + notes + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     ValueValidInternal toValueValidInternal() {
         return new ValueValidInternal(
          value

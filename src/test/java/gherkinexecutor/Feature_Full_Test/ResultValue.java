@@ -41,7 +41,7 @@ class ResultValue{
     public String toString() {
         return "ResultValue {"
         +"sum = " + sum + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     ResultValueInternal toResultValueInternal() {
         return new ResultValueInternal(
          Integer.valueOf(sum)

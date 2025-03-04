@@ -56,5 +56,5 @@ class ExampleClass{
         return "ExampleClass {"
         +"fieldA = " + fieldA + " "
         +"fieldB = " + fieldB + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

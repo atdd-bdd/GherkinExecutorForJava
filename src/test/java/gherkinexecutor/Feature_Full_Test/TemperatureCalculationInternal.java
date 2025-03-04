@@ -44,5 +44,5 @@ class TemperatureCalculationInternal{
         +"f = " + f + " "
         +"c = " + c + " "
         +"notes = " + notes + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

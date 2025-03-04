@@ -1,18 +1,26 @@
 package gherkinexecutor.Feature_Full_Test;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 import java.util.List;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class Feature_Full_Test{
 
 
     void test_Background(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
-        feature_Full_Test_glue_object.Given_Background_Function();
+        List<List<String>> stringListList1 = List.of(
+           List.of(
+            "Background Here"
+            )
+            );
+        feature_Full_Test_glue_object.Given_Background_function_sets_a_value(stringListList1);
         }
     void test_Cleanup(Feature_Full_Test_glue feature_Full_Test_glue_object){
 
-        feature_Full_Test_glue_object.Given_Cleanup_Function();
+        List<List<String>> stringListList1 = List.of(
+           List.of(
+            "Cleanup Here"
+            )
+            );
+        feature_Full_Test_glue_object.Given_value_for_cleanup_should_be_set_to(stringListList1);
         }
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
@@ -20,6 +28,20 @@ class Feature_Full_Test{
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
+
+        List<List<String>> stringListList2 = List.of(
+           List.of(
+            "Background Here"
+            )
+            );
+        feature_Full_Test_glue_object.Then_background_should_set_value_to(stringListList2);
+
+        List<List<String>> stringListList3 = List.of(
+           List.of(
+            "Cleanup Here"
+            )
+            );
+        feature_Full_Test_glue_object.And_set_a_value_for_cleanup(stringListList3);
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
@@ -28,6 +50,20 @@ class Feature_Full_Test{
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
+
+        List<List<String>> stringListList2 = List.of(
+           List.of(
+            "Background Here"
+            )
+            );
+        feature_Full_Test_glue_object.Then_background_should_set_value_to(stringListList2);
+
+        List<List<String>> stringListList3 = List.of(
+           List.of(
+            "Cleanup Here"
+            )
+            );
+        feature_Full_Test_glue_object.And_set_a_value_for_cleanup(stringListList3);
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
@@ -164,7 +200,7 @@ class Feature_Full_Test{
                 .build()
             , new IDValue.Builder()
                 .iD("C")
-                .value("(1 +100)/2")
+                .value("(1 + 100)/2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data(objectList1);
@@ -319,13 +355,13 @@ class Feature_Full_Test{
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
 
-        List<Imports> objectList1 = List.of(
-             new Imports.Builder()
+        List<ImportData> objectList1 = List.of(
+             new ImportData.Builder()
                 .myPattern("a.*")
                 .myWeekday("MONDAY")
                 .myBigInt("1")
                 .build()
-            , new Imports.Builder()
+            , new ImportData.Builder()
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .myBigInt("10000000000")
@@ -339,13 +375,13 @@ class Feature_Full_Test{
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
 
-        List<Imports> objectList1 = List.of(
-             new Imports.Builder()
+        List<ImportData> objectList1 = List.of(
+             new ImportData.Builder()
                 .myPattern("a.*")
                 .myWeekday("SOMEONE")
                 .myBigInt("1")
                 .build()
-            , new Imports.Builder()
+            , new ImportData.Builder()
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .myBigInt("2")
@@ -359,13 +395,13 @@ class Feature_Full_Test{
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
 
-        List<Imports> objectList1 = List.of(
-             new Imports.Builder()
+        List<ImportData> objectList1 = List.of(
+             new ImportData.Builder()
                 .myPattern("a.*")
                 .myWeekday("MONDAY")
                 .myBigInt("1")
                 .build()
-            , new Imports.Builder()
+            , new ImportData.Builder()
                 .myPattern("[ab]")
                 .myWeekday("SUNDAY")
                 .myBigInt("A.2")
@@ -381,9 +417,33 @@ class Feature_Full_Test{
 
         String string1 =
             """
-            This is an include string
+            This is an include string from the main directory
             """.stripIndent();
         feature_Full_Test_glue_object.Given_a_string_include(string1);
+
+        String string2 =
+            """
+            This is an include string from the main directory
+            """.stripIndent();
+        feature_Full_Test_glue_object.Then_should_be_equal_to(string2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_An_include_from_base_directory(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        String string1 =
+            """
+            This is an include string from the main directory
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given_a_string_include(string1);
+
+        String string2 =
+            """
+            This is an include string from the main directory
+            """.stripIndent();
+        feature_Full_Test_glue_object.Then_should_be_equal_to(string2);
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
@@ -391,75 +451,33 @@ class Feature_Full_Test{
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
 
-        List<List<String>> stringListList1 = List.of(
-           List.of(
-            "a"
-            ,"b,c"
-            ,"d,"
-            )
-           ,List.of(
-            "1"
-            ,"2"
-            ,"3"
-            )
+        List<CSVContents> objectList1 = List.of(
+             new CSVContents.Builder()
+                .a("a")
+                .b("b,c")
+                .c("d,")
+                .build()
+            , new CSVContents.Builder()
+                .a("1")
+                .b("2")
+                .c("3")
+                .build()
             );
-        feature_Full_Test_glue_object.Given_a_table(stringListList1);
-        test_Cleanup(feature_Full_Test_glue_object); // from previous
-        }
-    @Test
-    void test_Scenario_Convert_a_CSV_file_to_Gherkin_Table(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background(feature_Full_Test_glue_object);
+        feature_Full_Test_glue_object.Given_a_table(objectList1);
 
-        String string1 =
-            """
-            a,"b,c","c"","
-            1,2,"3,""b,"",,"
-            """.stripIndent();
-        feature_Full_Test_glue_object.Given(string1);
-
-        String string2 =
-            """
-            |a|b,c|c",|
-            |1|2|3,"b,",,|
-            """.stripIndent();
-        feature_Full_Test_glue_object.When_converted_result_is(string2);
-        test_Cleanup(feature_Full_Test_glue_object); // from previous
-        }
-    @Test
-    void test_Scenario_Transpose_a_table(){
-         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
-        test_Background(feature_Full_Test_glue_object);
-
-        List<List<String>> stringListList1 = List.of(
-           List.of(
-            "a"
-            ,"b"
-            ,"c"
-            )
-           ,List.of(
-            "d"
-            ,"e"
-            ,"f"
-            )
+        List<CSVContents> objectList2 = List.of(
+             new CSVContents.Builder()
+                .a("a")
+                .b("b,c")
+                .c("d,")
+                .build()
+            , new CSVContents.Builder()
+                .a("1")
+                .b("2")
+                .c("3")
+                .build()
             );
-        feature_Full_Test_glue_object.Given_input_table(stringListList1);
-
-        List<List<String>> stringListList2 = List.of(
-           List.of(
-            "a"
-            ,"d"
-            )
-           ,List.of(
-            "b"
-            ,"e"
-            )
-           ,List.of(
-            "c"
-            ,"f"
-            )
-            );
-        feature_Full_Test_glue_object.When_transposed_result_is(stringListList2);
+        feature_Full_Test_glue_object.Then_Should_be_equal_to_table(objectList2);
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
@@ -497,6 +515,25 @@ class Feature_Full_Test{
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
+    void test_Scenario_Check_String_Variations(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        String string1 =
+            """
+            One line
+            Two line
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given_multiline_string(string1);
+
+        List<String> stringList2 = List.of(
+            "One line"
+            ,"Two line"
+            );
+        feature_Full_Test_glue_object.Then_should_be_equal_to_this_list(stringList2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
@@ -513,17 +550,21 @@ class Feature_Full_Test{
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_List_of_String(stringListList1);
 
-        List<ExampleClass> objectList2 = List.of(
-             new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
-                .build()
-            , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
-                .build()
+        List<List<String>> stringListList2 = List.of(
+           List.of(
+            "1"
+            ,"2"
+            )
+           ,List.of(
+            "3"
+            ,"4"
+            )
+           ,List.of(
+            "5"
+            ,"6"
+            )
             );
-        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object(objectList2);
+        feature_Full_Test_glue_object.Star_A_Table_to_List_Of_List_Of_Object(stringListList2);
 
         List<ExampleClass> objectList3 = List.of(
              new ExampleClass.Builder()
@@ -540,14 +581,26 @@ class Feature_Full_Test{
         List<ExampleClass> objectList4 = List.of(
              new ExampleClass.Builder()
                 .fieldA("a")
+                .fieldB("b")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .fieldB("d")
+                .build()
+            );
+        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object(objectList4);
+
+        List<ExampleClass> objectList5 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
                 .build()
             , new ExampleClass.Builder()
                 .fieldA("c")
                 .build()
             );
-        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Defaults(objectList4);
+        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Defaults(objectList5);
 
-        List<ExampleClassWithBlanks> objectList5 = List.of(
+        List<ExampleClassWithBlanks> objectList6 = List.of(
              new ExampleClassWithBlanks.Builder()
                 .field_1(" ")
                 .field_2("b")
@@ -557,14 +610,102 @@ class Feature_Full_Test{
                 .field_2(" ")
                 .build()
             );
-        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Name(objectList5);
+        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Values(objectList6);
 
-        String table6 =
+        List<ExampleClassWithBlanks> objectList7 = List.of(
+             new ExampleClassWithBlanks.Builder()
+                .field_1(" ")
+                .build()
+            , new ExampleClassWithBlanks.Builder()
+                .field_1("c")
+                .build()
+            );
+        feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Defaults(objectList7);
+
+        String table8 =
             """
             | aa  | bb  |
             | cc  | dd  |
             """.stripIndent();
-        feature_Full_Test_glue_object.Star_A_table_to_String(table6);
+        feature_Full_Test_glue_object.Star_A_table_to_String(table8);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Table_to_String(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        String table1 =
+            """
+            | aa  | bb  |
+            | cc  | dd  |
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given_A_table_to_String(table1);
+
+        String string2 =
+            """
+            | aa  | bb  |
+            | cc  | dd  |
+            """.stripIndent();
+        feature_Full_Test_glue_object.Then_string_should_be_same_as(string2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Table_without_all_fields_uses_defaults(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        List<ExampleClass> objectList1 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .build()
+            );
+        feature_Full_Test_glue_object.Given_A_table_to_List_of_Object_with_Defaults(objectList1);
+
+        List<ExampleClass> objectList2 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
+                .fieldB("x")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .fieldB("x")
+                .build()
+            );
+        feature_Full_Test_glue_object.Then_table_should_be_same_as(objectList2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Transpose_Table(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        List<ExampleClass> objectList1 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
+                .fieldB("b")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .fieldB("d")
+                .build()
+            );
+        feature_Full_Test_glue_object.Given_A_table_to_List_of_Object(objectList1);
+
+        List<ExampleClass> objectList2 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
+                .fieldB("b")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .fieldB("d")
+                .build()
+            );
+        feature_Full_Test_glue_object.Then_transposed_table_to_List_of_Object_should_be_the_same(objectList2);
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test

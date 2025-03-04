@@ -9,16 +9,45 @@ class Feature_Full_Test_glue {
     final String DNCString = "?DNC?";
 
 
-    void Given_Background_Function(){
-        System.out.println("---  " + "Given_Background_Function");
+    void Given_Background_function_sets_a_value(List<List<String>> values ) {
+        System.out.println("---  " + "Given_Background_function_sets_a_value");
+        for (List<String> value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
-    void Given_Cleanup_Function(){
-        System.out.println("---  " + "Given_Cleanup_Function");
+    void Given_value_for_cleanup_should_be_set_to(List<List<String>> values ) {
+        System.out.println("---  " + "Given_value_for_cleanup_should_be_set_to");
+        for (List<String> value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
     void Given_a_regular_function(){
         System.out.println("---  " + "Given_a_regular_function");
+        fail("Must implement");
+    }
+
+    void Then_background_should_set_value_to(List<List<String>> values ) {
+        System.out.println("---  " + "Then_background_should_set_value_to");
+        for (List<String> value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
+    }
+
+    void And_set_a_value_for_cleanup(List<List<String>> values ) {
+        System.out.println("---  " + "And_set_a_value_for_cleanup");
+        for (List<String> value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
     void Given_table_is(List<ATest> values ) {
@@ -28,6 +57,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             ATestInternal i = value.toATestInternal();
         }
+        fail("Must implement");
     }
 
     void When_compared_to(List<ATest> values ) {
@@ -37,6 +67,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             ATestInternal i = value.toATestInternal();
         }
+        fail("Must implement");
     }
 
     void Then_result_is(List<List<String>> values ) {
@@ -45,6 +76,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void Given_table_is_bad_initializer(List<ATestBad> values ) {
@@ -54,6 +86,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             ATestBadInternal i = value.toATestBadInternal();
         }
+        fail("Must implement");
     }
 
     void Given_this_data(List<IDValue> values ) {
@@ -62,6 +95,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void Then_should_be_equal_to_data(List<IDValue> values ) {
@@ -70,6 +104,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void Calculation_Convert_F_to_C(List<TemperatureCalculation> values ) {
@@ -79,6 +114,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
         }
+        fail("Must implement");
     }
 
     void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values ) {
@@ -88,6 +124,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             ValueValidInternal i = value.toValueValidInternal();
         }
+        fail("Must implement");
     }
 
     void Given_list_of_numbers(List<LabelValue> values ) {
@@ -97,6 +134,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             LabelValueInternal i = value.toLabelValueInternal();
         }
+        fail("Must implement");
     }
 
     void When_filtered_by_Label_with_value(List<List<String>> values ) {
@@ -105,6 +143,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void Then_sum_is(List<List<String>> values ) {
@@ -113,6 +152,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void When_filtered_by(List<FilterValue> values ) {
@@ -122,6 +162,7 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             FilterValueInternal i = value.toFilterValueInternal();
         }
+        fail("Must implement");
     }
 
     void Then_result(List<ResultValue> values ) {
@@ -131,68 +172,63 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             ResultValueInternal i = value.toResultValueInternal();
         }
+        fail("Must implement");
     }
 
-    void Given_this_data_should_be_okay(List<Imports> values ) {
+    void Given_this_data_should_be_okay(List<ImportData> values ) {
         System.out.println("---  " + "Given_this_data_should_be_okay");
-        for (Imports value : values){
+        for (ImportData value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            ImportsInternal i = value.toImportsInternal();
+            ImportDataInternal i = value.toImportDataInternal();
         }
+        fail("Must implement");
     }
 
-    void Given_this_data_should_fail(List<Imports> values ) {
+    void Given_this_data_should_fail(List<ImportData> values ) {
         System.out.println("---  " + "Given_this_data_should_fail");
-        for (Imports value : values){
+        for (ImportData value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            ImportsInternal i = value.toImportsInternal();
+            ImportDataInternal i = value.toImportDataInternal();
         }
+        fail("Must implement");
     }
 
     void Given_a_string_include(String value ) {
         System.out.println("---  " + "Given_a_string_include");
         System.out.println(value);
+        fail("Must implement");
     }
 
-    void Given_a_table(List<List<String>> values ) {
+    void Then_should_be_equal_to(String value ) {
+        System.out.println("---  " + "Then_should_be_equal_to");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_a_table(List<CSVContents> values ) {
         System.out.println("---  " + "Given_a_table");
-        for (List<String> value : values){
+        for (CSVContents value : values){
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
-    void Given(String value ) {
-        System.out.println("---  " + "Given");
-        System.out.println(value);
-    }
-
-    void When_converted_result_is(String value ) {
-        System.out.println("---  " + "When_converted_result_is");
-        System.out.println(value);
-    }
-
-    void Given_input_table(List<List<String>> values ) {
-        System.out.println("---  " + "Given_input_table");
-        for (List<String> value : values){
+    void Then_Should_be_equal_to_table(List<CSVContents> values ) {
+        System.out.println("---  " + "Then_Should_be_equal_to_table");
+        for (CSVContents value : values){
             System.out.println(value);
             // Add calls to production code and asserts
         }
-    }
-
-    void When_transposed_result_is(List<List<String>> values ) {
-        System.out.println("---  " + "When_transposed_result_is");
-        for (List<String> value : values){
-            System.out.println(value);
-            // Add calls to production code and asserts
-        }
+        fail("Must implement");
     }
 
     void Star_A_multiline_string_to_a_string(String value ) {
         System.out.println("---  " + "Star_A_multiline_string_to_a_string");
         System.out.println(value);
+        fail("Must implement");
     }
 
     void Star_A_multiline_string_to_a_List_of_String(List<String> values ) {
@@ -201,6 +237,22 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
+    }
+
+    void Given_multiline_string(String value ) {
+        System.out.println("---  " + "Given_multiline_string");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Then_should_be_equal_to_this_list(List<String> values ) {
+        System.out.println("---  " + "Then_should_be_equal_to_this_list");
+        for (String value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
     void Star_A_table_to_List_of_List_of_String(List<List<String>> values ) {
@@ -209,6 +261,13 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
+    }
+
+    void Star_A_Table_to_List_Of_List_Of_Object(List<List<String>> values ) {
+        List<List<Integer>> is = convertList(values);
+        System.out.println(is);
+        fail("Must implement");
     }
 
     void Star_A_table_to_List_of_Object(List<ExampleClass> values ) {
@@ -217,6 +276,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void Star_A_table_to_List_of_Object_with_Defaults(List<ExampleClass> values ) {
@@ -225,19 +285,79 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
-    void Star_A_table_to_List_of_Object_with_Blanks_in_Name(List<ExampleClassWithBlanks> values ) {
-        System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Blanks_in_Name");
+    void Star_A_table_to_List_of_Object_with_Blanks_in_Values(List<ExampleClassWithBlanks> values ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Blanks_in_Values");
         for (ExampleClassWithBlanks value : values){
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
+    }
+
+    void Star_A_table_to_List_of_Object_with_Blanks_in_Defaults(List<ExampleClassWithBlanks> values ) {
+        System.out.println("---  " + "Star_A_table_to_List_of_Object_with_Blanks_in_Defaults");
+        for (ExampleClassWithBlanks value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
     void Star_A_table_to_String(String value ) {
         System.out.println("---  " + "Star_A_table_to_String");
         System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_A_table_to_String(String value ) {
+        System.out.println("---  " + "Given_A_table_to_String");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Then_string_should_be_same_as(String value ) {
+        System.out.println("---  " + "Then_string_should_be_same_as");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_A_table_to_List_of_Object_with_Defaults(List<ExampleClass> values ) {
+        System.out.println("---  " + "Given_A_table_to_List_of_Object_with_Defaults");
+        for (ExampleClass value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
+    }
+
+    void Then_table_should_be_same_as(List<ExampleClass> values ) {
+        System.out.println("---  " + "Then_table_should_be_same_as");
+        for (ExampleClass value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
+    }
+
+    void Given_A_table_to_List_of_Object(List<ExampleClass> values ) {
+        System.out.println("---  " + "Given_A_table_to_List_of_Object");
+        for (ExampleClass value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
+    }
+
+    void Then_transposed_table_to_List_of_Object_should_be_the_same(List<ExampleClass> values ) {
+        System.out.println("---  " + "Then_transposed_table_to_List_of_Object_should_be_the_same");
+        for (ExampleClass value : values){
+            System.out.println(value);
+            // Add calls to production code and asserts
+        }
+        fail("Must implement");
     }
 
     void Given_board_is(List<List<String>> values ) {
@@ -246,6 +366,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void When_move_is(List<Move> values ) {
@@ -255,11 +376,13 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             MoveInternal i = value.toMoveInternal();
         }
+        fail("Must implement");
     }
 
     void Then_board_is_now(String value ) {
         System.out.println("---  " + "Then_board_is_now");
         System.out.println(value);
+        fail("Must implement");
     }
 
     void When_one_move_is(List<List<String>> values ) {
@@ -268,6 +391,7 @@ class Feature_Full_Test_glue {
             System.out.println(value);
             // Add calls to production code and asserts
         }
+        fail("Must implement");
     }
 
     void When_moves_are(List<Move> values ) {
@@ -277,6 +401,19 @@ class Feature_Full_Test_glue {
             // Add calls to production code and asserts
             MoveInternal i = value.toMoveInternal();
         }
+        fail("Must implement");
+    }
+
+    public static List<List<Integer>> convertList(List<List<String>> stringList) {
+        List<List<Integer>> classList = new ArrayList<>();
+        for (List<String> innerList : stringList) {
+            List<Integer> innerClassList = new ArrayList<>();
+            for (String s : innerList) {
+                innerClassList.add(Integer.valueOf(s));
+            }
+            classList.add(innerClassList);
+        }
+        return classList;
     }
 
 }
