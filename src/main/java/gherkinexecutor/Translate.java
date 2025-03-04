@@ -1085,7 +1085,7 @@ public class Translate {
 
         private void noParameter(String fullName) {
             testPrint("        " + glueObject + "." + fullName + "();");
-            templateConstruct.makeFunctionTemplate("", fullName, false, "");
+            templateConstruct.makeFunctionTemplateNothing("", fullName);
         }
 
 
@@ -1147,6 +1147,18 @@ public class Translate {
             return false;
         }
 
+        private void makeFunctionTemplateNothing(String dataType, String fullName) {
+            if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
+            glueFunctions.put(fullName, dataType);
+            templatePrint("    void " + fullName + "(){");
+            templatePrint("        System.out.println(\"---  \" + " + "\"" + fullName + "\"" + ");");
+            if (Configuration.logIt)
+                templatePrint("        log(\"---  \" + " + "\"" + fullName + "\"" + ");");
+            if (!Configuration.inTest)
+                templatePrint("        fail(\"Must implement\");");
+            templatePrint("    }");
+            templatePrint("");
+        }
 
         private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
             if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
@@ -1180,7 +1192,6 @@ public class Translate {
                     if (!dataType.equals("List<List<String>>")
                             && !listElement.equals("String")
                             && (dataNamesInternal.containsKey(name))) {
-                        // Removed try/catch genreation
                         templatePrint("              " + name + " i = value.to" + name + "();");
                     }
                     templatePrint("              }");
@@ -1239,7 +1250,7 @@ public class Translate {
     class DataConstruct {
         //        private final String dataDefinitionFilename = basePath + "DataDefinition" + ".tmp";
         private FileWriter dataDefinitionFile;
-        final String throwString = ""; // needed if you want to catch errors in converstins methods
+        final String throwString = ""; // needed if you want to catch errors in conversion methods
 
         public static class DataValues {
             public final String name;
@@ -1796,7 +1807,7 @@ public class Translate {
         public static boolean traceOn = false; // Set to true to see trace
         public static final char spaceCharacters = '~'; // Will replace this character with space in tables
 
-        public static boolean addLineToString = true; // add a \n to the toString method
+        public static final boolean addLineToString = true; // add a \n to the toString method
         public static final String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
 
         public static String currentDirectory = ""; // To keep for testing and or setup issues
@@ -1813,7 +1824,7 @@ public class Translate {
         public static final String dataDefinitionFileExtension = "java"; // "tmpl";
                 // change to tmpl if you are altering the data classes to avoid overwriting them
 
-        public static String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
+        public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
 
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
         // Imports or other lines to add to data class and glue class
