@@ -9,22 +9,24 @@ class Feature_Import_glue {
     final String DNCString = "?DNC?";
 
 
-    void Given_this_data_should_be_okay(List<Imports> values ) {
+    void Given_this_data_should_be_okay(List<ImportData> values ) {
         System.out.println("---  " + "Given_this_data_should_be_okay");
-        for (Imports value : values){
+        for (ImportData value : values){
              System.out.println(value);
              // Add calls to production code and asserts
-              ImportsInternal i = value.toImportsInternal();
+              ImportDataInternal i = value.toImportDataInternal();
               }
+        fail("Must implement");
     }
 
-    void Given_this_data_should_fail(List<Imports> values ) {
+    void Given_this_data_should_fail(List<ImportData> values ) {
         System.out.println("---  " + "Given_this_data_should_fail");
-        for (Imports value : values){
+        for (ImportData value : values){
              System.out.println(value);
              // Add calls to production code and asserts
-              ImportsInternal i = value.toImportsInternal();
+              ImportDataInternal i = value.toImportDataInternal();
               }
+        fail("Must implement");
     }
 
     }

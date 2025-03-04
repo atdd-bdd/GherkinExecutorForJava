@@ -5,19 +5,16 @@ Given local include
 """
 Include "string.inc"
 """
+Then string equals
+"""
+This is an include string from the local directory
+"""
 Given global include
 """
 Include 'string.inc' 
 """
-
-Scenario: Run Something
-Given something # ListOfObject Something
-| In  | Out  |
-| 1   | 2    |
-
-Data Something
-| Name  | Default  |
-| In    | 0        |
-| Out   | A        |
-
+Then string equals 
+"""
+This is an include string from the main directory
+"""
 

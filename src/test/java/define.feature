@@ -16,8 +16,8 @@ Then should be equal to data: # ListOfObject IDValue
 | B   | 1         |
 
 Define 
-| Name           | Value                    | Notes  |
-| AVERAGE_VALUE  | (LOW_DATA +HIGH_DATA)/2  | will be passed at "(1 + 100)/2)"       |
+| Name           | Value                     | Notes                             |
+| AVERAGE_VALUE  | (LOW_DATA + HIGH_DATA)/2  | will be passed at "(1 + 100)/2)"  |
 
 Scenario:  Try out replacements with a calculation
 Given this data: # ListOfObject IDValue

@@ -42,5 +42,5 @@ class ATestBadInternal{
         +"anInt = " + anInt + " "
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

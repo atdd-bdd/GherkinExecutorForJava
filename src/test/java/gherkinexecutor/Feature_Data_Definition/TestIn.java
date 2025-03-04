@@ -69,7 +69,7 @@ class TestIn{
         +"aValue = " + aValue + " "
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     Existing toExisting() {
         return new Existing(
          Integer.parseInt(aValue)

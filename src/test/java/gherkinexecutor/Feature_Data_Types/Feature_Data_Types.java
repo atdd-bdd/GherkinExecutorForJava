@@ -21,14 +21,24 @@ class Feature_Data_Types{
                 .aChar("q")
                 .achar("")
                 .build()
-            , new AllTypes.Builder()
-                .anInt("")
-                .aDouble("")
-                .aChar("")
-                .achar("")
-                .build()
             );
         feature_Data_Types_glue_object.Given_type_values_are(objectList1);
+
+        List<AllTypes> objectList2 = List.of(
+             new AllTypes.Builder()
+                .achar("y")
+                .anInt("0")
+                .aDouble("0.0")
+                .aChar("x")
+                .build()
+            , new AllTypes.Builder()
+                .achar("")
+                .anInt("111")
+                .aDouble("222.2")
+                .aChar("q")
+                .build()
+            );
+        feature_Data_Types_glue_object.Then_this_should_be_equal(objectList2);
         }
     }
 

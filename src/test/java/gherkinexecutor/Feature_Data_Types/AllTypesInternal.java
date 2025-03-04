@@ -1,15 +1,15 @@
 package gherkinexecutor.Feature_Data_Types;
 import java.util.*;
 class AllTypesInternal{
-     Integer anInt;
-     double aDouble;
+     int anInt;
+     Double aDouble;
      Character aChar;
      char achar;
      
     public static String toDataTypeString() {
         return "AllTypesInternal {"
-        +"Integer " 
-        +"double " 
+        +"int " 
+        +"Double " 
         +"Character " 
         +"char " 
             + "} "; }  
@@ -21,8 +21,8 @@ class AllTypesInternal{
         ,String.valueOf(achar)
         ); }
     public AllTypesInternal(
-        Integer anInt
-        ,double aDouble
+        int anInt
+        ,Double aDouble
         ,Character aChar
         ,char achar
         )  {
@@ -37,8 +37,8 @@ class AllTypesInternal{
         if (o == null || getClass() != o.getClass()) return false;
         AllTypesInternal _AllTypesInternal = (AllTypesInternal) o;
          return 
-                ( _AllTypesInternal.anInt.equals(this.anInt))
-                 && ( _AllTypesInternal.aDouble == (this.aDouble))
+                ( _AllTypesInternal.anInt == (this.anInt))
+                 && ( _AllTypesInternal.aDouble.equals(this.aDouble))
                  && ( _AllTypesInternal.aChar.equals(this.aChar))
                  && ( _AllTypesInternal.achar == (this.achar))
              ;  }
@@ -49,5 +49,5 @@ class AllTypesInternal{
         +"aDouble = " + aDouble + " "
         +"aChar = " + aChar + " "
         +"achar = " + achar + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

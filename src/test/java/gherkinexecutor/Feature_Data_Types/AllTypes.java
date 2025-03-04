@@ -84,11 +84,11 @@ class AllTypes{
         +"aDouble = " + aDouble + " "
         +"aChar = " + aChar + " "
         +"achar = " + achar + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     AllTypesInternal toAllTypesInternal() {
         return new AllTypesInternal(
-         Integer.valueOf(anInt)
-        , Double.parseDouble(aDouble)
+         Integer.parseInt(anInt)
+        , Double.valueOf(aDouble)
         , Character.valueOf( aChar.length() > 0 ?aChar.charAt(0) : ' ')
         , ( achar.length() > 0 ?achar.charAt(0) : ' ')
         ); }

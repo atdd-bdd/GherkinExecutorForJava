@@ -47,7 +47,7 @@ class Feature_Define{
                 .build()
             , new IDValue.Builder()
                 .iD("C")
-                .value("(1 +100)/2")
+                .value("(1 + 100)/2")
                 .build()
             );
         feature_Define_glue_object.Given_this_data(objectList1);

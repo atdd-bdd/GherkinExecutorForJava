@@ -5,8 +5,8 @@
 The GherkinExecutor simplifies the creation of test code from a Gherkin feature file. 
 It converts scenarios into unit tests.   It is designed to work the same way with any 
 implementation language.   For Java, the application is available at 
-https://github.com/atdd-bdd/GherkinExecutorForJava.  Versions in other languages are being
-created. 
+https://github.com/atdd-bdd/GherkinExecutorForJava.  It works with JUnit5, Junit$, and TestNG.  
+Versions in other languages (Python, C++, C#, Kotlin are being created. 
 
 ## Inspiration 
 This form for expressing shared understanding came from Ward Cunningham's FIT
@@ -29,7 +29,7 @@ and the associated files in the gherkinexecutor.Feature_Examples package in the 
 directory The first scenario shows a calculation from Fahrenheit to
 Celsius.  When it is translated, three files are created - one is a unit test file, one 
 is glue code which is revised to connect to the production code, and the third is 
-a data file which declares the classes used to connect the unit test code to the glue code.
+a data file which declares the class used to connect the unit test code to the glue code.
 The full code is shown later.
 ```
 Scenario: Temperature 
@@ -42,7 +42,7 @@ Calculation Convert F to C # ListOfObject TemperatureCalculation
 An Excel-style table is a familiar construct to many non-programmers.
 (Ward Cunningham introduced this style with FIT).  So this form is easily understandable.
 To add another variation, you simply add another row to the table.  The comments
-`# ListOfObject TemperatureComparison` are used to create the unit tests (shown later)
+`# ListOfObject TemperatureComparison` are used to create the unit tests (details shown shortly)
 
 The Triad (Customer, Developer, Tester perspectives) can collaborate on the detailed behavior.  This
 separates the production implementation from the representation of the logic and calculations.  For example,
@@ -72,9 +72,11 @@ This table could be used in a help file to show examples of valid IDs.
 You can try the application out as a whole, or just start using it. 
 ### The Application 
 Download the GherkinExecutorForJava project. You will see only one file `Translate.java` in the gherkinexecutor package. 
-This file contains all the classes required for translation.   
+This file contains all the classes required for translation. 
+ 
 Run the Feature_Examples.java file in the gherkinexecutor.Feature_Eaamples package.  You should see that it successfully runs
-four tests, two of which are listed above.  You can also run Feature_tic_tac_toe.   
+four tests, two of which are listed above.  You can also run Feature_tic_tac_toe in the Feature_Tic_Tac_Toe in 
+the gherkinexecutor.Feature_Tic_Tac_Toe.  
 ### Your Project 
 OK, the proof is in the pudding.   Let's apply GherkinExecutor to your  problem. 
 #### Setup 
@@ -83,15 +85,20 @@ Check to make sure that this value is false.
 ```
 public static final boolean inTest = false;  // switch to true for development of Translator
 ```
-If it is set true, then a `fail("Need to implement")`statement will not be in the glue files and all tests will pass.
-This is used for running tests on GherkinExectuor itself.   
+If it is set true, then a `fail("Need to implement")`statement will not be in the glue files 
+and all tests will pass. This is used for running tests on GherkinExectuor itself.   
 Copy one of the files (say simple_test.feature) into the test directory.  
 It is specified by the Configuration value.  If you want to use a different directory, then change this value.
 ```   
 public static final String featureSubDirectory = "src/test/java/";
 ```
-
-Put the name as an program argument to the run (or add it to the file list in Configuration, e.g.
+GherkinExecutor will search for all feature files in the directory tree starting with:
+```
+       public static final String startingFeatureDirectory = featureSubDirectory;
+        // where the directory tree of features is to be found.
+ 
+ ```
+ So the feature file should be translated.   However, you can also put the name as an program argument to the run (or add it to the file list in Configuration, e.g.
 ```
 featureFiles.add("simple_test.feature");
 ```
@@ -101,26 +108,25 @@ aren't already.   They are used for testing the application
 Run Translate and you should see a new package in the test directory, `gherkinexectuor.Feature_Simple_Test`
 The name comes from the Feature name in the file, not the name of the feature file. 
 in this package, you will see four files.  Rename the file `Feature_Simple_Test_glue.tmpl` 
-to `Feature_Simple_Test_glue.java`.   This will be the only time you will do this, 
- as it is this glue file that you will be making changes to (e.g. adding calls to production code and 
-making asserts.) 
+to `Feature_Simple_Test_glue.java`.   This will be the only time you will do this. 
+ In this glue file  you will be making changes to add calls to production code and 
+make asserts.) 
 
 If you add additional Scenarios that have new steps, you will need to create the step method in the glue code.
 You can do this by either by copying the sample code from the ".tmpl" file or by using the IDE to create it.   
-(You'll get more template code if you copy it in from ".tmpl") 
+(You'll get a little more template code if you copy it in from ".tmpl") 
 
 Run Simple_Test and you should get a test failure.   The lines in the output should read something like:
 ```
 ---  Given_table_is
-ATest {anInt = 1 aString = something aDouble = 1.2 } 
-ATestInternal {anInt = 1 aString = something aDouble = 1.2 } 
+ATest {anInt = 1 aString = something aDouble = 1.2 }  
 Must implement
 ``` 
 This is printed by the glue code, which you can take out whenever you desire.   
 The first line is the method name, the next two lines show the inputs to the glue method. 
-A version of the object named in the step (`# ListOfObject TemperatureCalculation`) with all String attributes
+A version of the object named in the step (`# ListOfObject ATest) with all String attributes
 is passed to the glue code. A conversion method to an form of the object with attributes given in 
-the Data statement (referred to as the internal object) is provided.    
+the Data statement s provided.   This referred to as the internal object - `ATestInternal`  
 
 No calls to production code are in this glue code, as the Scenario is completely independent of the code.
  
@@ -133,7 +139,7 @@ import in Configuration with:
 linesToAddForDataAndGlue.add("import production_package;"); 
 ```
 Now create a feature file and put it into the feature directory.   Let's say you have `Feature My Feature` as the 
-first line.  
+first line of this feature file.   
 ```  
 public static final String featureSubDirectory = "src/test/java/";
 ```
@@ -141,35 +147,44 @@ and thenthe name as an program argument to the run (or add it to the file list i
 ```
 featureFiles.add("my_feature.feature");
 ```
-Run Translate.  You should see a new package in tests. `gherkinexecutor\Feature_My_Feature`  Rename the `.tmpl` file to `.java` and run the test file 
-(the one named `Feature_My_Feature`).  You should get a failure for every scenario.  
- Note that fail() is put into each step, so you will continue to get failure for a Scenario 
+Run Translate.  You should see a new package in tests. `gherkinexecutor\Feature_My_Feature`  
+Rename the `.tmpl` glue file to `.java` and run the test file (the one named `Feature_My_Feature`). 
+ You should get a failure for every scenario.   Note that fail() is put into each step, so you will continue to get failure for a Scenario 
  until you implement all the steps.   
  
-If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>`  
+If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>` 
 
+You can use examples.feature as a template for your feature file.  The key difference between this feature file and one
+you may see other places is the addition of `# ListOfObject TemperatureCalculation` after the step and a Data statement.
+```
+Data TemperatureCalculation
+| Name   | Default  | DataType  | Notes  |
+| F      | 0        | Integer   |        |
+| C      | 0        | Integer   |        |
+| Notes  |          | String    |        |
+```
+The key is that the name of the Data `TemperatureCalculation` must match the name in the step.   And the names of the 
+attributes (e.g. `F`) must match the headers in the step table. You should get errors from Translate if they do not match and 
+you will get compile errors if you ignore those errors.  (There is probably some condition where this does not occur In
+some unexpected condition.) 
 ##### A Few Quick Notes 
- 
 You can use the name of a production class as the second part of Data statement.  
 The names of the attributes should match the attributes in the production class. If the attributes have non-primitive
 data types, you will need to create an `Import` statement that describes the constructor and the package. 
 
-Do not create a Data statement with the first part being the name of  the you use in production.    
-Add a suffic to it, such as In or somehting or you will get a data clash.  
-  
-
+Do not create a Data statement with the first part being the name of the you use in production.    
+Add additional characters to it, such as `In` or you will get a data clash.  
 ## How It Works in Brief
-
 The translator converts a Gherkin feature file into a unit test file.
-The unit test file calls glue methods which the developer edits to call the code under 
-test. The translator also creates a template for the glue file.  
+The unit test file calls the glue methods which the developer edits to call the code under 
+test. The translator also creates a template for the glue file. Each Data statement produces either one or two class files
+(a class with all String attributes and optionally a class file with the declared DataTypes.)    
 
 The Translator is a single file containing all the necessary components. 
 To translate a feature file, you supply the feature files you want converted by either adding them 
-to a list in the Translator or adding them as program arguments.  
+to a list in the Translator, adding them as program arguments, or letting the directory tree search find them.    
 
-Unlike other implementations of Gherkin,
-each feature file is associated with one unit
+Unlike other implementations of Gherkin, each feature file is associated with one unit
 test file, its glue file, and multiple class file in the same package.   
 
 If you need the same data types in multiple files, you can use the `Include` statement
@@ -177,19 +192,17 @@ to add those data types to a feature. For example, `Include "datadefs.txt"`would
 is in that file to the feature file before it is translated.   
 
 ## Why Not Use Existing Frameworks? 
-
 I've been using Cucumber, one of the most common applications that uses 
-Gherkin for a number of years.  You can have a table after each step.   However you
+Gherkin, for a number of years.  You can have a table after each step.   However you
 need to add additional code to use that table as a list of objects.  The method for doing 
-so has changed from version to version and has gotten more complex.     
+so has changed from version to version and has gotten more complex.  It appears that conversion
+of tables into lists of objects has been removed from the latest version.
 
 The Translator converts the Gherkin tables into initialized lists. The developer just needs to 
 specify the class of the objects that will be in those lists. It does not depend on 
 features of a specific languages, such as introspection. 
 
-The initial version of Translator was written for Kotlin.  It was converted to Java and 
-other facerts were added. It is currently being converted back 
-to Kotlin, Python, and C++.    A feature file written for one language should work
+A feature file written for one language should work
 in the other languages.  The only issues would be replacing the Datatype of a field (e.g. Int)
 with the appropriate type in another language.  
 
@@ -205,23 +218,23 @@ which contains the values.
 The tables can be passed to the glue methods as a list of objects or a list of strings.  
 
 The glue code for each feature resides in the feature package.  There is no regular expression matching. 
-The step statement is converted into a glue code function name.   
+The step statement is converted into the glue code function name.   
 
-If you need the same code to execute for multiple glue code methods, you delegate to a common implementation,
+If you need the same code to execute for multiple glue code methods, you can delegate to a common implementation,
 just like you would do with production code. 
 
-The Translate file resides in your application code.  The way it works does not change.  If it works for you, 
-there is no reason to change it.    If you want additional features (no sure what they might be), then you  decide
+The Translate file resides in your application source control.  The way it works does not change.  If Translate works for you, 
+there is no reason to change it.    If you want additional features (no sure what they might be), then you decide
 when you want to drop in a new version.  If there are any issues, you revert back to the old one using git (or your
-source code control framework). 
+source code control framework).  You can use your existing framework (Cucumber, SpecFlow, etc.) to process your existing 
+feature files and just use GherkinExecutor for new ones.  
 
-The tests are unit tests of your test framework.  So the reporting of your framework works as is.  Your customization 
-of the glue code is the same as you would do for a regular unit test.   The only difference would be that You
+The tests are unit tests of your test framework.  So the reporting of your framework works just like your existing reporting. 
+ Your customization of the glue code is the same as you would do for a regular unit test.   The only difference would be that you
 need to save in glue code class variables any values required for communication between separate steps in a scenario. 
  
 
-You can alter Translate if you want more output from the glue code.       
-
+You can alter Translate if you want more output or less from the glue code.       
 ### Keywords 
 There are more keywords than in standard Gherkin. You can add additional ones by modifying Translate.  
 ```
@@ -238,7 +251,7 @@ There are more keywords than in standard Gherkin. You can add additional ones by
     "Assert"
     "Rule"   -  this is just a step, not something special as in Cucumber. 
     "Calculation"
-	"*"
+	"*"  - this is the * from Gherkin.   Note it is converted to `Star` for the glue code method
 
     "Background" - specifies one or more glue code methods to run at beginning of a scenario 
     "Cleanup" - specifies one of more glue code methods to run at the end of a scenario 
@@ -247,276 +260,11 @@ There are more keywords than in standard Gherkin. You can add additional ones by
     "Import" - describes the constructor and package for non-primitive attributes 
     "Define" - defines words and their values that can replace the words in tables.  
 ```
-## How It Works in Detail
-Here is the example feature file again:
-```
-Feature: Examples
 
-Scenario: Temperature 
-# Business rule , Calculation 
-Calculation Convert F to C # ListOfObject TemperatureCalculation 
-| F    | C    | Notes       |
-| 32   | 0    | Freezing    |
-| 212  | 100  | Boiling     |
-| -40  | -40  | Below zero  |
+## More Information 
+* How It Works In Detail - This has details on what files are translated into and details 
+on the table options, the Data, Import, and Define statements.   
 
-Data TemperatureCalculation
-| Name   | Default  | DataType  | Notes  |
-| F      | 0        | Integer   |        |
-| C      | 0        | Integer   |        |
-| Notes  |          | String    |        |
-```
-In the test directory, it is named `examples.feature`.  The words after the keyword 
-`Feature` are combined into the name of the feature.  Let's assume that you are using the translator with Java 
-(language suffix `.java`) 
-The operation is the same, the output code depends on the language. 
-
-To translate this feature file, you can pass it as a parameter to the `Translate` main method.  Alternatively
-you can add it to the Configuration list of feature files.   
-```
-featureFiles.add("examples.feature");
-```
-A unit test file with the name `Feature_Examples.java` (with language appropriate suffix) 
-is created in a package with the name `gherkinexecutor.Feature_Examples` with the same name. 
-A another filecalled `Feature_Examples_glue.tmpl` is also created.  This contains templates for the glue 
-code that is called 
-from `Feature_Examples.java`.  One or two files are created for every `Data` statement. Since DataTypes are 
-in this Data statement, a class `TemperatureCalculation` with the attributes as Strings, 
-and a class `TemperatureCalculationInternal` are creeated. Some common methods for each class are also included.
-   
-The single step in the `Scenario` ("Convert F to C ") is denoted as `# ListOfObject TemperatureComparison`.  So 
-the test file / glue code parameters use a `List<TemperatureComparison>`
-
-Note that a new glue object is created for each Scenario.   This makes each test independent.   If you need 
-to share values between scenarios, create a class variable (e.g. static or companion object).  
-
-### Test File 
-
-The `Feature_Examples.java` example file contains code that looks like:
-```
-    @Test
-    void test_Scenario_Temperature(){
-         Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-
-        List<TemperatureCalculation> objectList1 = List.of(
-             new TemperatureCalculation.Builder()
-                .f("32")
-                .c("0")
-                .notes("Freezing")
-                .build()
-        // plus two more 
-            );
-        feature_Examples_glue_object.Calculation_Convert_F_to_C(objectList1);
-        }
-```
-### Glue File 
-The `Feature_Examples_glue.tmpl` file has the following in it. 
-```
-    void Calculation_Convert_F_to_C(List<TemperatureCalculation> values ) {
-        System.out.println("---  " + "Calculation_Convert_F_to_C");
-        for (TemperatureCalculation value : values){
-           System.out.println(value);
-                try {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                  System.out.println(i);
-                    }
-                catch(Exception e){
-                    System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
-                }
-             }
-        fail("Must implement");
-    }
-```
-Note that this loop catches an Exception.  It's possible that the values
-in the table are not valid for the types for the field.   For example, 
-if `a` is in the table for a field with datatype `int`, then an exception is thrown and caught by 
-this catch clause.   
-
-You can eliminate the `printlns`.  They are there so you can see the data passed to the glue code.  
-
-The first time you run the Translator, you should rename the glue file `Feature_Examples_glue.tmpl`to the language appropriate suffix
-(e.g. rename it from `.tmpl` to `.java`).  You will be making changes in this file to 
-call your production code.  If you add new steps to the feature, you can copy a template for the new steps from 
-the template file (`.tmpl`) to the glue source file (`.java`).  Alternatively, you can just let the IDE suggest that you need 
-a new method in  Feature_Examples_glue.
-
-Here's a possible call to an implementation in the glue file (with the `println`s eliminated):
-```
-    void Calculation_Convert_F_to_C(List<TemperatureCalculation> values) {
-         for (TemperatureCalculation value : values) {
-            try {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                int c = TemperatureCalculations.convertFahrenheitToCelsius(i.f);
-                assertEquals(i.c, c, i.notes);
-             } catch (Exception e) {
-                System.err.println("Argument Error " + value.toString() 
-				   + TemperatureCalculationInternal.toDataTypeString());
-                fail("Error in calculation"); 
-            }
-        }
-    }
-```
-An example production implementation might look like: 
-```
-public class TemperatureCalculations {
-    static int convertFahrenheitToCelsius(int input) {
-        return ((input - 32) * 5) / 9;
-    }
-}
-```
-You can use any step keyword for the step in the feature file, but `Calculation, Rule, or *` might be appropriate.  `*` is
-from standard Gherkin.
-
-### Data Statement
-Let's take a look at the Data statement again.  
-```
-Data TemperatureCalculation
-| Name   | Default  | DataType  | Notes  |
-| F      | 0        | Integer   |        |
-| C      | 0        | Integer   |        |
-| Notes  |          | String    |        |
-```
-Now to simplify creation of the objects in a table, you create a Data statement which describes the attributes.
-This creates two classes, each in their own file.  The first class has all te attributes as data type String. 
-Objects of this type are created in the test file and passed to the glue methods.  
-
-Note:  These files are recreated every time Translate runs.  If you need to import a package, your canadd it to the Configuration
-or use an `Import` statement.
-```
-package gherkinexecutor.Feature_Examples;
-class TemperatureCalculation{
-    String f = "0";
-    String c = "0";
-    String notes = "";
-    public TemperatureCalculation() { }
-    public TemperatureCalculation(
-        String f     ,String c     ,String notes
-        ){
-        this.f = f;
-        this.c = c;
-        this.notes = notes;
-        }
-    @Override
-    public boolean equals (Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        TemperatureCalculation _TemperatureCalculation = (TemperatureCalculation) o;
-         if (
-             !this.f.equals("?DNC?")
-                && !_TemperatureCalculation.f.equals("?DNC?"))
-                return ( _TemperatureCalculation.f.equals(this.f));
-		// and 2 more clauses
-                     return true;  }
-    public static class Builder {
-		// builder methods
-        public Builder  setCompare() {
-            f = "?DNC?";
-            c = "?DNC?";
-            notes = "?DNC?";
-            return this;
-            }
-    @Override
-    public String toString() {
-		// toString cod 
-        
-    TemperatureCalculationInternal toTemperatureCalculationInternal() throws Exception {
-        return new TemperatureCalculationInternal(
-         Integer.valueOf(f)
-        , Integer.valueOf(c)
-        , notes
-        ); 
-    }
-```
-You'll notice an additional clauses in the `equals()` method.  A comparison of two attributes is not 
-checked if either contains `$DNC$`.  This allows a comparison between a table which has all its fields (columns)
-specified and one that only has a few columns specified.   
-
-This special value can be changed in Configuration.  It is set into the attributes by specifying `compare` in the
-comment after a step (e.g. `# ListOfObject TemperatureCalculation compare)`  followed by a table with only 
-`F` listed would have `?DNC?` as the value of each `C` attribute. 
-
-There is a conversion method to the internal object, which calls the appropriate conversion methoed. For data type
-in other packages, you specify this conversion method in an `Import` statement, if it is not of the 
-form `Construtor(String value)`
-
-The purpose of the internal object is to provide the values in the data type that the production code expects.   
-
-The internal object class that is created (if you don't specify a second name in the Data statement) looks like:
-```
-package gherkinexecutor.Feature_Examples;
-import java.util.*;
-class TemperatureCalculationInternal{
-     Integer f;
-     Integer c;
-     String notes;
-     
-    public static String toDataTypeString() {
-        return "TemperatureCalculationInternal {"
-        +"Integer " 
-        +"Integer " 
-        +"String " 
-            + "} "; }  
-    TemperatureCalculation toTemperatureCalculation() {
-        return new TemperatureCalculation(
-        String.valueOf(f)
-        ,String.valueOf(c)
-        ,notes
-        ); }
-    public TemperatureCalculationInternal(
-        Integer f         ,Integer c         ,String notes
-        )  {
-        this.f = f;
-        this.c = c;
-        this.notes = notes;
-        }
-    @Override
-    public boolean equals (Object o) {
-        // code for equals
-    @Override
-    public String toString() {
-		// code for toString
-```
-The `toDataTypeString()` method can be used to print out the expected data types, in case of a conversion error. 
-
-In this file, you can add `import` for any other classes your production code might need. 
-Note that the test file only references the class with all string attributes.  The glue code is the place to
-do all the conversions into a `TemperatureComparisonInternal` using the supplied method. 
-```
-Data TemperatureComparison
-| Name   | Default  | DataType  | Notes  |
-| F      | 0        | Int       |        |
-| C      | 0        | Int       |        |
-| Notes  |          | String    |        |
-```
-to call the code you create.  If you only have one row,
-then you might just code that one. The string values are converted into the
-internal values.  The `F` value is passed to the `TemperatureCalculations.convertFarenheitToCelsius()`
-method and the return value is compared to the `C` value.
-```
-    fun Calculation_Convert_F_to_C(value: List<TemperatureComparison>) {
-        element = value[0]
-        val temp = element.toTemperatureComparisonInternal()
-        assertEquals(
-                temp.c,
-                TemperatureCalculations.convertFarenheitToCelsius(temp.f),
-                temp.notes
-            )
-        }
-    }
-```
-The compiler would suggest you create a method such as follows.  The companion object is
-equivalent to a class method (e.g. `static`) in other languages.
-```
-class TemperatureCalculations {
-    companion object {
-        fun convertFarenheitToCelsius(input: Int): Int {
-            return ((input - 32) * 5) / 9
-        }
-    }
-}
-```
-Note you can have as many columns and rows in the table as you need. 
-The form in the glue code looks the same - iterate around each row. 
 
 ### A Collection Example 
 In `examples.feature` is an example of dealing with a collection.   In this example, there is a collection 
@@ -597,7 +345,7 @@ Data ValueValid
 ```
 In the step method, you implement a call to the method that turns a string into the object.
 In this example, the constructor is called with each value in the table.  The constructor throws 
-an Exception if the value is not valid.  
+an IllegalArgumentException if the value is not valid.  
 ```
     void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values) {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
@@ -611,7 +359,7 @@ an Exception if the value is not valid.
                     fail("Invalid value did not throw exeception "
                             + value.value + " " + value.notes);
                 }
-            } catch (Exception e) {
+            } catch (IllegalArgumentException e) {
                 if (expected)
                     fail("Valid value threw exeception "
                             + value.value + " " + value.notes);
@@ -645,7 +393,7 @@ boolean isValid() {
    return true
    }
 ```
-Instead of catching an Exception, you would just check the return valid of `isValid()`
+Instead of catching an IllegalArgumentException, you would just check the return valid of `isValid()`
 
 ## Data
 Here is more information on the Data statement. 
@@ -688,11 +436,7 @@ that displays the data types (for usage in error messages).
 
 If the second class is created, the first class will also have a method
 to convert it to the internal class.  It's possible there is an invalid
-value in the table, so Exception is caught if that occurs.  
-
-Why an `Exception`, rather than something more specific?  The type of exception that can occur
-for different classes is not the same.  `Exception` is the type that represents all the possible 
-string conversion errors. 
+value in the table, so IllegalArgumentException is caught if that occurs.  
 
 The sample templates for the glue code loop through the list of objects 
 and convert each one to an internal object.  
@@ -919,7 +663,7 @@ Given this data # ListOfObject Imports
 | http://atdd-bdd.com  | [ab]       | SUNDAY     | 10000000000  |
 ```
 The conversion method is called in the data classes that are created.
-Exception is caught, so that you can report that the values were not
+IllegalArgumentException is caught, so that you can report that the values were not
 valid for the particular data type. 
 ```
 Scenario: Should also fail

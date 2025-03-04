@@ -54,7 +54,7 @@ class LabelValue{
         return "LabelValue {"
         +"label = " + label + " "
         +"value = " + value + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     LabelValueInternal toLabelValueInternal() {
         return new LabelValueInternal(
          label

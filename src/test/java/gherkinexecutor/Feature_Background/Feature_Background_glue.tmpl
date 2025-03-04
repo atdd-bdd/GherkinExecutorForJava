@@ -7,16 +7,45 @@ class Feature_Background_glue {
     final String DNCString = "?DNC?";
 
 
-    void Given_Background_Function(){
-        System.out.println("---  " + "Given_Background_Function");
+    void Given_Background_function_sets_a_value(List<List<String>> values ) {
+        System.out.println("---  " + "Given_Background_function_sets_a_value");
+        for (List<String> value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              }
+        fail("Must implement");
     }
 
-    void Given_Cleanup_Function(){
-        System.out.println("---  " + "Given_Cleanup_Function");
+    void Given_value_for_cleanup_should_be_set_to(List<List<String>> values ) {
+        System.out.println("---  " + "Given_value_for_cleanup_should_be_set_to");
+        for (List<String> value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              }
+        fail("Must implement");
     }
 
     void Given_a_regular_function(){
         System.out.println("---  " + "Given_a_regular_function");
+        fail("Must implement");
+    }
+
+    void Then_background_should_set_value_to(List<List<String>> values ) {
+        System.out.println("---  " + "Then_background_should_set_value_to");
+        for (List<String> value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              }
+        fail("Must implement");
+    }
+
+    void And_set_a_value_for_cleanup(List<List<String>> values ) {
+        System.out.println("---  " + "And_set_a_value_for_cleanup");
+        for (List<String> value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              }
+        fail("Must implement");
     }
 
     }

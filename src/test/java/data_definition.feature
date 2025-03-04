@@ -17,14 +17,14 @@ Then result is
 | false| 
 
 
-
-
 # will create an internal class name 
 Data ATest 
 | Name     | Default  | Datatype  | Note  |
 | anInt    | 0        | Int       |       |
 | aString  | ~        | String    |       |
 | aDouble  | 4.0      | Double    |       |
+
+# will create a .tmpl file for Existing 
 
 Data TestIn Existing 
 | Name    | Default  | Datatype  | Note  |

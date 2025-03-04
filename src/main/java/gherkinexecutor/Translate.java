@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public class Translate {
@@ -17,6 +19,8 @@ public class Translate {
     private final Map<String, String> importNames = new HashMap<>(); // used to hold conversion functions for imports
 
     private final List<String> linesToAddForDataAndGlue = new ArrayList<>();
+
+    private final List<String> linesToAddToEndOfGlue = new ArrayList<>();
     private final Map<String, String> defineNames = new HashMap<>();
     private final int stepCount = 0; // use to label duplicate scenarios
     //    private final String basePath = Configuration.testSubDirectory;
@@ -146,7 +150,7 @@ public class Translate {
 
     private void actOnKeyword(String keyword, List<String> words,
                               List<String> comment, int pass) {
-        String fullName = String.join("_", words);
+        String fullName = makeFullName(words);
         trace("Act on keyword " + keyword + " " + fullName + " pass " + pass);
         switch (keyword) {
             case "Feature":
@@ -207,6 +211,13 @@ public class Translate {
                 // line not used this pass or bad line
                 break;
         }
+    }
+
+    private static String makeFullName(List<String> words) {
+        String temp =  String.join("_", words);
+        Pattern p = Pattern.compile("[^A-Za-z0-9_]");
+        Matcher m = p.matcher(temp);
+        return m.replaceAll("_");
     }
 
     private void actOnFeature(String fullName) {
@@ -506,7 +517,7 @@ public class Translate {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
         printFlow("Arguments");
-        if (!Configuration.startingFeatureDirectory.isEmpty()) {
+        if (Configuration.searchTree && !Configuration.startingFeatureDirectory.isEmpty()) {
             List<String> filesInTree = findFeatureFiles(Configuration.startingFeatureDirectory);
             printFlow("Adding directory tree files");
             filesInTree.forEach(System.out::println);
@@ -523,6 +534,69 @@ public class Translate {
         }
     }
 
+    public String quoteIt(String defaultVal) {
+        return "\"" + defaultVal + "\"";
+    }
+    public String fromImportData(String dataType, String value) {
+        if (importNames.containsKey(dataType)) {
+            String conversionMethod = importNames.get(dataType);
+            conversionMethod = conversionMethod.replace("$", value);
+            return conversionMethod;
+        } else
+            return "";
+    }
+
+    @SuppressWarnings("SameParameterValue")
+    public String makeValueFromString(DataConstruct.DataValues variable, boolean makeNameValue) {
+        String value;
+        if (makeNameValue)
+            value = makeName(variable.name);
+        else
+            value = quoteIt(variable.defaultVal);
+        switch (variable.dataType) {
+            case "String":
+                return value;
+            case "int":
+                return "Integer.parseInt(" + value + ")";
+            case "double":
+                return "Double.parseDouble(" + value + ")";
+            case "byte":
+                return "Byte.parseByte(" + value + ")";
+            case "short":
+                return "Short.parseShort(" + value + ")";
+            case "long":
+                return "Long.parseLong(" + value + ")";
+            case "float":
+                return "Float.parseFloat(" + value + ")";
+            case "boolean":
+            case "Boolean":
+                return "Boolean.parseBoolean(" + value + ")";
+            case "char":
+                return "( " + value + ".length() > 0 ?"
+                        + value + ".charAt(0) : ' ')";
+            case "Byte":
+                return "Byte.valueOf(" + value + ")";
+            case "Short":
+                return "Short.valueOf(" + value + ")";
+            case "Integer":
+                return "Integer.valueOf(" + value + ")";
+            case "Long":
+                return "Long.valueOf(" + value + ")";
+            case "Float":
+                return "Float.valueOf(" + value + ")";
+            case "Double":
+                return "Double.valueOf(" + value + ")";
+            case "Character":
+                return "Character.valueOf( " + value + ".length() > 0 ?"
+                        + value + ".charAt(0) : ' ')";
+            default:
+                String result = fromImportData(variable.dataType, value);
+                if (!result.isEmpty())
+                    return result;
+                return "new " + variable.dataType + "(" + value + ")";  // Data type not found;
+
+        }
+    }
     static class InputIterator {
         private final List<String> linesIn = new ArrayList<>();
         @SuppressWarnings("UnusedAssignment")
@@ -671,6 +745,7 @@ public class Translate {
             }
         }
 
+
         private void error(String value) {
 
             System.err.println("[GherkinExecutor]" + value);
@@ -785,6 +860,10 @@ public class Translate {
             templateConstruct.makeFunctionTemplate("String", fullName, false, "");
         }
 
+        private void tableToListOfListOfObject(List<String> table, String fullName, String className) {
+            System.err.println("MUST CREATE THIS METHOD");
+            createConvertTabletoListOfListOfObjectMethod(table,className);
+        }
         private void tableToListOfList(List<String> table, String fullName) {
             String s = Integer.toString(stepNumberInScenario);
             String dataType = "List<List<String>>";
@@ -804,10 +883,19 @@ public class Translate {
 
         private void createTheTable(List<String> comment, List<String> table, String fullName) {
             String option = "ListOfList";
+            String className;
             if (comment.size() > 0 && !comment.get(0).isEmpty()) option = comment.get(0);
             switch (option) {
                 case "ListOfList":
                     tableToListOfList(table, fullName);
+                    break;
+                case "ListOfListOfObject":
+                    if (comment.size() < 2) {
+                        error("No class name specified");
+                        return;
+                    }
+                    className = comment.get(1);
+                    tableToListOfListOfObject(table, fullName, className);
                     break;
                 case "String":
                 case "string":
@@ -818,7 +906,7 @@ public class Translate {
                         error("No class name specified");
                         return;
                     }
-                    String className = comment.get(1);
+                    className = comment.get(1);
                     boolean transpose = false;
                     boolean compare = false;
                     if (comment.size() > 2) {
@@ -838,6 +926,32 @@ public class Translate {
                     tableToListOfList(table, fullName);
                     break;
             }
+        }
+
+
+
+        private void createConvertTabletoListOfListOfObjectMethod(List<String> table, String toClass) {
+            DataConstruct.DataValues variable = new DataConstruct.DataValues("NAME", "s",toClass);
+        String convert = makeValueFromString(variable, false);
+
+        String template =
+                """
+                        public static List<List<CLASS>> convertList(List<List<String>> stringList) {
+                            List<List<CLASS>> classList = new ArrayList<>();
+                            for (List<String> innerList : stringList) {
+                                List<CLASS> innerClassList = new ArrayList<>();
+                                for (String s : innerList) {
+                                    innerClassList.add(CONVERT);
+                                }
+                                classList.add(innerClassList);
+                            }
+                        return classList;
+                        }        
+                """.stripIndent();
+        template = template.replace("CLASS", toClass);
+        template = template.replace("CONVERT", convert);
+        linesToAddToEndOfGlue.add(template);
+        System.out.println(template);
         }
 
 
@@ -1055,6 +1169,9 @@ public class Translate {
         }
 
         private void endTemplate() {
+            for (String line : linesToAddToEndOfGlue){
+                templatePrint(line);
+            }
             templatePrint("    }");   // End the class
             try {
                 testFile.close();
@@ -1071,7 +1188,7 @@ public class Translate {
         private FileWriter dataDefinitionFile;
         final String throwString = ""; // needed if want to catch errors in converstins methods
 
-        public class DataValues {
+        public static class DataValues {
             public final String name;
             public final String defaultVal;
             public final String dataType;
@@ -1213,7 +1330,10 @@ public class Translate {
             for (DataValues variable : variables) {
                 dataPrintLn("        " + add + quoteIt(makeName(variable.name) + " = ") + " + " + makeName(variable.name) + " + " + quoteIt(" "));
             }
-            dataPrintLn("            + " + quoteIt("} ") + "; }  ");
+            String lineMark = "";
+            if (Configuration.addLineToString)
+                lineMark = "\\n";
+            dataPrintLn("            + " +   quoteIt("} ") + " + "  + quoteIt(lineMark) +  "; }  ");
 
         }
 
@@ -1246,9 +1366,6 @@ public class Translate {
             dataPrintLn("        } ");
         }
 
-        private String quoteIt(String defaultVal) {
-            return "\"" + defaultVal + "\"";
-        }
 
         private void createEqualsMethod(List<DataValues> variables, String className) {
             dataPrintLn("    @Override");
@@ -1283,66 +1400,7 @@ public class Translate {
         }
 
 
-        @SuppressWarnings("SameParameterValue")
-        private String makeValueFromString(DataValues variable, boolean makeNameValue) {
-            String value;
-            if (makeNameValue)
-                value = makeName(variable.name);
-            else
-                value = quoteIt(variable.defaultVal);
-            switch (variable.dataType) {
-                case "String":
-                    return value;
-                case "int":
-                    return "Integer.parseInt(" + value + ")";
-                case "double":
-                    return "Double.parseDouble(" + value + ")";
-                case "byte":
-                    return "Byte.parseByte(" + value + ")";
-                case "short":
-                    return "Short.parseShort(" + value + ")";
-                case "long":
-                    return "Long.parseLong(" + value + ")";
-                case "float":
-                    return "Float.parseFloat(" + value + ")";
-                case "boolean":
-                case "Boolean":
-                    return "Boolean.parseBoolean(" + value + ")";
-                case "char":
-                    return "( " + value + ".length() > 0 ?"
-                            + value + ".charAt(0) : ' ')";
-                case "Byte":
-                    return "Byte.valueOf(" + value + ")";
-                case "Short":
-                    return "Short.valueOf(" + value + ")";
-                case "Integer":
-                    return "Integer.valueOf(" + value + ")";
-                case "Long":
-                    return "Long.valueOf(" + value + ")";
-                case "Float":
-                    return "Float.valueOf(" + value + ")";
-                case "Double":
-                    return "Double.valueOf(" + value + ")";
-                case "Character":
-                    return "Character.valueOf( " + value + ".length() > 0 ?"
-                            + value + ".charAt(0) : ' ')";
-                default:
-                    String result = fromImportData(variable.dataType, value);
-                    if (!result.isEmpty())
-                        return result;
-                    return "new " + variable.dataType + "(" + value + ")";  // Data type not found;
 
-            }
-        }
-
-        private String fromImportData(String dataType, String value) {
-            if (importNames.containsKey(dataType)) {
-                String conversionMethod = importNames.get(dataType);
-                conversionMethod = conversionMethod.replace("$", value);
-                return conversionMethod;
-            } else
-                return "";
-        }
 
         private boolean createVariableList(List<String> table, List<DataValues> variables) {
             boolean headerLine = true;
@@ -1680,18 +1738,22 @@ public class Translate {
 
         public static final boolean logIt = false;
         // Set to true for logging during the tests to log.txt
-        public static final boolean inTest = true;
-        // switch to true for development of Translator
+        public static final boolean inTest = false;
+        // switch to
+        // true for development of Translator
         public static final boolean traceOn = false; // Set to true to see trace
         public static final char spaceCharacters = '~'; // Will replace this character with space in tables
 
+        public static boolean addLineToString = true; // add a \n to the toString method
         public static final String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
+
         public static String currentDirectory = ""; // To keep for testing and or setup issues
 
         public static final String featureSubDirectory = "src/test/java/";
         // where features are stored
         public static final String startingFeatureDirectory = featureSubDirectory;
         // where the directory tree of features is to be found.
+        public static boolean searchTree = false;
         public static final String packageName = "gherkinexecutor";
 
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";

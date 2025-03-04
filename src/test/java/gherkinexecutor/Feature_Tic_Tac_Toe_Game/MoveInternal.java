@@ -42,5 +42,5 @@ class MoveInternal{
         +"row = " + row + " "
         +"column = " + column + " "
         +"mark = " + mark + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

@@ -69,7 +69,7 @@ class ATestBad{
         +"anInt = " + anInt + " "
         +"aString = " + aString + " "
         +"aDouble = " + aDouble + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     ATestBadInternal toATestBadInternal() {
         return new ATestBadInternal(
          Integer.valueOf(anInt)

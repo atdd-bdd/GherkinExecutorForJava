@@ -54,28 +54,60 @@ you can add the note as a message.
     }
 
 ```
+
+### Other Notes 
+
+#### Philosophy differences:
+gherkinexecutor's design approach emphasizess ease of use.  Other frameworks using Gherkin place more of an emphasis on 
+the phrasing of the step statements.    You can always add comments to a scenario to give additional information as to 
+what is supposed to be going on.    
+
+For those who use parameterized tests, the Gherkin data represents the data in those tests in a standard format (a table). 
+You can use the concept of parameterized tests with any unit testing framework, as Gherkin provides the ability to run 
+the same test with different sets of data.   .   
+
+GE uses the native unit testing framework, so there are no additional tools are required.  You  use the same reporting
+framework as the unit tests. 
+
+GE does not create html tables with Red/Green.   Many people have found that no one looks at them.  Failure 
+
+
+# TDD versus BDD 
+In TDD, the bascc cycle is Red-Green-Refactor.  With GherkinExecutor, you can perform the same cycle.  For business rulesan
+and calculations, you start by writing down one or more rows in a table.  For example:
+```
+Scenario: Temperature 
+Calculation Convert F to C # ListOfObject TemperatureCalculation 
+| F    | C    | Notes       |
+| 32   | 0    | Freezing    |
+| 212  | 100  | Boiling     |
+| -40  | -40  | Below zero  |
+```
+If you only have one, then start with that, make it green, and then refactor.  
+```
+Scenario: Temperature 
+Calculation Convert F to C # ListOfObject TemperatureCalculation
+| F    | C    | Notes       |
+| 32   | 0    | Freezing    |
+```
+If you have two or more rows, you can approach TDD in one of three ways.   
+* You can experience a failure for the rows for which you haven't implemented the underlying code.
+You may wish to do this if you are working on a simple function of calculation. 
+* You can comment out all the rows eccept for the ones you have completed and the one you are working one 
+As you uncomment them, you will need to run Translate again
+* You can loop around the rows in the glue code and only do those you are currently working with
+You will need be sure to loop for all the values before leaving the glue code.  
+```
+**** Show for loop here 
+```
+ 
+
+
 ###  Whitespace
 All comments (line being with `#`) are ignored.  All blank lines are
 ignored.  If you begin a line with other than a keyword or a table or a string,
 you will get an warning. 
 
-## Include 
-You can include another file in a feature file. The included file should 
-not have a `Feature` statement in it.  If it does, a warning will be generated.
-If the file is a `.csv` file, it will be converted to a table.   
-```
-Feature: Include
-
-Scenario: Some scenario here
-Given a string
-"""
-Include "string.inc"
-"""
-Then a table
-Include "TableExample.csv"
-```
-You can include any text, including `Data` statements (useful 
-for reusing) common data layouts.  
 
 ## Design Flow 
 GherkinExecutor was created to make it easy to implement tests for
@@ -257,3 +289,85 @@ difference looks correct, copy the new test or glue.tmpl file into the .exp file
 Note sometimes a line ending difference (LF to CRLF) occurs.  You can check by 
 comparing the files manually.   
 
+```
+
+```
+Feature: Calculator
+
+  Scenario Outline: Add two numbers
+    Given I have a calculator
+    When I add <number1> and <number2>
+    Then the result should be <result>
+
+    Examples:
+      | number1 | number2 | result |
+      | 2       | 3       | 5      |
+      | 10      | 20      | 30     |
+      | -1      | 1       | 0      |
+ ```
+	  
+The glue code looks like:   
+```
+public class CalculatorSteps {
+
+    private Calculator calculator;
+    private int result;
+
+    @Given("I have a calculator")
+    public void i_have_a_calculator() {
+        calculator = new Calculator();
+    }
+
+    @When("I add {int} and {int}")
+    public void i_add_and(int number1, int number2) {
+        result = calculator.add(number1, number2);
+    }
+
+    @Then("the result should be {int}")
+    public void the_result_should_be(int expectedResult) {
+        assertEquals(expectedResult, result);
+    }
+}
+``` 
+
+```
+```
+Feature: Calculator
+
+Scenario: Add two numbers
+When I add two numbers I get the result # ListOfObject Calculation
+| number1  | number2  | result  |
+| 2        | 3        | 5       |
+| 10       | 20       | 30      |
+| -1       | 1        | 0       |
+	  
+Data Calculation   @ describes the attributes of the fields 
+| Name     | Default  | Datatype  |
+| number1  | 0        | int       |
+| number2  | 0        | int       |
+| result   | 0        | int       |
+
+    
+	  
+	  Data Calculation
+ ```
+	  
+The glue code looks like:   Note the two lines of code you needed to write were the creation of the calculator 
+and the assertEquals statement.   
+```  
+package gherkinexecutor.Feature_Calculator;
+import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
+
+class Feature_Calculator_glue {
+  
+
+```  private Calculator calculator - new Calculator(); 
+
+    void When_I_add_two_numbers_I_get_the_result(List<Calculation> values ) {
+        for (Calculation value : values){
+            CalculationInternal i = value.toCalculationInternal();
+            assertEquals(i.result, calculator.add(i.number1, i.number2);
+        }
+    }
+``` 

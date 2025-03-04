@@ -69,7 +69,7 @@ class Move{
         +"row = " + row + " "
         +"column = " + column + " "
         +"mark = " + mark + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     MoveInternal toMoveInternal() {
         return new MoveInternal(
          Integer.valueOf(row)

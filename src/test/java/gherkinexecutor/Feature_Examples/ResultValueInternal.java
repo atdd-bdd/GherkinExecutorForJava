@@ -28,5 +28,5 @@ class ResultValueInternal{
     public String toString() {
         return "ResultValueInternal {"
         +"sum = " + sum + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

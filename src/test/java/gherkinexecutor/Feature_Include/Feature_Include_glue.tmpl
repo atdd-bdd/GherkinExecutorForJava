@@ -10,14 +10,31 @@ class Feature_Include_glue {
     void Given_a_string_include(String value ) {
         System.out.println("---  " + "Given_a_string_include");
         System.out.println(value);
+        fail("Must implement");
     }
 
-    void Given_a_table(List<List<String>> values ) {
+    void Then_should_be_equal_to(String value ) {
+        System.out.println("---  " + "Then_should_be_equal_to");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_a_table(List<CSVContents> values ) {
         System.out.println("---  " + "Given_a_table");
-        for (List<String> value : values){
+        for (CSVContents value : values){
              System.out.println(value);
              // Add calls to production code and asserts
               }
+        fail("Must implement");
+    }
+
+    void Then_Should_be_equal_to_table(List<CSVContents> values ) {
+        System.out.println("---  " + "Then_Should_be_equal_to_table");
+        for (CSVContents value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              }
+        fail("Must implement");
     }
 
     }

@@ -35,5 +35,5 @@ class LabelValueInternal{
         return "LabelValueInternal {"
         +"label = " + label + " "
         +"value = " + value + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

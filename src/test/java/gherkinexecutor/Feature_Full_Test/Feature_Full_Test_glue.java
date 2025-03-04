@@ -2,8 +2,6 @@ package gherkinexecutor.Feature_Full_Test;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
-import java.util.regex.Pattern;
-import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
 
@@ -28,13 +26,7 @@ class Feature_Full_Test_glue {
         for (ATest value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ATestInternal i = value.toATestInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
-            }
+            ATestInternal i = value.toATestInternal();
         }
     }
 
@@ -43,13 +35,7 @@ class Feature_Full_Test_glue {
         for (ATest value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ATestInternal i = value.toATestInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ATestInternal.toDataTypeString());
-            }
+            ATestInternal i = value.toATestInternal();
         }
     }
 
@@ -66,13 +52,7 @@ class Feature_Full_Test_glue {
         for (ATestBad value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ATestBadInternal i = value.toATestBadInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ATestBadInternal.toDataTypeString());
-            }
+            ATestBadInternal i = value.toATestBadInternal();
         }
     }
 
@@ -97,13 +77,7 @@ class Feature_Full_Test_glue {
         for (TemperatureCalculation value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + TemperatureCalculationInternal.toDataTypeString());
-            }
+            TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
         }
     }
 
@@ -112,13 +86,7 @@ class Feature_Full_Test_glue {
         for (ValueValid value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ValueValidInternal i = value.toValueValidInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ValueValidInternal.toDataTypeString());
-            }
+            ValueValidInternal i = value.toValueValidInternal();
         }
     }
 
@@ -127,13 +95,7 @@ class Feature_Full_Test_glue {
         for (LabelValue value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                LabelValueInternal i = value.toLabelValueInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + LabelValueInternal.toDataTypeString());
-            }
+            LabelValueInternal i = value.toLabelValueInternal();
         }
     }
 
@@ -158,13 +120,7 @@ class Feature_Full_Test_glue {
         for (FilterValue value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                FilterValueInternal i = value.toFilterValueInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + FilterValueInternal.toDataTypeString());
-            }
+            FilterValueInternal i = value.toFilterValueInternal();
         }
     }
 
@@ -173,13 +129,7 @@ class Feature_Full_Test_glue {
         for (ResultValue value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ResultValueInternal i = value.toResultValueInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ResultValueInternal.toDataTypeString());
-            }
+            ResultValueInternal i = value.toResultValueInternal();
         }
     }
 
@@ -188,13 +138,7 @@ class Feature_Full_Test_glue {
         for (Imports value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ImportsInternal i = value.toImportsInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ImportsInternal.toDataTypeString());
-            }
+            ImportsInternal i = value.toImportsInternal();
         }
     }
 
@@ -203,13 +147,7 @@ class Feature_Full_Test_glue {
         for (Imports value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                ImportsInternal i = value.toImportsInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + ImportsInternal.toDataTypeString());
-            }
+            ImportsInternal i = value.toImportsInternal();
         }
     }
 
@@ -315,13 +253,7 @@ class Feature_Full_Test_glue {
         for (Move value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                MoveInternal i = value.toMoveInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
-            }
+            MoveInternal i = value.toMoveInternal();
         }
     }
 
@@ -343,13 +275,7 @@ class Feature_Full_Test_glue {
         for (Move value : values){
             System.out.println(value);
             // Add calls to production code and asserts
-            try {
-                MoveInternal i = value.toMoveInternal();
-                System.out.println(i);
-            }
-            catch(IllegalArgumentException e){
-                System.err.println("Argument Error " + value + MoveInternal.toDataTypeString());
-            }
+            MoveInternal i = value.toMoveInternal();
         }
     }
 

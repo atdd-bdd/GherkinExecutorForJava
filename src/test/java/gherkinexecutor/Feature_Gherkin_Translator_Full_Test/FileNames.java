@@ -54,5 +54,5 @@ class FileNames{
         return "FileNames {"
         +"expected = " + expected + " "
         +"actual = " + actual + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

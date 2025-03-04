@@ -54,5 +54,5 @@ class IDValue{
         return "IDValue {"
         +"iD = " + iD + " "
         +"value = " + value + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }

@@ -35,5 +35,5 @@ class FilterValueInternal{
         return "FilterValueInternal {"
         +"name = " + name + " "
         +"value = " + value + " "
-            + "} "; }  
+            + "} " + "\n"; }  
     }
