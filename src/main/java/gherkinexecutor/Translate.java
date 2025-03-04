@@ -517,6 +517,7 @@ public class Translate {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
         printFlow("Arguments");
+//        processArguments(args);
         if (Configuration.searchTree && !Configuration.startingFeatureDirectory.isEmpty()) {
             List<String> filesInTree = findFeatureFiles(Configuration.startingFeatureDirectory);
             printFlow("Adding directory tree files");
@@ -861,7 +862,19 @@ public class Translate {
         }
 
         private void tableToListOfListOfObject(List<String> table, String fullName, String className) {
-            System.err.println("MUST CREATE THIS METHOD");
+            String s = Integer.toString(stepNumberInScenario);
+            String dataType = "List<List<String>>";
+            String dataTypeInitializer = "List.of";
+
+            testPrint("        List<List<String>> stringListList" + s + " = " + dataTypeInitializer + "(");
+            String comma = "";
+            for (String line : table) {
+                convertBarLineToList(line, comma);
+                comma = ",";
+            }
+            testPrint("            );");
+            testPrint("        " + glueObject + "." + fullName + "(stringListList" + s + ");");
+            templateConstruct.makeFunctionTemplateObject(dataType, fullName, true, "" + className );
             createConvertTabletoListOfListOfObjectMethod(table,className);
         }
         private void tableToListOfList(List<String> table, String fullName) {
@@ -931,8 +944,8 @@ public class Translate {
 
 
         private void createConvertTabletoListOfListOfObjectMethod(List<String> table, String toClass) {
-            DataConstruct.DataValues variable = new DataConstruct.DataValues("NAME", "s",toClass);
-        String convert = makeValueFromString(variable, false);
+        DataConstruct.DataValues variable = new DataConstruct.DataValues("s", "s",toClass);
+        String convert = makeValueFromString(variable, true);
 
         String template =
                 """
@@ -1088,15 +1101,37 @@ public class Translate {
             }
         }
 
-        private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
+        private void makeFunctionTemplateObject(String dataType, String fullName, boolean isList, String listElement) {
+            if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
+            glueFunctions.put(fullName, dataType);
+            templatePrint("    void " + fullName + "(" + dataType + " values ) {");
+
+            templatePrint("    List<List<" + listElement + ">> is = convertList(values);");
+            templatePrint("    System.out.println(is);");
+
+            if (Configuration.logIt) {
+                templatePrint("        log(\"---  \" + " + "\"" + fullName + "\"" + ");");
+            }
+            if (!Configuration.inTest)
+                templatePrint("        fail(\"Must implement\");");
+            templatePrint("    }");
+            templatePrint("");
+        }
+
+        private boolean checkForExistingTemplate(String dataType, String fullName) {
             if (glueFunctions.containsKey(fullName)) {
                 String currentDataType = glueFunctions.get(fullName);
                 if (!currentDataType.equals(dataType)) {
                     error("function " + fullName + " datatype " + currentDataType + " not equals " + dataType);
-                    return;
+                    return true;
                 }
-                return; // already have a prototype
+                return true;
             }
+            return false;
+        }
+
+        private void makeFunctionTemplate(String dataType, String fullName, boolean isList, String listElement) {
+            if (checkForExistingTemplate(dataType, fullName)) return; // already have a prototype
             glueFunctions.put(fullName, dataType);
             if (dataType.isEmpty()) {
                 templatePrint("    void " + fullName + "(){");

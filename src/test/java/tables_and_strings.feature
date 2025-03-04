@@ -86,7 +86,7 @@ Given A table to List of Object with Defaults # ListOfObject ExampleClass
 | FieldA  |
 | a       |
 | c       |
-Then table should be same as
+Then table should be same as # ListOfObject ExampleClass
 | FieldA  | FieldB  |
 | a       | x       |
 | c       | x       |

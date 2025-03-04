@@ -54,6 +54,21 @@ class Feature_Tables_and_Strings{
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_List_of_String(stringListList1);
 
+        List<List<String>> stringListList2 = List.of(
+           List.of(
+            "1"
+            ,"2"
+            )
+           ,List.of(
+            "3"
+            ,"4"
+            )
+           ,List.of(
+            "5"
+            ,"6"
+            )
+            );
+        feature_Tables_and_Strings_glue_object.Star_A_Table_to_List_Of_List_Of_Object(stringListList2);
 
         List<ExampleClass> objectList3 = List.of(
              new ExampleClass.Builder()
@@ -150,21 +165,17 @@ class Feature_Tables_and_Strings{
             );
         feature_Tables_and_Strings_glue_object.Given_A_table_to_List_of_Object_with_Defaults(objectList1);
 
-        List<List<String>> stringListList2 = List.of(
-           List.of(
-            "FieldA"
-            ,"FieldB"
-            )
-           ,List.of(
-            "a"
-            ,"x"
-            )
-           ,List.of(
-            "c"
-            ,"x"
-            )
+        List<ExampleClass> objectList2 = List.of(
+             new ExampleClass.Builder()
+                .fieldA("a")
+                .fieldB("x")
+                .build()
+            , new ExampleClass.Builder()
+                .fieldA("c")
+                .fieldB("x")
+                .build()
             );
-        feature_Tables_and_Strings_glue_object.Then_table_should_be_same_as(stringListList2);
+        feature_Tables_and_Strings_glue_object.Then_table_should_be_same_as(objectList2);
         }
     @Test
     void test_Scenario_Transpose_Table(){

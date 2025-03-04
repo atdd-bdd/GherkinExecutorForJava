@@ -46,6 +46,12 @@ class Feature_Tables_and_Strings_glue {
         fail("Must implement");
     }
 
+    void Star_A_Table_to_List_Of_List_Of_Object(List<List<String>> values ) {
+    List<List<Integer>> is = convertList(values);
+    System.out.println(is);
+        fail("Must implement");
+    }
+
     void Star_A_table_to_List_of_Object(List<ExampleClass> values ) {
         System.out.println("---  " + "Star_A_table_to_List_of_Object");
         for (ExampleClass value : values){
@@ -109,9 +115,9 @@ class Feature_Tables_and_Strings_glue {
         fail("Must implement");
     }
 
-    void Then_table_should_be_same_as(List<List<String>> values ) {
+    void Then_table_should_be_same_as(List<ExampleClass> values ) {
         System.out.println("---  " + "Then_table_should_be_same_as");
-        for (List<String> value : values){
+        for (ExampleClass value : values){
              System.out.println(value);
              // Add calls to production code and asserts
               }
@@ -141,7 +147,7 @@ class Feature_Tables_and_Strings_glue {
             for (List<String> innerList : stringList) {
                 List<Integer> innerClassList = new ArrayList<>();
                 for (String s : innerList) {
-                    innerClassList.add(Integer.valueOf("s"));
+                    innerClassList.add(Integer.valueOf(s));
                 }
                 classList.add(innerClassList);
             }
