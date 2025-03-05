@@ -868,6 +868,98 @@ class Feature_Full_Test{
             | 0  | x  | 0  |
             """.stripIndent();
         feature_Full_Test_glue_object.Then_board_is_now(table2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Convert_to_Json(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        List<SimpleClass> objectList1 = List.of(
+             new SimpleClass.Builder()
+                .anInt("1")
+                .aString("B")
+                .build()
+            );
+        feature_Full_Test_glue_object.Given_one_object_is(objectList1);
+
+        String string2 =
+            """
+            {anInt:"1",aString:"B"}
+            """.stripIndent();
+        feature_Full_Test_glue_object.Then_Json_should_be(string2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Convert_from_Json(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        String string1 =
+            """
+            {anInt:  "1"   ,   aString:"B"  }
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given_Json_is(string1);
+
+        List<SimpleClass> objectList2 = List.of(
+             new SimpleClass.Builder()
+                .anInt("1")
+                .aString("B")
+                .build()
+            );
+        feature_Full_Test_glue_object.Then_the_converted_object_is(objectList2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Convert_to_Json_Array(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        List<SimpleClass> objectList1 = List.of(
+             new SimpleClass.Builder()
+                .anInt("1")
+                .aString("B")
+                .build()
+            , new SimpleClass.Builder()
+                .anInt("2")
+                .aString("C")
+                .build()
+            );
+        feature_Full_Test_glue_object.Given_a_table_is(objectList1);
+
+        String string2 =
+            """
+            [ {anInt:"1",aString:"B"}
+            , {anInt:"2",aString:"C"}
+            ]
+            """.stripIndent();
+        feature_Full_Test_glue_object.Then_Json_for_table_should_be(string2);
+        test_Cleanup(feature_Full_Test_glue_object); // from previous
+        }
+    @Test
+    void test_Scenario_Convert_from_Json_Array(){
+         Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        test_Background(feature_Full_Test_glue_object);
+
+        String string1 =
+            """
+            [    {anInt:  "1"   ,   aString:"B"  },
+            {anInt:  "2"   ,   aString:"C"  }
+            ]
+            """.stripIndent();
+        feature_Full_Test_glue_object.Given_Json_for_table_is(string1);
+
+        List<SimpleClass> objectList2 = List.of(
+             new SimpleClass.Builder()
+                .anInt("1")
+                .aString("B")
+                .build()
+            , new SimpleClass.Builder()
+                .anInt("2")
+                .aString("C")
+                .build()
+            );
+        feature_Full_Test_glue_object.Then_the_converted_table_should_be(objectList2);
         test_Cleanup(feature_Full_Test_glue_object); // at the end
         }
     }

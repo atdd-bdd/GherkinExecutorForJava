@@ -72,6 +72,74 @@ class TestIn{
         +"bValue = " + bValue + " "
         +"cValue = " + cValue + " "
             + "} " + "\n"; }  
+    public String toJson() {
+        return " {"
+        +""+"aValue:" + "\"" + aValue + "\""
+        +","+"bValue:" + "\"" + bValue + "\""
+        +","+"cValue:" + "\"" + cValue + "\""
+            + "} " + "\n"; }  
+        public static TestIn fromJson(String json) {
+              TestIn instance = new TestIn();
+
+              	json = json.replaceAll("\\s", "");
+                String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+
+                // Iterate over the key-value pairs
+                for (String pair : keyValuePairs) {
+                    // Split each pair by the colon
+                    String[] entry = pair.split(":");
+
+                    // Remove the quotes from the key and value
+                    String key = entry[0].replace("\"", "").trim();
+                    String value = entry[1].replace("\"", "").trim();
+
+
+          // Assign the value to the corresponding field
+                    switch (key) {
+              case "aValue":
+                  instance.aValue = value;
+                  break;
+              case "bValue":
+                  instance.bValue = value;
+                  break;
+              case "cValue":
+                  instance.cValue = value;
+                  break;
+        				default:
+        				    System.err.println("Invalid JSON element " + key);
+                    }
+                }
+                return instance;
+            }
+
+
+             public static String listToJson(List<TestIn> list) {
+                 StringBuilder jsonBuilder = new StringBuilder();
+                 jsonBuilder.append("[");
+
+                 for (int i = 0; i < list.size(); i++) {
+                     jsonBuilder.append(list.get(i).toJson());
+                     if (i < list.size() - 1) {
+                         jsonBuilder.append(",");
+                     }
+                 }
+
+                 jsonBuilder.append("]");
+                 return jsonBuilder.toString();
+             }
+
+             public static List<TestIn> listFromJson(String json) {
+                    List<TestIn> list = new ArrayList<>();
+            		json = json.replaceAll("\\s", "");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+
+                    for (String jsonObject : jsonObjects) {
+                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
+                        list.add(TestIn.fromJson(jsonObject));
+                    }
+                    return list;
+                }
+
     Existing toExisting() {
         return new Existing(
          Integer.parseInt(aValue)

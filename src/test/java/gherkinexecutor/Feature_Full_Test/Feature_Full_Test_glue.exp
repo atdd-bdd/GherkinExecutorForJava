@@ -404,6 +404,70 @@ class Feature_Full_Test_glue {
         fail("Must implement");
     }
 
+    void Given_one_object_is(List<SimpleClass> values ) {
+        System.out.println("---  " + "Given_one_object_is");
+        for (SimpleClass value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              SimpleClassInternal i = value.toSimpleClassInternal();
+              }
+        fail("Must implement");
+    }
+
+    void Then_Json_should_be(String value ) {
+        System.out.println("---  " + "Then_Json_should_be");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_Json_is(String value ) {
+        System.out.println("---  " + "Given_Json_is");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Then_the_converted_object_is(List<SimpleClass> values ) {
+        System.out.println("---  " + "Then_the_converted_object_is");
+        for (SimpleClass value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              SimpleClassInternal i = value.toSimpleClassInternal();
+              }
+        fail("Must implement");
+    }
+
+    void Given_a_table_is(List<SimpleClass> values ) {
+        System.out.println("---  " + "Given_a_table_is");
+        for (SimpleClass value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              SimpleClassInternal i = value.toSimpleClassInternal();
+              }
+        fail("Must implement");
+    }
+
+    void Then_Json_for_table_should_be(String value ) {
+        System.out.println("---  " + "Then_Json_for_table_should_be");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Given_Json_for_table_is(String value ) {
+        System.out.println("---  " + "Given_Json_for_table_is");
+        System.out.println(value);
+        fail("Must implement");
+    }
+
+    void Then_the_converted_table_should_be(List<SimpleClass> values ) {
+        System.out.println("---  " + "Then_the_converted_table_should_be");
+        for (SimpleClass value : values){
+             System.out.println(value);
+             // Add calls to production code and asserts
+              SimpleClassInternal i = value.toSimpleClassInternal();
+              }
+        fail("Must implement");
+    }
+
         public static List<List<Integer>> convertList(List<List<String>> stringList) {
             List<List<Integer>> classList = new ArrayList<>();
             for (List<String> innerList : stringList) {

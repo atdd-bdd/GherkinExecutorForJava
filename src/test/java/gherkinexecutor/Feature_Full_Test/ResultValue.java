@@ -42,6 +42,66 @@ class ResultValue{
         return "ResultValue {"
         +"sum = " + sum + " "
             + "} " + "\n"; }  
+    public String toJson() {
+        return " {"
+        +""+"sum:" + "\"" + sum + "\""
+            + "} " + "\n"; }  
+        public static ResultValue fromJson(String json) {
+              ResultValue instance = new ResultValue();
+
+              	json = json.replaceAll("\\s", "");
+                String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+
+                // Iterate over the key-value pairs
+                for (String pair : keyValuePairs) {
+                    // Split each pair by the colon
+                    String[] entry = pair.split(":");
+
+                    // Remove the quotes from the key and value
+                    String key = entry[0].replace("\"", "").trim();
+                    String value = entry[1].replace("\"", "").trim();
+
+
+          // Assign the value to the corresponding field
+                    switch (key) {
+              case "sum":
+                  instance.sum = value;
+                  break;
+        				default:
+        				    System.err.println("Invalid JSON element " + key);
+                    }
+                }
+                return instance;
+            }
+
+
+             public static String listToJson(List<ResultValue> list) {
+                 StringBuilder jsonBuilder = new StringBuilder();
+                 jsonBuilder.append("[");
+
+                 for (int i = 0; i < list.size(); i++) {
+                     jsonBuilder.append(list.get(i).toJson());
+                     if (i < list.size() - 1) {
+                         jsonBuilder.append(",");
+                     }
+                 }
+
+                 jsonBuilder.append("]");
+                 return jsonBuilder.toString();
+             }
+
+             public static List<ResultValue> listFromJson(String json) {
+                    List<ResultValue> list = new ArrayList<>();
+            		json = json.replaceAll("\\s", "");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+
+                    for (String jsonObject : jsonObjects) {
+                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
+                        list.add(ResultValue.fromJson(jsonObject));
+                    }
+                    return list;
+                }
+
     ResultValueInternal toResultValueInternal() {
         return new ResultValueInternal(
          Integer.valueOf(sum)

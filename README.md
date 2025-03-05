@@ -259,6 +259,9 @@ There are more keywords than in standard Gherkin. You can add additional ones by
     "Data" - describes the attributes of an object
     "Import" - describes the constructor and package for non-primitive attributes 
     "Define" - defines words and their values that can replace the words in tables.  
+`   "* Data" - alternative for Data, to have Gherkin Editors not report error
+    "* Import" - alternative for Import, 
+    "* Define" - alternative  
 ```
 
 ## More Information 
@@ -623,54 +626,6 @@ Scenario: Here are string options
   """
 
 ```
-
-## Import 
-One final statment is the `Import` statement.  It appears like this:
-```
-Import 
-| Datatype    | ConversionMethod    | Import                   | Notes                 |
-| URL         | new URL($)          | java.net.URL             |                       |
-| Pattern     | Pattern.compile($)  | java.util.regex.Pattern  |                       |
-| Weekday     | Weekday.valueOf($)  |                          | Enum that is created  |
-| BigInteger  | new BigInteger($)   | java.math.BigInteger     |                       |
-```
-If you use a class other than the primitive equivalents (e.g. Integer),
-you need to include it as an import.  You specify the conversion 
-method from a String, using `$` to show where the string value goes.  
-Under Import, you specify the import statement (import and ; will automatically
-be added.)  If you do not specify an import location, then the code 
-assumes it will be available without one.   
-
-Note, you should add the production package to the imports in the Configuration
-attributes.  That way, it will automatically be put in each of the 
-generated files.  
-Now you can use these data types in a Data statement.
-```agsl
-Data Imports 
-| Name       | Default             | Datatype    | Notes           |
-| myURL      | http://kenpugh.com  | URL         | Uses import     |
-| myPattern  | a.*                 | Pattern     | Uses a pattern  |
-| myWeekday  | MONDAY              | Weekday     | Uses an enum    |
-| myBigInt   | 1                   | BigInteger  | Uses import     |
-
-```
-And the ListOfObject looks just the same.
-```
-Scenario: Use an import
-Given this data # ListOfObject Imports 
-| myURL                | myPattern  | myWeekday  | myBigInt     |
-| http://kenpugh.com   | a.*        | MONDAY     | 1            |
-| http://atdd-bdd.com  | [ab]       | SUNDAY     | 10000000000  |
-```
-The conversion method is called in the data classes that are created.
-IllegalArgumentException is caught, so that you can report that the values were not
-valid for the particular data type. 
-```
-Scenario: Should also fail
-Given this data should fail # ListOfObject Imports 
-| myURL                | myPattern  | myWeekday  |
-| ht://kenpugh.com   | a.*        | MONDAY     |
-| http:atdd-bdd.com  | [ab]       | SUNDAY     |
 
 ```
 

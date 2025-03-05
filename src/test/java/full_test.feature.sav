@@ -11,6 +11,7 @@ Include "parse_CSV.feature"
 Include "simple_test.feature" 
 Include "tables_and_strings.feature"
 Include "tic_tac_toe.feature
+Include "json.feature"
 
 
 

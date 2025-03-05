@@ -57,4 +57,68 @@ class ExampleClassWithBlanks{
         +"field_1 = " + field_1 + " "
         +"field_2 = " + field_2 + " "
             + "} " + "\n"; }  
+    public String toJson() {
+        return " {"
+        +""+"field_1:" + "\"" + field_1 + "\""
+        +","+"field_2:" + "\"" + field_2 + "\""
+            + "} " + "\n"; }  
+        public static ExampleClassWithBlanks fromJson(String json) {
+              ExampleClassWithBlanks instance = new ExampleClassWithBlanks();
+
+              	json = json.replaceAll("\\s", "");
+                String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+
+                // Iterate over the key-value pairs
+                for (String pair : keyValuePairs) {
+                    // Split each pair by the colon
+                    String[] entry = pair.split(":");
+
+                    // Remove the quotes from the key and value
+                    String key = entry[0].replace("\"", "").trim();
+                    String value = entry[1].replace("\"", "").trim();
+
+
+          // Assign the value to the corresponding field
+                    switch (key) {
+              case "field_1":
+                  instance.field_1 = value;
+                  break;
+              case "field_2":
+                  instance.field_2 = value;
+                  break;
+        				default:
+        				    System.err.println("Invalid JSON element " + key);
+                    }
+                }
+                return instance;
+            }
+
+
+             public static String listToJson(List<ExampleClassWithBlanks> list) {
+                 StringBuilder jsonBuilder = new StringBuilder();
+                 jsonBuilder.append("[");
+
+                 for (int i = 0; i < list.size(); i++) {
+                     jsonBuilder.append(list.get(i).toJson());
+                     if (i < list.size() - 1) {
+                         jsonBuilder.append(",");
+                     }
+                 }
+
+                 jsonBuilder.append("]");
+                 return jsonBuilder.toString();
+             }
+
+             public static List<ExampleClassWithBlanks> listFromJson(String json) {
+                    List<ExampleClassWithBlanks> list = new ArrayList<>();
+            		json = json.replaceAll("\\s", "");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+
+                    for (String jsonObject : jsonObjects) {
+                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
+                        list.add(ExampleClassWithBlanks.fromJson(jsonObject));
+                    }
+                    return list;
+                }
+
     }
