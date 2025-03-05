@@ -1,24 +1,24 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
 class LabelValueInternal{
-     String label;
+     ID iD;
      Integer value;
      
     public static String toDataTypeString() {
         return "LabelValueInternal {"
-        +"String " 
+        +"ID " 
         +"Integer " 
             + "} "; }  
     LabelValue toLabelValue() {
         return new LabelValue(
-        label
+        iD.toString()
         ,String.valueOf(value)
         ); }
     public LabelValueInternal(
-        String label
+        ID iD
         ,Integer value
         )  {
-        this.label = label;
+        this.iD = iD;
         this.value = value;
         }
     @Override
@@ -27,13 +27,13 @@ class LabelValueInternal{
         if (o == null || getClass() != o.getClass()) return false;
         LabelValueInternal _LabelValueInternal = (LabelValueInternal) o;
          return 
-                ( _LabelValueInternal.label.equals(this.label))
+                ( _LabelValueInternal.iD.equals(this.iD))
                  && ( _LabelValueInternal.value.equals(this.value))
              ;  }
     @Override
     public String toString() {
         return "LabelValueInternal {"
-        +"label = " + label + " "
+        +"iD = " + iD + " "
         +"value = " + value + " "
             + "} " + "\n"; }  
     }

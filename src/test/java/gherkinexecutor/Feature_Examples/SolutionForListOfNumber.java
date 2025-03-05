@@ -6,19 +6,19 @@ import java.util.List;
 
 public class SolutionForListOfNumber {
     private final List<LabelValueInternal> values = new ArrayList <>();
-    private String filterValue = "";
+    private ID filterValue = new ID("Q0000");
     void add(LabelValueInternal value) {
         values.add(value);
     }
 
-    void setFilterValue(String value) {
+    void setFilterValue(ID value) {
         filterValue = value;
     }
 
     int sum(){
         var sum = 0;
         for (LabelValueInternal element : values) {
-            if (element.label.equals(filterValue))
+            if (element.iD.equals(filterValue))
                 sum += (element.value);
         }
         return sum;

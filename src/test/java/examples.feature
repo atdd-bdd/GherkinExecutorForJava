@@ -32,44 +32,41 @@ Data ValueValid
 Scenario: Filter Data 
 # filters data 
 Given list of numbers # ListOfObject LabelValue 
-| Label | Value  |
-| a     | 1      |
-| b     | 2      |
-| a     | 3      |
-When filtered by Label with value
-| a  |
+| ID     | Value  |
+| Q1234  | 1      |
+| Q9999  | 2      |
+| Q1234  | 3      |
+When filtered by ID with value
+| Q1234  |
 Then sum is 
 | 4 | 
 
 Scenario: Filter Data Another Way  
 # filters data 
 Given list of numbers # ListOfObject LabelValue
-| Label | Value  |
-| a     | 1      |
-| b     | 2      |
-| a     | 3      |
+| ID     | Value  |
+| Q1234  | 1      |
+| Q9999  | 2      |
+| Q1234  | 3      |
 When filtered by # ListOfObject FilterValue transpose
-| Name   | Label  |
-| Value  | a      |
+| Name   | ID     |
+| Value  | Q1234  |
 Then result # ListOfObject ResultValue 
 | Sum  |
 | 4    |
 
-Data FilterValue 
+* Data FilterValue
 | Name   | Default  | DataType  | Notes  |
 | Name   |          | String    |        |
-| Value  | 0        | String    |        |
+| Value  | Q0000    | ID        |        |
 
-Data ResultValue 
+* Data ResultValue
 | Name  | Default  | DataType  | Notes  |
 | Sum   |          | Integer   |        |
 
-
-
-
-Data LabelValue 
+* Data LabelValue
 | Name   | Default  | DataType  | Notes  |
-| Label  |          | String    |        |
+| ID     |          | ID        |        |
 | Value  | 0        | Integer   |        |
 
 

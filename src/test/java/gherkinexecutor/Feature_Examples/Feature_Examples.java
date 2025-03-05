@@ -61,15 +61,15 @@ class Feature_Examples{
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .label("a")
+                .iD("Q1234")
                 .value("1")
                 .build()
             , new LabelValue.Builder()
-                .label("b")
+                .iD("Q9999")
                 .value("2")
                 .build()
             , new LabelValue.Builder()
-                .label("a")
+                .iD("Q1234")
                 .value("3")
                 .build()
             );
@@ -77,10 +77,10 @@ class Feature_Examples{
 
         List<List<String>> stringListList2 = List.of(
            List.of(
-            "a"
+            "Q1234"
             )
             );
-        feature_Examples_glue_object.When_filtered_by_Label_with_value(stringListList2);
+        feature_Examples_glue_object.When_filtered_by_ID_with_value(stringListList2);
 
         List<List<String>> stringListList3 = List.of(
            List.of(
@@ -95,15 +95,15 @@ class Feature_Examples{
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .label("a")
+                .iD("Q1234")
                 .value("1")
                 .build()
             , new LabelValue.Builder()
-                .label("b")
+                .iD("Q9999")
                 .value("2")
                 .build()
             , new LabelValue.Builder()
-                .label("a")
+                .iD("Q1234")
                 .value("3")
                 .build()
             );
@@ -111,8 +111,8 @@ class Feature_Examples{
 
         List<FilterValue> objectList2 = List.of(
              new FilterValue.Builder()
-                .name("Label")
-                .value("a")
+                .name("ID")
+                .value("Q1234")
                 .build()
             );
         feature_Examples_glue_object.When_filtered_by(objectList2);

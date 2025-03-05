@@ -2,21 +2,21 @@ package gherkinexecutor.Feature_Examples;
 import java.util.*;
 class FilterValueInternal{
      String name;
-     String value;
+     ID value;
      
     public static String toDataTypeString() {
         return "FilterValueInternal {"
         +"String " 
-        +"String " 
+        +"ID " 
             + "} "; }  
     FilterValue toFilterValue() {
         return new FilterValue(
         name
-        ,value
+        ,value.toString()
         ); }
     public FilterValueInternal(
         String name
-        ,String value
+        ,ID value
         )  {
         this.name = name;
         this.value = value;

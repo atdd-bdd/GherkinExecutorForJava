@@ -77,12 +77,13 @@ class Feature_Examples_glue {
         }
     }
 
-    void When_filtered_by_Label_with_value(List<List<String>> values) {
-        System.out.println("---  " + "When_filtered_by_Label_with_value");
-        log("---  " + "When_filtered_by_Label_with_value");
+    void When_filtered_by_ID_with_value(List<List<String>> values) {
+        System.out.println("---  " + "When_filtered_by_ID_with_value");
+        log("---  " + "When_filtered_by_ID_with_value");
         log(values.toString());
-        String label = values.get(0).get(0);
-        solution.setFilterValue(label);
+        String id = values.get(0).get(0);
+        System.out.println("ID is " + id);
+        solution.setFilterValue(new ID(id));
     }
 
     void Then_sum_is(List<List<String>> values) {
@@ -101,7 +102,7 @@ class Feature_Examples_glue {
             try {
                 FilterValueInternal i = value.toFilterValueInternal();
                 System.out.println("Filter is " + value.value);
-                solution.setFilterValue(value.value);
+                solution.setFilterValue(new ID(value.value));
             }
             catch(Exception e){
                 System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());

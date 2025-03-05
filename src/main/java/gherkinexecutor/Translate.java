@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+@SuppressWarnings("CommentedOutCode")
 public class Translate {
     private final Map<String, String> scenarios = new HashMap<>(); // used to check if duplicate scenario names
     private final Map<String, String> glueFunctions = new HashMap<>(); // used to make sure only one glue implementation
@@ -152,24 +153,27 @@ public class Translate {
                               List<String> comment, int pass) {
         String fullName = makeFullName(words);
         trace("Act on keyword " + keyword + " " + fullName + " pass " + pass);
-        if (keyword == "Star"){
-            switch(words.get(1))
-             {
-            case "Data":
-                keyword = "Data";
-                words.remove(0);
-                break;
-            case "Import":
-                keyword = "Import";
-                words.remove(0);
-                break;
-            case "Define":
-                keyword = "Define";
-                words.remove(0);
-                break;
-            default:
-                break;
-        }
+        if (keyword.equals("Star")) {
+            switch (words.get(1)) {
+                case "Data":
+                    keyword = "Data";
+                    words.remove(0);
+                    break;
+                case "Import":
+                    keyword = "Import";
+                    words.remove(0);
+                    break;
+                case "Define":
+                    keyword = "Define";
+                    words.remove(0);
+                    break;
+                case "Cleanup":
+                    keyword = "Cleanup";
+                    words.remove(0);
+                    break;
+                default:
+                    break;
+            }
         }
         switch (keyword) {
             case "Feature":
@@ -197,6 +201,7 @@ public class Translate {
                 addCleanup = true;
                 inCleanup = true;
                 break;
+            case "But":
             case "Given":
             case "When":
             case "Then":
@@ -1347,10 +1352,10 @@ public class Translate {
             createEqualsMethod(variables, className);
             createBuilderMethod(variables, className);
             createToStringMethod(variables, className);
-            createToJSONMethod(variables, className);
+            createToJSONMethod(variables);
             createFromJSONMethod(variables, className);
-            createTableToJSONMethod(variables, className);
-            createJSONToTableMethod(variables, className);
+            createTableToJSONMethod(className);
+            createJSONToTableMethod(className);
             if (doInternal) {
                 dataNamesInternal.put(internalClassName, "");
                 createConversionMethod(internalClassName, variables);
@@ -1363,45 +1368,45 @@ public class Translate {
             }
         }
 
-        private void createJSONToTableMethod(List<DataValues> variables, String className) {
-        String code =
-                """
-                         public static List<CLASSNAME> listFromJson(String json) {
-                                List<CLASSNAME> list = new ArrayList<>();
-                        		json = json.replaceAll("\\\\s", "");
-                                String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\\\},\\\\{");
-                                                
-                                for (String jsonObject : jsonObjects) {
-                                    jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                                    list.add(CLASSNAME.fromJson(jsonObject));
-                                }
-                                return list;
-                            }
-            """.stripIndent();
-        code = code.replace("CLASSNAME",className);
-        dataPrintLn(code);
+        private void createJSONToTableMethod(String className) {
+            String code =
+                    """
+                                         public static List<CLASSNAME> listFromJson(String json) {
+                                                List<CLASSNAME> list = new ArrayList<>();
+                                        		json = json.replaceAll("\\\\s", "");
+                                                String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\\\},\\\\{");
+                                                                
+                                                for (String jsonObject : jsonObjects) {
+                                                    jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
+                                                    list.add(CLASSNAME.fromJson(jsonObject));
+                                                }
+                                                return list;
+                                            }
+                            """.stripIndent();
+            code = code.replace("CLASSNAME", className);
+            dataPrintLn(code);
         }
 
-        private void createTableToJSONMethod(List<DataValues> variables, String className) {
-        String code =
-                """
-                            public static String listToJson(List<CLASSNAME> list) {
-                                StringBuilder jsonBuilder = new StringBuilder();
-                                jsonBuilder.append("[");
-                                                
-                                for (int i = 0; i < list.size(); i++) {
-                                    jsonBuilder.append(list.get(i).toJson());
-                                    if (i < list.size() - 1) {
-                                        jsonBuilder.append(",");
-                                    }
-                                }
-                                                
-                                jsonBuilder.append("]");
-                                return jsonBuilder.toString();
-                            }
-               """.stripIndent();
-        code = code.replace("CLASSNAME", className);
-        dataPrintLn(code);
+        private void createTableToJSONMethod(String className) {
+            String code =
+                    """
+                                         public static String listToJson(List<CLASSNAME> list) {
+                                             StringBuilder jsonBuilder = new StringBuilder();
+                                             jsonBuilder.append("[");
+                                                             
+                                             for (int i = 0; i < list.size(); i++) {
+                                                 jsonBuilder.append(list.get(i).toJson());
+                                                 if (i < list.size() - 1) {
+                                                     jsonBuilder.append(",");
+                                                 }
+                                             }
+                                                             
+                                             jsonBuilder.append("]");
+                                             return jsonBuilder.toString();
+                                         }
+                            """.stripIndent();
+            code = code.replace("CLASSNAME", className);
+            dataPrintLn(code);
         }
 
         private void endDataFile() {
@@ -1472,63 +1477,64 @@ public class Translate {
             dataPrintLn("            + " + quoteIt("} ") + " + " + quoteIt(lineMark) + "; }  ");
 
         }
+
         private void createFromJSONMethod(List<DataValues> variables, String className) {
             String firstPart =
                     """
-                            public static CLASSNAME fromJson(String json) {
-                                  CLASSNAME instance = new CLASSNAME();
-                                                     
-                                  	json = json.replaceAll("\\\\s", "");
-                                    String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
-                                                        
-                                    // Iterate over the key-value pairs
-                                    for (String pair : keyValuePairs) {
-                                        // Split each pair by the colon
-                                        String[] entry = pair.split(":");
-                                                        
-                                        // Remove the quotes from the key and value
-                                        String key = entry[0].replace("\\"", "").trim();
-                                        String value = entry[1].replace("\\"", "").trim();
-                                                        
-                             
-                              // Assign the value to the corresponding field
-                                        switch (key) {
-                    """.stripIndent();
-                    firstPart = firstPart.replace("CLASSNAME", className);
-        String middlePart = "";
-        for(DataValues variable : variables){
-            String start =
-                    """
-                                  case "NAME":
-                                      instance.NAME = value;
-                                      break;
-                    """.stripIndent();
-            String toAdd = start.replace("NAME", variable.name);
-            middlePart += toAdd;
-        }
+                                    public static CLASSNAME fromJson(String json) {
+                                          CLASSNAME instance = new CLASSNAME();
+                                                             
+                                          	json = json.replaceAll("\\\\s", "");
+                                            String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+                                                                
+                                            // Iterate over the key-value pairs
+                                            for (String pair : keyValuePairs) {
+                                                // Split each pair by the colon
+                                                String[] entry = pair.split(":");
+                                                                
+                                                // Remove the quotes from the key and value
+                                                String key = entry[0].replace("\\"", "").trim();
+                                                String value = entry[1].replace("\\"", "").trim();
+                                                                
+                                     
+                                      // Assign the value to the corresponding field
+                                                switch (key) {
+                            """.stripIndent();
+            firstPart = firstPart.replace("CLASSNAME", className);
+            StringBuilder middlePart = new StringBuilder();
+            for (DataValues variable : variables) {
+                String start =
+                        """
+                                              case "NAME":
+                                                  instance.NAME = value;
+                                                  break;
+                                """.stripIndent();
+                String toAdd = start.replace("NAME", variable.name);
+                middlePart.append(toAdd);
+            }
 
-        String lastPart =
-                """
-                        				default:\s
-                        				    System.err.println("Invalid JSON element " + key);\s
-                                    }
-                                }
-                                return instance;
-                            }
-                                                
-                """.stripIndent();
+            String lastPart =
+                    """
+                                    				default:\s
+                                    				    System.err.println("Invalid JSON element " + key);\s
+                                                }
+                                            }
+                                            return instance;
+                                        }
+                                                            
+                            """.stripIndent();
             dataPrintLn(firstPart + middlePart + lastPart);
         }
 
-        private void createToJSONMethod(List<DataValues> variables, String className) {
-             dataPrintLn("    public String toJson() {");
+        private void createToJSONMethod(List<DataValues> variables) {
+            dataPrintLn("    public String toJson() {");
             dataPrintLn("        return " + quoteIt(" {"));
             String add = "+";
             String comma = "";
             for (DataValues variable : variables) {
-                dataPrintLn("        " + add + quoteIt(comma) + "+"+ quoteIt(makeName(variable.name)
-                        + ":") + " + " + quoteIt("\\\"")+  " + " +(makeName(variable.name) +
-                        " + " + quoteIt("\\\"") ));
+                dataPrintLn("        " + add + quoteIt(comma) + "+" + quoteIt(makeName(variable.name)
+                        + ":") + " + " + quoteIt("\\\"") + " + " + (makeName(variable.name) +
+                        " + " + quoteIt("\\\"")));
                 comma = ",";
             }
             String lineMark = "";
