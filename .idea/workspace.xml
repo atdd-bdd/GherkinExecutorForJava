@@ -8,32 +8,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Clean Code according to analysis (with a few suppressions)">
-      <change afterPath="$PROJECT_DIR$/src/test/java/json.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/full_test.feature.sav" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/full_test.feature.sav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest0.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClassWithBlanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClassWithBlanks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.exp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.exp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TemperatureCalculation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TemperatureCalculation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TestIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TestIn.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValid.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/quick_test.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features/quick_test.feature" afterDir="false" />
-    </list>
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="To/from JSON added" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -421,11 +396,17 @@
       <option name="project" value="LOCAL" />
       <updated>1741101945681</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="To/from JSON added">
+      <created>1741200176601</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1741200176602</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updating the way the initializers work" />
     <MESSAGE value="Added comparision for less than entire object." />
     <MESSAGE value="Changed conversion to internal" />
     <MESSAGE value="New TicTacToeGame added MoveIn class" />
@@ -450,7 +431,8 @@
     <MESSAGE value="Added parameters to command line" />
     <MESSAGE value="Refactoring makeFunctionTemplate" />
     <MESSAGE value="Clean Code according to analysis (with a few suppressions)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean Code according to analysis (with a few suppressions)" />
+    <MESSAGE value="To/from JSON added" />
+    <option name="LAST_COMMIT_MESSAGE" value="To/from JSON added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

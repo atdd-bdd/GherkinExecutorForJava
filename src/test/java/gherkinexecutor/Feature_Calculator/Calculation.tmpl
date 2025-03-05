@@ -1,0 +1,46 @@
+package gherkinexecutor.Feature_Calculator;
+import java.util.*;
+class Calculation{
+     int number1;
+     int number2;
+     int result;
+     
+    public static String toDataTypeString() {
+        return "Calculation {"
+        +"int " 
+        +"int " 
+        +"int " 
+            + "} "; }  
+    Data toData() {
+        return new Data(
+        String.valueOf(number1)
+        ,String.valueOf(number2)
+        ,String.valueOf(result)
+        ); }
+    public Calculation(
+        int number1
+        ,int number2
+        ,int result
+        )  {
+        this.number1 = number1;
+        this.number2 = number2;
+        this.result = result;
+        }
+    @Override
+    public boolean equals (Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Calculation _Calculation = (Calculation) o;
+         return 
+                ( _Calculation.number1 == (this.number1))
+                 && ( _Calculation.number2 == (this.number2))
+                 && ( _Calculation.result == (this.result))
+             ;  }
+    @Override
+    public String toString() {
+        return "Calculation {"
+        +"number1 = " + number1 + " "
+        +"number2 = " + number2 + " "
+        +"result = " + result + " "
+            + "} " + "\n"; }  
+    }

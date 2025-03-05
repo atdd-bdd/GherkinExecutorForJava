@@ -1,0 +1,90 @@
+
+Going to python:
+
+Here's the translated Python code:
+
+```python
+class ATest:
+    def __init__(self, an_int="0", a_string="^", a_double="1.2"):
+        self.an_int = an_int
+        self.a_string = a_string
+        self.a_double = a_double
+
+    def __eq__(self, other):
+        if self is other:
+            return True
+        if other is None or not isinstance(other, ATest):
+            return False
+        result = True
+        if self.an_int != "?DNC?" and other.an_int != "?DNC?":
+            if other.an_int != self.an_int:
+                result = False
+        if self.a_string != "?DNC?" and other.a_string != "?DNC?":
+            if other.a_string != self.a_string:
+                result = False
+        if self.a_double != "?DNC?" and other.a_double != "?DNC?":
+            if other.a_double != self.a_double:
+                result = False
+        return result
+
+    def __str__(self):
+        return f"ATest {{an_int = {self.an_int} a_string = {self.a_string} a_double = {self.a_double}}}"
+
+    def to_a_test_internal(self):
+        return ATestInternal(int(self.an_int), self.a_string, float(self.a_double))
+
+    class Builder:
+        def __init__(self):
+            self.an_int = "0"
+            self.a_string = "^"
+            self.a_double = "1.2"
+
+        def an_int(self, an_int):
+            self.an_int = an_int
+            return self
+
+        def a_string(self, a_string):
+            self.a_string = a_string
+            return self
+
+        def a_double(self, a_double):
+            self.a_double = a_double
+            return self
+
+        def set_compare(self):
+            self.an_int = "?DNC?"
+            self.a_string = "?DNC?"
+            self.a_double = "?DNC?"
+            return self
+
+        def build(self):
+            return ATest(self.an_int, self.a_string, self.a_double)
+
+# Assuming ATestInternal class is defined elsewhere
+
+Here's the translated Python code:
+
+```python
+import unittest
+
+class FeatureSimpleTest(unittest.TestCase):
+
+    def test_scenario_simple(self):
+        feature_simple_test_glue_object = FeatureSimpleTestGlue()
+
+        object_list1 = [
+            ATest.Builder()
+                .an_int("1")
+                .a_string("something")
+                .a_double("1.2")
+                .build()
+        ]
+        feature_simple_test_glue_object.given_table_is(object_list1)
+
+# Assuming ATest and FeatureSimpleTestGlue classes are defined elsewhere
+```
+
+This translation assumes that `ATest` and `FeatureSimpleTestGlue` classes are defined elsewhere in your codebase. If you need any further adjustments or explanations, feel free to ask!
+```
+
+This translation assumes that the `ATestInternal` class is defined elsewhere in your codebase. If you need any further adjustments or explanations, feel free to ask!
