@@ -124,6 +124,7 @@ public class Translate {
             if (word.endsWith(":")) {
                 word = wordWithOutColon(word);
             }
+            if (word.isEmpty()) continue;
             if (inComment) {
                 comment.add(word);
                 continue;

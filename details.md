@@ -287,4 +287,29 @@ Given this data # ListOfObject MyDataClass
 | myPattern  | myWeekday  | myBigInt     |
 | a.*        | JANUARY    | 1            |
 | [ab]       | SUNDAY     | abc          |
+```
+## Include 
+You can include another file in a feature file. e generated
 
+.If the file is a `.csv` file, it will be converted to a table.   
+```
+Feature: Include
+
+Scenario: Some scenario here
+Given a string
+"""
+Include "string.inc"
+"""
+Then a table
+Include "TableExample.csv"
+Given a string in base directory 
+"""
+Include 'string.inc'
+"""
+```
+You can include any text, including `Data` statements (useful for reusing) common data layouts. 
+If you surround the filename with single quotes `'string.inc'`,  the file will be  
+
+### Notes 
+The included file should not have a `Feature` statement in it.  If it does, a warning will be
+generated.  

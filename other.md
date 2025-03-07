@@ -69,8 +69,8 @@ the same test with different sets of data.   .
 GE uses the native unit testing framework, so there are no additional tools are required.  You  use the same reporting
 framework as the unit tests. 
 
-GE does not create html tables with Red/Green.   Many people have found that no one looks at them.  Failure 
-
+GE does not create html tables with Red/Green.   Many people have found that no one looks at them.  The assert statements
+in the framework will show what does not work (or at least the first row).  
 
 # TDD versus BDD 
 In TDD, the bascc cycle is Red-Green-Refactor.  With GherkinExecutor, you can perform the same cycle.  For business rulesan
@@ -96,7 +96,7 @@ You may wish to do this if you are working on a simple function of calculation.
 * You can comment out all the rows eccept for the ones you have completed and the one you are working one 
 As you uncomment them, you will need to run Translate again
 * You can loop around the rows in the glue code and only do those you are currently working with
-You will need be sure to loop for all the values before leaving the glue code.  
+You  need be sure to loop for all the values before leaving the glue code !!! 
 ```
 **** Show for loop here 
 ```

@@ -80,19 +80,21 @@ the gherkinexecutor.Feature_Tic_Tac_Toe.
 ### Your Project 
 OK, the proof is in the pudding.   Let's apply GherkinExecutor to your  problem. 
 #### Setup 
-First, the setup. Create a package "gherkintranslator" in your project.  Copy the Translate file from the GherkinExecutor source to your project.   If you wish, you could move the Configuration class into a different file in the gherkinexecutor package.  
+First, the setup. Create a package "gherkintranslator" in your project.  Copy the Translate file from the GherkinExecutor source to your project.   
+If you wish, you could move the Configuration class into a different file in the gherkinexecutor package.  
 Check to make sure that this value is false.  
 ```
 public static final boolean inTest = false;  // switch to true for development of Translator
 ```
 If it is set true, then a `fail("Need to implement")`statement will not be in the glue files 
-and all tests will pass. This is used for running tests on GherkinExectuor itself.   
+and all tests will pass. This is used for running tests on GherkinExectuor itself.  
+ 
 Copy one of the files (say simple_test.feature) into the test directory.  
 It is specified by the Configuration value.  If you want to use a different directory, then change this value.
 ```   
 public static final String featureSubDirectory = "src/test/java/";
 ```
-GherkinExecutor will search for all feature files in the directory tree starting with:
+GherkinExecutor can search for all feature files in the directory tree starting with:
 ```
        public static final String startingFeatureDirectory = featureSubDirectory;
         // where the directory tree of features is to be found.
@@ -102,14 +104,18 @@ GherkinExecutor will search for all feature files in the directory tree starting
 ```
 featureFiles.add("simple_test.feature");
 ```
-You may see several other files that are used for testing GherkinExecutor.   You can comment them out, if they 
-aren't already.   They are used for testing the application 
+Note: If you already have a feature file editor in your IDE, the editor may show some errors on `Include`, `Data` and `Import` lines.  Simply change
+these lines to `* Include`, `* Data` and `* Import`.
+
 #### Run it:
 Run Translate and you should see a new package in the test directory, `gherkinexectuor.Feature_Simple_Test`
 The name comes from the Feature name in the file, not the name of the feature file. 
-in this package, you will see four files.  Rename the file `Feature_Simple_Test_glue.tmpl` 
+in this package, you will see four files.  
+
+Rename the file `Feature_Simple_Test_glue.tmpl` 
 to `Feature_Simple_Test_glue.java`.   This will be the only time you will do this. 
- In this glue file  you will be making changes to add calls to production code and 
+
+In this glue file  you will be making changes to add calls to production code and 
 make asserts.) 
 
 If you add additional Scenarios that have new steps, you will need to create the step method in the glue code.
@@ -130,7 +136,7 @@ the Data statement s provided.   This referred to as the internal object - `ATes
 
 No calls to production code are in this glue code, as the Scenario is completely independent of the code.
  
-Congratulations, you're ready to start with your project.
+Congratulations, you're ready to start with your project.   You can delete the `SimpleTest` directory (or remove the `fail` from the glue code.) 
 
 #### Your Project
 You need to import your production code into the glue code and possibly the data code.  You can alter the glue code or your can add the 
@@ -233,7 +239,6 @@ The tests are unit tests of your test framework.  So the reporting of your frame
  Your customization of the glue code is the same as you would do for a regular unit test.   The only difference would be that you
 need to save in glue code class variables any values required for communication between separate steps in a scenario. 
  
-
 You can alter Translate if you want more output or less from the glue code.       
 ### Keywords 
 There are more keywords than in standard Gherkin. You can add additional ones by modifying Translate.  
@@ -271,44 +276,43 @@ on the table options, the Data, Import, and Define statements.
 
 ### A Collection Example 
 In `examples.feature` is an example of dealing with a collection.   In this example, there is a collection 
-of records (objects0 of the `LabelValue` type.   In the glue code for the Given, they are added to the solution object.
+of records (objects0 of the `LabelValue` type.   In the glue code for the Given, they are added to the solution object. 
+The example uses the ID type for the label with the validation shown previously.   
 
 The interace to this object includes a method to set a filter and a method to retrieve a sum of records/objects
 that match that filter.   This might be accomplshed in a single operation.   It's been split into two to show
 variations in how you can pass data to the glue classes.  
 
-Both scenarios start with a Given that provides the records.  In the first version, the values for the filter and the sum 
-are provided using a ListOfObject.  Notice on the When, the table is transpose, so that it looks like You
-might be entering this data into a dialog box.  
+Both scenarios start with a Given that provides the records.  In the first verison, the values are provided using data objects.  
+Notice on the When, the table is transposed, so that it looks as you might enter this data into a dialog box.  
 ```
 Scenario: Filter Data Another Way  
 # filters data 
 Given list of numbers # ListOfObject LabelValue
-| Label | Value  |
-| a     | 1      |
-| b     | 2      |
-| a     | 3      |
+| ID     | Value  |
+| Q1234  | 1      |
+| Q9999  | 2      |
+| Q1234  | 3      |
 When filtered by # ListOfObject FilterValue transpose
-| Name   | Label  |
-| Value  | a      |
+| Name   | ID     |
+| Value  | Q1234  |
 Then result # ListOfObject ResultValue 
 | Sum  |
 | 4    |
 
-Data FilterValue 
+* Data FilterValue
 | Name   | Default  | DataType  | Notes  |
 | Name   |          | String    |        |
-| Value  | 0        | String    |        |
+| Value  | Q0000    | ID        |        |
 
-Data ResultValue 
+* Data ResultValue
 | Name  | Default  | DataType  | Notes  |
 | Sum   |          | Integer   |        |
 
-Data LabelValue 
+* Data LabelValue
 | Name   | Default  | DataType  | Notes  |
-| Label  |          | String    |        |
+| ID     |          | ID        |        |
 | Value  | 0        | Integer   |        |
-
 ```
 ### Passing Only One Value
 Now because there is only one value that is passed to each glue function, you could simplify this feature.  The data will be
@@ -318,18 +322,16 @@ to the desired data type.  It is your decision as to how you want to handle this
 Scenario: Filter Data 
 # filters data 
 Given list of numbers # ListOfObject LabelValue 
-| Label | Value  |
-| a     | 1      |
-| b     | 2      |
-| a     | 3      |
-When filtered by Label with value
-| a  |
+| ID     | Value  |
+| Q1234  | 1      |
+| Q9999  | 2      |
+| Q1234  | 3      |
+When filtered by ID with value
+| Q1234  |
 Then sum is 
-| 4 | 
-```
+| 4 | ```
 ## Domain Term 
-
-Here's an example for a domain term.  The example is an ID which must have
+Here's an example for a domain term that was introduced previously.  The example is an ID which must have
 the characteristics shown in the scenario. 
 ```
 Scenario: Domain Term ID

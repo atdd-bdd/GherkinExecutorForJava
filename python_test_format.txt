@@ -1,6 +1,13 @@
 
 Going to python:
 
+Need to do the following: 
+
+change builder to use setItem()   
+Add imports of everything (all Data items to glue and tests using the package.   
+	Can use the data array to determine this.   
+	Add glue code import to the tests 
+
 Here's the translated Python code:
 
 ```python
@@ -85,6 +92,28 @@ class FeatureSimpleTest(unittest.TestCase):
 ```
 
 This translation assumes that `ATest` and `FeatureSimpleTestGlue` classes are defined elsewhere in your codebase. If you need any further adjustments or explanations, feel free to ask!
+
+Here's the translated Python code:
+
+```python
+class FeatureSimpleTestGlue:
+    DNCString = "?DNC?"
+
+    def given_table_is(self, values):
+        print("---  Given_table_is")
+        for value in values:
+            print(value)
+            # Add calls to production code and asserts
+            try:
+                i = value.to_a_test_internal()
+                print(i)
+            except ValueError as e:
+                print(f"Argument Error {value} {ATestInternal.to_data_type_string()}", file=sys.stderr)
+
+# Assuming ATest and ATestInternal classes are defined elsewhere
+```
+
+This translation assumes that `ATest` and `ATestInternal` classes are defined elsewhere in your codebase. If you need any further adjustments or explanations, feel free to ask!
 ```
 
 This translation assumes that the `ATestInternal` class is defined elsewhere in your codebase. If you need any further adjustments or explanations, feel free to ask!
