@@ -38,15 +38,15 @@ class TemperatureCalculation{
         private String f = "0";
         private String c = "0";
         private String notes = "";
-        public Builder f(String f) {
+        public Builder setF(String f) {
             this.f = f;
             return this;
             }
-        public Builder c(String c) {
+        public Builder setC(String c) {
             this.c = c;
             return this;
             }
-        public Builder notes(String notes) {
+        public Builder setNotes(String notes) {
             this.notes = notes;
             return this;
             }

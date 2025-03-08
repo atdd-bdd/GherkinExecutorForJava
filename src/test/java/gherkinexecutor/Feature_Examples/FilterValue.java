@@ -30,11 +30,11 @@ class FilterValue{
     public static class Builder {
         private String name = "";
         private String value = "Q0000";
-        public Builder name(String name) {
+        public Builder setName(String name) {
             this.name = name;
             return this;
             }
-        public Builder value(String value) {
+        public Builder setValue(String value) {
             this.value = value;
             return this;
             }

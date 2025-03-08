@@ -10,19 +10,19 @@ class Feature_Examples{
 
         List<TemperatureCalculation> objectList1 = List.of(
              new TemperatureCalculation.Builder()
-                .f("32")
-                .c("0")
-                .notes("Freezing")
+                .setF("32")
+                .setC("0")
+                .setNotes("Freezing")
                 .build()
             , new TemperatureCalculation.Builder()
-                .f("212")
-                .c("100")
-                .notes("Boiling")
+                .setF("212")
+                .setC("100")
+                .setNotes("Boiling")
                 .build()
             , new TemperatureCalculation.Builder()
-                .f("-40")
-                .c("-40")
-                .notes("Below zero")
+                .setF("-40")
+                .setC("-40")
+                .setNotes("Below zero")
                 .build()
             );
         feature_Examples_glue_object.Calculation_Convert_F_to_C(objectList1);
@@ -33,24 +33,24 @@ class Feature_Examples{
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
-                .value("Q1234")
-                .valid("true")
-                .notes("")
+                .setValue("Q1234")
+                .setValid("true")
+                .setNotes("")
                 .build()
             , new ValueValid.Builder()
-                .value("Q123")
-                .valid("false")
-                .notes("Too short")
+                .setValue("Q123")
+                .setValid("false")
+                .setNotes("Too short")
                 .build()
             , new ValueValid.Builder()
-                .value("Q12345")
-                .valid("false")
-                .notes("Too long")
+                .setValue("Q12345")
+                .setValid("false")
+                .setNotes("Too long")
                 .build()
             , new ValueValid.Builder()
-                .value("A1234")
-                .valid("false")
-                .notes("Must begin with Q")
+                .setValue("A1234")
+                .setValid("false")
+                .setNotes("Must begin with Q")
                 .build()
             );
         feature_Examples_glue_object.Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(objectList1);
@@ -61,16 +61,16 @@ class Feature_Examples{
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .iD("Q1234")
-                .value("1")
+                .setID("Q1234")
+                .setValue("1")
                 .build()
             , new LabelValue.Builder()
-                .iD("Q9999")
-                .value("2")
+                .setID("Q9999")
+                .setValue("2")
                 .build()
             , new LabelValue.Builder()
-                .iD("Q1234")
-                .value("3")
+                .setID("Q1234")
+                .setValue("3")
                 .build()
             );
         feature_Examples_glue_object.Given_list_of_numbers(objectList1);
@@ -95,31 +95,31 @@ class Feature_Examples{
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .iD("Q1234")
-                .value("1")
+                .setID("Q1234")
+                .setValue("1")
                 .build()
             , new LabelValue.Builder()
-                .iD("Q9999")
-                .value("2")
+                .setID("Q9999")
+                .setValue("2")
                 .build()
             , new LabelValue.Builder()
-                .iD("Q1234")
-                .value("3")
+                .setID("Q1234")
+                .setValue("3")
                 .build()
             );
         feature_Examples_glue_object.Given_list_of_numbers(objectList1);
 
         List<FilterValue> objectList2 = List.of(
              new FilterValue.Builder()
-                .name("ID")
-                .value("Q1234")
+                .setName("ID")
+                .setValue("Q1234")
                 .build()
             );
         feature_Examples_glue_object.When_filtered_by(objectList2);
 
         List<ResultValue> objectList3 = List.of(
              new ResultValue.Builder()
-                .sum("4")
+                .setSum("4")
                 .build()
             );
         feature_Examples_glue_object.Then_result(objectList3);

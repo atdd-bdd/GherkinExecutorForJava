@@ -22,7 +22,7 @@ class ResultValue{
              return result;  }
     public static class Builder {
         private String sum = "";
-        public Builder sum(String sum) {
+        public Builder setSum(String sum) {
             this.sum = sum;
             return this;
             }

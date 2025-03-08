@@ -238,6 +238,18 @@ public class Translate {
         }
     }
 
+    void writeInputFeature(String filename) {
+        String fullFilename = filename + "feature.txt";
+        System.out.println("Logging to " + fullFilename);
+        try {
+            FileWriter myLog = new FileWriter(fullFilename);
+            myLog.write(dataIn.toString());
+            myLog.close();
+        } catch (IOException e) {
+            System.err.println("**** Cannot write to " + fullFilename);
+        }
+    }
+
     private static String makeFullName(List<String> words) {
         String temp = String.join("_", words);
         Pattern p = Pattern.compile("[^A-Za-z0-9_]");
@@ -280,6 +292,7 @@ public class Translate {
         featureName = fullName;
         featureActedOn = true;
         packagePath = Configuration.packageName + "." + featurePackagePath + featureName;
+        writeInputFeature(Configuration.testSubDirectory + featureDirectory + featureName + "/" );
         String testPathname = Configuration.testSubDirectory + featureDirectory + featureName + "/" +
                 featureName + ".java";
         printFlow(" Writing " + testPathname);
@@ -302,6 +315,13 @@ public class Translate {
         glueClass = fullName + "_glue";
         glueObject = makeName(fullName) + "_glue_object";
         return false;
+    }
+
+    private String makeBuildName(String s) {
+        // Upper case
+        String temp = makeName(s);
+        temp = Character.toUpperCase(temp.charAt(0)) + temp.substring(1);
+        return "set" + temp;
     }
 
     private String makeName(String input) {
@@ -650,6 +670,14 @@ public class Translate {
         @SuppressWarnings("UnusedAssignment")
         private int index = 0;
 
+        @Override
+        public String toString() {
+            StringBuilder temp  = new StringBuilder();
+            for (String line : linesIn){
+                temp.append(line + "\n");
+            }
+            return temp.toString();
+        }
 
         public static final String EOF = "EOF";
 
@@ -1106,11 +1134,12 @@ public class Translate {
                 testPrint("             .setCompare()");
             for (int i = 0; i < size; i++) {
                 String value = "\"" + values.get(i).replace(Configuration.spaceCharacters, ' ') + "\"";
-                testPrint("                ." + makeName(headers.get(i)) + "(" + value + ")");
+                testPrint("                ." + makeBuildName(headers.get(i)) + "(" + value + ")");
             }
             testPrint("                .build()");
 //            testPrint("                ");
         }
+
 
         private void noParameter(String fullName) {
             testPrint("        " + glueObject + "." + fullName + "();");
@@ -1550,7 +1579,7 @@ public class Translate {
                 dataPrintLn("        private String " + variable.name + " = " + quoteIt(variable.defaultVal) + ";");
             }
             for (DataValues variable : variables) {
-                dataPrintLn("        public Builder " + variable.name + "(String " + variable.name + ") {");
+                dataPrintLn("        public Builder " + makeBuildName(variable.name) + "(String " + variable.name + ") {");
                 dataPrintLn("            this." + variable.name + " = " + variable.name + ";");
                 dataPrintLn("            return this;");
                 dataPrintLn("            }");

@@ -10,9 +10,9 @@ class Feature_Simple_Test{
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("1")
-                .aString("something")
-                .aDouble("1.2")
+                .setAnInt("1")
+                .setAString("something")
+                .setADouble("1.2")
                 .build()
             );
         feature_Simple_Test_glue_object.Given_table_is(objectList1);

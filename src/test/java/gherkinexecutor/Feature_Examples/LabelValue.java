@@ -30,11 +30,11 @@ class LabelValue{
     public static class Builder {
         private String iD = "";
         private String value = "0";
-        public Builder iD(String iD) {
+        public Builder setID(String iD) {
             this.iD = iD;
             return this;
             }
-        public Builder value(String value) {
+        public Builder setValue(String value) {
             this.value = value;
             return this;
             }
