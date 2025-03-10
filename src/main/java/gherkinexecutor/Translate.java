@@ -158,7 +158,7 @@ public class Translate {
         if (input == null) {
             return "";
         }
-        return input.replaceAll("[^0-9a-zA-Z_]", "");
+        return input.replaceAll("[^0-9a-zA-Z_\\*]", "");
     }
     private static String wordWithOutColon(String word) {
         return word.replaceAll("^:+|:+$", "");
@@ -171,7 +171,8 @@ public class Translate {
     private void actOnKeyword(String keyword, List<String> words,
                               List<String> comment, int pass) {
         String fullName = makeFullName(words);
-        trace("Act on keyword " + keyword + " " + fullName + " pass " + pass);
+        trace("Act on keyword " + keyword + " " + fullName + " words " + words + " pass " + pass);
+
         if (keyword.equals("Star")) {
             switch (words.get(1)) {
                 case "Data":
@@ -258,7 +259,7 @@ public class Translate {
 
     void writeInputFeature(String filename) {
         String fullFilename = filename + "feature.txt";
-        System.out.println("Logging to " + fullFilename);
+        printFlow("Logging to " + fullFilename);
         try {
             FileWriter myLog = new FileWriter(fullFilename);
             myLog.write(dataIn.toString());

@@ -1,10 +1,22 @@
 package gherkinexecutor.Feature_Full_Test;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 class Feature_Full_Test{
+void log(String value) {
+    try {
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Full_Test/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
+    } catch (IOException e) {
+    System.err.println("*** Cannot write to log ");
+    }
+    }
 
 
     void test_Background(Feature_Full_Test_glue feature_Full_Test_glue_object){
+        log("Background");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -14,6 +26,7 @@ class Feature_Full_Test{
         feature_Full_Test_glue_object.Given_Background_function_sets_a_value(stringListList1);
         }
     void test_Cleanup(Feature_Full_Test_glue feature_Full_Test_glue_object){
+        log("Cleanup");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -25,6 +38,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_have_Background_and_Cleanup");
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -47,6 +61,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_also_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_also_have_Background_and_Cleanup");
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -69,13 +84,14 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Comparison(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Comparison");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("1")
-                .aString("something")
-                .aDouble("1.2")
+                .setAnInt("1")
+                .setAString("something")
+                .setADouble("1.2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
@@ -83,7 +99,7 @@ class Feature_Full_Test{
         List<ATest> objectList2 = List.of(
              new ATest.Builder()
              .setCompare()
-                .aString("something")
+                .setAString("something")
                 .build()
             );
         feature_Full_Test_glue_object.When_compared_to(objectList2);
@@ -98,7 +114,7 @@ class Feature_Full_Test{
         List<ATest> objectList4 = List.of(
              new ATest.Builder()
              .setCompare()
-                .aString("something else")
+                .setAString("something else")
                 .build()
             );
         feature_Full_Test_glue_object.When_compared_to(objectList4);
@@ -114,13 +130,14 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_int_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_int_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("q")
-                .aString("something")
-                .aDouble("1.1")
+                .setAnInt("q")
+                .setAString("something")
+                .setADouble("1.1")
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
@@ -129,13 +146,14 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_double_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_double_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("1")
-                .aString("something")
-                .aDouble("r")
+                .setAnInt("1")
+                .setAString("something")
+                .setADouble("r")
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
@@ -144,11 +162,12 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_initializer_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_initializer_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATestBad> objectList1 = List.of(
              new ATestBad.Builder()
-                .anInt("1")
+                .setAnInt("1")
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is_bad_initializer(objectList1);
@@ -157,28 +176,29 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Replacement(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Replacement");
         test_Background(feature_Full_Test_glue_object);
 
         List<IDValue> objectList1 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data(objectList1);
 
         List<IDValue> objectList2 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             );
         feature_Full_Test_glue_object.Then_should_be_equal_to_data(objectList2);
@@ -187,36 +207,37 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Try_out_replacements_with_a_calculation(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Try_out_replacements_with_a_calculation");
         test_Background(feature_Full_Test_glue_object);
 
         List<IDValue> objectList1 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             , new IDValue.Builder()
-                .iD("C")
-                .value("(1 + 100)/2")
+                .setID("C")
+                .setValue("(1 + 100)/2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data(objectList1);
 
         List<IDValue> objectList2 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             , new IDValue.Builder()
-                .iD("C")
-                .value("(1 + 100)/2")
+                .setID("C")
+                .setValue("(1 + 100)/2")
                 .build()
             );
         feature_Full_Test_glue_object.Then_should_be_equal_to_data(objectList2);
@@ -225,23 +246,24 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Temperature(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Temperature");
         test_Background(feature_Full_Test_glue_object);
 
         List<TemperatureCalculation> objectList1 = List.of(
              new TemperatureCalculation.Builder()
-                .f("32")
-                .c("0")
-                .notes("Freezing")
+                .setF("32")
+                .setC("0")
+                .setNotes("Freezing")
                 .build()
             , new TemperatureCalculation.Builder()
-                .f("212")
-                .c("100")
-                .notes("Boiling")
+                .setF("212")
+                .setC("100")
+                .setNotes("Boiling")
                 .build()
             , new TemperatureCalculation.Builder()
-                .f("-40")
-                .c("-40")
-                .notes("Below zero")
+                .setF("-40")
+                .setC("-40")
+                .setNotes("Below zero")
                 .build()
             );
         feature_Full_Test_glue_object.Calculation_Convert_F_to_C(objectList1);
@@ -250,28 +272,29 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Domain_Term_ID");
         test_Background(feature_Full_Test_glue_object);
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
-                .value("Q1234")
-                .valid("true")
-                .notes("")
+                .setValue("Q1234")
+                .setValid("true")
+                .setNotes("")
                 .build()
             , new ValueValid.Builder()
-                .value("Q123")
-                .valid("false")
-                .notes("Too short")
+                .setValue("Q123")
+                .setValid("false")
+                .setNotes("Too short")
                 .build()
             , new ValueValid.Builder()
-                .value("Q12345")
-                .valid("false")
-                .notes("Too long")
+                .setValue("Q12345")
+                .setValid("false")
+                .setNotes("Too long")
                 .build()
             , new ValueValid.Builder()
-                .value("A1234")
-                .valid("false")
-                .notes("Must begin with Q")
+                .setValue("A1234")
+                .setValid("false")
+                .setNotes("Must begin with Q")
                 .build()
             );
         feature_Full_Test_glue_object.Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(objectList1);
@@ -280,30 +303,31 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Filter_Data");
         test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .label("a")
-                .value("1")
+                .setID("Q1234")
+                .setValue("1")
                 .build()
             , new LabelValue.Builder()
-                .label("b")
-                .value("2")
+                .setID("Q9999")
+                .setValue("2")
                 .build()
             , new LabelValue.Builder()
-                .label("a")
-                .value("3")
+                .setID("Q1234")
+                .setValue("3")
                 .build()
             );
         feature_Full_Test_glue_object.Given_list_of_numbers(objectList1);
 
         List<List<String>> stringListList2 = List.of(
            List.of(
-            "a"
+            "Q1234"
             )
             );
-        feature_Full_Test_glue_object.When_filtered_by_Label_with_value(stringListList2);
+        feature_Full_Test_glue_object.When_filtered_by_ID_with_value(stringListList2);
 
         List<List<String>> stringListList3 = List.of(
            List.of(
@@ -316,35 +340,36 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Filter_Data_Another_Way");
         test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
-                .label("a")
-                .value("1")
+                .setID("Q1234")
+                .setValue("1")
                 .build()
             , new LabelValue.Builder()
-                .label("b")
-                .value("2")
+                .setID("Q9999")
+                .setValue("2")
                 .build()
             , new LabelValue.Builder()
-                .label("a")
-                .value("3")
+                .setID("Q1234")
+                .setValue("3")
                 .build()
             );
         feature_Full_Test_glue_object.Given_list_of_numbers(objectList1);
 
         List<FilterValue> objectList2 = List.of(
              new FilterValue.Builder()
-                .name("Label")
-                .value("a")
+                .setName("ID")
+                .setValue("Q1234")
                 .build()
             );
         feature_Full_Test_glue_object.When_filtered_by(objectList2);
 
         List<ResultValue> objectList3 = List.of(
              new ResultValue.Builder()
-                .sum("4")
+                .setSum("4")
                 .build()
             );
         feature_Full_Test_glue_object.Then_result(objectList3);
@@ -353,18 +378,19 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Use_an_import(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Use_an_import");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("MONDAY")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("MONDAY")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("10000000000")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("10000000000")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data_should_be_okay(objectList1);
@@ -373,18 +399,19 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_fail(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_fail");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("SOMEONE")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("SOMEONE")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("2")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data_should_fail(objectList1);
@@ -393,18 +420,19 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_also_fail(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_also_fail");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("MONDAY")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("MONDAY")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("A.2")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("A.2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_this_data_should_fail(objectList1);
@@ -413,6 +441,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -431,6 +460,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include_from_base_directory(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include_from_base_directory");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -449,32 +479,33 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include_of_CSV_file(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include_of_CSV_file");
         test_Background(feature_Full_Test_glue_object);
 
         List<CSVContents> objectList1 = List.of(
              new CSVContents.Builder()
-                .a("a")
-                .b("b,c")
-                .c("d,")
+                .setA("a")
+                .setB("b,c")
+                .setC("d,")
                 .build()
             , new CSVContents.Builder()
-                .a("1")
-                .b("2")
-                .c("3")
+                .setA("1")
+                .setB("2")
+                .setC("3")
                 .build()
             );
         feature_Full_Test_glue_object.Given_a_table(objectList1);
 
         List<CSVContents> objectList2 = List.of(
              new CSVContents.Builder()
-                .a("a")
-                .b("b,c")
-                .c("d,")
+                .setA("a")
+                .setB("b,c")
+                .setC("d,")
                 .build()
             , new CSVContents.Builder()
-                .a("1")
-                .b("2")
-                .c("3")
+                .setA("1")
+                .setB("2")
+                .setC("3")
                 .build()
             );
         feature_Full_Test_glue_object.Then_Should_be_equal_to_table(objectList2);
@@ -483,13 +514,14 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("1")
-                .aString("something")
-                .aDouble("1.2")
+                .setAnInt("1")
+                .setAString("something")
+                .setADouble("1.2")
                 .build()
             );
         feature_Full_Test_glue_object.Given_table_is(objectList1);
@@ -498,6 +530,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Here_are_string_options");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -517,6 +550,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Check_String_Variations(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Check_String_Variations");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -536,6 +570,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Here_are_table_options");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -568,56 +603,56 @@ class Feature_Full_Test{
 
         List<ExampleClass> objectList3 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object(objectList3);
 
         List<ExampleClass> objectList4 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object(objectList4);
 
         List<ExampleClass> objectList5 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
+                .setFieldA("a")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
+                .setFieldA("c")
                 .build()
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Defaults(objectList5);
 
         List<ExampleClassWithBlanks> objectList6 = List.of(
              new ExampleClassWithBlanks.Builder()
-                .field_1(" ")
-                .field_2("b")
+                .setField_1(" ")
+                .setField_2("b")
                 .build()
             , new ExampleClassWithBlanks.Builder()
-                .field_1("c")
-                .field_2(" ")
+                .setField_1("c")
+                .setField_2(" ")
                 .build()
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Values(objectList6);
 
         List<ExampleClassWithBlanks> objectList7 = List.of(
              new ExampleClassWithBlanks.Builder()
-                .field_1(" ")
+                .setField_1(" ")
                 .build()
             , new ExampleClassWithBlanks.Builder()
-                .field_1("c")
+                .setField_1("c")
                 .build()
             );
         feature_Full_Test_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Defaults(objectList7);
@@ -633,6 +668,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Table_to_String(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Table_to_String");
         test_Background(feature_Full_Test_glue_object);
 
         String table1 =
@@ -653,26 +689,27 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Table_without_all_fields_uses_defaults(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Table_without_all_fields_uses_defaults");
         test_Background(feature_Full_Test_glue_object);
 
         List<ExampleClass> objectList1 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
+                .setFieldA("a")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
+                .setFieldA("c")
                 .build()
             );
         feature_Full_Test_glue_object.Given_A_table_to_List_of_Object_with_Defaults(objectList1);
 
         List<ExampleClass> objectList2 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("x")
+                .setFieldA("a")
+                .setFieldB("x")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("x")
+                .setFieldA("c")
+                .setFieldB("x")
                 .build()
             );
         feature_Full_Test_glue_object.Then_table_should_be_same_as(objectList2);
@@ -681,28 +718,29 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Transpose_Table(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Transpose_Table");
         test_Background(feature_Full_Test_glue_object);
 
         List<ExampleClass> objectList1 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Full_Test_glue_object.Given_A_table_to_List_of_Object(objectList1);
 
         List<ExampleClass> objectList2 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Full_Test_glue_object.Then_transposed_table_to_List_of_Object_should_be_the_same(objectList2);
@@ -711,6 +749,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_a_move(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_a_move");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -734,9 +773,9 @@ class Feature_Full_Test{
 
         List<Move> objectList2 = List.of(
              new Move.Builder()
-                .row("1")
-                .column("2")
-                .mark("X")
+                .setRow("1")
+                .setColumn("2")
+                .setMark("X")
                 .build()
             );
         feature_Full_Test_glue_object.When_move_is(objectList2);
@@ -753,6 +792,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_a_move_using_single_element(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_a_move_using_single_element");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -793,6 +833,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_multiple_moves(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_multiple_moves");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -816,14 +857,14 @@ class Feature_Full_Test{
 
         List<Move> objectList2 = List.of(
              new Move.Builder()
-                .row("1")
-                .column("2")
-                .mark("X")
+                .setRow("1")
+                .setColumn("2")
+                .setMark("X")
                 .build()
             , new Move.Builder()
-                .row("2")
-                .column("3")
-                .mark("O")
+                .setRow("2")
+                .setColumn("3")
+                .setMark("O")
                 .build()
             );
         feature_Full_Test_glue_object.When_moves_are(objectList2);
@@ -840,6 +881,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_check_the_prints_to_see_how_it_works(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_check_the_prints_to_see_how_it_works");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -873,12 +915,13 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_to_Json(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_to_Json");
         test_Background(feature_Full_Test_glue_object);
 
         List<SimpleClass> objectList1 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             );
         feature_Full_Test_glue_object.Given_one_object_is(objectList1);
@@ -893,6 +936,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_from_Json(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_from_Json");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -903,8 +947,8 @@ class Feature_Full_Test{
 
         List<SimpleClass> objectList2 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             );
         feature_Full_Test_glue_object.Then_the_converted_object_is(objectList2);
@@ -913,16 +957,17 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_to_Json_Array(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_to_Json_Array");
         test_Background(feature_Full_Test_glue_object);
 
         List<SimpleClass> objectList1 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             , new SimpleClass.Builder()
-                .anInt("2")
-                .aString("C")
+                .setAnInt("2")
+                .setAString("C")
                 .build()
             );
         feature_Full_Test_glue_object.Given_a_table_is(objectList1);
@@ -939,6 +984,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_from_Json_Array(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_from_Json_Array");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -951,12 +997,12 @@ class Feature_Full_Test{
 
         List<SimpleClass> objectList2 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             , new SimpleClass.Builder()
-                .anInt("2")
-                .aString("C")
+                .setAnInt("2")
+                .setAString("C")
                 .build()
             );
         feature_Full_Test_glue_object.Then_the_converted_table_should_be(objectList2);

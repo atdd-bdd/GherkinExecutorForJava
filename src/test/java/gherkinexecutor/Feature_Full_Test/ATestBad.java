@@ -40,15 +40,15 @@ class ATestBad{
         private String anInt = "a";
         private String aString = " ";
         private String aDouble = "b";
-        public Builder anInt(String anInt) {
+        public Builder setAnInt(String anInt) {
             this.anInt = anInt;
             return this;
             }
-        public Builder aString(String aString) {
+        public Builder setAString(String aString) {
             this.aString = aString;
             return this;
             }
-        public Builder aDouble(String aDouble) {
+        public Builder setADouble(String aDouble) {
             this.aDouble = aDouble;
             return this;
             }
@@ -131,7 +131,7 @@ class ATestBad{
              public static List<ATestBad> listFromJson(String json) {
                     List<ATestBad> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

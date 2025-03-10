@@ -40,15 +40,15 @@ class Move{
         private String row = "0";
         private String column = "0";
         private String mark = "^";
-        public Builder row(String row) {
+        public Builder setRow(String row) {
             this.row = row;
             return this;
             }
-        public Builder column(String column) {
+        public Builder setColumn(String column) {
             this.column = column;
             return this;
             }
-        public Builder mark(String mark) {
+        public Builder setMark(String mark) {
             this.mark = mark;
             return this;
             }
@@ -131,7 +131,7 @@ class Move{
              public static List<Move> listFromJson(String json) {
                     List<Move> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

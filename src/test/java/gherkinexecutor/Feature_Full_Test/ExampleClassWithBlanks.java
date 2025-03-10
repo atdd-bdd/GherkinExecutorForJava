@@ -32,11 +32,11 @@ class ExampleClassWithBlanks{
     public static class Builder {
         private String field_1 = " ";
         private String field_2 = " ";
-        public Builder field_1(String field_1) {
+        public Builder setField_1(String field_1) {
             this.field_1 = field_1;
             return this;
             }
-        public Builder field_2(String field_2) {
+        public Builder setField_2(String field_2) {
             this.field_2 = field_2;
             return this;
             }
@@ -112,7 +112,7 @@ class ExampleClassWithBlanks{
              public static List<ExampleClassWithBlanks> listFromJson(String json) {
                     List<ExampleClassWithBlanks> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

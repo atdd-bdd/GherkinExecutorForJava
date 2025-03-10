@@ -32,11 +32,11 @@ class ExampleClass{
     public static class Builder {
         private String fieldA = "y";
         private String fieldB = "x";
-        public Builder fieldA(String fieldA) {
+        public Builder setFieldA(String fieldA) {
             this.fieldA = fieldA;
             return this;
             }
-        public Builder fieldB(String fieldB) {
+        public Builder setFieldB(String fieldB) {
             this.fieldB = fieldB;
             return this;
             }
@@ -112,7 +112,7 @@ class ExampleClass{
              public static List<ExampleClass> listFromJson(String json) {
                     List<ExampleClass> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

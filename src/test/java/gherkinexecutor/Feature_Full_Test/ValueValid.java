@@ -40,15 +40,15 @@ class ValueValid{
         private String value = "0";
         private String valid = "false";
         private String notes = "";
-        public Builder value(String value) {
+        public Builder setValue(String value) {
             this.value = value;
             return this;
             }
-        public Builder valid(String valid) {
+        public Builder setValid(String valid) {
             this.valid = valid;
             return this;
             }
-        public Builder notes(String notes) {
+        public Builder setNotes(String notes) {
             this.notes = notes;
             return this;
             }
@@ -131,7 +131,7 @@ class ValueValid{
              public static List<ValueValid> listFromJson(String json) {
                     List<ValueValid> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

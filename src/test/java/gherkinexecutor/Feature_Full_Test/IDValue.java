@@ -32,11 +32,11 @@ class IDValue{
     public static class Builder {
         private String iD = "";
         private String value = "";
-        public Builder iD(String iD) {
+        public Builder setID(String iD) {
             this.iD = iD;
             return this;
             }
-        public Builder value(String value) {
+        public Builder setValue(String value) {
             this.value = value;
             return this;
             }
@@ -112,7 +112,7 @@ class IDValue{
              public static List<IDValue> listFromJson(String json) {
                     List<IDValue> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

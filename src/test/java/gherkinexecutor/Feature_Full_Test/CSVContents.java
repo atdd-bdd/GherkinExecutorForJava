@@ -40,15 +40,15 @@ class CSVContents{
         private String a = "";
         private String b = "";
         private String c = "";
-        public Builder a(String a) {
+        public Builder setA(String a) {
             this.a = a;
             return this;
             }
-        public Builder b(String b) {
+        public Builder setB(String b) {
             this.b = b;
             return this;
             }
-        public Builder c(String c) {
+        public Builder setC(String c) {
             this.c = c;
             return this;
             }
@@ -131,7 +131,7 @@ class CSVContents{
              public static List<CSVContents> listFromJson(String json) {
                     List<CSVContents> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";

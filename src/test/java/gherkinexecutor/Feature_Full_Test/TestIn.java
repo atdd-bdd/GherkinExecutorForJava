@@ -40,15 +40,15 @@ class TestIn{
         private String aValue = "0";
         private String bValue = " ";
         private String cValue = "4.0";
-        public Builder aValue(String aValue) {
+        public Builder setAValue(String aValue) {
             this.aValue = aValue;
             return this;
             }
-        public Builder bValue(String bValue) {
+        public Builder setBValue(String bValue) {
             this.bValue = bValue;
             return this;
             }
-        public Builder cValue(String cValue) {
+        public Builder setCValue(String cValue) {
             this.cValue = cValue;
             return this;
             }
@@ -131,7 +131,7 @@ class TestIn{
              public static List<TestIn> listFromJson(String json) {
                     List<TestIn> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
+                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
 
                     for (String jsonObject : jsonObjects) {
                         jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
