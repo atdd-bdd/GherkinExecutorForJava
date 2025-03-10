@@ -70,8 +70,10 @@ public class Translate {
 
         linesToAddForDataAndGlue.addAll(Configuration.linesToAddForDataAndGlue);
         dataIn = new InputIterator(name, featureDirectory);
+        alterFeatureDirectory();
         if (dataIn.isEmpty())
             return;
+
         for (int pass = 1; pass <= 3; pass++) {
             dataIn.reset();
             boolean eof = false;
@@ -85,6 +87,16 @@ public class Translate {
             }
         }
         endUp();
+    }
+
+    private void alterFeatureDirectory() {
+        // Remove feature directory from the package and directory
+        String searchFor = Configuration.treeDirectory;
+        String alternateSearchFor = searchFor.replace("/","\\");
+        String directory = featureDirectory.replace(searchFor, "");
+        directory = directory.replace(alternateSearchFor,"");
+        featureDirectory = directory;
+        featurePackagePath = featureDirectory.replace("\\", ".").replace("/", ".");
     }
 
     private void findFeatureDirectory(String name) {
@@ -137,11 +149,17 @@ public class Translate {
                 }
                 continue;
             }
+            word = filterWord(word);
             words.add(word);
         }
         return new Pair<>(words, comment);
     }
-
+    public static String filterWord(String input) {
+        if (input == null) {
+            return "";
+        }
+        return input.replaceAll("[^0-9a-zA-Z_]", "");
+    }
     private static String wordWithOutColon(String word) {
         return word.replaceAll("^:+|:+$", "");
     }
@@ -246,6 +264,7 @@ public class Translate {
             myLog.write(dataIn.toString());
             myLog.close();
         } catch (IOException e) {
+            System.err.println(e.getMessage() + " Cause " + e.getCause());
             System.err.println("**** Cannot write to " + fullFilename);
         }
     }
@@ -292,7 +311,6 @@ public class Translate {
         featureName = fullName;
         featureActedOn = true;
         packagePath = Configuration.packageName + "." + featurePackagePath + featureName;
-        writeInputFeature(Configuration.testSubDirectory + featureDirectory + featureName + "/" );
         String testPathname = Configuration.testSubDirectory + featureDirectory + featureName + "/" +
                 featureName + ".java";
         printFlow(" Writing " + testPathname);
@@ -314,6 +332,7 @@ public class Translate {
         }
         glueClass = fullName + "_glue";
         glueObject = makeName(fullName) + "_glue_object";
+        writeInputFeature(Configuration.testSubDirectory + featureDirectory + featureName + "/" );
         return false;
     }
 
@@ -326,7 +345,8 @@ public class Translate {
 
     private String makeName(String input) {
         if (input.isEmpty()) return "NAME_IS_EMPTY";
-        String temp = input.replace(' ', '_');
+        String temp = input.replaceAll(" ", "_");
+        temp = filterWord(temp);
         return Character.toLowerCase(temp.charAt(0)) + temp.substring(1);
     }
 
@@ -674,7 +694,8 @@ public class Translate {
         public String toString() {
             StringBuilder temp  = new StringBuilder();
             for (String line : linesIn){
-                temp.append(line + "\n");
+                temp.append(line);
+                temp.append("\n");
             }
             return temp.toString();
         }
@@ -1404,7 +1425,7 @@ public class Translate {
                                          public static List<CLASSNAME> listFromJson(String json) {
                                                 List<CLASSNAME> list = new ArrayList<>();
                                         		json = json.replaceAll("\\\\s", "");
-                                                String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\\\},\\\\{");
+                                                String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
                                                                 
                                                 for (String jsonObject : jsonObjects) {
                                                     jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
@@ -1986,7 +2007,8 @@ public class Translate {
 
         public static final String featureSubDirectory = "src/test/java/";
         // where features are stored
-        public static final String startingFeatureDirectory = featureSubDirectory + "features/";
+        public static final String treeDirectory = "features/";
+        public static final String startingFeatureDirectory = featureSubDirectory + treeDirectory ;
         // where the directory tree of features is to be found.
         public static boolean searchTree = false;
         public static final String packageName = "gherkinexecutor";

@@ -8,12 +8,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changes to documentation">
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Altered directory for the directory tree search">
+      <change afterPath="$PROJECT_DIR$/gherkinexecutor.Feature_Examples" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gherkinexecutor.Feature_Examplesfeature.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gherkinexecutor.Feature_Simple_Test" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gherkinexecutor.Feature_Simple_Testfeature.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/feature.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/details.md" beforeDir="false" afterPath="$PROJECT_DIR$/details.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/other.md" beforeDir="false" afterPath="$PROJECT_DIR$/other.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.md" beforeDir="false" afterPath="$PROJECT_DIR$/style.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Forth/InputStack.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/ATestInternal.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.exp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Simple_Test/Feature_Simple_Test_glue.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/features/Feature_Quick_Test/Feature_Quick_Test.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/features/Feature_Quick_Test/Feature_Quick_Test_glue.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/features/Feature_Quick_Test/Feature_Quick_Test_glue.tmpl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/features/Feature_Quick_Test/SimpleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Forth/InputOutput.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/features/Feature_Quick_Test/SimpleClassInternal.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +110,7 @@
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Translate" />
       <module name="GherkinExecutorForJava" />
-      <option name="PROGRAM_PARAMETERS" value="examples.feature" />
+      <option name="PROGRAM_PARAMETERS" value="searchTree" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,16 +145,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature_Json" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Quick_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gherkinexecutor.Feature_Json.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Quick_Test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Json" />
-      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Json.Feature_Json" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Quick_Test" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Quick_Test.Feature_Quick_Test" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -154,18 +170,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Translate" />
+      <item itemvalue="JUnit.Feature_Quick_Test" />
       <item itemvalue="JUnit.Feature_Examples" />
       <item itemvalue="JUnit.gherkinexecutor in GherkinExecutorForJava" />
-      <item itemvalue="JUnit.Feature_Json" />
       <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Translate" />
+        <item itemvalue="JUnit.Feature_Quick_Test" />
         <item itemvalue="JUnit.Feature_Examples" />
         <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
         <item itemvalue="JUnit.gherkinexecutor in GherkinExecutorForJava" />
-        <item itemvalue="JUnit.Feature_Json" />
       </list>
     </recent_temporary>
   </component>
@@ -444,7 +460,14 @@
       <option name="project" value="LOCAL" />
       <updated>1741619672160</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Changes to documentation">
+      <created>1741629648399</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1741629648399</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -459,7 +482,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed up Equals method.  Eliminated some code style issues.    &#10;Made it 3 pass in prepartion for the Import statement" />
     <MESSAGE value="Changed pass # for the DataConstruct to 2." />
     <MESSAGE value="made full test work.   There is an issue with line breaks, even when copying one file to the other." />
     <MESSAGE value="made switch the old style so it is compatible with earlier versions" />
@@ -484,7 +506,8 @@
     <MESSAGE value="Reworked examples.feature to use ID in the list of numbers." />
     <MESSAGE value="added 'set' to build methods.  Added a write of the processed Feature File so that includes can be seen" />
     <MESSAGE value="Changes to documentation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to documentation" />
+    <MESSAGE value="Altered directory for the directory tree search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Altered directory for the directory tree search" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -496,13 +519,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
-          <line>340</line>
+          <line>360</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/Feature_Json_glue.java</url>
           <line>15</line>
           <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
