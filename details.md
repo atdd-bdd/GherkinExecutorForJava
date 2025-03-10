@@ -315,7 +315,6 @@ generated.
 ## Include
 
 You can include another file in a feature file. e generated. If the file is a `.csv` file, it will be converted to a table.   
-
 ```
 Feature: Include
 
@@ -331,14 +330,11 @@ Given a string in base directory
 Include 'string.inc'
 """
 ```
-
 You can include any text, including `Data` statements (useful for reusing common data layouts). 
 If you surround the filename with single quotes `'string.inc'`,  the file will be searched for in the `Configuration` value:
-
 ```
 public static final String featureSubDirectory = "src/test/java/";
 ```
-
 The included file might have a `Feature` statement in it.  If it does, a warning will begenerated.  
 
 ## Tables
@@ -505,61 +501,78 @@ Scenario: Here are string options
   Three line
   Four line
   """
-
 ```
 
+## Background and Cleanup
+
+You can add a `Background `and a `Cleanup `to a feature file.   All steps in the `Background `will be run when the scenario starts.  All steps in the `Cleanup `will be run when the scenario ends.   `Background `and `Cleanup `use the same glue context as the scenario in which they run 
+```
+Feature: Background
+
+Background:
+Given Background function sets a value
+| Background Here |
+
+Cleanup::
+Given value for cleanup should be set to
+| Cleanup Here |
+
+Scenario: Should have Background and Cleanup
+Given a regular function
+Then background should set value to
+| Background Here |
+And set a value for cleanup
+| Cleanup Here |
+
+Scenario: Should also have Background and Cleanup
+Given a regular function
+Then background should set value to
+| Background Here |
+And set a value for cleanup
+| Cleanup Here |
 ```
 
+## JSON
 
-```
+Four methods are added to the string version of the data class.   These methods convert an object to and from JSON and convert a table to and from JSON.   They were added since JSON is a popular way to represent attributes.   Methods to and from YAML or XML or some other format can be added.  
 
 ## Define
 
 There is one more facet that might have
 some use, depending on your context. With a `define`, you specify 
 the value of a constant once, e.g.
-
 ```
  Define 
 | Name       | Value | Notes                 |
 | HIGH_VALUE | 100   | Highest allowed input |
 | LOW_VALUE  | 1     | Lowest allowed input  |
 ```
-
-```
-
-```
-
 Whereever you use these tokens, they will be replaced by the value.  For example:
-
 ```
 Given this data:
 | ID  | Value     |
 | A   | HIGH_DATA |
 | B   | LOW_DATA  |
 ```
-
 will be treated as:
 
+```
 Given this data:
 | ID  | Value     |
 | 1   | 100       |
 | B   | 1         |
-
+```
 This is useful if the Define terms are meaningful to someone reading 
 the feature file. 
 
 ### Calculated Values
 
 You can use an expression in the replacement, such as:
-
 ```
 | Name           | Value | Notes               |
 | AVERAGE_VALUE  | (LOW_DATA +HIGH_DATA)/2     | 
 ```
-
 In this case, the computation will be passed, not the result of the computation:
-
 ```
 Given this data:
 | ID  | Value     |
@@ -567,9 +580,7 @@ Given this data:
 | B   | LOW_DATA  |
 | C   | AVERAGE_VALUE |
 ```
-
 will be treated as:
-
 ```
 Given this data:
 | ID  | Value     |
@@ -577,21 +588,8 @@ Given this data:
 | B   | 1         |
 | C   | (1 + 100)/2 |
 ```
-
 You need to create (or find somewhere) a class that computes the result
 Of this calculation. Suppose it was called ComputeInt with a string constructor. The Data statement would have  Datatype ComputeInt for this
 Field. 
 
 For Java, you can check out the ScriptEngineManager and ScriptEngine classes from the javax.script package:
-
-
-
-
-
-
-
-
-
-
-
-

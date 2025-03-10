@@ -25,6 +25,8 @@ to call a parametrized test method.  The scenarios can be used in user documenta
 For domains which have two-dimensional objects, the tabular format can be much easier
 to comprehend. (See the tic-tac-toe example.)
 
+You can think of a Gherkin feature file as representing the logical portion of the test (ala the logical and physical views of a database).
+
 ### introductory Example
 
 Here are a few introductory examples. You can view the `examples.feature` file in the main test directory 

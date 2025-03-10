@@ -1,0 +1,12 @@
+Feature: Quick Test
+Scenario: [Title]
+Given A Table to List Of List Of Object # ListOfListOfObject Integer
+| 5 | 6 |
+Scenario: To and From JSON
+Given values are # ListOfObject SimpleClass
+| anInt  | aString  |
+| 1      | B        |
+Data SimpleClass
+| Name     | Default  | Datatype  |
+| anInt    | 0        | Integer   |
+| aString  | Q        | String    |
