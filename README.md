@@ -462,8 +462,7 @@ Translate, you can delete the Configuration class in the new Translate and keep 
 
 ### A Larger Domain Example
 
-Here is domain related example.   A Forecast is a Domain Term that has multiple attributes.
-The data type for each attribute is shown, along with a default value.  
+Here is domain related example  to show how domain terms could be incorporated into a feature file.   A` Forecast` is a Domain Term that has multiple attributes.  The data type for each attribute is shown, along with a default value.  
 
 ```
 Data Forecast
@@ -496,7 +495,7 @@ Then results are # ListOfObject Forecast
 | 1/1/2025  | Clear      |
 ```
 
-The Given step uses the domain term defined in the previous block. The data could be
+The Given step uses the domain terms defined in the previous block. The data could be
 listed here, read from a CSV file, or put onto a database. The When step gives the search
 criteria.  The Triad would define how these criteria should work.
 Finally, the Then step shows the expected results.   

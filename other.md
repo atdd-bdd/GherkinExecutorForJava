@@ -1,7 +1,8 @@
-### Other Notes 
+### Other Notes
 
 #### Philosophy differences:
-Gherkin executor’s design approach emphasizes ease of use.  Other frameworks using Gherkin place more of an emphasis on 
+
+GherkinExecutor's design approach emphasizes ease of use.  Other frameworks using Gherkin place more of an emphasis on 
 the phrasing of the step statements.    You can always add comments to a scenario to give additional information as to 
 what is supposed to be going on.    
 
@@ -15,13 +16,11 @@ framework as the unit tests.
 GE does not create html tables with Red/Green.   Many people have found that no one looks at them.  The assert statements
 in the framework will show what does not work (or at least the first row).  
 
+#### Whitespace
 
-
-###  Whitespace
 All comments (line being with `#`) are ignored.  All blank lines are
 ignored.  If you begin a line with other than a keyword or a table or a string,
-you will get an warning. 
-
+it will be ignored.  You can see what lines are actually used in the `feature.txt` file in each feature directory. 
 
 
 
