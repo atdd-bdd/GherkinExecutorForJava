@@ -1,119 +1,91 @@
 # How It Works in Detail
 Here is more information on how GherkinExecutor works. 
 
-## Example Feature
-Here is the example feature file again:
-```
-Feature: Examples
-
-Scenario: Temperature 
-# Business rule , Calculation 
-Calculation Convert F to C # ListOfObject TemperatureCalculation 
-| F    | C    | Notes       |
-| 32   | 0    | Freezing    |
-| 212  | 100  | Boiling     |
-| -40  | -40  | Below zero  |
-
-Data TemperatureCalculation
-| Name   | Default  | DataType  | Notes  |
-| F      | 0        | Integer   |        |
-| C      | 0        | Integer   |        |
-| Notes  |          | String    |        |
-```
-In the test directory, it is named `examples.feature`.  The words after the keyword 
-`Feature` are combined into the name of the feature.  Let's assume that you are using the translator with Java 
-(language suffix `.java`).  The operation is the same, the output code depends on the language. 
-
-To translate this feature file, you can pass it as a parameter to the `Translate` main methood, 
-add it to the Configuration list of feature files, or let the directory tree search find it.      
-```
-featureFiles.add("examples.feature");
-```
-A unit test file with the name `Feature_Examples.java` (with language appropriate suffix) 
-is created in a package with the name `gherkinexecutor.Feature_Examples` with the same name. 
-A another filecalled `Feature_Examples_glue.tmpl` is also created.  This contains templates for the glue 
-code that is called 
-from `Feature_Examples.java`.  One or two files are created for every `Data` statement. Since DataTypes are 
-in this Data statement, a class `TemperatureCalculation` with the attributes as Strings, 
-and a class `TemperatureCalculationInternal` are creeated. Some common methods for each class are also included.
-   
-The single step in the `Scenario` ("Convert F to C ") has additional information `# ListOfObject TemperatureComparison`.  So 
-the test file / glue code parameters use a `List<TemperatureComparison>`to pass this data between the two.  This
-class has all attributes as Strings (so is referenced as the string object).   
-
-Note that a new glue object is created for each Scenario.   This makes each test independent.   If you need 
-to share values between scenarios, create a class variable (e.g. static or companion object).  
-
-### Test File 
-The `Feature_Examples.java` example file contains code that looks like
-```
-    @Test
-    void test_Scenario_Temperature(){
-        Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-
-        List<TemperatureCalculation> objectList1 = List.of(
-             new TemperatureCalculation.Builder()
-                .f("32")
-                .c("0")
-                .notes("Freezing")
-                .build()
-        // plus two more 
-            );
-        feature_Examples_glue_object.Calculation_Convert_F_to_C(objectList1);
-        }
-```
-This file is recreated everytime Translate is run.  You run Translate everytime you change the feature file.    
-### Glue File 
-The `Feature_Examples_glue.tmpl` file has the following in it. 
-```
-   void Calculation_Convert_F_to_C(List<TemperatureCalculation> values ) {
-        System.out.println("---  " + "Calculation_Convert_F_to_C");
-        for (TemperatureCalculation value : values){
-             System.out.println(value);
-             // Add calls to production code and asserts
-              TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-              }
-		fail("Must implement"); 
-    }
-
-```
-Note that this loop may throw and IllegalArgumentException.  It's possible that the values
-in the table are not valid for the types for the field.   For example, 
-if `a` is in the table for a field with datatype `int`, then an IllegalArgumentException is thrown and will be
-caught by the test framework.   
-
-You can eliminate the `println`.  It is  there so you can see the data passed to the glue code, wihtout having to 
-look back at the feature file.   
-
-The first time you run the Translator, you should rename the glue file `Feature_Examples_glue.tmpl`to the language appropriate suffix
-(e.g. rename it from `.tmpl` to `.java`).  You will be making changes in this file to 
-call your production code.  If you add new steps to the feature, you can copy a template for the new steps from 
-the template file (`.tmpl`) to the glue source file (`.java`).  Alternatively, you can just let the IDE suggest that you need 
-a new method in  Feature_Examples_glue.
-
-Here's a possible call to an implementation in the glue file (with the `println`s eliminated).  Note you provide essentially
-the same code that you would in a unit test. The data is provided in the parameter, as would be in a parameterized unit
-test.   
-```
-    void Calculation_Convert_F_to_C(List<TemperatureCalculation> values) {
-         for (TemperatureCalculation value : values) {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                int c = TemperatureCalculations.convertFahrenheitToCelsius(i.f);
-                assertEquals(i.c, c, i.notes);
-        }
-    }
-```
-An example production implementation might look like: 
-```
-public class TemperatureCalculations {
-    static int convertFahrenheitToCelsius(int input) {
-        return ((input - 32) * 5) / 9;
-    }
-}
-```
-You can use any step keyword for the step in the feature file, but `Calculation, Rule, or *` might be appropriate.  `*` is
-from standard Gherkin.
 ### Data Statement
+## Data
+Here is more information on the Data statement. 
+
+The Data statement describes the fields of a table. 
+```
+Data LabelValue
+| Name   | Default  | DataType  | Notes  |
+| Label  |          | String    |        |
+| Value  | 0        | Integer   |        |
+```
+ For example, this 
+statement states there are two fields in `LabelValue`.  `Label` is a string 
+field with the empty string as the default value. `Value` is a `Integer 
+with 0 as the default value.   You can use any primitive (int, float, etc.)
+or associated class (Integer, Float, etc.) as the DataType. If you have an `Import` statement or 
+add import in Configuration,  then you can use the data types in those packages.   
+ The notes are just there to give any additional information for the field. 
+
+For example, if you favor Abstract Data Types, e.g. `ID`, `State`, etc. you can use them
+as a data type.  If they have a String constructor (e.g. `ID(String value))`
+you can use it in the Data statement without any additional statement.  If the type requires an import from
+the production package, include that import in the Configuration. 
+If the creation of an object requires a different form (e.g. parse(String))
+you will need to create an `Import` statement and identify the method that turns a string into an object.    
+
+Now what does having this Data statement do for you?   One or two classes 
+are created.  One is the name you have specified (e.g. `LabelValue`) 
+All attributes will be of the String type.  It will have an 
+all attribute constructor, a toString(), an equals(), and a builder set of
+methods.   The latter is used to initialize objects in the test class.
+
+If you have more than two columns (e.g. specified the DataType), a
+second class will be created with attributes of the same names, but with
+the data types specified. (I refer to this as the internal class or object - as 
+it is used internally for computation.) This second class will have a constructor 
+with all attributes as parameters, a toString(), an equals(), and a method 
+to convert it to the object with all strings.  It also has a static method
+that displays the data types (for usage in error messages).   
+
+If the second class is created, the first class will also have a method
+to convert it to the internal class.  It's possible there is an invalid
+value in the table, so IllegalArgumentException is caught if that occurs.  
+
+The sample templates for the glue code loop through the list of objects 
+and convert each one to an internal object.  
+
+### Existing Classes 
+Suppose you already had an existing class that you are going to use
+in calling the production code from the glue code.  
+If you specify a name of a class as the second value in the Data statement, 
+then an internal class is not created.  (A file that matches what would
+be created is in a .tmpl file). 
+ 
+There will be a `to` method in the string class that creates the 
+internal class.   It will pass the attributes to the internal class constructor in 
+the order they are listed in the Data statement.   
+```
+Data LabelValueString LabelValue
+| Name   | Default  | DataType  | Notes  |
+| Label  |          | String    |        |
+| Value  | 0        | Integer   |        |
+```
+
+### Special equals 
+
+The `equals()` that is created for the string class is slightly different
+than the normal equals, which just compares all attributes.  If either
+of the values being compared is "?DNC?", the values are not compared. 
+(This can be set to something else in the Configuration.)    
+
+How does it get to become "?DNC?"? You could set it manually. Or 
+you could use an option on the ListOfObject for a table. If you specify 
+compare, when there are fewer columns than attributes of the data, 
+the fields not specified will be set to '?DNC?'.
+
+```
+* A table to List of Object with Defaults # ListOfObject ExampleClass compare
+  | FieldA  |
+  | a       |
+  | c       |
+```
+
+
+
 Let's take a look at the Data statement again. Here's the example:  
 ```
 Data TemperatureCalculation
@@ -175,17 +147,17 @@ class TemperatureCalculation{
         ); 
     }
 ```
-You'll notice an additional clauses in the `equals()` method.  A comparison of two attributes is not 
+You'll notice additional clauses in the `equals()` method.  A comparison of two attributes is not 
 checked if either contains `$DNC$`.  This allows a comparison between a table which has all its fields (columns)
 specified and one that only has a few columns specified.   
 
 This special value can be changed in Configuration.  It is set into the attributes by specifying `compare` in the
-comment after a step (e.g. `# ListOfObject TemperatureCalculation compare)`.   For example, if this werefollowed by a table 
+comment after a step (e.g. `# ListOfObject TemperatureCalculation compare)`.   For example, if this were followed by a table 
 with only an `F` column, every `C` attribute. would have `?DNC?` as its value.     
 
-There is a conversion method to the internal object, which calls the appropriate conversion methoed. For data types
+There is a conversion method to the internal object, which calls the appropriate conversion method. For data types
 in other packages, you need to specify this conversion method in an `Import` statement, if it is not of the 
-form `Construtor(String value)`
+form `Constructor(String value)`
 
 The purpose of the internal object is to provide the values in the same data types that the production code expects.   
 
@@ -313,3 +285,236 @@ If you surround the filename with single quotes `'string.inc'`,  the file will b
 ### Notes 
 The included file should not have a `Feature` statement in it.  If it does, a warning will be
 generated.  
+
+## Include 
+You can include another file in a feature file. e generated
+
+.If the file is a `.csv` file, it will be converted to a table.   
+```
+Feature: Include
+
+Scenario: Some scenario here
+Given a string
+"""
+Include "string.inc"
+"""
+Then a table
+Include "TableExample.csv"
+Given a string in base directory 
+"""
+Include 'string.inc'
+"""
+```
+You can include any text, including `Data` statements (useful for reusing) common data layouts. 
+If you surround the filename with single quotes `'string.inc'`,  the file will be  
+
+### Notes 
+The included file should not have a `Feature` statement in it.  If it does, a warning will be
+generated.  
+
+## Tables 
+
+A table can be passed to the glue code in several ways.   If there 
+is no option specified (anything after a  `#`), it will be passed 
+as a List<List<String>.  If you add the String option, the table will be
+passed as a single string.  
+```
+Feature: Tables and Strings
+Scenario: Here are table options
+
+* A table to List of List of String   
+  | aa  | bb  |
+  | cc  | dd  |
+  
+* A table to String # String
+  | aa  | bb  |
+  | cc  | dd  |
+```
+If you specify `ListOfObject` and a _className_, it will be passed 
+as `List<_ClassName_>`  You must have a Data description for that object.  
+
+```
+* A table to List of Object # ListOfObject ExampleClass
+  | FieldA  | FieldB  |
+  | a       | b       |
+  | c       | d       |
+```
+If you add the keyword `transpose` as the third option, the table will be 
+interpreted as the field names being in the first column.   This is 
+often useful to distinguish data objects from input objects.  The 
+vertical names make it appear in a dialog entry format.  
+```
+* A table to List of Object # ListOfObject ExampleClass transpose
+  | FieldA  | a  | c  |
+  | FieldB  | b  | d  |
+```
+Now you do not have to include all the fields from the data class. If
+you do not, those fields will be filled in with the default values.   
+Also, the fields can appear in any order, not just the order listed in 
+the data class.  It is sometimes easier to read if they appear in 
+the same order, but it's your option. 
+
+```
+* A table to List of Object with Defaults # ListOfObject ExampleClass
+  | FieldA  |
+  | a       |
+  | c       |
+```
+
+There are a few details on tables.  The headers do not have to appear in the same order
+as the Data lists them.  You do not have to have a column for every Data item.  The corresponding attribute
+will be set to the default value.
+### Spaces in a Value 
+
+A blank element in a table is translated as the empty string `""`.  
+You can put spaces into the table by using the `~` character.  There
+will be one space for every `~`. For example:
+```
+* A table to List of Object with Blanks in Name # ListOfObject ExampleClassWithBlanks
+  | Field 1  | Field 2  |
+  | ~        | b        |
+  | c        | ~        |
+
+Data ExampleClassWithBlanks
+| Name     | Default  |
+| Field 1  | y        |
+| Field 2  | x        |
+```
+### Alternatives for passing single values 
+You have two alternatives passing single values to the glue code.  In this
+example, the Given uses a ListOfObject.  
+The first When and Then, also use ListOfObject 
+
+The When appears like the user might select something to filter on 
+and a value for the filter.   
+``` Name   | Label  |
+| Value  | a      |
+```
+The Then step gives the domain term for the answer 4.
+```
+Then result # ListOfObject ResultValue
+| Sum  |
+| 4    |
+```
+Here's the full Scenario:
+```
+Scenario: Filter Data Another Way  
+# filters data 
+Given list of numbers # ListOfObject LabelValue
+| Label | Value  |
+| a     | 1      |
+| b     | 2      |
+| a     | 3      |
+When filtered by # ListOfObject FilterValue transpose
+| Name   | Label  |
+| Value  | a      |
+Then result # ListOfObject ResultValue 
+| Sum  |
+| 4    |
+
+Data FilterValue 
+| Name   | Default  | DataType  | Notes  |
+| Name   |          | String    |        |
+| Value  | 0        | String    |        |
+
+Data ResultValue 
+| Name  | Default  | DataType  | Notes  |
+| Sum   |          | Integer   |        |
+
+Data LabelValue 
+| Name   | Default  | DataType  | Notes  |
+| Label  |          | String    |        |
+| Value  | 0        | Integer   |        |
+```
+In this version, the values for When and Then are passed as the single
+element in a `List<List<String>`.   
+You just obtain `values.get(0).get(0)` and use that.  It`s a good 
+practice to include the domain term in the step, so that people will
+know what it is. 
+```
+When filtered by Label with value
+| a  |
+Then sum is 
+| 4 | 
+```
+
+## Strings 
+You can pass a multiline string to the glue code. If you include `ListOfString`, the glue code
+will receive the string as a List<String>, instead of a String.  
+```
+Scenario: Here are string options
+
+* A multiline string to a string
+  """
+  One line
+  Two line
+  """
+
+* A multiline string to a List of String # ListOfString
+  """
+  Three line
+  Four line
+  """
+
+```
+
+```
+
+## Define 
+There is one more facet that might have
+some use, depending on your context. With a `define`, you specify 
+the value of a constant once, e.g. 
+```
+Define 
+| Name       | Value | Notes                 |
+| HIGH_VALUE | 100   | Highest allowed input |
+| LOW_VALUE  | 1     | Lowest allowed input  |
+```
+Now whenever `HIGH_VALUE` appears in data in a table (other than the
+header), it will be replaced by 100. For example:
+```
+Given this data:
+| ID  | Value     |
+| A   | HIGH_DATA |
+| B   | LOW_DATA  |
+
+will be treated as:
+Given this data:
+| ID  | Value     |
+| 1   | 100       |
+| B   | 1         |
+
+This is useful if the Define terms are meaningful to someone reading 
+the feature file. 
+
+### Calculated Values
+You can use an expression in the replacement, such as:
+
+```
+| Name           | Value | Notes               |
+| AVERAGE_VALUE  | (LOW_DATA +HIGH_DATA)/2     | 
+```
+In this case, the computation will be passed, not the result of the computation:
+
+```
+Given this data:
+| ID  | Value     |
+| A   | HIGH_DATA |
+| B   | LOW_DATA  |
+| C   | AVERAGE_VALUE |
+```
+will be treated as:
+```
+Given this data:
+| ID  | Value     |
+| 1   | 100       |
+| B   | 1         |
+| C   | (1 + 100)/2 |
+```
+You need to create (or find somewhere) a class that computes the result
+Of this calculation. Suppose it was called ComputeInt with a string constructor. The Data statement would have  Datatype ComputeInt for this
+Field. 
+
+For Java, you can check out the ScriptEngineManager and ScriptEngine classes from the javax.script package:
+
+
