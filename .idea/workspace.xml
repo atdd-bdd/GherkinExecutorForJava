@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="AnalysisUIOptions">
+    <option name="SPLITTER_PROPORTION" value="0.3881064" />
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
     <option name="ANALYZE_INJECTED_CODE" value="false" />
-    <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Updated documentation to add Background and Cleanup">
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Updated documentation to add Eclipse setup">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/Feature_Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/Feature_Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/design.md" beforeDir="false" afterPath="$PROJECT_DIR$/design.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/details.md" beforeDir="false" afterPath="$PROJECT_DIR$/details.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/examples.md" beforeDir="false" afterPath="$PROJECT_DIR$/examples.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/miscellaneous.md" beforeDir="false" afterPath="$PROJECT_DIR$/miscellaneous.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/python_test_format.txt" beforeDir="false" afterPath="$PROJECT_DIR$/python_test_format.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/style.md" beforeDir="false" afterPath="$PROJECT_DIR$/style.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -479,7 +484,21 @@
       <option name="project" value="LOCAL" />
       <updated>1741646404710</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="Added a configuration item for Eclipse">
+      <created>1741705398389</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1741705398389</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Updated documentation to add Eclipse setup">
+      <created>1741707469300</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1741707469300</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -494,8 +513,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="made switch the old style so it is compatible with earlier versions" />
-    <MESSAGE value="Add equals for internal class.    For a named other class, only create a .tmpl file, not a .java file.    This allows use of existing classes." />
     <MESSAGE value="Added a new example using tables in the steps." />
     <MESSAGE value=".exp values updated" />
     <MESSAGE value="Updating the documention" />
@@ -519,7 +536,9 @@
     <MESSAGE value="Altered directory for the directory tree search" />
     <MESSAGE value="Now removing characters in feature file that cannot form an acceptable term in Java" />
     <MESSAGE value="Updated documentation to add Background and Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation to add Background and Cleanup" />
+    <MESSAGE value="Added a configuration item for Eclipse" />
+    <MESSAGE value="Updated documentation to add Eclipse setup" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation to add Eclipse setup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

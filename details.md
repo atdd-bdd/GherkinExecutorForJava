@@ -74,8 +74,8 @@ Data LabelValueString LabelValue
 
 ### Special equals
 
-The `equals()` that is created for the string class is slightly different
-than the normal equals, which just compares all attributes.  If either
+The `equals()` that is created for the string class is slightly different from 
+the normal equals, which just compares all attributes.  If either
 of the values being compared is `"?DNC?",` the values are not compared. 
 (This can be set to something else in the Configuration.)    
 
@@ -108,7 +108,7 @@ Objects of this type are created in the test file and passed to the glue methods
 names for the attributes but the data types are those listed (e.g. `Integer`).  This second class has `Internal` appended 
 to the name (`TemperatureCalculationInternal`
 
-Note:  These files are recreated every time Translate runs.  If you need to import a package, your canadd it to the Configuration
+Note:  These files are recreated every time Translate runs.  If you need to import a package, your can add it to the Configuration
 or use an `Import` statement.  Here's an example of the `TemperatureCalculation` class: 
 
 ```
@@ -161,7 +161,7 @@ checked if either contains `$DNC$`.  This allows a comparison between a table wh
 specified and one that only has a few columns specified.   
 
 This special value can be changed in Configuration.  It is set into the attributes by specifying `compare` in the
-comment after a step (e.g. `# ListOfObject TemperatureCalculation compare)`.   For example, if this were followed by a table 
+comment after a step (e.g. `# ListOfObject TemperatureCalculation compare`).   For example, if this were followed by a table 
 with only an `F` column, every `C` attribute. would have `?DNC?` as its value.     
 
 There is a conversion method to the internal object, which calls the appropriate conversion method. For data types
@@ -304,7 +304,8 @@ Include 'string.inc'
 """
 ```
 
-You can include any text, including `Data` statements (useful for reusingss common data layouts. 
+You can include any text, including `Data` statements 
+(useful for reusing common data layouts). 
 If you surround the filename with single quotes `'string.inc'`,  the file will be  
 
 ### Notes
@@ -335,7 +336,7 @@ If you surround the filename with single quotes `'string.inc'`,  the file will b
 ```
 public static final String featureSubDirectory = "src/test/java/";
 ```
-The included file might have a `Feature` statement in it.  If it does, a warning will begenerated.  
+The included file might have a `Feature` statement in it.  If it does, a warning will be generated.  
 
 ## Tables
 
@@ -547,7 +548,7 @@ the value of a constant once, e.g.
 | HIGH_VALUE | 100   | Highest allowed input |
 | LOW_VALUE  | 1     | Lowest allowed input  |
 ```
-Whereever you use these tokens, they will be replaced by the value.  For example:
+Where ever you use these tokens, they will be replaced by the value.  For example:
 ```
 Given this data:
 | ID  | Value     |
@@ -592,4 +593,4 @@ You need to create (or find somewhere) a class that computes the result
 Of this calculation. Suppose it was called ComputeInt with a string constructor. The Data statement would have  Datatype ComputeInt for this
 Field. 
 
-For Java, you can check out the ScriptEngineManager and ScriptEngine classes from the javax.script package:
+For Java, you can check out the ScriptEngineManager and ScriptEngine classes from the `javax.script` package:

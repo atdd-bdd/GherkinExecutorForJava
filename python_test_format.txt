@@ -1,12 +1,22 @@
 
 Going to python:
+Convert the files to the JSON format (i.e. do code replacements) rather than
+code generation.   First method to start with is the JSON one.
 
-Need to do the following: 
 
-change builder to use setItem()   
-Add imports of everything (all Data items to glue and tests using the package.   
+
+Need to do the following for Python version
+
+Add imports of everything (all Data items to glue and tests using the package).
 	Can use the data array to determine this.   
-	Add glue code import to the tests 
+	Add glue code import to the tests
+
+For the C# version:
+    namespace instead of package.
+    not as picky as Java in where everything goes.
+
+    Put everything in the Test Project - will need to figure where production goes.
+    Just need to change Test and TestClass for NUnit version
 
 Here's the translated Python code:
 

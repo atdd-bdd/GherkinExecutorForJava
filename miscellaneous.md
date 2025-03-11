@@ -14,7 +14,7 @@ To Do and Miscellaneous Notes
 
 - Separates logical tests from implementation in code 
 
-- Promotes writing tests.  Tabular notes on a blackboard can easiliy convert into a test.  
+- Promotes writing tests.  Tabular notes on a blackboard can easily convert into a test.  
 
 - Promotes DDD.  Domain types show up in the feature file. 
 

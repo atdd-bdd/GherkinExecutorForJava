@@ -28,7 +28,7 @@ In the test directory, it is named `examples.feature`.  The words after the keyw
 `Feature` are combined into the name of the feature.  Let's assume that you are using the translator with Java 
 (language suffix `.java`).  The operation is the same, the output code depends on the language. 
 
-To translate this feature file, you can pass it as a parameter to the `Translate` main methood, 
+To translate this feature file, you can pass it as a parameter to the `Translate` main method, 
 add it to the Configuration list of feature files, or let the directory tree search find it.      
 
 ```
@@ -37,11 +37,11 @@ featureFiles.add("examples.feature");
 
 A unit test file with the name `Feature_Examples.java` (with language appropriate suffix) 
 is created in a package with the name `gherkinexecutor.Feature_Examples` with the same name. 
-A another filecalled `Feature_Examples_glue.tmpl` is also created.  This contains templates for the glue 
+Another file called `Feature_Examples_glue.tmpl` is also created.  This contains templates for the glue 
 code that is called 
 from `Feature_Examples.java`.  One or two files are created for every `Data` statement. Since DataTypes are 
 in this Data statement, a class `TemperatureCalculation` with the attributes as Strings, 
-and a class `TemperatureCalculationInternal` are creeated. Some common methods for each class are also included.
+and a class `TemperatureCalculationInternal` are created. Some common methods for each class are also included.
 
 The single step in the `Scenario` ("`Convert F to C` ") has additional information `# ListOfObject TemperatureComparison`.  So 
 the test file / glue code parameters use a `List<TemperatureComparison>`to pass this data between the two.  This
@@ -71,7 +71,7 @@ The `Feature_Examples.java` example file contains code that looks like
         }
 ```
 
-This file is recreated every time Translate is run.  Yourun Translate every time you change the feature file.    
+This file is recreated every time Translate is run.  You run Translate every time you change the feature file.    
 
 ### Glue File
 
@@ -94,7 +94,7 @@ It's possible that the values in the table are not valid for the types for the f
 if `a` is in the table for a field with datatype `int`, then an IllegalArgumentException is thrown and will be
 caught by the test framework.   
 
-You can eliminate the `println`.  It is there so you can see the data passed to the glue code, wihtout having to 
+You can eliminate the `println`.  It is there so that you can see the data passed to the glue code, without having to 
 look back at the feature file.   
 
 The first time you run the Translator, you should rename the glue file `Feature_Examples_glue.tmpl`to the language appropriate suffix
@@ -178,7 +178,7 @@ an IllegalArgumentException if the value is not valid.
 
 ```
 
-The constructer might look like: 
+The constructor might look like: 
 
 ```
    public ID(String value){

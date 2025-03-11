@@ -24,7 +24,7 @@ This README file gives an overview of operation.  See these other files for more
 
 * Design.md – the approach taken as well as maintenance notes
 
-* Other.md – stuff that just doesn’t seem to fit elsewhere
+* Other.md – stuff that just does not seem to fit elsewhere
 
 * Style.md – some thoughts on how to organize your feature files  
 
@@ -142,7 +142,7 @@ First, the setup.
 
 - Create a package "gherkinexecutor" in your project test directory. 
 
-- Copy the Translate file from the GherkinExecutor source to your project.   
+- Copy the `Translate` file from the GherkinExecutor source to your project.   
   If you wish, you could move the Configuration class into a different file in the gherkinexecutor package.  
 
 - Copy one of the files (say simple_test.feature) into the test directory.  
@@ -160,7 +160,8 @@ GherkinExecutor can search for all feature files in the directory tree starting 
 
 ```
 
-So, the feature file should be translated.   However, you can also put the name as a program argument to the run (or add it to the file list in Configuration, e.g.
+So, the feature file should be translated.   However, you can also put the name as a program argument to the run
+(or add it to the file list in Configuration, e.g.)
 
 ```
 featureFiles.add("simple_test.feature");
@@ -174,8 +175,8 @@ The name comes from the Feature name in the file, not the name of the feature fi
 In this package, you will see four files.  Rename the file `Feature_Simple_Test_glue.tmpl` 
 to `Feature_Simple_Test_glue.java`.   This will be the only time you will do this for each feature. 
 
-In this glue file  you will be making changes to add calls to production code and 
-make asserts.) 
+In this glue file  you will be making changes to add calls to production 
+code and make asserts.
 
 If you add additional Scenarios that have new steps, you will need to create the step method in the glue code.
 You can do this by either by copying the sample code from the ".tmpl" file or by using the IDE to create it.   
@@ -202,7 +203,8 @@ Congratulations, you're ready to start with your project.   You can delete the `
 
 ### Your Project
 
-You need to import your production classes  into the glue code and possibly the data code.  You can alter the glue code or you can add the imports in Configuration with: 
+You need to import your production classes  into the glue code and possibly the data code.  
+You can alter the glue code, or you can add the imports in Configuration with: 
 
 ```
 linesToAddForDataAndGlue.add("import production_package;"); 
@@ -231,7 +233,7 @@ You should get a failure for every scenario.   Note that` fail() `is put into ea
 
 If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>` 
 
-You can use examples.feature as a guide for your feature file.  The key difference between this feature file and one
+You can use `examples.feature` as a guide for your feature file.  The key difference between this feature file and one
 you may see other places is the addition of `# ListOfObject TemperatureCalculation` after the step and a Data statement.
 
 ```
@@ -260,7 +262,7 @@ You can use the name of a production class as the second part of Data statement.
 The names of the attributes should match the attributes in the production class. If the attributes have non-primitive
 data types, you will need to create an `Import` statement that describes the constructor and the package. 
 
-Do not create a Data statement with the first part being the name of the you use in production.    
+Do not create a Data statement with the first part being the name you use in production.    
 Add additional characters to it, such as `In` or you will get a data clash.
 
 ## Converting a Gherkin feature file
@@ -312,7 +314,7 @@ is in that file to the feature file before it is translated.
 ## Why Not Use Existing Frameworks?
 
 I've been using Cucumber, one of the most common applications that uses 
-Gherkin, for a number of years.  You can have a table after each step.   However you
+Gherkin, for a number of years.  You can have a table after each step.   However, you
 need to add additional code to use that table as a list of objects.  The method for doing 
 so has changed from version to version and has gotten more complex.  It appears that conversion
 of tables into lists of objects has been removed from the latest version.
@@ -332,7 +334,7 @@ that can be changed in a single line.
 ## How It Differs from Other Frameworks
 
 The Translator passes data to steps only through tables or multi-line strings.  There are no values embedded in the
-the step statement.  The domain term which a value represents is the header of a column
+step statement.  The domain term which a value represents is the header of a column
 which contains the values.  
 
 The tables are passed to the glue methods as a list of objects or a list of strings.  
@@ -343,7 +345,7 @@ The step statement is converted into the glue code function name.
 If you need the same code to execute for multiple glue code methods, you can delegate to a common implementation,
 just like you would do with production code. 
 
-The Translate file resides in your application source control.  The way it works does not change.  If Translate works for you, 
+The `Translate` file resides in your application source control.  The way it works does not change.  If Translate works for you, 
 there is no reason to change it.    If you want additional features (not sure what they might be), then you decide
 when you want to drop in a new version.  If there are any issues, you revert to the old one using git (or your
 source code control framework).  You can use your existing framework (Cucumber, SpecFlow, etc.) to process your existing 
@@ -401,7 +403,7 @@ Actually used for that feature.
 ## A Collection Example
 
 In `examples.feature` is an example of dealing with a collection.  There is a collection 
-of records (objects0 of the `LabelValue` type.   In the glue code for the Given, they are added to the solution object. 
+of records (objects of the `LabelValue` type).   In the glue code for the Given, they are added to the solution object. 
 The example uses the ID type for the label with the validation shown previously.   
 
 The interface to this object includes a method to set a filter and a method to retrieve a sum of records/objects
@@ -467,7 +469,7 @@ Here are the `Configuration` parameters in `Translate`.   You can alter four of 
 These values should work for the default JetBrains layout.  You can alter them for another project layout.
 
 You can move the configuration class out of Translate into a separate file.   That way, if you ever reload
-Translate, you can delete the Configuration class in the new Translate and keep using the one you have changed.
+Translate, you can delete the `Configuration` class in the new `Translate` and keep using the one you have changed.
 
 ```
 

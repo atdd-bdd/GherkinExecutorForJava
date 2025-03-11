@@ -48,7 +48,7 @@ If you have two or more rows, you can approach TDD in one of three ways.
   ```
 ### User Interface Testing
 
- You could use the values in the table as the input values to a User Interface (UI). The Given could set up the state.  The When could printout the values to input, and the Then could check that the state has changed appropriately.  
+ You could use the values in the table as the input values to a User Interface (UI). The Given could set up the state.  The When could print out the values to input, and the Then could check that the state has changed appropriately.  
 
 ### Iterative Development of Feature File
 
