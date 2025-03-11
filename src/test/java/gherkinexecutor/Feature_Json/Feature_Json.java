@@ -10,8 +10,8 @@ class Feature_Json{
 
         List<SimpleClass> objectList1 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             );
         feature_Json_glue_object.Given_one_object_is(objectList1);
@@ -34,8 +34,8 @@ class Feature_Json{
 
         List<SimpleClass> objectList2 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             );
         feature_Json_glue_object.Then_the_converted_object_is(objectList2);
@@ -46,12 +46,12 @@ class Feature_Json{
 
         List<SimpleClass> objectList1 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             , new SimpleClass.Builder()
-                .anInt("2")
-                .aString("C")
+                .setAnInt("2")
+                .setAString("C")
                 .build()
             );
         feature_Json_glue_object.Given_a_table_is(objectList1);
@@ -78,12 +78,12 @@ class Feature_Json{
 
         List<SimpleClass> objectList2 = List.of(
              new SimpleClass.Builder()
-                .anInt("1")
-                .aString("B")
+                .setAnInt("1")
+                .setAString("B")
                 .build()
             , new SimpleClass.Builder()
-                .anInt("2")
-                .aString("C")
+                .setAnInt("2")
+                .setAString("C")
                 .build()
             );
         feature_Json_glue_object.Then_the_converted_table_should_be(objectList2);

@@ -30,11 +30,11 @@ class SimpleClass{
     public static class Builder {
         private String anInt = "0";
         private String aString = "Q";
-        public Builder anInt(String anInt) {
+        public Builder setAnInt(String anInt) {
             this.anInt = anInt;
             return this;
             }
-        public Builder aString(String aString) {
+        public Builder setAString(String aString) {
             this.aString = aString;
             return this;
             }
@@ -110,12 +110,11 @@ class SimpleClass{
              public static List<SimpleClass> listFromJson(String json) {
                     List<SimpleClass> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("\\},\\{");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(SimpleClass.fromJson(jsonObject));
-                    }
+                         list.add(SimpleClass.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

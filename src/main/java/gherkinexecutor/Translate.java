@@ -158,7 +158,7 @@ public class Translate {
         if (input == null) {
             return "";
         }
-        return input.replaceAll("[^0-9a-zA-Z_\\*]", "");
+        return input.replaceAll("[^0-9a-zA-Z_*]", "");
     }
     private static String wordWithOutColon(String word) {
         return word.replaceAll("^:+|:+$", "");
@@ -311,7 +311,8 @@ public class Translate {
         }
         featureName = fullName;
         featureActedOn = true;
-        packagePath = Configuration.packageName + "." + featurePackagePath + featureName;
+        packagePath = Configuration.addToPackageName + Configuration.packageName + "." + featurePackagePath + featureName;
+        printFlow("Package is " + packagePath);
         String testPathname = Configuration.testSubDirectory + featureDirectory + featureName + "/" +
                 featureName + ".java";
         printFlow(" Writing " + testPathname);
@@ -1426,12 +1427,11 @@ public class Translate {
                                          public static List<CLASSNAME> listFromJson(String json) {
                                                 List<CLASSNAME> list = new ArrayList<>();
                                         		json = json.replaceAll("\\\\s", "");
-                                                String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-                                                                
+                                        		json = json.replaceAll("\\\\[","").replaceAll("]","");
+                                                String[] jsonObjects = json.split("(?<=\\\\}),\\\\s*(?=\\\\{)");
                                                 for (String jsonObject : jsonObjects) {
-                                                    jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                                                    list.add(CLASSNAME.fromJson(jsonObject));
-                                                }
+                                                     list.add(CLASSNAME.fromJson(jsonObject));
+                                                     }
                                                 return list;
                                             }
                             """.stripIndent();
@@ -1990,7 +1990,7 @@ public class Translate {
 
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings({"unused", "EmptyClassInitializer"})
     static class Configuration {
 
         public static boolean logIt = false;
@@ -2022,6 +2022,7 @@ public class Translate {
         public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
 
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
+        public static String addToPackageName = "";  // change to "test.java." for Eclipse
 
         // Imports or other lines to add to data class and glue class
         // Must include  semicolon if needed
@@ -2032,7 +2033,7 @@ public class Translate {
         public static final List<String> featureFiles = new ArrayList<>();
 
         static {
-            featureFiles.add("simple_test.feature");     // Something to try out after setup
+//            featureFiles.add("simple_test.feature");     // Something to try out after setup
 //            featureFiles.add("full_test.feature.sav"); // used for testing Translate
         }
     }
