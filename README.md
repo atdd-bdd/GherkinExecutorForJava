@@ -12,7 +12,21 @@ Versions in other languages (Python, C++, C#, Kotlin are being created.
 
 The table form for expressing shared understanding came from Ward Cunningham's FIT
 (Framework for Integrated Testing).  Gherkin was created by Aslak Hellesøy.  
-The process for creating unit tests (ala SpecFlow) was from Gojko Adzic. Dan North coined the term “Behavior Driven Development”.    
+The process for creating unit tests (ala SpecFlow) was from Gojko Adzic. Dan North coined the term “Behavior Driven Development”. 
+
+### More Information
+
+This README file gives an overview of operation.  See these other files for more information.  
+
+* Detail.md - This has details the Data, Import, and Define statements, as well as on tables and multi-line strings,
+
+* Examples.md - More detail on the examples.
+
+* Design.md – the approach taken as well as maintenance notes
+
+* Other.md – stuff that just doesn’t seem to fit elsewhere
+
+* Style.md – some thoughts on how to organize your feature files  
 
 ## Why Use Gherkin?
 
@@ -83,13 +97,40 @@ This table could be used in a help file to show examples of valid IDs.
 
 You can try the application out as a whole or just start using it. 
 
-Download the `GherkinExecutorForJava` project from https://github.com/atdd-bdd/GherkinExecutorForJava. You will see only one file `Translate.java` in the gherkinexecutor package. 
-This file contains all the classes required for translation. 
+#### Test Framework:
 
-Run the `Feature_Examples`.java file in the `gherkinexecutor.Feature_Eaamples` package.  You should see that it successfully runs
-four tests, two of which are listed above. Examine `Feature_Examples_glue.java` and see how the glue code calls the production code.    
+Once you have downloaded the files for either IDE, if you are using a test framework other than` JUnit5`, you will need to change the following in `Configuration`.
+       public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
 
-You can also run `Feature_tic_tac_toe`in the `gherkinexecutor.Feature_Tic_Tac_Toe`.
+##### For IntelliJ:
+
+- Clone the `GherkinExecutorForJava` project from https://github.com/atdd-bdd/GherkinExecutorForJava. 
+
+- You will see only one file `Translate.java` in the gherkinexecutor package. 
+  This file contains all the classes required for translation. 
+
+- Run the `Feature_Examples`.java file in the `gherkinexecutor.Feature_Eaamples` package.  You should see that it successfully runs
+  four tests, two of which are listed above. Examine `Feature_Examples_glue.java` and see how the glue code calls the production code.    
+
+- You can also run `Feature_tic_tac_toe`in the `gherkinexecutor.Feature_Tic_Tac_Toe`.
+
+- If you are able to clone, just copy the `Translate.java` and` simple_test.feature`  files into your project.
+
+##### For Eclipse
+
+* Create a new project.   
+
+* Download the `GherkinExecutorForJavaForEclipse.zip file from https://github.com/atdd-bdd/GherkinExecutorForJava.
+
+* Unzip this file into the project you created.   
+
+* You will see only one file `Translate.java` in the `main.java.gherkinexecutor` package. This file contains all the classes required for translation.
+
+* Run the `Feature_Examples`.java file in the `test.java.gherkinexecutor.Feature_Eaamples` package. You should see that it successfully runs four tests, two of which are listed above. Examine `Feature_Examples_glue.java` and see how the glue code calls the production code.
+
+* You can also run `Feature_tic_tac_toe`in the `test.java. gherkinexecutor.Feature_Tic_Tac_Toe`.
+
+* There are slight differences between the `Translate.java for IntelliJ `and for` Eclipse`.  (The package names need to include the directory and there is a difference in escape characters for the JSON methods).  
 
 ### Your Project
 
@@ -157,7 +198,7 @@ the Data statement is provided.   This referred to as the internal object - ATes
 
 No calls to production code are in this glue code, as the Scenario is completely independent of the code.
 
-Congratulations, you're ready to start with your project.   You can delete the `SimpleTest` directory (or remove the `fail` from the glue code.) 
+Congratulations, you're ready to start with your project.   You can delete the `SimpleTest` directory (or make the tests pass :) ) 
 
 ### Your Project
 
@@ -167,7 +208,7 @@ You need to import your production classes  into the glue code and possibly the 
 linesToAddForDataAndGlue.add("import production_package;"); 
 ```
 
-Now create a feature file and put it into the feature directory.
+Now create a feature file and put it into the feature directory.   If you want, you can create a `features`directory and set `searchTree`to true and feature files will be searched in that directory.   
 
 ```
 public static final String featureSubDirectory = "src/test/java/";
@@ -179,15 +220,13 @@ Add the name of the feature file as a program argument to the run, or add it to 
 featureFiles.add("my_feature.feature");
 ```
 
-Note: If you already have a feature file editor in your IDE, the editor may show some errors on `Include`, `Data` and `Import` lines.  Simply changethese lines to `* Include`, `* Data` and `* Import`.
+Note: If you already have a feature file editor in your IDE, the editor may show some errors on `Include`, `Data` and `Import` lines.  Simply change these lines to `* Include`, `* Data` and `* Import`.
 
 Run Translate.  You should see a new package in tests. Let's say you have `Feature My Feature` as the first line of this feature file. The package will be: `gherkinexecutor\Feature_My_Feature
 `  
 Rename the `.tmpl` glue file to `.java` and run the test file (the one named `Feature_My_Feature`). 
 
-
-
- You should get a failure for every scenario.   Note that` fail() `is put into each step, so you will continue to get failure for a Scenario 
+You should get a failure for every scenario.   Note that` fail() `is put into each step, so you will continue to get failure for a Scenario 
  until you implement all the steps.   
 
 If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>` 
@@ -419,10 +458,11 @@ When filtered by ID with value
 | Q1234  |
 Then sum is 
 | 4 | ```
+```
 
-## Configuration 
+## Configuration
 
-Here are the `Configuration` parameters in `Translate`.  
+Here are the `Configuration` parameters in `Translate`.   You can alter four of them on the command line with `searchTree`,  inTest, traceOn, and `logIt.   `
 
 These values should work for the default JetBrains layout.  You can alter them for another project layout.
 
@@ -432,35 +472,43 @@ Translate, you can delete the Configuration class in the new Translate and keep 
 ```
 
     static class Configuration {
-    
+
+        public static boolean logIt = false;
+                 // Set to true for logging during the tests to log.txt
         public static final boolean inTest = false;  // switch to true for development of Translator
         public static final boolean traceOn = false; // Set to true to see trace
-    
+
         public static final char spaceCharacters = '~'; // Will replace with space in table values
-    
+
         public static final String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
         public static String currentDirectory = "";  // For printout to check where IDE is running 
-    
+
         public static final String featureSubDirectory = "src/test/java/"; // where features are to be found
         public static final String packageName = "gherkinexecutor";
+
+        public static String addToPackageName = "";  // change to "test.java." for Eclipse
+
         public static final String testSubDirectory = "src/test/java/" + packageName + "/"; 
                 // where the files containing the test, glue, and data files (inside package with Feature name)
-    
+
         public static final String dataDefinitionFileExtension = "java"; // "tmpl"; 
             // change to .tmpl if altering data classe, becuase data class files are rewritten every time. 
-    
+
+       public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
+
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
         // These lines will be added to the glue file and the data class files 
         // Must include semicolon if needed
         static {
             linesToAddForDataAndGlue.add("import java.util.*;");
         }
-    
+
         public static final List<String> featureFiles = new ArrayList<>();
         // These feature files will always be translated.
         static {
             featureFiles.add("import.feature");
             featureFiles.add("include.feature");
+```
 
 ### A Larger Domain Example
 
@@ -482,12 +530,15 @@ Data Forecast
 Here's a possible scenario to search forecasts for those that meet certain conditions:
 
 ```
+
 Scenario: Search Forecast
 Given forecast is           # ListOfObject Forecast
 | Day       | Time      | High  | Low  | Rain  | Wind Speed  | Direction  | Condition  |
 | 1/1/2025  | 12:00 am  | 70    | 60   | 0     | 1           | N          | Clear      |
 | 1/3/2025  | 12:00 am  | 60    | 40   | 10    | 5           | S          | Cloudy     |
+
 # And many more  (or read from CSV file)
+
 When searching for          # ListOfObject # ForecastSearchCriteria 
 | Field        | Relationship  | Value  |
 | High         | >             | 65     |
@@ -501,15 +552,3 @@ The Given step uses the domain terms defined in the previous block. The data cou
 listed here, read from a CSV file, or put onto a database. The When step gives the search
 criteria.  The Triad would define how these criteria should work.
 Finally, the Then step shows the expected results.   
-
-## More Information
-
-- Detail - This has details the Data, Import, and Define statements, as well as on tables and multi-line strings, 
-
-- Examples - More detail on the examples.
-
-- Design – the approach taken as well as maintenance notes 
-
-- Other – stuff that just doesn’t seem to fit elsewhere
-
-- Style – some thoughts on how to organize your feature files  
