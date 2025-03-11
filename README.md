@@ -12,7 +12,7 @@ Versions in other languages (Python, C++, C#, Kotlin are being created.
 
 The table form for expressing shared understanding came from Ward Cunningham's FIT
 (Framework for Integrated Testing).  Gherkin was created by Aslak Hellesøy.  
-The process for creating unit tests (ala SpecFlow) was from Gojko Adzic. Dan North coined the term “Behavior Driven Development”. 
+The process for creating unit tests (ala SpecFlow) was from Gáspár Nagy. Dan North coined the term “Behavior Driven Development”. 
 
 ### More Information
 
