@@ -7,7 +7,7 @@ Given stack starts as
 | 2 5 7 |
 When word is input then stack becomes # ListOfObject WordStack
 | Word  | Stack    | Notes                                                            |
-| DUP   | 2 5 7 7  | Duplicates the top element of the stack.                         |
+| DUP   | 2 5 7 7  | Duplicates the top element (.. A -> .. A A)                      |
 | SWAP  | 2 7 5    | Swaps the top two elements of the stack.                         |
 | OVER  | 2 5 7 5  | Copies the second element from the top of the stack to the top.  |
 | ROT   | 5 7 2    | Rotates the third element to the top.                            |

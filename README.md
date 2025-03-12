@@ -5,8 +5,8 @@
 The Gherkin Executor simplifies the creation of test code from a Gherkin feature file. 
 It converts scenarios into unit tests.   It is designed to work the same way as any 
 implementation language.   For Java, the application is available at 
-https://github.com/atdd-bdd/GherkinExecutorForJava.  It works with JUnit5, Junit$, and TestNG.  
-Versions in other languages (Python, C++, C#, Kotlin are being created. 
+https://github.com/atdd-bdd/GherkinExecutorForJava.  It works with JUnit5, Junit4, and TestNG.  
+Versions in other languages (Python, C++, C#, Kotlin, etc.) are being created. 
 
 ## Inspiration
 
@@ -41,7 +41,7 @@ to comprehend. (See the tic-tac-toe example.)
 
 You can think of a Gherkin feature file as representing the logical portion of the test (ala the logical and physical views of a database).
 
-### introductory Example
+### Introductory Example
 
 Here are a few introductory examples. You can view the `examples.feature` file in the main test directory 
 and the associated files in the gherkinexecutor.Feature_Examples package in the test directory.  
