@@ -110,12 +110,11 @@ class LabelValue{
              public static List<LabelValue> listFromJson(String json) {
                     List<LabelValue> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(LabelValue.fromJson(jsonObject));
-                    }
+                         list.add(LabelValue.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

@@ -129,12 +129,11 @@ class ValueValid{
              public static List<ValueValid> listFromJson(String json) {
                     List<ValueValid> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ValueValid.fromJson(jsonObject));
-                    }
+                         list.add(ValueValid.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

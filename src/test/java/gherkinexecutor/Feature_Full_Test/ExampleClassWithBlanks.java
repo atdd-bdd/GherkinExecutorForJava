@@ -112,12 +112,11 @@ class ExampleClassWithBlanks{
              public static List<ExampleClassWithBlanks> listFromJson(String json) {
                     List<ExampleClassWithBlanks> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ExampleClassWithBlanks.fromJson(jsonObject));
-                    }
+                         list.add(ExampleClassWithBlanks.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

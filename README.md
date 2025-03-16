@@ -52,8 +52,8 @@ the  data files which declare the class used to connect the unit test code to th
 The full code is shown later.
 
 ```
-Scenario: Temperature 
-Calculation Convert F to C # ListOfObject TemperatureCalculation 
+Scenario: Temperature Conversion
+Calculation Convert F to C # ListOfObject FandC 
 | F    | C    | Notes       |
 | 32   | 0    | Freezing    |
 | 212  | 100  | Boiling     |
@@ -63,7 +63,7 @@ Calculation Convert F to C # ListOfObject TemperatureCalculation
 An Excel-style table is a familiar construct to many non-programmers.
 (Ward Cunningham introduced this style with FIT).  So this form is easily understandable.
 To add another variation, you simply add another row to the table.  The comments
-`# ListOfObject TemperatureComparison` are used to create the unit tests (details shown shortly)
+`# ListOfObject FandC` are used to create the unit tests (details shown shortly)
 
 The Triad (Customer, Developer, Tester perspectives) can collaborate on the detailed behavior.  This
 separates the production implementation from the representation of the logic and calculations.  For example,
@@ -234,17 +234,17 @@ You should get a failure for every scenario.   Note that` fail() `is put into ea
 If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>` 
 
 You can use `examples.feature` as a guide for your feature file.  The key difference between this feature file and one
-you may see other places is the addition of `# ListOfObject TemperatureCalculation` after the step and a Data statement.
+you may see other places is the addition of `# ListOfObject FandC` after the step and a Data statement.
 
 ```
-Data TemperatureCalculation
+Data FandC
 | Name   | Default  | DataType  | Notes  |
 | F      | 0        | Integer   |        |
 | C      | 0        | Integer   |        |
 | Notes  |          | String    |        |
 ```
 
-The key is that the name of the Data `TemperatureCalculation` must match the name in the step.   And the names of the 
+The key is that the name of the Data `FandC` must match the name in the step.   And the names of the 
 attributes (e.g. `F`) must match the headers in the step table. You should get errors from Translate if they do not match and 
  will get compile errors if you ignore those errors.  (There is probably some condition where this does not occur in 
 some unexpected condition.) 

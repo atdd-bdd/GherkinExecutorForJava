@@ -94,7 +94,8 @@ the fields not specified will be set to` '?DNC?`'.
 Let's take a look at the Data statement again. Here's the example:  
 
 ```
-Data TemperatureCalculation
+Data FandC
+
 | Name   | Default  | DataType  | Notes  |
 | F      | 0        | Integer   |        |
 | C      | 0        | Integer   |        |
@@ -106,19 +107,19 @@ Since the `DataType` field is specified, this statement creates two classes, eac
 has all attributes as data type String.  This is referred to as the string object.   
 Objects of this type are created in the test file and passed to the glue methods.   The second class has the same
 names for the attributes but the data types are those listed (e.g. `Integer`).  This second class has `Internal` appended 
-to the name (`TemperatureCalculationInternal`
+to the name (`FandCInternal`
 
 Note:  These files are recreated every time Translate runs.  If you need to import a package, your can add it to the Configuration
-or use an `Import` statement.  Here's an example of the `TemperatureCalculation` class: 
+or use an `Import` statement.  Here's an example of the `FandC` class: 
 
 ```
 package gherkinexecutor.Feature_Examples;
-class TemperatureCalculation{
+class FandC{
     String f = "0";
     String c = "0";
     String notes = "";
-    public TemperatureCalculation() { }
-    public TemperatureCalculation(
+    public FandC() { }
+    public FandC(
         String f     ,String c     ,String notes){
         this.f = f;
         this.c = c;
@@ -128,11 +129,11 @@ class TemperatureCalculation{
     public boolean equals (Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        TemperatureCalculation _TemperatureCalculation = (TemperatureCalculation) o;
+        FandC _FandC = (FandC) o;
          if (
              !this.f.equals("?DNC?")
-                && !_TemperatureCalculation.f.equals("?DNC?"))
-                if (!_TemperatureCalculation.f.equals(this.f)) return false; 
+                && !_FandC.f.equals("?DNC?"))
+                if (!_FandC.f.equals(this.f)) return false; 
              // and 2 more clauses
                      return true;  }
     public static class Builder {
@@ -147,8 +148,8 @@ class TemperatureCalculation{
     public String toString() {
         // toString cod 
 
-    TemperatureCalculationInternal toTemperatureCalculationInternal() throws IllegalArgumentException {
-        return new TemperatureCalculationInternal(
+    FandCInternal toFandCInternal() throws IllegalArgumentException {
+        return new FandCInternal(
          Integer.valueOf(f)
         , Integer.valueOf(c)
         , notes
@@ -161,7 +162,7 @@ checked if either contains `$DNC$`.  This allows a comparison between a table wh
 specified and one that only has a few columns specified.   
 
 This special value can be changed in Configuration.  It is set into the attributes by specifying `compare` in the
-comment after a step (e.g. `# ListOfObject TemperatureCalculation compare`).   For example, if this were followed by a table 
+comment after a step (e.g. `# ListOfObject FandC compare`).   For example, if this were followed by a table 
 with only an `F` column, every `C` attribute. would have `?DNC?` as its value.     
 
 There is a conversion method to the internal object, which calls the appropriate conversion method. For data types
@@ -175,24 +176,24 @@ The internal object class that is created (if you don't specify a second name in
 ```
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
-class TemperatureCalculationInternal{
+class FandCInternal{
      Integer f;
      Integer c;
      String notes;
 
     public static String toDataTypeString() {
-        return "TemperatureCalculationInternal {"
+        return "FandCInternal {"
         +"Integer " 
         +"Integer " 
         +"String " 
             + "} "; }  
-    TemperatureCalculation toTemperatureCalculation() {
-        return new TemperatureCalculation(
+    FandC toFandC() {
+        return new FandC(
         String.valueOf(f)
         ,String.valueOf(c)
         ,notes
         ); }
-    public TemperatureCalculationInternal(
+    public FandCInternal(
         Integer f         ,Integer c         ,String notes)  {
         this.f = f;
         this.c = c;
@@ -221,7 +222,7 @@ the `Configuration`
 ```
 
 Note that the test file only references the class with all string attributes.  The glue code is the place to
-convert the string object  into a `TemperatureComparisonInternal` object using the supplied method.  
+convert the string object  into a `FandCInternal` object using the supplied method.  
 
 ### Notes
 
@@ -316,6 +317,7 @@ generated.
 ## Include
 
 You can include another file in a feature file. e generated. If the file is a `.csv` file, it will be converted to a table.   
+
 ```
 Feature: Include
 
@@ -331,11 +333,14 @@ Given a string in base directory
 Include 'string.inc'
 """
 ```
+
 You can include any text, including `Data` statements (useful for reusing common data layouts). 
 If you surround the filename with single quotes `'string.inc'`,  the file will be searched for in the `Configuration` value:
+
 ```
 public static final String featureSubDirectory = "src/test/java/";
 ```
+
 The included file might have a `Feature` statement in it.  If it does, a warning will be generated.  
 
 ## Tables
@@ -507,6 +512,7 @@ Scenario: Here are string options
 ## Background and Cleanup
 
 You can add a `Background `and a `Cleanup `to a feature file.   All steps in the `Background `will be run when the scenario starts.  All steps in the `Cleanup `will be run when the scenario ends.   `Background `and `Cleanup `use the same glue context as the scenario in which they run 
+
 ```
 Feature: Background
 
@@ -542,19 +548,23 @@ Four methods are added to the string version of the data class.   These methods 
 There is one more facet that might have
 some use, depending on your context. With a `define`, you specify 
 the value of a constant once, e.g.
+
 ```
  Define 
 | Name       | Value | Notes                 |
 | HIGH_VALUE | 100   | Highest allowed input |
 | LOW_VALUE  | 1     | Lowest allowed input  |
 ```
+
 Where ever you use these tokens, they will be replaced by the value.  For example:
+
 ```
 Given this data:
 | ID  | Value     |
 | A   | HIGH_DATA |
 | B   | LOW_DATA  |
 ```
+
 will be treated as:
 
 ```
@@ -563,17 +573,21 @@ Given this data:
 | 1   | 100       |
 | B   | 1         |
 ```
+
 This is useful if the Define terms are meaningful to someone reading 
 the feature file. 
 
 ### Calculated Values
 
 You can use an expression in the replacement, such as:
+
 ```
 | Name           | Value | Notes               |
 | AVERAGE_VALUE  | (LOW_DATA +HIGH_DATA)/2     | 
 ```
+
 In this case, the computation will be passed, not the result of the computation:
+
 ```
 Given this data:
 | ID  | Value     |
@@ -581,7 +595,9 @@ Given this data:
 | B   | LOW_DATA  |
 | C   | AVERAGE_VALUE |
 ```
+
 will be treated as:
+
 ```
 Given this data:
 | ID  | Value     |
@@ -589,8 +605,11 @@ Given this data:
 | B   | 1         |
 | C   | (1 + 100)/2 |
 ```
+
 You need to create (or find somewhere) a class that computes the result
 Of this calculation. Suppose it was called ComputeInt with a string constructor. The Data statement would have  Datatype ComputeInt for this
 Field. 
 
 For Java, you can check out the ScriptEngineManager and ScriptEngine classes from the `javax.script` package:
+
+

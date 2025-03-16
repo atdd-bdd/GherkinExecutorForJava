@@ -110,12 +110,11 @@ class FilterValue{
              public static List<FilterValue> listFromJson(String json) {
                     List<FilterValue> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(FilterValue.fromJson(jsonObject));
-                    }
+                         list.add(FilterValue.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

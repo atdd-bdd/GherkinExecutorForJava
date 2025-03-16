@@ -131,12 +131,11 @@ class ATest{
              public static List<ATest> listFromJson(String json) {
                     List<ATest> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ATest.fromJson(jsonObject));
-                    }
+                         list.add(ATest.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

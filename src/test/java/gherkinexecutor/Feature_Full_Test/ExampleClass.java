@@ -112,12 +112,11 @@ class ExampleClass{
              public static List<ExampleClass> listFromJson(String json) {
                     List<ExampleClass> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ExampleClass.fromJson(jsonObject));
-                    }
+                         list.add(ExampleClass.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

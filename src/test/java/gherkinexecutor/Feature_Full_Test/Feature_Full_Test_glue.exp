@@ -107,12 +107,12 @@ class Feature_Full_Test_glue {
         fail("Must implement");
     }
 
-    void Calculation_Convert_F_to_C(List<TemperatureCalculation> values ) {
+    void Calculation_Convert_F_to_C(List<FandC> values ) {
         System.out.println("---  " + "Calculation_Convert_F_to_C");
-        for (TemperatureCalculation value : values){
+        for (FandC value : values){
              System.out.println(value);
              // Add calls to production code and asserts
-              TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
+              FandCInternal i = value.toFandCInternal();
               }
         fail("Must implement");
     }

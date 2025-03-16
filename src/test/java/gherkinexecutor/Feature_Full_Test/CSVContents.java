@@ -131,12 +131,11 @@ class CSVContents{
              public static List<CSVContents> listFromJson(String json) {
                     List<CSVContents> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(CSVContents.fromJson(jsonObject));
-                    }
+                         list.add(CSVContents.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

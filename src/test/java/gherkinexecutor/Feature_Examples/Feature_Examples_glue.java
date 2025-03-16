@@ -21,21 +21,16 @@ class Feature_Examples_glue {
         }
     }
 
-
-    void Calculation_Convert_F_to_C(List<TemperatureCalculation> values) {
+    void Calculation_Convert_F_to_C(List<FandC> values ) {
         System.out.println("---  " + "Calculation_Convert_F_to_C");
         log("---  " + "Calculation_Convert_F_to_C");
         log(values.toString());
-        for (TemperatureCalculation value : values) {
+        for (FandC value : values){
             System.out.println(value);
-            try {
-                TemperatureCalculationInternal i = value.toTemperatureCalculationInternal();
-                int c = TemperatureCalculations.convertFahrenheitToCelsius(i.f);
-                assertEquals(i.c, c, i.notes);
-                System.out.println(i);
-            } catch (Exception e) {
-                System.err.println("Argument Error " + value.toString() + TemperatureCalculationInternal.toDataTypeString());
-            }
+            // Add calls to production code and asserts
+            FandCInternal i = value.toFandCInternal();
+            int c = TemperatureCalculations.convertFahrenheitToCelsius(i.f);
+            assertEquals(i.c, c, i.notes);
         }
     }
 

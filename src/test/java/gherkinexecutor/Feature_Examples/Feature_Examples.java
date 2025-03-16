@@ -1,25 +1,37 @@
 package gherkinexecutor.Feature_Examples;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 class Feature_Examples{
+void log(String value) {
+    try {
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Examples/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
+    } catch (IOException e) {
+    System.err.println("*** Cannot write to log ");
+    }
+    }
 
 
     @Test
-    void test_Scenario_Temperature(){
+    void test_Scenario_Temperature_Conversion(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
+        log("Scenario_Temperature_Conversion");
 
-        List<TemperatureCalculation> objectList1 = List.of(
-             new TemperatureCalculation.Builder()
+        List<FandC> objectList1 = List.of(
+             new FandC.Builder()
                 .setF("32")
                 .setC("0")
                 .setNotes("Freezing")
                 .build()
-            , new TemperatureCalculation.Builder()
+            , new FandC.Builder()
                 .setF("212")
                 .setC("100")
                 .setNotes("Boiling")
                 .build()
-            , new TemperatureCalculation.Builder()
+            , new FandC.Builder()
                 .setF("-40")
                 .setC("-40")
                 .setNotes("Below zero")
@@ -30,6 +42,7 @@ class Feature_Examples{
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
+        log("Scenario_Domain_Term_ID");
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
@@ -58,6 +71,7 @@ class Feature_Examples{
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
+        log("Scenario_Filter_Data");
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -92,6 +106,7 @@ class Feature_Examples{
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
+        log("Scenario_Filter_Data_Another_Way");
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()

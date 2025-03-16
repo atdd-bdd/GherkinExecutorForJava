@@ -93,12 +93,11 @@ class ResultValue{
              public static List<ResultValue> listFromJson(String json) {
                     List<ResultValue> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ResultValue.fromJson(jsonObject));
-                    }
+                         list.add(ResultValue.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

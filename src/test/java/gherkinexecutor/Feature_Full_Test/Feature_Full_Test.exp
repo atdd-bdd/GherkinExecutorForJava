@@ -223,22 +223,22 @@ class Feature_Full_Test{
         test_Cleanup(feature_Full_Test_glue_object); // from previous
         }
     @Test
-    void test_Scenario_Temperature(){
+    void test_Scenario_Temperature_Conversion(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
         test_Background(feature_Full_Test_glue_object);
 
-        List<TemperatureCalculation> objectList1 = List.of(
-             new TemperatureCalculation.Builder()
+        List<FandC> objectList1 = List.of(
+             new FandC.Builder()
                 .setF("32")
                 .setC("0")
                 .setNotes("Freezing")
                 .build()
-            , new TemperatureCalculation.Builder()
+            , new FandC.Builder()
                 .setF("212")
                 .setC("100")
                 .setNotes("Boiling")
                 .build()
-            , new TemperatureCalculation.Builder()
+            , new FandC.Builder()
                 .setF("-40")
                 .setC("-40")
                 .setNotes("Below zero")

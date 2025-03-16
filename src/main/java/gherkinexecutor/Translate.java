@@ -585,7 +585,6 @@ public class Translate {
     public static void main(String[] args) {
         printFlow("Gherkin Executor");
         Configuration.currentDirectory = System.getProperty("user.dir");
-        printFlow("Arguments");
         processArguments(args);
         if (Configuration.searchTree && !Configuration.startingFeatureDirectory.isEmpty()) {
             List<String> filesInTree = findFeatureFiles(Configuration.startingFeatureDirectory);
@@ -601,20 +600,25 @@ public class Translate {
     }
 
     private static void processArguments(String[] args) {
+        printFlow("Optional arguments are logIt inTest searchTree traceOn");
         for (String arg : args) {
             printFlow("Program argument: " + arg);
             switch (arg) {
                 case "logIt":
                     Configuration.logIt = true;
+                    printFlow("logIt on");
                     break;
                 case "inTest":
                     Configuration.inTest = true;
+                    printFlow("inTest on");
                     break;
                 case "traceOn":
                     Configuration.traceOn = true;
+                    printFlow("traceOn true");
                     break;
                 case "searchTree":
                     Configuration.searchTree = true;
+                    printFlow("searchTree on");
                     break;
                 default:
                     Configuration.featureFiles.add(arg);

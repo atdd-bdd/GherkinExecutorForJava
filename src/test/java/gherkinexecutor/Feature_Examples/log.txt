@@ -431,3 +431,32 @@ Scenario_Temperature
 , LabelValue {iD = Q9999 value = 2 } 
 , LabelValue {iD = Q1234 value = 3 } 
 ]
+Scenario_Temperature_Conversion
+---  Calculation_Convert_F_to_C
+[FandC {f = 32 c = 0 notes = Freezing } 
+, FandC {f = 212 c = 100 notes = Boiling } 
+, FandC {f = -40 c = -40 notes = Below zero } 
+]
+Scenario_Filter_Data
+---  Given_list_of_numbers
+[LabelValue {iD = Q1234 value = 1 } 
+, LabelValue {iD = Q9999 value = 2 } 
+, LabelValue {iD = Q1234 value = 3 } 
+]
+---  When_filtered_by_ID_with_value
+[[Q1234]]
+---  Then_sum_is
+[[4]]
+Scenario_Domain_Term_ID
+---  Rule_ID_must_have_exactly_5_letters_and_begin_with_Q
+[ValueValid {value = Q1234 valid = true notes =  } 
+, ValueValid {value = Q123 valid = false notes = Too short } 
+, ValueValid {value = Q12345 valid = false notes = Too long } 
+, ValueValid {value = A1234 valid = false notes = Must begin with Q } 
+]
+Scenario_Filter_Data_Another_Way
+---  Given_list_of_numbers
+[LabelValue {iD = Q1234 value = 1 } 
+, LabelValue {iD = Q9999 value = 2 } 
+, LabelValue {iD = Q1234 value = 3 } 
+]
