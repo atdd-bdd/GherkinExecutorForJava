@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Updated documentation,  altered examples.feature with different names.">
-      <change afterPath="$PROJECT_DIR$/src/test/java/starting.feature" afterDir="false" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="adding a starting.feature">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,13 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00001" summary="This is the original">
-      <created>1738865700523</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1738865700523</updated>
     </task>
     <task id="LOCAL-00002" summary="This is the original">
       <created>1738867086439</created>
@@ -519,7 +513,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742140463983</updated>
     </task>
-    <option name="localTasksCounter" value="49" />
+    <task id="LOCAL-00049" summary="adding a starting.feature">
+      <created>1742144244023</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1742144244023</updated>
+    </task>
+    <task id="LOCAL-00050" summary="adding a starting.feature">
+      <created>1742144841592</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1742144841594</updated>
+    </task>
+    <option name="localTasksCounter" value="51" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -534,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Updating the documention" />
     <MESSAGE value="Update documentation, fixed error in Background so it now is passed glue object." />
     <MESSAGE value="add Define statement" />
     <MESSAGE value="Put a // comment in glue code. &#10;Added tree search for features." />
@@ -559,7 +566,8 @@
     <MESSAGE value="Updated documentation to add Eclipse setup" />
     <MESSAGE value="Updated documentation." />
     <MESSAGE value="Updated documentation,  altered examples.feature with different names." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation,  altered examples.feature with different names." />
+    <MESSAGE value="adding a starting.feature" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding a starting.feature" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

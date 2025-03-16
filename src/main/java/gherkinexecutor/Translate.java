@@ -1996,53 +1996,49 @@ public class Translate {
 
     @SuppressWarnings({"unused", "EmptyClassInitializer"})
     static class Configuration {
-
         public static boolean logIt = false;
-        // Set to true for logging during the tests to log.txt
+            // Set to true for logging during the tests to log.txt
         public static boolean inTest = false;
-        // switch to
-        // true for development of Translator
-        public static boolean traceOn = false; // Set to true to see trace
-        public static final char spaceCharacters = '~'; // Will replace this character with space in tables
-
-        public static final boolean addLineToString = true; // add a \n to the toString method
-        public static final String doNotCompare = "?DNC?";  // Value used for not comparing an attribute
-
-        public static String currentDirectory = ""; // To keep for testing and or setup issues
-
+            // switch to true for development of Translator
+        public static boolean traceOn = false;
+            // Set to true to see trace
+        public static final char spaceCharacters = '~';
+            // Will replace this character with space in tables
+        public static final boolean addLineToString = true;
+            // add a \n to the toString method
+        public static final String doNotCompare = "?DNC?";
+            // Value used for not comparing an attribute
+        public static String currentDirectory = "";
+            // To keep for testing and or setup issues
         public static final String featureSubDirectory = "src/test/java/";
-        // where features are stored
+            // where features are stored
         public static final String treeDirectory = "features/";
         public static final String startingFeatureDirectory = featureSubDirectory + treeDirectory ;
-        // where the directory tree of features is to be found.
+            // where the directory tree of features is to be found.
         public static boolean searchTree = false;
+            // search the startingFeatureDirectory for feature files
         public static final String packageName = "gherkinexecutor";
-
+            // high level package in which the tests are placed
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
-        // used to put the test files in the directory corresponding to the packageName.
+             // used to put the test files in the directory corresponding to the packageName.
         public static final String dataDefinitionFileExtension = "java"; // "tmpl";
-        // change to tmpl if you are altering the data classes to avoid overwriting them
-
-        public static final String testFramework = "JUnit5"; // Could be "JUnit4" or "TestNG"
-
+           // change to tmpl if you are altering the data classes to avoid overwriting them
+        public static final String testFramework = "JUnit5";
+            // Could be "JUnit4" or "TestNG"
+        public static String addToPackageName = "";
+            // change to "test.java." for Eclipse
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
-        public static String addToPackageName = "";  // change to "test.java." for Eclipse
-
-        // Imports or other lines to add to data class and glue class
-        // Must include  semicolon if needed
+            // Imports or other lines to add to data class and glue class
+            // Must include  semicolon if needed
         static {
             linesToAddForDataAndGlue.add("import java.util.*;"); // as an example
         }
-
         public static final List<String> featureFiles = new ArrayList<>();
-
         static {
 //            featureFiles.add("simple_test.feature");     // Something to try out after setup
 //            featureFiles.add("full_test.feature.sav"); // used for testing Translate
         }
     }
-
-
 }
 
 
