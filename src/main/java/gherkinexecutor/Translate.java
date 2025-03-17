@@ -431,12 +431,16 @@ public class Translate {
     boolean errorOccurred = false;
 
     private void error(String value) {
-        System.err.println("[GherkinExecutor] " + " Error " + value);
+         System.err.println("[GherkinExecutor] " + "~ line "  +
+                this.dataIn.getLineNumber() + " in " + "feature.txt " +
+                value + " ");
         errorOccurred = true;
     }
 
     private void warning(String value) {
-        System.err.println("[GherkinExecutor] " + "Warning " + value);
+        System.err.println("[GherkinExecutor] " + "Warning " +
+                "~ line "  + this.dataIn.getLineNumber() + " in "
+                + "feature.txt " + value);
     }
 
     private static void printFlow(String value) {
@@ -695,7 +699,9 @@ public class Translate {
         private final List<String> linesIn = new ArrayList<>();
         @SuppressWarnings("UnusedAssignment")
         private int index = 0;
-
+        public int getLineNumber(){
+            return index;
+        }
         @Override
         public String toString() {
             StringBuilder temp  = new StringBuilder();
@@ -851,7 +857,9 @@ public class Translate {
 
         private void error(String value) {
 
-            System.err.println("[GherkinExecutor]" + value);
+            System.err.println("[GherkinExecutor] " + "~ line "  +
+                    this.getLineNumber() + " in " + "feature.txt " +
+                    value + " ");
         }
 
         public boolean isEmpty() {

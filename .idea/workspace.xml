@@ -12,6 +12,7 @@
     <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="adding a starting.feature">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +89,7 @@
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Translate">
+  <component name="RunManager" selected="JUnit.Feature_Gherkin_Translator_Full_Test">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Translate" />
       <module name="GherkinExecutorForJava" />
@@ -167,9 +168,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
         <item itemvalue="Application.Translate" />
         <item itemvalue="JUnit.Feature_Full_Test" />
-        <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
         <item itemvalue="JUnit.Feature_Examples" />
         <item itemvalue="JUnit.Feature_Json" />
       </list>
@@ -183,20 +184,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00002" summary="This is the original">
-      <created>1738867086439</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1738867086442</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Now creating the test file.  Added expectations for the other files.  &#10;Lots left to do.">
-      <created>1739417584058</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1739417584059</updated>
     </task>
     <task id="LOCAL-00004" summary="Fixing up the data actions">
       <created>1739421684031</created>
@@ -527,7 +514,21 @@
       <option name="project" value="LOCAL" />
       <updated>1742144841594</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="adding a starting.feature">
+      <created>1742146720284</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1742146720284</updated>
+    </task>
+    <task id="LOCAL-00052" summary="adding a starting.feature">
+      <created>1742146733934</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1742146733934</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
