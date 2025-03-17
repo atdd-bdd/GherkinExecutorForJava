@@ -38,11 +38,12 @@ class ValueValidInternal{
                  && ( _ValueValidInternal.valid.equals(this.valid))
                  && ( _ValueValidInternal.notes.equals(this.notes))
              ;  }
-    @Override
-    public String toString() {
-        return "ValueValidInternal {"
-        +"value = " + value + " "
-        +"valid = " + valid + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ValueValidInternal {"
+             +"value = " + value + " "
+             +"valid = " + valid + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     }

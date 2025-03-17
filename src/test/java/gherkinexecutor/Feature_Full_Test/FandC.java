@@ -65,19 +65,21 @@ class FandC{
                  ,notes
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "FandC {"
-        +"f = " + f + " "
-        +"c = " + c + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FandC {"
+             +"f = " + f + " "
+             +"c = " + c + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"f:" + "\"" + f + "\""
-        +","+"c:" + "\"" + c + "\""
-        +","+"notes:" + "\"" + notes + "\""
-            + "} " + "\n"; }  
+         +""+"f:" + "\"" + f + "\""
+         + ","         +""+"c:" + "\"" + c + "\""
+         + ","         +""+"notes:" + "\"" + notes + "\""
+        + "} " ; }
+
         public static FandC fromJson(String json) {
               FandC instance = new FandC();
 

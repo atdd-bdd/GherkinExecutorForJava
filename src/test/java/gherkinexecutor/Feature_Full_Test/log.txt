@@ -618,3 +618,521 @@ Background
 Cleanup
 ---  Given_value_for_cleanup_should_be_set_to
 [[Cleanup Here]]
+Scenario_Simple_Table_with_int_bad
+Background
+Scenario_Simple_Table_with_initializer_bad
+Background
+Scenario_Temperature_Conversion
+Background
+Scenario_Filter_Data
+Background
+Scenario_Simple_Table_with_double_bad
+Background
+Scenario_Convert_from_Json
+Background
+Scenario_Here_are_table_options
+Background
+Scenario_An_include
+Background
+Scenario_check_the_prints_to_see_how_it_works
+Background
+Scenario_Simple
+Background
+Scenario_Should_fail
+Background
+Scenario_Convert_from_Json_Array
+Background
+Scenario_Make_a_move_using_single_element
+Background
+Scenario_Domain_Term_ID
+Background
+Scenario_Transpose_Table
+Background
+Scenario_Here_are_string_options
+Background
+Scenario_Simple_Replacement
+Background
+Scenario_Try_out_replacements_with_a_calculation
+Background
+Scenario_Use_an_import
+Background
+Scenario_An_include_from_base_directory
+Background
+Scenario_Should_have_Background_and_Cleanup
+Background
+Scenario_Make_a_move
+Background
+Scenario_Filter_Data_Another_Way
+Background
+Scenario_Check_String_Variations
+Background
+Scenario_Simple_Comparison
+Background
+Scenario_Table_to_String
+Background
+Scenario_Make_multiple_moves
+Background
+Scenario_Convert_to_Json
+Background
+Scenario_Convert_to_Json_Array
+Background
+Scenario_Table_without_all_fields_uses_defaults
+Background
+Scenario_Should_also_have_Background_and_Cleanup
+Background
+Scenario_Should_also_fail
+Background
+Scenario_An_include_of_CSV_file
+Background
+Scenario_Simple_Table_with_int_bad
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_table_is
+[ATest {anInt = q aString = something aDouble = 1.1 } 
+]
+Scenario_Simple_Table_with_initializer_bad
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_table_is_bad_initializer
+[ATestBad {anInt = 1 aString =   aDouble = b } 
+]
+Scenario_Temperature_Conversion
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Calculation_Convert_F_to_C
+[FandC {f = 32 c = 0 notes = Freezing } 
+, FandC {f = 212 c = 100 notes = Boiling } 
+, FandC {f = -40 c = -40 notes = Below zero } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Filter_Data
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_list_of_numbers
+[LabelValue {iD = Q1234 value = 1 } 
+, LabelValue {iD = Q9999 value = 2 } 
+, LabelValue {iD = Q1234 value = 3 } 
+]
+---  When_filtered_by_ID_with_value
+[[Q1234]]
+---  Then_sum_is
+[[4]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Simple_Table_with_double_bad
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_table_is
+[ATest {anInt = 1 aString = something aDouble = r } 
+]
+Scenario_Convert_from_Json
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_Json_is
+{anInt:  "1"   ,   aString:"B"  }
+
+---  Then_the_converted_object_is
+[SimpleClass {anInt = 1 aString = B } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Here_are_table_options
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Star_A_table_to_List_of_List_of_String
+[[aa, bb], [cc, dd]]
+---  Star_A_Table_to_List_Of_List_Of_Object
+---  Star_A_table_to_List_of_Object
+[ExampleClass {fieldA = a fieldB = b } 
+, ExampleClass {fieldA = c fieldB = d } 
+]
+---  Star_A_table_to_List_of_Object
+[ExampleClass {fieldA = a fieldB = b } 
+, ExampleClass {fieldA = c fieldB = d } 
+]
+---  Star_A_table_to_List_of_Object_with_Defaults
+[ExampleClass {fieldA = a fieldB = x } 
+, ExampleClass {fieldA = c fieldB = x } 
+]
+---  Star_A_table_to_List_of_Object_with_Blanks_in_Values
+[ExampleClassWithBlanks {field_1 =   field_2 = b } 
+, ExampleClassWithBlanks {field_1 = c field_2 =   } 
+]
+---  Star_A_table_to_List_of_Object_with_Blanks_in_Defaults
+[ExampleClassWithBlanks {field_1 =   field_2 =   } 
+, ExampleClassWithBlanks {field_1 = c field_2 =   } 
+]
+---  Star_A_table_to_String
+| aa  | bb  |
+| cc  | dd  |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_An_include
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_string_include
+This is an include string from the main directory
+
+---  Then_should_be_equal_to
+This is an include string from the main directory
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_check_the_prints_to_see_how_it_works
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_board_is
+[[0, x, 0], [x, 0, x], [0, x, 0]]
+---  Then_board_is_now
+| 0  | x  | 0  |
+| x  | 0  | x  |
+| 0  | x  | 0  |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Simple
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_table_is
+[ATest {anInt = 1 aString = something aDouble = 1.2 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Should_fail
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_this_data_should_fail
+[ImportData {myPattern = a.* myWeekday = SOMEONE myBigInt = 1 } 
+, ImportData {myPattern = [ab] myWeekday = SUNDAY myBigInt = 2 } 
+]
+Scenario_Convert_from_Json_Array
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_Json_for_table_is
+[    {anInt:  "1"   ,   aString:"B"  },
+{anInt:  "2"   ,   aString:"C"  }
+]
+
+---  Then_the_converted_table_should_be
+[SimpleClass {anInt = 1 aString = B } 
+, SimpleClass {anInt = 2 aString = C } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Make_a_move_using_single_element
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_one_move_is
+[[1,2,X]]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Domain_Term_ID
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Rule_ID_must_have_exactly_5_letters_and_begin_with_Q
+[ValueValid {value = Q1234 valid = true notes =  } 
+, ValueValid {value = Q123 valid = false notes = Too short } 
+, ValueValid {value = Q12345 valid = false notes = Too long } 
+, ValueValid {value = A1234 valid = false notes = Must begin with Q } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Transpose_Table
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_A_table_to_List_of_Object
+[ExampleClass {fieldA = a fieldB = b } 
+, ExampleClass {fieldA = c fieldB = d } 
+]
+---  Then_transposed_table_to_List_of_Object_should_be_the_same
+[ExampleClass {fieldA = a fieldB = b } 
+, ExampleClass {fieldA = c fieldB = d } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Here_are_string_options
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Star_A_multiline_string_to_a_string
+One line
+Two line
+
+---  Star_A_multiline_string_to_a_List_of_String
+[Three line, Four line]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Simple_Replacement
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_this_data
+[IDValue {iD = A value = 100 } 
+, IDValue {iD = B value = 1 } 
+]
+---  Then_should_be_equal_to_data
+[IDValue {iD = A value = 100 } 
+, IDValue {iD = B value = 1 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Try_out_replacements_with_a_calculation
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_this_data
+[IDValue {iD = A value = 100 } 
+, IDValue {iD = B value = 1 } 
+, IDValue {iD = C value = (1 + 100)/2 } 
+]
+---  Then_should_be_equal_to_data
+[IDValue {iD = A value = 100 } 
+, IDValue {iD = B value = 1 } 
+, IDValue {iD = C value = (1 + 100)/2 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Use_an_import
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_this_data_should_be_okay
+[ImportData {myPattern = a.* myWeekday = MONDAY myBigInt = 1 } 
+, ImportData {myPattern = [ab] myWeekday = SUNDAY myBigInt = 10000000000 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_An_include_from_base_directory
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_string_include
+This is an include string from the main directory
+
+---  Then_should_be_equal_to
+This is an include string from the main directory
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Should_have_Background_and_Cleanup
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_regular_function
+---  Then_background_should_set_value_to
+[[Background Here]]
+---  And_set_a_value_for_cleanup
+[[Cleanup Here]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Make_a_move
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_move_is
+[Move {row = 1 column = 2 mark = X } 
+]
+---  Then_board_is_now
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Filter_Data_Another_Way
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_list_of_numbers
+[LabelValue {iD = Q1234 value = 1 } 
+, LabelValue {iD = Q9999 value = 2 } 
+, LabelValue {iD = Q1234 value = 3 } 
+]
+---  When_filtered_by
+[FilterValue {name = ID value = Q1234 } 
+]
+---  Then_result
+[ResultValue {sum = 4 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Check_String_Variations
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_multiline_string
+One line
+Two line
+
+---  Then_should_be_equal_to_this_list
+[One line, Two line]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Simple_Comparison
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_table_is
+[ATest {anInt = 1 aString = something aDouble = 1.2 } 
+]
+---  When_compared_to
+[ATest {anInt = ?DNC? aString = something aDouble = ?DNC? } 
+]
+Scenario_Table_to_String
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_A_table_to_String
+| aa  | bb  |
+| cc  | dd  |
+
+---  Then_string_should_be_same_as
+| aa  | bb  |
+| cc  | dd  |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Make_multiple_moves
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_board_is
+[[, , ], [, , ], [, , ]]
+---  When_moves_are
+[Move {row = 1 column = 2 mark = X } 
+, Move {row = 2 column = 3 mark = O } 
+]
+---  Then_board_is_now
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Convert_to_Json
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_one_object_is
+[SimpleClass {anInt = 1 aString = B } 
+]
+---  Then_Json_should_be
+{anInt:"1",aString:"B"}
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Convert_to_Json_Array
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_table_is
+[SimpleClass {anInt = 1 aString = B } 
+, SimpleClass {anInt = 2 aString = C } 
+]
+---  Then_Json_for_table_should_be
+[ {anInt:"1",aString:"B"}
+, {anInt:"2",aString:"C"}
+]
+
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Table_without_all_fields_uses_defaults
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_A_table_to_List_of_Object_with_Defaults
+[ExampleClass {fieldA = a fieldB = x } 
+, ExampleClass {fieldA = c fieldB = x } 
+]
+---  Then_table_should_be_same_as
+[ExampleClass {fieldA = a fieldB = x } 
+, ExampleClass {fieldA = c fieldB = x } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Should_also_have_Background_and_Cleanup
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_regular_function
+---  Then_background_should_set_value_to
+[[Background Here]]
+---  And_set_a_value_for_cleanup
+[[Cleanup Here]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]
+Scenario_Should_also_fail
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_this_data_should_fail
+[ImportData {myPattern = a.* myWeekday = MONDAY myBigInt = 1 } 
+, ImportData {myPattern = [ab] myWeekday = SUNDAY myBigInt = A.2 } 
+]
+Scenario_An_include_of_CSV_file
+Background
+---  Given_Background_function_sets_a_value
+[[Background Here]]
+---  Given_a_table
+[CSVContents {a = a b = b,c c = d, } 
+, CSVContents {a = 1 b = 2 c = 3 } 
+]
+---  Then_Should_be_equal_to_table
+[CSVContents {a = a b = b,c c = d, } 
+, CSVContents {a = 1 b = 2 c = 3 } 
+]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+[[Cleanup Here]]

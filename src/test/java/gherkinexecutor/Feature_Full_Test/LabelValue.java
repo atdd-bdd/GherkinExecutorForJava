@@ -51,17 +51,19 @@ class LabelValue{
                  ,value
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "LabelValue {"
-        +"iD = " + iD + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "LabelValue {"
+             +"iD = " + iD + " "
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"iD:" + "\"" + iD + "\""
-        +","+"value:" + "\"" + value + "\""
-            + "} " + "\n"; }  
+         +""+"iD:" + "\"" + iD + "\""
+         + ","         +""+"value:" + "\"" + value + "\""
+        + "} " ; }
+
         public static LabelValue fromJson(String json) {
               LabelValue instance = new LabelValue();
 

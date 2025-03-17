@@ -65,19 +65,21 @@ class ImportData{
                  ,myBigInt
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ImportData {"
-        +"myPattern = " + myPattern + " "
-        +"myWeekday = " + myWeekday + " "
-        +"myBigInt = " + myBigInt + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ImportData {"
+             +"myPattern = " + myPattern + " "
+             +"myWeekday = " + myWeekday + " "
+             +"myBigInt = " + myBigInt + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"myPattern:" + "\"" + myPattern + "\""
-        +","+"myWeekday:" + "\"" + myWeekday + "\""
-        +","+"myBigInt:" + "\"" + myBigInt + "\""
-            + "} " + "\n"; }  
+         +""+"myPattern:" + "\"" + myPattern + "\""
+         + ","         +""+"myWeekday:" + "\"" + myWeekday + "\""
+         + ","         +""+"myBigInt:" + "\"" + myBigInt + "\""
+        + "} " ; }
+
         public static ImportData fromJson(String json) {
               ImportData instance = new ImportData();
 

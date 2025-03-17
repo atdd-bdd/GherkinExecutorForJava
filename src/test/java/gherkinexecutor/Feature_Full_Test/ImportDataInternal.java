@@ -38,11 +38,12 @@ class ImportDataInternal{
                  && ( _ImportDataInternal.myWeekday.equals(this.myWeekday))
                  && ( _ImportDataInternal.myBigInt.equals(this.myBigInt))
              ;  }
-    @Override
-    public String toString() {
-        return "ImportDataInternal {"
-        +"myPattern = " + myPattern + " "
-        +"myWeekday = " + myWeekday + " "
-        +"myBigInt = " + myBigInt + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ImportDataInternal {"
+             +"myPattern = " + myPattern + " "
+             +"myWeekday = " + myWeekday + " "
+             +"myBigInt = " + myBigInt + " "
+             + "} " + "\n"; }
+
     }

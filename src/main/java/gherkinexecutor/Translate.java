@@ -92,9 +92,9 @@ public class Translate {
     private void alterFeatureDirectory() {
         // Remove feature directory from the package and directory
         String searchFor = Configuration.treeDirectory;
-        String alternateSearchFor = searchFor.replace("/","\\");
+        String alternateSearchFor = searchFor.replace("/", "\\");
         String directory = featureDirectory.replace(searchFor, "");
-        directory = directory.replace(alternateSearchFor,"");
+        directory = directory.replace(alternateSearchFor, "");
         featureDirectory = directory;
         featurePackagePath = featureDirectory.replace("\\", ".").replace("/", ".");
     }
@@ -154,12 +154,14 @@ public class Translate {
         }
         return new Pair<>(words, comment);
     }
+
     public static String filterWord(String input) {
         if (input == null) {
             return "";
         }
         return input.replaceAll("[^0-9a-zA-Z_*]", "");
     }
+
     private static String wordWithOutColon(String word) {
         return word.replaceAll("^:+|:+$", "");
     }
@@ -334,7 +336,7 @@ public class Translate {
         }
         glueClass = fullName + "_glue";
         glueObject = makeName(fullName) + "_glue_object";
-        writeInputFeature(Configuration.testSubDirectory + featureDirectory + featureName + "/" );
+        writeInputFeature(Configuration.testSubDirectory + featureDirectory + featureName + "/");
         return false;
     }
 
@@ -431,7 +433,7 @@ public class Translate {
     boolean errorOccurred = false;
 
     private void error(String value) {
-         System.err.println("[GherkinExecutor] " + "~ line "  +
+        System.err.println("[GherkinExecutor] " + "~ line " +
                 this.dataIn.getLineNumber() + " in " + "feature.txt " +
                 value + " ");
         errorOccurred = true;
@@ -439,7 +441,7 @@ public class Translate {
 
     private void warning(String value) {
         System.err.println("[GherkinExecutor] " + "Warning " +
-                "~ line "  + this.dataIn.getLineNumber() + " in "
+                "~ line " + this.dataIn.getLineNumber() + " in "
                 + "feature.txt " + value);
     }
 
@@ -699,13 +701,15 @@ public class Translate {
         private final List<String> linesIn = new ArrayList<>();
         @SuppressWarnings("UnusedAssignment")
         private int index = 0;
-        public int getLineNumber(){
+
+        public int getLineNumber() {
             return index;
         }
+
         @Override
         public String toString() {
-            StringBuilder temp  = new StringBuilder();
-            for (String line : linesIn){
+            StringBuilder temp = new StringBuilder();
+            for (String line : linesIn) {
                 temp.append(line);
                 temp.append("\n");
             }
@@ -857,7 +861,7 @@ public class Translate {
 
         private void error(String value) {
 
-            System.err.println("[GherkinExecutor] " + "~ line "  +
+            System.err.println("[GherkinExecutor] " + "~ line " +
                     this.getLineNumber() + " in " + "feature.txt " +
                     value + " ");
         }
@@ -1526,20 +1530,35 @@ public class Translate {
             dataPrintLn("        }");
         }
 
+
         private void createToStringMethod(List<DataValues> variables, String className) {
-            dataPrintLn("    @Override");
-            dataPrintLn("    public String toString() {");
-            dataPrintLn("        return " + quoteIt(className + " {"));
-            String add = "+";
+            StringBuilder code = new StringBuilder();
+            String firstPart =
+                    """
+                                    @Override
+                                    public String toString() {
+                                        return "CLASSNAME {"
+                            """.stripIndent();
+            code.append(firstPart.replace("CLASSNAME", className));
 
             for (DataValues variable : variables) {
-                dataPrintLn("        " + add + quoteIt(makeName(variable.name) + " = ") + " + " + makeName(variable.name) + " + " + quoteIt(" "));
+                String middlePart =
+                        """
+                                             +"NAME = " + NAME + " "
+                                """.stripIndent();
+                code.append(middlePart.replaceAll("NAME", variable.name));
             }
-            String lineMark = "";
+            String endPart =
+                    """  
+                                         + "} " ; }
+                            """.stripIndent();
             if (Configuration.addLineToString)
-                lineMark = "\\n";
-            dataPrintLn("            + " + quoteIt("} ") + " + " + quoteIt(lineMark) + "; }  ");
-
+                endPart =
+                        """  
+                                             + "} " + "\\n"; }
+                                """.stripIndent();
+            code.append(endPart);
+            dataPrintLn(code.toString());
         }
 
         private void createFromJSONMethod(List<DataValues> variables, String className) {
@@ -1590,21 +1609,31 @@ public class Translate {
             dataPrintLn(firstPart + middlePart + lastPart);
         }
 
+
         private void createToJSONMethod(List<DataValues> variables) {
-            dataPrintLn("    public String toJson() {");
-            dataPrintLn("        return " + quoteIt(" {"));
-            String add = "+";
+            StringBuilder code = new StringBuilder();
+            String firstPart =
+                    """
+                                public String toJson() {
+                                    return " {"
+                            """.stripIndent();
+            code.append(firstPart);
             String comma = "";
             for (DataValues variable : variables) {
-                dataPrintLn("        " + add + quoteIt(comma) + "+" + quoteIt(makeName(variable.name)
-                        + ":") + " + " + quoteIt("\\\"") + " + " + (makeName(variable.name) +
-                        " + " + quoteIt("\\\"")));
-                comma = ",";
+                String middlePart =
+                        """
+                                         +""+"NAME:" + "\\"" + NAME + "\\""
+                                """.stripIndent();
+                code.append(comma);
+                comma = "         + \",\"";
+                code.append(middlePart.replaceAll("NAME", variable.name));
             }
-            String lineMark = "";
-            if (Configuration.addLineToString)
-                lineMark = "\\n";
-            dataPrintLn("            + " + quoteIt("} ") + " + " + quoteIt(lineMark) + "; }  ");
+            String lastPart =
+                    """
+                                    + "} " ; }             
+                            """.stripIndent();
+            code.append(lastPart);
+            dataPrintLn(code.toString());
         }
 
         private void createBuilderMethod(List<DataValues> variables, String className) {
@@ -2005,43 +2034,46 @@ public class Translate {
     @SuppressWarnings({"unused", "EmptyClassInitializer"})
     static class Configuration {
         public static boolean logIt = false;
-            // Set to true for logging during the tests to log.txt
+        // Set to true for logging during the tests to log.txt
         public static boolean inTest = false;
-            // switch to true for development of Translator
+        // switch to true for development of Translator
         public static boolean traceOn = false;
-            // Set to true to see trace
+        // Set to true to see trace
         public static final char spaceCharacters = '~';
-            // Will replace this character with space in tables
+        // Will replace this character with space in tables
         public static final boolean addLineToString = true;
-            // add a \n to the toString method
+        // add a \n to the toString method
         public static final String doNotCompare = "?DNC?";
-            // Value used for not comparing an attribute
+        // Value used for not comparing an attribute
         public static String currentDirectory = "";
-            // To keep for testing and or setup issues
+        // To keep for testing and or setup issues
         public static final String featureSubDirectory = "src/test/java/";
-            // where features are stored
+        // where features are stored
         public static final String treeDirectory = "features/";
-        public static final String startingFeatureDirectory = featureSubDirectory + treeDirectory ;
-            // where the directory tree of features is to be found.
+        public static final String startingFeatureDirectory = featureSubDirectory + treeDirectory;
+        // where the directory tree of features is to be found.
         public static boolean searchTree = false;
-            // search the startingFeatureDirectory for feature files
+        // search the startingFeatureDirectory for feature files
         public static final String packageName = "gherkinexecutor";
-            // high level package in which the tests are placed
+        // high level package in which the tests are placed
         public static final String testSubDirectory = "src/test/java/" + packageName + "/";
-             // used to put the test files in the directory corresponding to the packageName.
+        // used to put the test files in the directory corresponding to the packageName.
         public static final String dataDefinitionFileExtension = "java"; // "tmpl";
-           // change to tmpl if you are altering the data classes to avoid overwriting them
+        // change to tmpl if you are altering the data classes to avoid overwriting them
         public static final String testFramework = "JUnit5";
-            // Could be "JUnit4" or "TestNG"
+        // Could be "JUnit4" or "TestNG"
         public static String addToPackageName = "";
-            // change to "test.java." for Eclipse
+        // change to "test.java." for Eclipse
         public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
-            // Imports or other lines to add to data class and glue class
-            // Must include  semicolon if needed
+
+        // Imports or other lines to add to data class and glue class
+        // Must include  semicolon if needed
         static {
             linesToAddForDataAndGlue.add("import java.util.*;"); // as an example
         }
+
         public static final List<String> featureFiles = new ArrayList<>();
+
         static {
 //            featureFiles.add("simple_test.feature");     // Something to try out after setup
 //            featureFiles.add("full_test.feature.sav"); // used for testing Translate

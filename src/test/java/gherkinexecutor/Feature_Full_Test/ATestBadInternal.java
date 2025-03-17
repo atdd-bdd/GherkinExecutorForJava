@@ -38,11 +38,12 @@ class ATestBadInternal{
                  && ( _ATestBadInternal.aString.equals(this.aString))
                  && ( _ATestBadInternal.aDouble.equals(this.aDouble))
              ;  }
-    @Override
-    public String toString() {
-        return "ATestBadInternal {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-        +"aDouble = " + aDouble + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ATestBadInternal {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             +"aDouble = " + aDouble + " "
+             + "} " + "\n"; }
+
     }

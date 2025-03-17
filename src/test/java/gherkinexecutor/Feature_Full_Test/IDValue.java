@@ -51,17 +51,19 @@ class IDValue{
                  ,value
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "IDValue {"
-        +"iD = " + iD + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "IDValue {"
+             +"iD = " + iD + " "
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"iD:" + "\"" + iD + "\""
-        +","+"value:" + "\"" + value + "\""
-            + "} " + "\n"; }  
+         +""+"iD:" + "\"" + iD + "\""
+         + ","         +""+"value:" + "\"" + value + "\""
+        + "} " ; }
+
         public static IDValue fromJson(String json) {
               IDValue instance = new IDValue();
 

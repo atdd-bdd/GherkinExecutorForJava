@@ -30,10 +30,11 @@ class SimpleClassInternal{
                 ( _SimpleClassInternal.anInt.equals(this.anInt))
                  && ( _SimpleClassInternal.aString.equals(this.aString))
              ;  }
-    @Override
-    public String toString() {
-        return "SimpleClassInternal {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "SimpleClassInternal {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             + "} " + "\n"; }
+
     }

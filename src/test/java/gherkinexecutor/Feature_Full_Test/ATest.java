@@ -65,19 +65,21 @@ class ATest{
                  ,aDouble
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ATest {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-        +"aDouble = " + aDouble + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ATest {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             +"aDouble = " + aDouble + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"anInt:" + "\"" + anInt + "\""
-        +","+"aString:" + "\"" + aString + "\""
-        +","+"aDouble:" + "\"" + aDouble + "\""
-            + "} " + "\n"; }  
+         +""+"anInt:" + "\"" + anInt + "\""
+         + ","         +""+"aString:" + "\"" + aString + "\""
+         + ","         +""+"aDouble:" + "\"" + aDouble + "\""
+        + "} " ; }
+
         public static ATest fromJson(String json) {
               ATest instance = new ATest();
 

@@ -51,17 +51,19 @@ class FilterValue{
                  ,value
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "FilterValue {"
-        +"name = " + name + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FilterValue {"
+             +"name = " + name + " "
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"name:" + "\"" + name + "\""
-        +","+"value:" + "\"" + value + "\""
-            + "} " + "\n"; }  
+         +""+"name:" + "\"" + name + "\""
+         + ","         +""+"value:" + "\"" + value + "\""
+        + "} " ; }
+
         public static FilterValue fromJson(String json) {
               FilterValue instance = new FilterValue();
 

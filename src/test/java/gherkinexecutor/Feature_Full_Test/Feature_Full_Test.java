@@ -1,10 +1,22 @@
 package gherkinexecutor.Feature_Full_Test;
 import org.junit.jupiter.api.Test;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 class Feature_Full_Test{
+void log(String value) {
+    try {
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Full_Test/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
+    } catch (IOException e) {
+    System.err.println("*** Cannot write to log ");
+    }
+    }
 
 
     void test_Background(Feature_Full_Test_glue feature_Full_Test_glue_object){
+        log("Background");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -14,6 +26,7 @@ class Feature_Full_Test{
         feature_Full_Test_glue_object.Given_Background_function_sets_a_value(stringListList1);
         }
     void test_Cleanup(Feature_Full_Test_glue feature_Full_Test_glue_object){
+        log("Cleanup");
 
         List<List<String>> stringListList1 = List.of(
            List.of(
@@ -25,6 +38,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_have_Background_and_Cleanup");
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -47,6 +61,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_also_have_Background_and_Cleanup(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_also_have_Background_and_Cleanup");
         test_Background(feature_Full_Test_glue_object);
 
         feature_Full_Test_glue_object.Given_a_regular_function();
@@ -69,6 +84,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Comparison(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Comparison");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
@@ -114,6 +130,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_int_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_int_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
@@ -129,6 +146,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_double_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_double_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
@@ -144,6 +162,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Table_with_initializer_bad(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Table_with_initializer_bad");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATestBad> objectList1 = List.of(
@@ -157,6 +176,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple_Replacement(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple_Replacement");
         test_Background(feature_Full_Test_glue_object);
 
         List<IDValue> objectList1 = List.of(
@@ -187,6 +207,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Try_out_replacements_with_a_calculation(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Try_out_replacements_with_a_calculation");
         test_Background(feature_Full_Test_glue_object);
 
         List<IDValue> objectList1 = List.of(
@@ -225,6 +246,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Temperature_Conversion(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Temperature_Conversion");
         test_Background(feature_Full_Test_glue_object);
 
         List<FandC> objectList1 = List.of(
@@ -250,6 +272,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Domain_Term_ID");
         test_Background(feature_Full_Test_glue_object);
 
         List<ValueValid> objectList1 = List.of(
@@ -280,6 +303,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Filter_Data");
         test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
@@ -316,6 +340,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Filter_Data_Another_Way");
         test_Background(feature_Full_Test_glue_object);
 
         List<LabelValue> objectList1 = List.of(
@@ -353,6 +378,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Use_an_import(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Use_an_import");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
@@ -373,6 +399,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_fail(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_fail");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
@@ -393,6 +420,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Should_also_fail(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Should_also_fail");
         test_Background(feature_Full_Test_glue_object);
 
         List<ImportData> objectList1 = List.of(
@@ -413,6 +441,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -431,6 +460,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include_from_base_directory(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include_from_base_directory");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -449,6 +479,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_An_include_of_CSV_file(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_An_include_of_CSV_file");
         test_Background(feature_Full_Test_glue_object);
 
         List<CSVContents> objectList1 = List.of(
@@ -483,6 +514,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Simple(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Simple");
         test_Background(feature_Full_Test_glue_object);
 
         List<ATest> objectList1 = List.of(
@@ -498,6 +530,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_string_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Here_are_string_options");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -517,6 +550,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Check_String_Variations(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Check_String_Variations");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -536,6 +570,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Here_are_table_options(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Here_are_table_options");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -633,6 +668,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Table_to_String(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Table_to_String");
         test_Background(feature_Full_Test_glue_object);
 
         String table1 =
@@ -653,6 +689,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Table_without_all_fields_uses_defaults(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Table_without_all_fields_uses_defaults");
         test_Background(feature_Full_Test_glue_object);
 
         List<ExampleClass> objectList1 = List.of(
@@ -681,6 +718,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Transpose_Table(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Transpose_Table");
         test_Background(feature_Full_Test_glue_object);
 
         List<ExampleClass> objectList1 = List.of(
@@ -711,6 +749,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_a_move(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_a_move");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -753,6 +792,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_a_move_using_single_element(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_a_move_using_single_element");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -793,6 +833,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Make_multiple_moves(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Make_multiple_moves");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -840,6 +881,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_check_the_prints_to_see_how_it_works(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_check_the_prints_to_see_how_it_works");
         test_Background(feature_Full_Test_glue_object);
 
         List<List<String>> stringListList1 = List.of(
@@ -873,6 +915,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_to_Json(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_to_Json");
         test_Background(feature_Full_Test_glue_object);
 
         List<SimpleClass> objectList1 = List.of(
@@ -893,6 +936,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_from_Json(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_from_Json");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =
@@ -913,6 +957,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_to_Json_Array(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_to_Json_Array");
         test_Background(feature_Full_Test_glue_object);
 
         List<SimpleClass> objectList1 = List.of(
@@ -939,6 +984,7 @@ class Feature_Full_Test{
     @Test
     void test_Scenario_Convert_from_Json_Array(){
          Feature_Full_Test_glue feature_Full_Test_glue_object = new Feature_Full_Test_glue();
+        log("Scenario_Convert_from_Json_Array");
         test_Background(feature_Full_Test_glue_object);
 
         String string1 =

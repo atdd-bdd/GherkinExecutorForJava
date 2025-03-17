@@ -32,10 +32,11 @@ class LabelValueInternal{
                 ( _LabelValueInternal.iD.equals(this.iD))
                  && ( _LabelValueInternal.value.equals(this.value))
              ;  }
-    @Override
-    public String toString() {
-        return "LabelValueInternal {"
-        +"iD = " + iD + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "LabelValueInternal {"
+             +"iD = " + iD + " "
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     }

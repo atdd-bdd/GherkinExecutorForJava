@@ -65,19 +65,21 @@ class CSVContents{
                  ,c
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "CSVContents {"
-        +"a = " + a + " "
-        +"b = " + b + " "
-        +"c = " + c + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "CSVContents {"
+             +"a = " + a + " "
+             +"b = " + b + " "
+             +"c = " + c + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"a:" + "\"" + a + "\""
-        +","+"b:" + "\"" + b + "\""
-        +","+"c:" + "\"" + c + "\""
-            + "} " + "\n"; }  
+         +""+"a:" + "\"" + a + "\""
+         + ","         +""+"b:" + "\"" + b + "\""
+         + ","         +""+"c:" + "\"" + c + "\""
+        + "} " ; }
+
         public static CSVContents fromJson(String json) {
               CSVContents instance = new CSVContents();
 

@@ -9,10 +9,44 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="adding a starting.feature">
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="simplified toString and toJSON using the code replacement scheme, rather than the code generation scheme.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest0.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATest0.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestBad.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestBad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestBadInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestBadInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ATestInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/CSVContents.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/CSVContents.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClassWithBlanks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ExampleClassWithBlanks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Existing.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Existing.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FandC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FandC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FandCInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FandCInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValueInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/FilterValueInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/IDValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/IDValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ImportData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ImportData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ImportDataInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ImportDataInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValueInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/LabelValueInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/Move.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/MoveInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/MoveInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValueInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ResultValueInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/SimpleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/SimpleClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/SimpleClassInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/SimpleClassInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TestIn.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/TestIn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValidInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/ValueValidInternal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/log.exp" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/log.exp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Full_Test/log.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Gherkin_Translator_Full_Test/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClassInternal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Json/SimpleClassInternal.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,12 +89,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java",
+    "last_opened_file_path": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/log.exp",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.41582337",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "two.files.diff.last.used.file": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/Feature_Full_Test_glue.java"
+    "two.files.diff.last.used.file": "C:/Users/user/ideaprojects/GherkinExecutorForJava/src/test/java/gherkinexecutor/Feature_Full_Test/log.exp"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -89,11 +123,11 @@
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Feature_Gherkin_Translator_Full_Test">
+  <component name="RunManager" selected="Application.Translate">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Translate" />
       <module name="GherkinExecutorForJava" />
-      <option name="PROGRAM_PARAMETERS" value="starting.feature" />
+      <option name="PROGRAM_PARAMETERS" value="full_test.feature.sav  logIt inTest" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -168,11 +202,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
-        <item itemvalue="Application.Translate" />
         <item itemvalue="JUnit.Feature_Full_Test" />
-        <item itemvalue="JUnit.Feature_Examples" />
+        <item itemvalue="Application.Translate" />
+        <item itemvalue="JUnit.Feature_Gherkin_Translator_Full_Test" />
         <item itemvalue="JUnit.Feature_Json" />
+        <item itemvalue="JUnit.Feature_Examples" />
       </list>
     </recent_temporary>
   </component>
@@ -184,13 +218,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Fixing up the data actions">
-      <created>1739421684031</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1739421684032</updated>
     </task>
     <task id="LOCAL-00005" summary="Created toString, equals, builder for data classes.   Just for the string versions so far.">
       <created>1739822490611</created>
@@ -528,7 +555,14 @@
       <option name="project" value="LOCAL" />
       <updated>1742146733934</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="added line number to errors and warnings">
+      <created>1742222381035</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1742222381035</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -543,8 +577,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Update documentation, fixed error in Background so it now is passed glue object." />
-    <MESSAGE value="add Define statement" />
     <MESSAGE value="Put a // comment in glue code. &#10;Added tree search for features." />
     <MESSAGE value="A feature that is in a directory now has the files in a corresponding directory." />
     <MESSAGE value="Making ready for first version" />
@@ -568,7 +600,9 @@
     <MESSAGE value="Updated documentation." />
     <MESSAGE value="Updated documentation,  altered examples.feature with different names." />
     <MESSAGE value="adding a starting.feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding a starting.feature" />
+    <MESSAGE value="added line number to errors and warnings" />
+    <MESSAGE value="simplified toString and toJSON using the code replacement scheme, rather than the code generation scheme." />
+    <option name="LAST_COMMIT_MESSAGE" value="simplified toString and toJSON using the code replacement scheme, rather than the code generation scheme." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -580,7 +614,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
-          <line>362</line>
+          <line>364</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -595,5 +629,10 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GherkinExecutorForJava$Feature_Json.ic" NAME="Feature_Json Coverage Results" MODIFIED="1742238716432" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>gherkinexecutor.Feature_Json.*</FILTER>
+    </SUITE>
   </component>
 </project>

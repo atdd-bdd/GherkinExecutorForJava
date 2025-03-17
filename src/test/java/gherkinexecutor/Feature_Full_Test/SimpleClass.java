@@ -51,17 +51,19 @@ class SimpleClass{
                  ,aString
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "SimpleClass {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "SimpleClass {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"anInt:" + "\"" + anInt + "\""
-        +","+"aString:" + "\"" + aString + "\""
-            + "} " + "\n"; }  
+         +""+"anInt:" + "\"" + anInt + "\""
+         + ","         +""+"aString:" + "\"" + aString + "\""
+        + "} " ; }
+
         public static SimpleClass fromJson(String json) {
               SimpleClass instance = new SimpleClass();
 

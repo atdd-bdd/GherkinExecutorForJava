@@ -32,10 +32,11 @@ class FilterValueInternal{
                 ( _FilterValueInternal.name.equals(this.name))
                  && ( _FilterValueInternal.value.equals(this.value))
              ;  }
-    @Override
-    public String toString() {
-        return "FilterValueInternal {"
-        +"name = " + name + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FilterValueInternal {"
+             +"name = " + name + " "
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     }

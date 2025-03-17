@@ -65,19 +65,21 @@ class ATestBad{
                  ,aDouble
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ATestBad {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-        +"aDouble = " + aDouble + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ATestBad {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             +"aDouble = " + aDouble + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"anInt:" + "\"" + anInt + "\""
-        +","+"aString:" + "\"" + aString + "\""
-        +","+"aDouble:" + "\"" + aDouble + "\""
-            + "} " + "\n"; }  
+         +""+"anInt:" + "\"" + anInt + "\""
+         + ","         +""+"aString:" + "\"" + aString + "\""
+         + ","         +""+"aDouble:" + "\"" + aDouble + "\""
+        + "} " ; }
+
         public static ATestBad fromJson(String json) {
               ATestBad instance = new ATestBad();
 

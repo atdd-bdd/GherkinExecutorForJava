@@ -65,19 +65,21 @@ class Move{
                  ,mark
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "Move {"
-        +"row = " + row + " "
-        +"column = " + column + " "
-        +"mark = " + mark + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "Move {"
+             +"row = " + row + " "
+             +"column = " + column + " "
+             +"mark = " + mark + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"row:" + "\"" + row + "\""
-        +","+"column:" + "\"" + column + "\""
-        +","+"mark:" + "\"" + mark + "\""
-            + "} " + "\n"; }  
+         +""+"row:" + "\"" + row + "\""
+         + ","         +""+"column:" + "\"" + column + "\""
+         + ","         +""+"mark:" + "\"" + mark + "\""
+        + "} " ; }
+
         public static Move fromJson(String json) {
               Move instance = new Move();
 

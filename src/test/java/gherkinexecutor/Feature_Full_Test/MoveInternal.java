@@ -38,11 +38,12 @@ class MoveInternal{
                  && ( _MoveInternal.column.equals(this.column))
                  && ( _MoveInternal.mark.equals(this.mark))
              ;  }
-    @Override
-    public String toString() {
-        return "MoveInternal {"
-        +"row = " + row + " "
-        +"column = " + column + " "
-        +"mark = " + mark + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "MoveInternal {"
+             +"row = " + row + " "
+             +"column = " + column + " "
+             +"mark = " + mark + " "
+             + "} " + "\n"; }
+
     }

@@ -51,17 +51,19 @@ class ExampleClass{
                  ,fieldB
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ExampleClass {"
-        +"fieldA = " + fieldA + " "
-        +"fieldB = " + fieldB + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ExampleClass {"
+             +"fieldA = " + fieldA + " "
+             +"fieldB = " + fieldB + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"fieldA:" + "\"" + fieldA + "\""
-        +","+"fieldB:" + "\"" + fieldB + "\""
-            + "} " + "\n"; }  
+         +""+"fieldA:" + "\"" + fieldA + "\""
+         + ","         +""+"fieldB:" + "\"" + fieldB + "\""
+        + "} " ; }
+
         public static ExampleClass fromJson(String json) {
               ExampleClass instance = new ExampleClass();
 

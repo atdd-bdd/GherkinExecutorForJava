@@ -65,19 +65,21 @@ class TestIn{
                  ,cValue
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "TestIn {"
-        +"aValue = " + aValue + " "
-        +"bValue = " + bValue + " "
-        +"cValue = " + cValue + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "TestIn {"
+             +"aValue = " + aValue + " "
+             +"bValue = " + bValue + " "
+             +"cValue = " + cValue + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"aValue:" + "\"" + aValue + "\""
-        +","+"bValue:" + "\"" + bValue + "\""
-        +","+"cValue:" + "\"" + cValue + "\""
-            + "} " + "\n"; }  
+         +""+"aValue:" + "\"" + aValue + "\""
+         + ","         +""+"bValue:" + "\"" + bValue + "\""
+         + ","         +""+"cValue:" + "\"" + cValue + "\""
+        + "} " ; }
+
         public static TestIn fromJson(String json) {
               TestIn instance = new TestIn();
 

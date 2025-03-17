@@ -51,17 +51,19 @@ class ExampleClassWithBlanks{
                  ,field_2
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ExampleClassWithBlanks {"
-        +"field_1 = " + field_1 + " "
-        +"field_2 = " + field_2 + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ExampleClassWithBlanks {"
+             +"field_1 = " + field_1 + " "
+             +"field_2 = " + field_2 + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"field_1:" + "\"" + field_1 + "\""
-        +","+"field_2:" + "\"" + field_2 + "\""
-            + "} " + "\n"; }  
+         +""+"field_1:" + "\"" + field_1 + "\""
+         + ","         +""+"field_2:" + "\"" + field_2 + "\""
+        + "} " ; }
+
         public static ExampleClassWithBlanks fromJson(String json) {
               ExampleClassWithBlanks instance = new ExampleClassWithBlanks();
 
