@@ -41,15 +41,15 @@ class Feature_Examples_glue {
         for (ValueValid value : values) {
             System.out.println(value);
             boolean result = false;
-            boolean expected = Boolean.valueOf(value.valid);
+            boolean expectedException = !Boolean.valueOf(value.valid);
             try {
                 new ID(value.value);
-                if (!expected) {
+                if (expectedException) {
                     fail("Invalid value did not throw exeception "
                             + value.value + " " + value.notes);
                 }
             } catch (Exception e) {
-                if (expected)
+                if (!expectedException)
                     fail("Valid value threw exeception "
                             + value.value + " " + value.notes);
             }

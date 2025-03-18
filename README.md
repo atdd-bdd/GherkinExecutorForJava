@@ -44,8 +44,7 @@ You can think of a Gherkin feature file as representing the logical portion of t
 ### Introductory Example
 
 Here are a few introductory examples. You can view the `examples.feature` file in the main test directory 
-and the associated files in the gherkinexecutor.Feature_Examples package in the test directory.  
-Directory.  The first scenario shows a calculation from Fahrenheit to
+and the associated files in the gherkinexecutor.Feature_Examples package in the test directory.   The first scenario shows a calculation from Fahrenheit to
 Celsius.  When it is translated, three files are created - one is a unit test file, one 
 is glue code which is revised to connect to the production code, and the third are 
 the  data files which declare the class used to connect the unit test code to the glue code.
@@ -78,7 +77,7 @@ The Triad would then discuss what the behavior should be.  Note that
 the internal representation of F or C is irrelevant - it could be double, Double, BigInteger, or
 something else.   
 
-If your code style is to use Abstract Data Types, you can create a table to show examples of 
+If your code style is to use domain specific data types, you can create a table to show examples of 
 allowable values (or all allowed values, in the case of an enum).
 
 ```
