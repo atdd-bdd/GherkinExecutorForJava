@@ -35,15 +35,17 @@ class ResultValue{
                  sum
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ResultValue {"
-        +"sum = " + sum + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ResultValue {"
+             +"sum = " + sum + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"sum:" + "\"" + sum + "\""
-            + "} " + "\n"; }  
+         +""+"sum:" + "\"" + sum + "\""
+        + "} " ; }
+
         public static ResultValue fromJson(String json) {
               ResultValue instance = new ResultValue();
 

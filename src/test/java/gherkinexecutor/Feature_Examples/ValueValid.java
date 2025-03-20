@@ -63,19 +63,21 @@ class ValueValid{
                  ,notes
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ValueValid {"
-        +"value = " + value + " "
-        +"valid = " + valid + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ValueValid {"
+             +"value = " + value + " "
+             +"valid = " + valid + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"value:" + "\"" + value + "\""
-        +","+"valid:" + "\"" + valid + "\""
-        +","+"notes:" + "\"" + notes + "\""
-            + "} " + "\n"; }  
+         +""+"value:" + "\"" + value + "\""
+         + ","         +""+"valid:" + "\"" + valid + "\""
+         + ","         +""+"notes:" + "\"" + notes + "\""
+        + "} " ; }
+
         public static ValueValid fromJson(String json) {
               ValueValid instance = new ValueValid();
 

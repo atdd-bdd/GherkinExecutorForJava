@@ -156,21 +156,21 @@ In this example, the constructor is called with each value in the table.  The co
 an IllegalArgumentException if the value is not valid.  
 
 ```
-    void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values) {
+        void Rule_ID_must_have_exactly_5_letters_and_begin_with_Q(List<ValueValid> values) {
         System.out.println("---  " + "Rule_ID_must_have_exactly_5_letters_and_begin_with_Q");
         for (ValueValid value : values) {
             System.out.println(value);
             boolean result = false;
-            boolean expected = Boolean.valueOf(value.valid);
+            boolean expectedException = !Boolean.valueOf(value.valid);
             try {
                 new ID(value.value);
-                if (!expected) {
+                if (expectedException) {
                     fail("Invalid value did not throw exeception "
                             + value.value + " " + value.notes);
                 }
-            } catch (IllegalArgumentException e) {
-                if (expected)
-                    fail("Valid value threw exception "
+            } catch (Exception e) {
+                if (!expectedException)
+                    fail("Valid value threw exeception "
                             + value.value + " " + value.notes);
             }
         }
@@ -209,5 +209,3 @@ boolean isValid() {
 ```
 
 Instead of catching an` IllegalArgumentException`, you would just check the return valid of `isValid()`
-
-

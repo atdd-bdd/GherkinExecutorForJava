@@ -24,9 +24,10 @@ class ResultValueInternal{
          return 
                 ( _ResultValueInternal.sum.equals(this.sum))
              ;  }
-    @Override
-    public String toString() {
-        return "ResultValueInternal {"
-        +"sum = " + sum + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ResultValueInternal {"
+             +"sum = " + sum + " "
+             + "} " + "\n"; }
+
     }

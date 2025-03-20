@@ -21,11 +21,11 @@ class Feature_Examples_glue {
         }
     }
 
-    void Calculation_Convert_F_to_C(List<FandC> values ) {
+    void Calculation_Convert_F_to_C(List<FandC> values) {
         System.out.println("---  " + "Calculation_Convert_F_to_C");
         log("---  " + "Calculation_Convert_F_to_C");
         log(values.toString());
-        for (FandC value : values){
+        for (FandC value : values) {
             System.out.println(value);
             // Add calls to production code and asserts
             FandCInternal i = value.toFandCInternal();
@@ -90,35 +90,31 @@ class Feature_Examples_glue {
         int result = solution.sum();
         assertEquals(expected, result);
     }
-    void When_filtered_by(List<FilterValue> values ) {
-        System.out.println("---  " + "When_filtered_by");
-        for (FilterValue value : values){
-            System.out.println(value);
-            try {
-                FilterValueInternal i = value.toFilterValueInternal();
-                System.out.println("Filter is " + value.value);
-                solution.setFilterValue(new ID(value.value));
-            }
-            catch(Exception e){
-                System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
-            }
-        }
 
+    void When_filtered_by(List<FilterValue> values) {
+        System.out.println("---  " + "When_filtered_by");
+        FilterValue value = values.get(0);
+        System.out.println(value);
+        try {
+            FilterValueInternal i = value.toFilterValueInternal();
+            System.out.println("Filter is " + i.value);
+            solution.setFilterValue(i.value);
+        } catch (Exception e) {
+            System.err.println("Argument Error " + value.toString() + FilterValueInternal.toDataTypeString());
+        }
     }
 
-    void Then_result(List<ResultValue> values ) {
+    void Then_result(List<ResultValue> values) {
         System.out.println("---  " + "Then_result");
-        for (ResultValue value : values){
-            System.out.println(value);
-            try {
-                ResultValueInternal i = value.toResultValueInternal();
-                int actual = solution.sum();
-                assertEquals(i.sum, actual);
+        ResultValue value = values.get(0);
+        System.out.println(value);
+        try {
+            ResultValueInternal i = value.toResultValueInternal();
+            int actual = solution.sum();
+            assertEquals(i.sum, actual);
 
-            }
-            catch(Exception e){
-                System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
-            }
+        } catch (Exception e) {
+            System.err.println("Argument Error " + value.toString() + ResultValueInternal.toDataTypeString());
         }
     }
 

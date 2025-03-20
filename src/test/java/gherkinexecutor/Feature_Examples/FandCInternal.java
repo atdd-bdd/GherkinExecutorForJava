@@ -36,11 +36,12 @@ class FandCInternal{
                  && ( _FandCInternal.c.equals(this.c))
                  && ( _FandCInternal.notes.equals(this.notes))
              ;  }
-    @Override
-    public String toString() {
-        return "FandCInternal {"
-        +"f = " + f + " "
-        +"c = " + c + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FandCInternal {"
+             +"f = " + f + " "
+             +"c = " + c + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     }

@@ -1,14 +1,11 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
 class FilterValue{
-    String name = "";
     String value = "Q0000";
     public FilterValue() { }
     public FilterValue(
-        String name
-        ,String value
+        String value
         ){
-        this.name = name;
         this.value = value;
         }
     @Override
@@ -19,47 +16,36 @@ class FilterValue{
         FilterValue _FilterValue = (FilterValue) o;
             boolean result = true;
          if (
-             !this.name.equals("?DNC?")
-                && !_FilterValue.name.equals("?DNC?"))
-                if (! _FilterValue.name.equals(this.name)) result = false;
-         if (
              !this.value.equals("?DNC?")
                 && !_FilterValue.value.equals("?DNC?"))
                 if (! _FilterValue.value.equals(this.value)) result = false;
              return result;  }
     public static class Builder {
-        private String name = "";
         private String value = "Q0000";
-        public Builder setName(String name) {
-            this.name = name;
-            return this;
-            }
         public Builder setValue(String value) {
             this.value = value;
             return this;
             }
         public Builder  setCompare() {
-            name = "?DNC?";
             value = "?DNC?";
             return this;
             }
         public FilterValue build(){
              return new FilterValue(
-                 name
-                 ,value
+                 value
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "FilterValue {"
-        +"name = " + name + " "
-        +"value = " + value + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FilterValue {"
+             +"value = " + value + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"name:" + "\"" + name + "\""
-        +","+"value:" + "\"" + value + "\""
-            + "} " + "\n"; }  
+         +""+"value:" + "\"" + value + "\""
+        + "} " ; }
+
         public static FilterValue fromJson(String json) {
               FilterValue instance = new FilterValue();
 
@@ -78,9 +64,6 @@ class FilterValue{
 
           // Assign the value to the corresponding field
                     switch (key) {
-              case "name":
-                  instance.name = value;
-                  break;
               case "value":
                   instance.value = value;
                   break;
@@ -120,7 +103,6 @@ class FilterValue{
 
     FilterValueInternal toFilterValueInternal() {
         return new FilterValueInternal(
-         name
-        , new ID(value)
+         new ID(value)
         ); }
     }

@@ -49,7 +49,6 @@ Given list of numbers # ListOfObject LabelValue
 | Q9999  | 2      |
 | Q1234  | 3      |
 When filtered by # ListOfObject FilterValue transpose
-| Name   | ID     |
 | Value  | Q1234  |
 Then result # ListOfObject ResultValue 
 | Sum  |
@@ -57,7 +56,6 @@ Then result # ListOfObject ResultValue
 
 * Data FilterValue
 | Name   | Default  | DataType  | Notes  |
-| Name   |          | String    |        |
 | Value  | Q0000    | ID        |        |
 
 * Data ResultValue

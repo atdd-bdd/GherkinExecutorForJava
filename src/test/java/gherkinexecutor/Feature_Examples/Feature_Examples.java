@@ -1,24 +1,12 @@
 package gherkinexecutor.Feature_Examples;
 import org.junit.jupiter.api.Test;
 import java.util.List;
-import java.io.FileWriter;
-import java.io.IOException;
 class Feature_Examples{
-void log(String value) {
-    try {
-        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Examples/log.txt", true);
-        myLog.write(value + "\n");
-        myLog.close();
-    } catch (IOException e) {
-    System.err.println("*** Cannot write to log ");
-    }
-    }
 
 
     @Test
     void test_Scenario_Temperature_Conversion(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-        log("Scenario_Temperature_Conversion");
 
         List<FandC> objectList1 = List.of(
              new FandC.Builder()
@@ -42,7 +30,6 @@ void log(String value) {
     @Test
     void test_Scenario_Domain_Term_ID(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-        log("Scenario_Domain_Term_ID");
 
         List<ValueValid> objectList1 = List.of(
              new ValueValid.Builder()
@@ -71,7 +58,6 @@ void log(String value) {
     @Test
     void test_Scenario_Filter_Data(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-        log("Scenario_Filter_Data");
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -106,7 +92,6 @@ void log(String value) {
     @Test
     void test_Scenario_Filter_Data_Another_Way(){
          Feature_Examples_glue feature_Examples_glue_object = new Feature_Examples_glue();
-        log("Scenario_Filter_Data_Another_Way");
 
         List<LabelValue> objectList1 = List.of(
              new LabelValue.Builder()
@@ -126,7 +111,6 @@ void log(String value) {
 
         List<FilterValue> objectList2 = List.of(
              new FilterValue.Builder()
-                .setName("ID")
                 .setValue("Q1234")
                 .build()
             );
