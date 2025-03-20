@@ -18,15 +18,27 @@ The process for creating unit tests (ala SpecFlow) was from Gáspár Nagy. Dan N
 
 This README file gives an overview of operation.  See these other files for more information.  
 
-* Detail.md - This has details the Data, Import, and Define statements, as well as on tables and multi-line strings,
+* [Detail.md](https://github.com/atdd-bdd/GherkinExecutorForJava/blob/main/details.md) - This has details the Data, Import, and Define statements, as well as on tables and multi-line strings,
 
-* Examples.md - More detail on the examples.
+* [Examples.md](https://github.com/atdd-bdd/GherkinExecutorForJava/blob/main/examples.md) - More detail on the examples.
 
-* Design.md – the approach taken as well as maintenance notes
+* [Design.md](https://github.com/atdd-bdd/GherkinExecutorForJava/blob/main/design.md) – the approach taken as well as maintenance notes
 
-* Other.md – stuff that just does not seem to fit elsewhere
+* [Other.md](https://github.com/atdd-bdd/GherkinExecutorForJava/blob/main/other.md) – stuff that just does not seem to fit elsewhere
 
-* Style.md – some thoughts on how to organize your feature files  
+* [Style.md](https://github.com/atdd-bdd/GherkinExecutorForJava/blob/main/style.md) – some thoughts on how to organize your feature files  
+  
+  
+
+## Videos
+
+- [Behavior Driven Development with Gherkin Executor - YouTube](https://www.youtube.com/watch?v=OYALWe8X1yY)
+
+- [Setup of Gherkin Executor - YouTube](https://www.youtube.com/watch?v=uH9CgctrGgk)
+
+- [Test Driven Development with Gherkin Executor - YouTube](https://www.youtube.com/watch?v=CQphLJ6ndok)
+
+- [Domain Driven Design and Gherkin Executor - YouTube](https://www.youtube.com/watch?v=N4J3L_KEQeU)
 
 ## Why Use Gherkin?
 
