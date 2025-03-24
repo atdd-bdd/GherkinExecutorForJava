@@ -10,14 +10,14 @@ class Feature_Import{
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("MONDAY")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("MONDAY")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("10000000000")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("10000000000")
                 .build()
             );
         feature_Import_glue_object.Given_this_data_should_be_okay(objectList1);
@@ -28,14 +28,14 @@ class Feature_Import{
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("SOMEONE")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("SOMEONE")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("2")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("2")
                 .build()
             );
         feature_Import_glue_object.Given_this_data_should_fail(objectList1);
@@ -46,14 +46,14 @@ class Feature_Import{
 
         List<ImportData> objectList1 = List.of(
              new ImportData.Builder()
-                .myPattern("a.*")
-                .myWeekday("MONDAY")
-                .myBigInt("1")
+                .setMyPattern("a.*")
+                .setMyWeekday("MONDAY")
+                .setMyBigInt("1")
                 .build()
             , new ImportData.Builder()
-                .myPattern("[ab]")
-                .myWeekday("SUNDAY")
-                .myBigInt("A.2")
+                .setMyPattern("[ab]")
+                .setMyWeekday("SUNDAY")
+                .setMyBigInt("A.2")
                 .build()
             );
         feature_Import_glue_object.Given_this_data_should_fail(objectList1);
