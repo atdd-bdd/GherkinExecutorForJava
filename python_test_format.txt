@@ -3,20 +3,60 @@ Going to python:
 Convert the files to the JSON format (i.e. do code replacements) rather than
 code generation.   First method to start with is the JSON one.
 
+*** 
 
+Feature: Refunded or replaced items should be returned to stock
+
+Scenario: Refunded items should be returned to stock
+    Given a customer buys a black jumper
+    And I have 3 black jumpers left in stock
+    When he returns the jumper for a refund
+    Then I should have 4 black jumpers in stock
+
+
+Java version 
+	add a translate reference to the inner classes,   take away the error and wanring stuff.    
+
+	Check what lines being added for internal class -   should not be  Configuration, but the one from translate.
+	
+	Add data definition for all the possiblities -  to show what is understood  -  this has been done !! 
+	
+	ignore # and * in filenames 
+	
+	Add options.txt reading for the options.   
+	
+	need to increment StepCount  /   add the new name to the list already used 
+	
+	Both -- replace the Log creation with a """ version 
 
 Need to do the following for Python version
 
 Add imports of everything (all Data items to glue and tests using the package).
 	Can use the data array to determine this.   
 	Add glue code import to the tests
+	
+	pytest and regular test are the options 
 
 For the C# version:
+
+	Need to convert list of list to string.    
+
+	step count versus stepnumber in scenarios - 
+
+	<StartupObject>GherkinExecutorForCSharp.Translate</StartupObject> in the project properties 
+	
+      result = originalList.SequenceEqual(values, new ATest.ATestComparer()); for comparing lists 
+ 
     namespace instead of package.
     not as picky as Java in where everything goes.
 
     Put everything in the Test Project - will need to figure where production goes.
     Just need to change Test and TestClass for NUnit version
+	
+	Notes:   aDD TRANLATE to the project stuff (so it can be executed)
+	Make sure to add C# Compiler to build option
+	
+	Change other to translate every where 
 
 Here's the translated Python code:
 

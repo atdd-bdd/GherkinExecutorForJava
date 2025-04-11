@@ -62,7 +62,7 @@ class IDValue{
         return " {"
          +""+"iD:" + "\"" + iD + "\""
          + ","         +""+"value:" + "\"" + value + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static IDValue fromJson(String json) {
               IDValue instance = new IDValue();

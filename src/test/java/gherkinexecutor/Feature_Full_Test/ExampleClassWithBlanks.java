@@ -62,7 +62,7 @@ class ExampleClassWithBlanks{
         return " {"
          +""+"field_1:" + "\"" + field_1 + "\""
          + ","         +""+"field_2:" + "\"" + field_2 + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ExampleClassWithBlanks fromJson(String json) {
               ExampleClassWithBlanks instance = new ExampleClassWithBlanks();

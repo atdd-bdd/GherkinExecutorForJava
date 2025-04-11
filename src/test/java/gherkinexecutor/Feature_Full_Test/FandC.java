@@ -78,7 +78,7 @@ class FandC{
          +""+"f:" + "\"" + f + "\""
          + ","         +""+"c:" + "\"" + c + "\""
          + ","         +""+"notes:" + "\"" + notes + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static FandC fromJson(String json) {
               FandC instance = new FandC();

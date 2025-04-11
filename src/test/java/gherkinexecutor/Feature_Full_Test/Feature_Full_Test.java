@@ -361,7 +361,6 @@ void log(String value) {
 
         List<FilterValue> objectList2 = List.of(
              new FilterValue.Builder()
-                .setName("ID")
                 .setValue("Q1234")
                 .build()
             );

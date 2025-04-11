@@ -62,7 +62,7 @@ class LabelValue{
         return " {"
          +""+"iD:" + "\"" + iD + "\""
          + ","         +""+"value:" + "\"" + value + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static LabelValue fromJson(String json) {
               LabelValue instance = new LabelValue();

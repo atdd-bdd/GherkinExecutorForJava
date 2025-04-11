@@ -62,7 +62,7 @@ class ExampleClass{
         return " {"
          +""+"fieldA:" + "\"" + fieldA + "\""
          + ","         +""+"fieldB:" + "\"" + fieldB + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ExampleClass fromJson(String json) {
               ExampleClass instance = new ExampleClass();

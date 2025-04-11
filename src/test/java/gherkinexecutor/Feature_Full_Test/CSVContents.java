@@ -78,7 +78,7 @@ class CSVContents{
          +""+"a:" + "\"" + a + "\""
          + ","         +""+"b:" + "\"" + b + "\""
          + ","         +""+"c:" + "\"" + c + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static CSVContents fromJson(String json) {
               CSVContents instance = new CSVContents();

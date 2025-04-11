@@ -78,7 +78,7 @@ class ValueValid{
          +""+"value:" + "\"" + value + "\""
          + ","         +""+"valid:" + "\"" + valid + "\""
          + ","         +""+"notes:" + "\"" + notes + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ValueValid fromJson(String json) {
               ValueValid instance = new ValueValid();

@@ -43,6 +43,25 @@ Data TestIn Existing
 | aValue  | 0        | int       |       |
 | bValue  | ~        | String    |       |
 | cValue  | 4.0      | double    |       |
+Data AllTypes
+| Name            | Default  | DataType  | Note       |
+| anInt           | 0        | int       | primitive  |
+| aByte           | 0        | byte      | primitive  |
+| AShort          | 0        | short     | primitive  |
+| aLong           | 0        | long      | primitive  |
+| aFloat          | 0.0      | float     | primitive  |
+| aDouble         | 0.0      | double    | primitive  |
+| aBool           | false    | boolean   | primitive  |
+| aString         |          | String    |            |
+| aChar           | 0        | char      | primitive  |
+| anIntObject     | 0        | Integer   |            |
+| aByteObject     | 0        | Byte      |            |
+| aShortObject    | 0        | Short     |            |
+| aLongObject     | 0        | Long      |            |
+| aFloatObject    | 0.0      | Float     |            |
+| aDoubleObject   | 0.0      | Double    |            |
+| aBoolObject     | false    | Boolean   |            |
+| aCharObject     | 0        | Character |            |
 Feature: Data Definition Error
 Scenario Simple Table with int bad
 Given table is # ListOfObject ATest
@@ -139,14 +158,12 @@ Given list of numbers # ListOfObject LabelValue
 | Q9999  | 2      |
 | Q1234  | 3      |
 When filtered by # ListOfObject FilterValue transpose
-| Name   | ID     |
 | Value  | Q1234  |
 Then result # ListOfObject ResultValue
 | Sum  |
 | 4    |
 * Data FilterValue
 | Name   | Default  | DataType  | Notes  |
-| Name   |          | String    |        |
 | Value  | Q0000    | ID        |        |
 * Data ResultValue
 | Name  | Default  | DataType  | Notes  |

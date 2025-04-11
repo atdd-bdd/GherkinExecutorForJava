@@ -78,7 +78,7 @@ class TestIn{
          +""+"aValue:" + "\"" + aValue + "\""
          + ","         +""+"bValue:" + "\"" + bValue + "\""
          + ","         +""+"cValue:" + "\"" + cValue + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static TestIn fromJson(String json) {
               TestIn instance = new TestIn();

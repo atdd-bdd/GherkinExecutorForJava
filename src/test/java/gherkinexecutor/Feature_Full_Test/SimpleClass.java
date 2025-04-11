@@ -62,7 +62,7 @@ class SimpleClass{
         return " {"
          +""+"anInt:" + "\"" + anInt + "\""
          + ","         +""+"aString:" + "\"" + aString + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static SimpleClass fromJson(String json) {
               SimpleClass instance = new SimpleClass();

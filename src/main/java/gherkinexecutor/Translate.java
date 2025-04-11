@@ -3,10 +3,7 @@ package gherkinexecutor;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -29,7 +26,7 @@ public class Translate {
     private String glueObject = "";  // glue object name
 
     private int stepNumberInScenario = 0;  // use to label variables in scenario
-    private InputIterator dataIn = new InputIterator("", "");
+    private InputIterator dataIn = new InputIterator("", "", this );
     private boolean firstScenario = true; // If first scenario
     private boolean addBackground = false;  // Have seen Background
     private boolean addCleanup = false;  // have seen Cleanup
@@ -62,6 +59,16 @@ public class Translate {
     private final ImportConstruct importConstruct = new ImportConstruct();
     private final DefineConstruct defineConstruct = new DefineConstruct();
 
+    private final String filterExpression = Configuration.filterExpression;
+    private boolean skipSteps = false;
+
+    private int scenarioCount = 0;
+
+    private static final String TAG_INDICATOR = "@";
+    private String tagLine = ""; // Contains last tag line
+
+    private int tagLineNumber = 0; // Line number for last tage line
+
     public Translate() {
     }
 
@@ -69,7 +76,7 @@ public class Translate {
         findFeatureDirectory(name);
 
         linesToAddForDataAndGlue.addAll(Configuration.linesToAddForDataAndGlue);
-        dataIn = new InputIterator(name, featureDirectory);
+        dataIn = new InputIterator(name, featureDirectory, this );
         alterFeatureDirectory();
         if (dataIn.isEmpty())
             return;
@@ -111,7 +118,7 @@ public class Translate {
     }
 
     private void actOnLine(String line, int pass) {
-        Pair<List<String>, List<String>> splitLine = splitLine(line);
+        Pair<List<String>, List<String>> splitLine = splitLine(line,pass );
         List<String> words = splitLine.getFirst();
         List<String> comment = splitLine.getSecond();
         if (words.size() > 0) {
@@ -125,10 +132,15 @@ public class Translate {
         }
     }
 
-    private Pair<List<String>, List<String>> splitLine(String line) {
+    private Pair<List<String>, List<String>> splitLine(String line, int pass) {
         String[] allWords = line.split(" ");
         List<String> words = new ArrayList<>();
         List<String> comment = new ArrayList<>();
+        if ((pass == 3 || pass == 2) && line.trim().startsWith(TAG_INDICATOR)){
+            System.out.println("Found tag "+ line);
+            tagLine = line;
+            tagLineNumber = dataIn.getLineNumber();
+        }
         boolean inComment = false;
         for (String aWord : allWords) {
             String word = aWord.trim();
@@ -202,16 +214,29 @@ public class Translate {
                 if (pass != 2)
                     break;
                 actOnFeature(fullName);
+                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
+                    dataIn.goToEnd();  // skip remainder of file
+                    System.out.println(" Skip Entire Feature ");
+                }
                 break;
             case "Scenario":
                 if (pass != 3)
                     break;
+                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
+                    skipSteps = true;
+                    break;
+                }
+                skipSteps = false;
                 actOnScenario(fullName, addBackground, false, addCleanup, inCleanup);
                 inCleanup = false;
                 break;
             case "Background":
                 if (pass != 3)
                     break;
+                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
+                    skipSteps = true;
+                    break;
+                }
                 actOnScenario(fullName, false, true, false, inCleanup);
                 addBackground = true;
                 inCleanup = false;
@@ -219,6 +244,10 @@ public class Translate {
             case "Cleanup":
                 if (pass != 3)
                     break;
+                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
+                    skipSteps = true;
+                    break;
+                }
                 actOnScenario(fullName, false, false, false, inCleanup);
                 addCleanup = true;
                 inCleanup = true;
@@ -236,27 +265,46 @@ public class Translate {
             case "Calculation":
                 if (pass != 3)
                     break;
+                if (skipSteps)
+                    break;
                 stepConstruct.actOnStep(fullName, comment);
                 break;
             case "Data":
                 if (pass != 2)
                     break;
+                skipSteps = false;
                 dataConstruct.actOnData(words);
                 break;
             case "Import":
                 if (pass != 1)
                     break;
+                skipSteps = false;
                 importConstruct.actOnImport(words);
                 break;
             case "Define":
                 if (pass != 1)
                     break;
+                skipSteps = false;
                 defineConstruct.actOnDefine(words);
                 break;
             default:
                 // line not used this pass or bad line
                 break;
         }
+    }
+
+    private void checkForTagLine() {
+        if (tagLine.isEmpty())
+            return;
+        System.out.println(" line number " + tagLineNumber + " current" +
+                dataIn.getLineNumber());
+        if (tagLineNumber + 1 == dataIn.getLineNumber()) {
+            System.out.println("Adding tag to test " + tagLine);
+            testPrint(tagLine);
+        }
+        tagLine = "";
+        tagLineNumber = 0;
+        System.out.println("Tag line is now " + tagLine);
     }
 
     void writeInputFeature(String filename) {
@@ -285,20 +333,21 @@ public class Translate {
         switch (Configuration.testFramework) {
             //noinspection DataFlowIssue
             case "JUnit4":
-                testPrint("import org.junit.Test;");
+                testPrint("import org.junit.*;");
                 break;
             //noinspection DataFlowIssue
             case "TestNG":
-                testPrint("import org.testng.annotations.Test;");
+                testPrint("import org.testng.annotations.*;");
                 break;
             default:
-                testPrint("import org.junit.jupiter.api.Test;");
+                testPrint("import org.junit.jupiter.api.*;");
         }
         testPrint("import java.util.List;");
         if (Configuration.logIt) {
             testPrint("import java.io.FileWriter;");
             testPrint("import java.io.IOException;");
         }
+        checkForTagLine();
         testPrint("class " + fullName + "{");
         testPrint(logIt());
         testPrint("");
@@ -369,6 +418,7 @@ public class Translate {
 
     private void actOnScenario(String fullName, boolean addBackground, boolean inBackground, boolean addCleanup, boolean inCleanup) {
         trace("In background " + inBackground);
+        scenarioCount++;
         String fullNameToUse = fullName;
         if (scenarios.containsKey(fullName)) {
             fullNameToUse += stepCount;
@@ -392,6 +442,7 @@ public class Translate {
             testPrint("        }"); // end previous scenario
         }
         if (!fullNameToUse.startsWith("Background") && !fullNameToUse.startsWith("Cleanup")) {
+            checkForTagLine();
             testPrint("    @Test");
             testPrint("    void test_" + fullNameToUse + "(){");
             testPrint("         " + glueClass + " " + glueObject + " = new " + glueClass + "();");
@@ -567,6 +618,44 @@ public class Translate {
         collectFeatureFiles(new File(directory), featureFiles);
         return featureFiles;
     }
+    public static void readFilterList()
+    {
+        String filepath = Configuration.featureSubDirectory + "filter.txt";
+        printFlow("Path is " + filepath);
+        List<String> raw;
+        try
+        {
+            raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error: Unable to read " + e + filepath);
+            return;
+        }
+        String [] arguments = {""};
+        raw.toArray(arguments);
+        Configuration.filterExpression = arguments[0];
+        System.out.println("Filter is " + arguments[0]);
+    }
+
+    public static void readOptionList()
+    {
+        String filepath = Configuration.featureSubDirectory + "options.txt";
+        printFlow("Path is " + filepath);
+        List<String> raw;
+        try
+        {
+            raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
+        }
+        catch (Exception e)
+        {
+            System.out.println("Error: Unable to read " + e + filepath);
+            return;
+        }
+        String [] arguments = {""};
+        raw.toArray(arguments);
+        processArguments(arguments);
+    }
 
     public static void readFeatureList() {
         String filepath = Configuration.featureSubDirectory + "features.txt";
@@ -575,7 +664,7 @@ public class Translate {
         try {
             raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
         } catch (Exception e) {
-            System.err.println(" Unable to read " + filepath);
+            System.out.println(" Unable to read " + filepath);
             return;
         }
         Configuration.featureFiles.addAll(raw);
@@ -612,6 +701,8 @@ public class Translate {
             filesInTree.forEach(System.out::println);
             Configuration.featureFiles.addAll(filesInTree);
         }
+        readOptionList();
+        readFilterList();
         readFeatureList();
         for (String name : Configuration.featureFiles) {
             Translate translate = new Translate();
@@ -622,6 +713,7 @@ public class Translate {
 
     private static void processArguments(String[] args) {
         printFlow("Optional arguments are logIt inTest searchTree traceOn");
+        boolean filterNext = false;
         for (String arg : args) {
             printFlow("Program argument: " + arg);
             switch (arg) {
@@ -641,7 +733,15 @@ public class Translate {
                     Configuration.searchTree = true;
                     printFlow("searchTree on");
                     break;
+                case "--filter":
+                    filterNext = true;
+                    break;
                 default:
+                    if (filterNext){
+                        filterNext = false;
+                        Configuration.filterExpression = arg;
+                        break;
+                    }
                     Configuration.featureFiles.add(arg);
             }
         }
@@ -713,8 +813,37 @@ public class Translate {
         }
     }
 
+    private void endUp() {
+        if (finalCleanup) {
+            testPrint("        test_Cleanup(" + glueObject + "); // at the end");
+        }
+        if (scenarioCount == 0 ) {// Then no scenarios
+            System.out.println("No scenarios");
+            System.out.println("Not printing last scenario brace");
+         }
+        else
+            testPrint("        }");   // End last scenario
+        testPrint("    }"); // End the class
+        testPrint("");
+        try {
+            testFile.close();
+        } catch (IOException e) {
+            error("Error in closing ");
+        }
+
+        templateConstruct.endTemplate();
+        if (errorOccurred) {
+            System.err.println("*** Error in translation, scan the output");
+            System.exit(-1);
+        }
+    }
+
 
 static class InputIterator {
+
+    private final Translate outer;
+
+
     private final List<String> linesIn = new ArrayList<>();
     @SuppressWarnings("UnusedAssignment")
     private int index = 0;
@@ -737,9 +866,10 @@ static class InputIterator {
 
     final private String featureDirectory;
 
-    public InputIterator(String name, String featureDirectory) {
+    public InputIterator(String name, String featureDirectory, Translate outer) {
         index = 0;
         this.featureDirectory = featureDirectory;
+        this.outer = outer;
         if (!name.isEmpty()) {
             readFile(name, 0);
         }
@@ -749,7 +879,7 @@ static class InputIterator {
 //            printFlow("Reading file " + fileName);
         includeCount++;
         if (includeCount > 20) {
-            error("Too many levels of include");
+            outer.error("Too many levels of include");
             return;
         }
         try {
@@ -759,30 +889,30 @@ static class InputIterator {
             try {
                 raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
             } catch (Exception e) {
-                error(" Unable to read " + filepath);
+                outer.error(" Unable to read " + filepath);
                 return;
             }
             for (String line : raw) {
                 if (line.startsWith("Include")) {
                     String[] parts = line.split("\"");
-                    trace("Parts are " + String.join(", ", parts));
+                    outer.trace("Parts are " + String.join(", ", parts));
                     boolean localFile = true;
                     if (parts.length < 2) {
                         parts = line.split("'");
                         localFile = false;
                         if (parts.length < 2) {
-                            error("Error filename not surrounded by quotes: " + line);
+                            outer.error("Error filename not surrounded by quotes: " + line);
                             continue;
                         }
                     }
                     if (parts[1].isEmpty()) {
-                        error("Error zero length filename " + line);
+                        outer.error("Error zero length filename " + line);
                         continue;
                     }
                     String includedFileName = parts[1].trim();
                     if (localFile)
                         includedFileName = featureDirectory + includedFileName;
-                    trace("Including " + includedFileName);
+                    outer.trace("Including " + includedFileName);
                     if (includedFileName.endsWith(".csv")) {
                         includeCSVFile(includedFileName);
                     } else {
@@ -868,20 +998,12 @@ static class InputIterator {
             return EOF;
         }
     }
-
-    private void trace(String value) {
-        if (Configuration.traceOn) {
-            System.out.println("   " + value);
-        }
+    public void goToEnd(){
+        index = linesIn.size();
     }
 
 
-    private void error(String value) {
 
-        System.err.println("[GherkinExecutor] " + "~ line " +
-                this.getLineNumber() + " in " + "feature.txt " +
-                value + " ");
-    }
 
     public boolean isEmpty() {
         return linesIn.isEmpty();
@@ -916,25 +1038,6 @@ static class Pair<K, V> {
     }
 }
 
-    private void endUp() {
-        if (finalCleanup) {
-            testPrint("        test_Cleanup(" + glueObject + "); // at the end");
-        }
-        testPrint("        }");   // End last scenario
-        testPrint("    }"); // End the class
-        testPrint("");
-        try {
-            testFile.close();
-        } catch (IOException e) {
-            error("Error in closing ");
-        }
-
-        templateConstruct.endTemplate();
-        if (errorOccurred) {
-            System.err.println("*** Error in translation, scan the output");
-            System.exit(-1);
-        }
-    }
 
 class StepConstruct {
     private void actOnStep(String fullName, List<String> comment) {
@@ -1752,6 +1855,8 @@ class DataConstruct {
                 return "Character";
             case "Decimal":
                 return "Double";
+            case "string":
+                return "String";
             default:
                 return s;
         }
@@ -2085,6 +2190,7 @@ static class Configuration {
     public static String addToPackageName = "";
     // change to "test.java." for Eclipse
     public static final List<String> linesToAddForDataAndGlue = new ArrayList<>();
+    public static String filterExpression =""; // will hold filter expression from command line or file
 
     // Imports or other lines to add to data class and glue class
     // Must include  semicolon if needed
@@ -2098,7 +2204,65 @@ static class Configuration {
 //            featureFiles.add("simple_test.feature");     // Something to try out after setup
 //            featureFiles.add("full_test.feature.sav"); // used for testing Translate
     }
+    public static String tagFilter = "";
+    // expression to determine which scenarios to code
 }
+
+
+
+
+ static class TagFilterEvaluator {
+    // Author is Microsoft CoPilot
+
+     public static boolean shouldNotExecute(List<String> words, String filterExpression){
+         Set<String> scenarioTags = new HashSet<> (words);
+         return (!shouldExecute(scenarioTags, filterExpression));
+     }
+     public static boolean shouldExecute(Set<String> scenarioTags, String filterExpression) {
+         if (filterExpression.trim().isEmpty())
+             return true;
+         List<Set<String>> requiredConditions = new ArrayList<>();
+         Set<String> excludedTags = new HashSet<>();
+
+         // Parse the expression into required and excluded conditions
+         parseExpression(filterExpression, requiredConditions, excludedTags);
+
+         // Check if scenario contains any excluded tags
+         boolean hasExcludedTag = scenarioTags.stream().anyMatch(excludedTags::contains);
+
+         // Check if scenario matches any required condition group (OR logic)
+         boolean matchesRequired = requiredConditions.isEmpty() ||
+                 requiredConditions.stream().anyMatch(scenarioTags::containsAll);
+
+         // Execute if it meets a required condition AND does NOT have an excluded tag
+         return matchesRequired && !hasExcludedTag;
+     }
+
+     private static void parseExpression(String expression, List<Set<String>> requiredConditions, Set<String> excludedTags) {
+         // Split by "OR" to get groups
+         String[] groups = expression.split(" OR ");
+         for (String group : groups) {
+             Set<String> tags = new HashSet<>();
+
+             // Split each group by "AND"
+             String[] elements = group.trim().split(" AND ");
+             for (String element : elements) {
+                 element = element.trim();
+                 if (element.startsWith("NOT ")) {
+                     excludedTags.add(element.replace("NOT ", "")); // Store excluded tags
+                 } else {
+                     tags.add(element); // Store required tags
+                 }
+             }
+
+             if (!tags.isEmpty()) {
+                 requiredConditions.add(tags);
+             }
+         }
+     }
+ }
 }
+
+
 
 

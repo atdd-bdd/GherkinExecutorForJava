@@ -78,7 +78,7 @@ class ATest{
          +""+"anInt:" + "\"" + anInt + "\""
          + ","         +""+"aString:" + "\"" + aString + "\""
          + ","         +""+"aDouble:" + "\"" + aDouble + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ATest fromJson(String json) {
               ATest instance = new ATest();

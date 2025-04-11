@@ -44,7 +44,7 @@ class ResultValue{
     public String toJson() {
         return " {"
          +""+"sum:" + "\"" + sum + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ResultValue fromJson(String json) {
               ResultValue instance = new ResultValue();

@@ -485,7 +485,7 @@ Cleanup
 [[Cleanup Here]]
 Scenario_Check_String_Variations
 Background
----  Given_Background_function_sets_a_value
+-b--  Given_Background_function_sets_a_value
 [[Background Here]]
 ---  Given_multiline_string
 One line

@@ -44,7 +44,7 @@ class FilterValue{
     public String toJson() {
         return " {"
          +""+"value:" + "\"" + value + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static FilterValue fromJson(String json) {
               FilterValue instance = new FilterValue();

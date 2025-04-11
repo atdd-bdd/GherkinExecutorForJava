@@ -78,7 +78,7 @@ class ImportData{
          +""+"myPattern:" + "\"" + myPattern + "\""
          + ","         +""+"myWeekday:" + "\"" + myWeekday + "\""
          + ","         +""+"myBigInt:" + "\"" + myBigInt + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ImportData fromJson(String json) {
               ImportData instance = new ImportData();

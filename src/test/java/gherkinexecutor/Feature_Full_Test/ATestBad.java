@@ -78,7 +78,7 @@ class ATestBad{
          +""+"anInt:" + "\"" + anInt + "\""
          + ","         +""+"aString:" + "\"" + aString + "\""
          + ","         +""+"aDouble:" + "\"" + aDouble + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static ATestBad fromJson(String json) {
               ATestBad instance = new ATestBad();

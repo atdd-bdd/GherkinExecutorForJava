@@ -10,9 +10,9 @@ class Feature_Data_Definition{
 
         List<ATest> objectList1 = List.of(
              new ATest.Builder()
-                .anInt("1")
-                .aString("something")
-                .aDouble("1.2")
+                .setAnInt("1")
+                .setAString("something")
+                .setADouble("1.2")
                 .build()
             );
         feature_Data_Definition_glue_object.Given_table_is(objectList1);
@@ -20,7 +20,7 @@ class Feature_Data_Definition{
         List<ATest> objectList2 = List.of(
              new ATest.Builder()
              .setCompare()
-                .aString("something")
+                .setAString("something")
                 .build()
             );
         feature_Data_Definition_glue_object.When_compared_to(objectList2);
@@ -35,7 +35,7 @@ class Feature_Data_Definition{
         List<ATest> objectList4 = List.of(
              new ATest.Builder()
              .setCompare()
-                .aString("something else")
+                .setAString("something else")
                 .build()
             );
         feature_Data_Definition_glue_object.When_compared_to(objectList4);

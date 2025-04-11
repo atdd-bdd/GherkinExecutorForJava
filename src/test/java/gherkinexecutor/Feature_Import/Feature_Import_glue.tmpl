@@ -4,29 +4,20 @@ import java.util.regex.Pattern;
 import java.math.BigInteger;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.List;
+import java.io.FileWriter;
+import java.io.IOException;
 
 class Feature_Import_glue {
     final String DNCString = "?DNC?";
-
-
-    void Given_this_data_should_be_okay(List<ImportData> values ) {
-        System.out.println("---  " + "Given_this_data_should_be_okay");
-        for (ImportData value : values){
-             System.out.println(value);
-             // Add calls to production code and asserts
-              ImportDataInternal i = value.toImportDataInternal();
-              }
-        fail("Must implement");
+void log(String value) {
+    try {
+        FileWriter myLog = new FileWriter("src/test/java/gherkinexecutor/Feature_Import/log.txt", true);
+        myLog.write(value + "\n");
+        myLog.close();
+    } catch (IOException e) {
+    System.err.println("*** Cannot write to log ");
+    }
     }
 
-    void Given_this_data_should_fail(List<ImportData> values ) {
-        System.out.println("---  " + "Given_this_data_should_fail");
-        for (ImportData value : values){
-             System.out.println(value);
-             // Add calls to production code and asserts
-              ImportDataInternal i = value.toImportDataInternal();
-              }
-        fail("Must implement");
-    }
 
     }

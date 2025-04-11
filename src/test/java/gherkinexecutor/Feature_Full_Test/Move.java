@@ -78,7 +78,7 @@ class Move{
          +""+"row:" + "\"" + row + "\""
          + ","         +""+"column:" + "\"" + column + "\""
          + ","         +""+"mark:" + "\"" + mark + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static Move fromJson(String json) {
               Move instance = new Move();
