@@ -1,0 +1,575 @@
+Scenario_Should_also_fail
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_this_data_should_fail
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ImportData]
+Background
+Background
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Json_is
+{anInt:  "1"   ,   aString:"B"  }
+---  Given_table_is
+---  Then_the_converted_object_is
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Should_also_have_Background_and_Cleanup
+Scenario_Simple_Comparison
+Background
+Background
+Background
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_a_regular_function
+---  Given_table_is
+---  Then_background_should_set_value_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+---  Given_list_of_numbers
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.LabelValue]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  When_filtered_by_ID_with_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+---  Given_Background_function_sets_a_value
+---  Then_sum_is
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  When_compared_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+---  Then_background_should_set_value_to
+Scenario_Temperature_Conversion
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+---  And_set_a_value_for_cleanup
+Scenario_Table_without_all_fields_uses_defaults
+---  Given_Background_function_sets_a_value
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_A_table_to_List_of_Object_with_Defaults
+---  Calculation_Convert_F_to_C
+---  Then_table_should_be_same_as
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.FandC]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Check_String_Variations
+Background
+Background
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_table_is
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_a_table_is
+---  Then_should_be_equal_to_this_list
+Scenario_Domain_Term_ID
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+Background
+---  Then_Json_for_table_should_be
+---  Given_Background_function_sets_a_value
+[ {anInt:"1",aString:"B"}
+, {anInt:"2",aString:"C"}
+]
+Cleanup
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_An_include_of_CSV_file
+---  Given_value_for_cleanup_should_be_set_to
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_table_is
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+---  Given_a_table
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.CSVContents]
+Scenario_Simple_Table_with_initializer_bad
+---  Then_Should_be_equal_to_table
+Background
+Scenario_An_include_from_base_directory
+---  Given_Background_function_sets_a_value
+Background
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.CSVContents]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_table_is_bad_initializer
+---  Given_a_string_include
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATestBad]
+This is an include string from the main directory
+---  Then_should_be_equal_to
+This is an include string from the main directory
+Cleanup
+Scenario_Should_fail
+Scenario_Here_are_table_options
+---  Given_value_for_cleanup_should_be_set_to
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+---  Given_this_data_should_fail
+Scenario_Use_an_import
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ImportData]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_table_to_List_of_List_of_String
+Scenario_Make_a_move_using_single_element
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_this_data_should_be_okay
+Background
+---  Star_A_Table_to_List_Of_List_Of_Object
+---  Given_Background_function_sets_a_value
+Cleanup
+---  Star_A_table_to_List_of_Object
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_table_to_List_of_Object
+---  Given_board_is
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_check_the_prints_to_see_how_it_works
+---  Star_A_table_to_List_of_Object_with_Defaults
+---  Then_board_is_now
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+---  Star_A_table_to_List_of_Object_with_Blanks_in_Values
+---  Given_board_is
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClassWithBlanks]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Convert_from_Json_Array
+---  Then_board_is_now
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClassWithBlanks]
+Background
+---  Star_A_table_to_String
+Cleanup
+| aa  | bb  |
+| cc  | dd  |
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Json_for_table_is
+[    {anInt:  "1"   ,   aString:"B"  },
+{anInt:  "2"   ,   aString:"C"  }
+]
+---  Then_the_converted_table_should_be
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+Cleanup
+Scenario_Make_multiple_moves
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_board_is
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+---  Then_board_is_now
+---  Given_Background_function_sets_a_value
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+---  Given_A_table_to_String
+Cleanup
+| aa  | bb  |
+| cc  | dd  |
+Scenario_Try_out_replacements_with_a_calculation
+---  Then_string_should_be_same_as
+| aa  | bb  |
+| cc  | dd  |
+---  Given_Background_function_sets_a_value
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Filter_Data_Another_Way
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Then_should_be_equal_to_data
+---  Given_list_of_numbers
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.LabelValue]
+Background
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.FilterValue]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_a_string_include
+This is an include string from the main directory
+---  Then_result
+---  Then_should_be_equal_to
+Scenario_Transpose_Table
+This is an include string from the main directory
+Background
+Cleanup
+---  Given_Background_function_sets_a_value
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_A_table_to_List_of_Object
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+Scenario_Simple_Replacement
+Background
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+---  Given_Background_function_sets_a_value
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_this_data
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+---  Then_should_be_equal_to_data
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Here_are_string_options
+Scenario_Make_a_move
+Background
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_multiline_string_to_a_string
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+One line
+Two line
+---  Then_Json_should_be
+---  Star_A_multiline_string_to_a_List_of_String
+{anInt:"1",aString:"B"}
+System.Collections.Generic.List`1[System.String]
+Cleanup
+---  Then_board_is_now
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_value_for_cleanup_should_be_set_to
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Should_also_fail
+Scenario_Convert_from_Json
+Background
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+Background
+Cleanup
+---  Given_Background_function_sets_a_value
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Should_also_have_Background_and_Cleanup
+Scenario_Simple_Comparison
+Background
+Background
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_table_is
+---  Given_a_regular_function
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.LabelValue]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+---  And_set_a_value_for_cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+Background
+---  Given_value_for_cleanup_should_be_set_to
+---  Then_sum_is
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_a_regular_function
+---  Given_value_for_cleanup_should_be_set_to
+---  Then_background_should_set_value_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  And_set_a_value_for_cleanup
+Scenario_Table_without_all_fields_uses_defaults
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+Cleanup
+---  Given_Background_function_sets_a_value
+Scenario_Temperature_Conversion
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_A_table_to_List_of_Object_with_Defaults
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+---  Then_table_should_be_same_as
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+---  Calculation_Convert_F_to_C
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.FandC]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Check_String_Variations
+Background
+Scenario_Simple
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_multiline_string
+---  Given_table_is
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+One line
+Two line
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+Cleanup
+---  Then_should_be_equal_to_this_list
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.String]
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Domain_Term_ID
+Cleanup
+Background
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_Background_function_sets_a_value
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ValueValid]
+Scenario_Simple_Table_with_int_bad
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+Background
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.CSVContents]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Then_Should_be_equal_to_table
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.CSVContents]
+---  Given_Background_function_sets_a_value
+Scenario_Simple_Table_with_initializer_bad
+Background
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATest]
+---  Given_table_is_bad_initializer
+Scenario_An_include_from_base_directory
+Scenario_Here_are_table_options
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ATestBad]
+Background
+---  Given_Background_function_sets_a_value
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_Table_to_List_Of_List_Of_Object
+---  Given_a_string_include
+---  Given_this_data_should_fail
+This is an include string from the main directory
+---  Star_A_table_to_List_of_Object
+---  Then_should_be_equal_to
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+This is an include string from the main directory
+---  Star_A_table_to_List_of_Object
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+Scenario_Use_an_import
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_table_to_List_of_Object_with_Defaults
+---  Given_this_data_should_be_okay
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_table_to_List_of_Object_with_Blanks_in_Values
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClassWithBlanks]
+---  Given_value_for_cleanup_should_be_set_to
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_check_the_prints_to_see_how_it_works
+Background
+---  Given_board_is
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClassWithBlanks]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_table_to_String
+---  Given_board_is
+| aa  | bb  |
+| cc  | dd  |
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+---  Then_board_is_now
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+| 0  | x  | 0  |
+| x  | 0  | x  |
+| 0  | x  | 0  |
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+Cleanup
+Scenario_Convert_from_Json_Array
+---  Given_value_for_cleanup_should_be_set_to
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Json_for_table_is
+[    {anInt:  "1"   ,   aString:"B"  },
+{anInt:  "2"   ,   aString:"C"  }
+]
+---  Then_the_converted_table_should_be
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+Cleanup
+Scenario_Table_to_String
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Try_out_replacements_with_a_calculation
+---  Given_A_table_to_String
+Background
+| aa  | bb  |
+| cc  | dd  |
+---  Given_Background_function_sets_a_value
+---  Given_board_is
+---  Then_string_should_be_same_as
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+| aa  | bb  |
+| cc  | dd  |
+---  When_moves_are
+---  Given_this_data
+---  Then_board_is_now
+Scenario_Filter_Data_Another_Way
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+Background
+|   | X  |    |
+|   |    | O  |
+|   |    |    |
+---  Then_should_be_equal_to_data
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_list_of_numbers
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.LabelValue]
+---  When_filtered_by
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_An_include
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.FilterValue]
+Background
+---  Then_result
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ResultValue]
+---  Given_Background_function_sets_a_value
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_A_table_to_List_of_Object
+---  Given_a_string_include
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+This is an include string from the main directory
+Scenario_Simple_Replacement
+---  Then_transposed_table_to_List_of_Object_should_be_the_same
+Background
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.ExampleClass]
+---  Given_Background_function_sets_a_value
+Cleanup
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_value_for_cleanup_should_be_set_to
+---  Given_this_data
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+---  Then_should_be_equal_to_data
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.IDValue]
+Cleanup
+Scenario_Convert_to_Json
+---  Given_value_for_cleanup_should_be_set_to
+This is an include string from the main directory
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Scenario_Make_a_move
+Background
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Given_Background_function_sets_a_value
+System.Collections.Generic.List`1[gherkinexecutor.Feature_Full_Test.SimpleClass]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Then_Json_should_be
+Scenario_Here_are_string_options
+{anInt:"1",aString:"B"}
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Background
+Cleanup
+---  When_move_is
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+---  Star_A_multiline_string_to_a_string
+---  Then_board_is_now
+One line
+Two line
+|   | X  |   |
+|   |    |   |
+|   |    |   |
+Cleanup
+---  Star_A_multiline_string_to_a_List_of_String
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.String]
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
+Cleanup
+---  Given_value_for_cleanup_should_be_set_to
+System.Collections.Generic.List`1[System.Collections.Generic.List`1[System.String]]
