@@ -34,3 +34,15 @@ Cleanup
 *******
 ---  Given_Cleanup_Function
 *******
+Scenario_Should_have_Background_and_Cleanup
+Background
+Cleanup
+Scenario_Should_also_have_Background_and_Cleanup
+Background
+Cleanup
+Scenario_Should_have_Background_and_Cleanup
+Background
+Cleanup
+Scenario_Should_also_have_Background_and_Cleanup
+Background
+Cleanup

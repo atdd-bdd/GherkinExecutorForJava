@@ -31,7 +31,7 @@ public class Translate {
     private boolean addBackground = false;  // Have seen Background
     private boolean addCleanup = false;  // have seen Cleanup
 
-    private boolean inCleanup = false; // current scenario is cleanup
+    private boolean inCleanup = false;  // Current scenario is Cleanup
     private boolean finalCleanup = false; // for the last part of scenario
     // Create the output files, save names for deletions
 //    private final String testFilename = basePath + "Test" + ".tmp";
@@ -62,7 +62,11 @@ public class Translate {
     private final String filterExpression = Configuration.filterExpression;
     private boolean skipSteps = false;
 
-    private int scenarioCount = 0;
+    private int scenarioCount = 0; // Number of scenarios encountered
+    private int backgroundCount = 0; // Number of backgrounds encountered
+        // if > 1, duplicate backgrounds
+    private int cleanupCount = 0; // Number of cleanups encountered
+        // if > 1 duplicate cleanups
 
     private static final String TAG_INDICATOR = "@";
     private String tagLine = ""; // Contains last tag line
@@ -227,29 +231,23 @@ public class Translate {
                     break;
                 }
                 skipSteps = false;
-                actOnScenario(fullName, addBackground, false, addCleanup, inCleanup);
+                actOnScenario(fullName);
                 inCleanup = false;
                 break;
             case "Background":
+                addBackground = true;
                 if (pass != 3)
                     break;
-                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
-                    skipSteps = true;
-                    break;
-                }
-                actOnScenario(fullName, false, true, false, inCleanup);
-                addBackground = true;
-                inCleanup = false;
+                skipSteps = false;
+                actOnBackground(fullName);
+                inCleanup = true;  // Don't want cleanup to be added
                 break;
             case "Cleanup":
+                addCleanup = true;
                 if (pass != 3)
                     break;
-                if (TagFilterEvaluator.shouldNotExecute(comment, filterExpression)) {
-                    skipSteps = true;
-                    break;
-                }
-                actOnScenario(fullName, false, false, false, inCleanup);
-                addCleanup = true;
+                skipSteps = false;
+                actOnCleanup(fullName);
                 inCleanup = true;
                 break;
             case "But":
@@ -416,8 +414,7 @@ public class Translate {
 //    }
 
 
-    private void actOnScenario(String fullName, boolean addBackground, boolean inBackground, boolean addCleanup, boolean inCleanup) {
-        trace("In background " + inBackground);
+    private void actOnScenario(String fullName) {
         scenarioCount++;
         String fullNameToUse = fullName;
         if (scenarios.containsKey(fullName)) {
@@ -428,26 +425,20 @@ public class Translate {
         }
         stepNumberInScenario = 0;
         // To make sure cleanup is called for final scenario
-        if (inCleanup)
-            finalCleanup = false;
-        else if (addCleanup)
-            finalCleanup = true;
+        finalCleanup = addCleanup;
         if (firstScenario) {
             firstScenario = false;
-        } else {
-            // Finishing up previous scenario
-            if (addCleanup && !inCleanup) {
+        } else { // Finishing up previous scenario
+            if (addCleanup && !inCleanup)
                 testPrint("        test_Cleanup(" + glueObject + "); // from previous");
-            }
+
             testPrint("        }"); // end previous scenario
         }
-        if (!fullNameToUse.startsWith("Background") && !fullNameToUse.startsWith("Cleanup")) {
+
             checkForTagLine();
             testPrint("    @Test");
             testPrint("    void test_" + fullNameToUse + "(){");
             testPrint("         " + glueClass + " " + glueObject + " = new " + glueClass + "();");
-        } else
-            testPrint("    void test_" + fullNameToUse + "(" + glueClass + " " + glueObject + "){");
 
         if (Configuration.logIt) {
             testPrint("        log(" + "\"" + fullNameToUse + "\"" + ");");
@@ -457,6 +448,50 @@ public class Translate {
         }
     }
 
+    private void actOnBackground(String fullName) {
+        System.out.println("In background " );
+        backgroundCount++;
+        String fullNameToUse = fullName;
+        finalCleanup = false;
+        if (backgroundCount > 1){
+            error("More than one Background statement");
+            fullNameToUse += String.valueOf(backgroundCount);
+        }
+
+        stepNumberInScenario = 0;
+
+        if (firstScenario) {
+            firstScenario = false;
+        } else {
+            testPrint("        }"); // end previous scenario
+        }
+      testPrint("    void test_" + fullNameToUse + "(" + glueClass + " " + glueObject + "){");
+      if (Configuration.logIt) {
+            testPrint("        log(" + "\"" + fullNameToUse + "\"" + ");");
+        }
+    }
+    private void actOnCleanup(String fullName) {
+        System.out.println("In cleanup " );
+        cleanupCount++;
+        finalCleanup = false;
+        String fullNameToUse = fullName;
+        if (cleanupCount > 1){
+            error("More than one cleanup statement");
+            fullNameToUse += String.valueOf(cleanupCount);
+        }
+
+        stepNumberInScenario = 0;
+
+        if (firstScenario) {
+            firstScenario = false;
+        } else {
+            testPrint("        }"); // end previous scenario
+        }
+        testPrint("    void test_" + fullNameToUse + "(" + glueClass + " " + glueObject + "){");
+        if (Configuration.logIt) {
+            testPrint("        log(" + "\"" + fullNameToUse + "\"" + ");");
+        }
+    }
 
     private String logIt() {
         if (Configuration.logIt) {
@@ -2206,6 +2241,8 @@ static class Configuration {
     }
     public static String tagFilter = "";
     // expression to determine which scenarios to code
+
+    public static boolean oneDataFile = true;
 }
 
 
