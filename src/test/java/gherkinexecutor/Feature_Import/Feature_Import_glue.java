@@ -19,6 +19,7 @@ class Feature_Import_glue {
             }
             catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value + ImportDataInternal.toDataTypeString());
+                fail("Argument Error " + value + ImportDataInternal.toDataTypeString());
             }
         }
     }
@@ -33,6 +34,7 @@ class Feature_Import_glue {
             }
             catch(IllegalArgumentException e){
                 System.err.println("Argument Error " + value + ImportDataInternal.toDataTypeString());
+                fail("Argument Error " + value + ImportDataInternal.toDataTypeString());
             }
         }
     }

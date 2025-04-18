@@ -141,7 +141,6 @@ public class Translate {
         List<String> words = new ArrayList<>();
         List<String> comment = new ArrayList<>();
         if ((pass == 3 || pass == 2) && line.trim().startsWith(TAG_INDICATOR)){
-            System.out.println("Found tag "+ line);
             tagLine = line;
             tagLineNumber = dataIn.getLineNumber();
         }
@@ -294,15 +293,14 @@ public class Translate {
     private void checkForTagLine() {
         if (tagLine.isEmpty())
             return;
-        System.out.println(" line number " + tagLineNumber + " current" +
-                dataIn.getLineNumber());
+
         if (tagLineNumber + 1 == dataIn.getLineNumber()) {
-            System.out.println("Adding tag to test " + tagLine);
+
             testPrint(tagLine);
         }
         tagLine = "";
         tagLineNumber = 0;
-        System.out.println("Tag line is now " + tagLine);
+
     }
 
     void writeInputFeature(String filename) {
@@ -449,7 +447,7 @@ public class Translate {
     }
 
     private void actOnBackground(String fullName) {
-        System.out.println("In background " );
+
         backgroundCount++;
         String fullNameToUse = fullName;
         finalCleanup = false;
@@ -471,7 +469,7 @@ public class Translate {
         }
     }
     private void actOnCleanup(String fullName) {
-        System.out.println("In cleanup " );
+
         cleanupCount++;
         finalCleanup = false;
         String fullNameToUse = fullName;
@@ -854,7 +852,6 @@ public class Translate {
         }
         if (scenarioCount == 0 ) {// Then no scenarios
             System.out.println("No scenarios");
-            System.out.println("Not printing last scenario brace");
          }
         else
             testPrint("        }");   // End last scenario
@@ -871,6 +868,7 @@ public class Translate {
             System.err.println("*** Error in translation, scan the output");
             System.exit(-1);
         }
+        dataConstruct.endOneDataFile();
     }
 
 
@@ -1634,19 +1632,57 @@ class DataConstruct {
     }
 
     private void endDataFile() {
+        if (Configuration.oneDataFile)
+            return;
+        try {
+
+            dataDefinitionFile.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    public void endOneDataFile() {
+        if (!Configuration.oneDataFile)
+            return;
+        if (!oneDataFileStarted)
+            return;
         try {
             dataDefinitionFile.close();
+            oneDataFileStarted = false;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     private void startDataFile(String className, boolean createTmpl) {
+        if (Configuration.oneDataFile) {
+            startOneDataFile();
+            return;
+        }
         String extension = Configuration.dataDefinitionFileExtension;
         if (createTmpl)
             extension = "tmpl";
         String dataDefinitionPathname = Configuration.testSubDirectory + featureDirectory +
                 featureName + "/" + className
+                + "." + extension;
+        try {
+            dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
+        } catch (IOException e) {
+            error("IO Exception in setting up the files");
+            error(" Writing " + dataDefinitionPathname);
+
+        }
+    }
+
+    static boolean oneDataFileStarted = false;
+    private void startOneDataFile() {
+        if (oneDataFileStarted)
+            return;
+        oneDataFileStarted = true;
+        String extension = Configuration.dataDefinitionFileExtension;
+
+        String dataDefinitionPathname = Configuration.testSubDirectory + featureDirectory +
+                featureName + "/" + featureName + "_data"
                 + "." + extension;
         try {
             dataDefinitionFile = new FileWriter(dataDefinitionPathname, false);
@@ -2242,7 +2278,8 @@ static class Configuration {
     public static String tagFilter = "";
     // expression to determine which scenarios to code
 
-    public static boolean oneDataFile = true;
+    public static boolean oneDataFile = false ;  // All data into one file
+        // This should not be set to true for Java
 }
 
 

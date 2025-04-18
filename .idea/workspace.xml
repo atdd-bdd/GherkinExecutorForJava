@@ -10,17 +10,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="added tags and filter options.  Tags are used by the unit test framework.  Scenarios and Features can be tagged in comments and filtered">
-      <change afterPath="$PROJECT_DIR$/src/test/java/options.txt" afterDir="false" />
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Scenarios/background/cleanup methods separated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/filter.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/filter.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/Feature_Background_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Background/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import_glue.tmpl" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/TestTagFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/TestTagFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/datatype.feature" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/datatype.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.tmpl" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Examples/Feature_Examples_glue.tmpl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import_glue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/gherkinexecutor/Feature_Import/Feature_Import_glue.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,11 +93,11 @@
       <recent name="gherkinexecutor.Feature_Simple_Test" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.Feature_Background">
+  <component name="RunManager" selected="JUnit.Feature_Import">
     <configuration name="Translate" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Translate" />
       <module name="GherkinExecutorForJava" />
-      <option name="PROGRAM_PARAMETERS" value="background.feature  inTest " />
+      <option name="PROGRAM_PARAMETERS" value="background.feature  examples.feature inTest " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -121,34 +117,32 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature_Full_Test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Examples" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gherkinexecutor.Feature_Full_Test.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Examples.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Full_Test" />
-      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Full_Test.Feature_Full_Test" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Examples" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Examples.Feature_Examples" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Feature_Optional_Tests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="Feature_Import" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="GherkinExecutorForJava" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gherkinexecutor.Feature_Optional_Tests.*" />
+          <option name="PATTERN" value="gherkinexecutor.Feature_Import.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Optional_Tests" />
-      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Optional_Tests.Feature_Optional_Tests" />
-      <option name="METHOD_NAME" value="" />
+      <option name="PACKAGE_NAME" value="gherkinexecutor.Feature_Import" />
+      <option name="MAIN_CLASS_NAME" value="gherkinexecutor.Feature_Import.Feature_Import" />
       <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea --include-tags OnlyThis " />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -171,18 +165,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Translate" />
+      <item itemvalue="JUnit.Feature_Examples" />
+      <item itemvalue="JUnit.Feature_Import" />
       <item itemvalue="JUnit.Feature_Background" />
-      <item itemvalue="JUnit.Feature_Optional_Tests" />
       <item itemvalue="JUnit.TestTagFilter" />
-      <item itemvalue="JUnit.Feature_Full_Test" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.Feature_Background" />
+        <item itemvalue="JUnit.Feature_Import" />
         <item itemvalue="Application.Translate" />
+        <item itemvalue="JUnit.Feature_Examples" />
+        <item itemvalue="JUnit.Feature_Background" />
         <item itemvalue="JUnit.TestTagFilter" />
-        <item itemvalue="JUnit.Feature_Optional_Tests" />
-        <item itemvalue="JUnit.Feature_Full_Test" />
       </list>
     </recent_temporary>
   </component>
@@ -194,13 +188,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Changed pass # for the DataConstruct to 2.">
-      <created>1740102445465</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1740102445465</updated>
     </task>
     <task id="LOCAL-00012" summary="Changed pass # for the DataConstruct to 2.">
       <created>1740102562920</created>
@@ -538,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1744404624309</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Scenarios/background/cleanup methods separated">
+      <created>1744931679727</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1744931679729</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -553,7 +547,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added JUnit4 and TestNG as frameworks" />
     <MESSAGE value="Started last form for tables" />
     <MESSAGE value="More documentaiton" />
     <MESSAGE value="Finished ListofListOfObject" />
@@ -578,7 +571,8 @@
     <MESSAGE value="updated documentation, added links to videos" />
     <MESSAGE value="added features.txt to have a list of feature files" />
     <MESSAGE value="added tags and filter options.  Tags are used by the unit test framework.  Scenarios and Features can be tagged in comments and filtered" />
-    <option name="LAST_COMMIT_MESSAGE" value="added tags and filter options.  Tags are used by the unit test framework.  Scenarios and Features can be tagged in comments and filtered" />
+    <MESSAGE value="Scenarios/background/cleanup methods separated" />
+    <option name="LAST_COMMIT_MESSAGE" value="Scenarios/background/cleanup methods separated" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -590,7 +584,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
-          <line>411</line>
+          <line>409</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -610,8 +604,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
-          <line>857</line>
+          <line>854</line>
           <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java</url>
+          <line>1563</line>
+          <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
