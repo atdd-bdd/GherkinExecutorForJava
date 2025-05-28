@@ -10,9 +10,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Added option for single data file, so that this version can be used as the basis for other languages.">
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="removed prints if filter.txt, options.txt, and features.txt cannot be found">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,13 +183,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00014" summary="made full test work.   There is an issue with line breaks, even when copying one file to the other.">
-      <created>1740109125764</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1740109125764</updated>
     </task>
     <task id="LOCAL-00015" summary="made switch the old style so it is compatible with earlier versions">
       <created>1740236007020</created>
@@ -528,7 +520,14 @@
       <option name="project" value="LOCAL" />
       <updated>1744939292878</updated>
     </task>
-    <option name="localTasksCounter" value="63" />
+    <task id="LOCAL-00063" summary="removed prints if filter.txt, options.txt, and features.txt cannot be found">
+      <created>1748448822438</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1748448822438</updated>
+    </task>
+    <option name="localTasksCounter" value="64" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -543,7 +542,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="More documentaiton" />
     <MESSAGE value="Finished ListofListOfObject" />
     <MESSAGE value="Added parameters to command line" />
     <MESSAGE value="Refactoring makeFunctionTemplate" />
@@ -568,7 +566,8 @@
     <MESSAGE value="added tags and filter options.  Tags are used by the unit test framework.  Scenarios and Features can be tagged in comments and filtered" />
     <MESSAGE value="Scenarios/background/cleanup methods separated" />
     <MESSAGE value="Added option for single data file, so that this version can be used as the basis for other languages." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added option for single data file, so that this version can be used as the basis for other languages." />
+    <MESSAGE value="removed prints if filter.txt, options.txt, and features.txt cannot be found" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed prints if filter.txt, options.txt, and features.txt cannot be found" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

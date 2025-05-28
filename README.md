@@ -159,6 +159,8 @@ First, the setup.
 - Copy one of the files (say simple_test.feature) into the test directory.  
   It is specified by the Configuration value.  If you want to use a different directory, then change this value.
 
+- Make sure the Java version is at least 15.   
+
 ```
 public static final String featureSubDirectory = "src/test/java/";
 ```
