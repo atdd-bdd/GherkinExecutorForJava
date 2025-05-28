@@ -662,7 +662,7 @@ public class Translate {
         }
         catch (Exception e)
         {
-            System.out.println("Error: Unable to read " + e + filepath);
+//            System.out.println("Error: Unable to read " + e + filepath);
             return;
         }
         String [] arguments = {""};
@@ -682,7 +682,7 @@ public class Translate {
         }
         catch (Exception e)
         {
-            System.out.println("Error: Unable to read " + e + filepath);
+//            System.out.println("Error: Unable to read " + e + filepath);
             return;
         }
         String [] arguments = {""};
@@ -697,7 +697,7 @@ public class Translate {
         try {
             raw = java.nio.file.Files.readAllLines(java.nio.file.Paths.get(filepath));
         } catch (Exception e) {
-            System.out.println(" Unable to read " + filepath);
+//            System.out.println(" Unable to read " + filepath);
             return;
         }
         Configuration.featureFiles.addAll(raw);
