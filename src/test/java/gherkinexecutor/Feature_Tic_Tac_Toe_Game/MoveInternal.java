@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class MoveInternal{
      Integer row;
      Integer column;
@@ -36,11 +39,12 @@ class MoveInternal{
                  && ( _MoveInternal.column.equals(this.column))
                  && ( _MoveInternal.mark.equals(this.mark))
              ;  }
-    @Override
-    public String toString() {
-        return "MoveInternal {"
-        +"row = " + row + " "
-        +"column = " + column + " "
-        +"mark = " + mark + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "MoveInternal {"
+             +"row = " + row + " "
+             +"column = " + column + " "
+             +"mark = " + mark + " "
+             + "} " + "\n"; }
+
     }

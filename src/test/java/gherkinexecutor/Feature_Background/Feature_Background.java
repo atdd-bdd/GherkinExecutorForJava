@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Background;
 import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Background{
 
 

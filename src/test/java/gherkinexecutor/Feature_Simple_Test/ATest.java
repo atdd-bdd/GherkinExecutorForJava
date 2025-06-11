@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Simple_Test;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ATest{
     String anInt = "0";
     String aString = "^";
@@ -34,6 +37,9 @@ class ATest{
                 && !_ATest.aDouble.equals("?DNC?"))
                 if (! _ATest.aDouble.equals(this.aDouble)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String anInt = "0";
         private String aString = "^";
@@ -63,19 +69,21 @@ class ATest{
                  ,aDouble
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ATest {"
-        +"anInt = " + anInt + " "
-        +"aString = " + aString + " "
-        +"aDouble = " + aDouble + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ATest {"
+             +"anInt = " + anInt + " "
+             +"aString = " + aString + " "
+             +"aDouble = " + aDouble + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"anInt:" + "\"" + anInt + "\""
-        +","+"aString:" + "\"" + aString + "\""
-        +","+"aDouble:" + "\"" + aDouble + "\""
-            + "} " + "\n"; }  
+         +""+"anInt:" + "\"" + anInt + "\""
+         + ","         +""+"aString:" + "\"" + aString + "\""
+         + ","         +""+"aDouble:" + "\"" + aDouble + "\""
+                + "} " ; }
+
         public static ATest fromJson(String json) {
               ATest instance = new ATest();
 
@@ -129,12 +137,11 @@ class ATest{
              public static List<ATest> listFromJson(String json) {
                     List<ATest> list = new ArrayList<>();
             		json = json.replaceAll("\\s", "");
-                    String[] jsonObjects = json.replace("[", "").replace("]", "").split("[},{]");
-
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
                     for (String jsonObject : jsonObjects) {
-                        jsonObject = "{" + jsonObject.replace("{", "").replace("}", "") + "}";
-                        list.add(ATest.fromJson(jsonObject));
-                    }
+                         list.add(ATest.fromJson(jsonObject));
+                         }
                     return list;
                 }
 

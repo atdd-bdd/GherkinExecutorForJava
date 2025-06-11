@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ATest{
     String anInt = "0";
     String aString = " ";
@@ -34,6 +37,9 @@ class ATest{
                 && !_ATest.aDouble.equals("?DNC?"))
                 if (! _ATest.aDouble.equals(this.aDouble)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String anInt = "0";
         private String aString = " ";

@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Starting;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class FandC{
     String f = "0";
     String c = "0";
@@ -34,6 +37,9 @@ class FandC{
                 && !_FandC.notes.equals("?DNC?"))
                 if (! _FandC.notes.equals(this.notes)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String f = "0";
         private String c = "0";
@@ -63,19 +69,21 @@ class FandC{
                  ,notes
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "FandC {"
-        +"f = " + f + " "
-        +"c = " + c + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FandC {"
+             +"f = " + f + " "
+             +"c = " + c + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     public String toJson() {
         return " {"
-        +""+"f:" + "\"" + f + "\""
-        +","+"c:" + "\"" + c + "\""
-        +","+"notes:" + "\"" + notes + "\""
-            + "} " + "\n"; }  
+         +""+"f:" + "\"" + f + "\""
+         + ","         +""+"c:" + "\"" + c + "\""
+         + ","         +""+"notes:" + "\"" + notes + "\""
+                + "} " ; }
+
         public static FandC fromJson(String json) {
               FandC instance = new FandC();
 

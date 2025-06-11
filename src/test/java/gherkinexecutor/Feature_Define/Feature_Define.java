@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Define;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Define{
 
 
@@ -10,24 +11,24 @@ class Feature_Define{
 
         List<IDValue> objectList1 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             );
         feature_Define_glue_object.Given_this_data(objectList1);
 
         List<IDValue> objectList2 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             );
         feature_Define_glue_object.Then_should_be_equal_to_data(objectList2);
@@ -38,32 +39,32 @@ class Feature_Define{
 
         List<IDValue> objectList1 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             , new IDValue.Builder()
-                .iD("C")
-                .value("(1 + 100)/2")
+                .setID("C")
+                .setValue("(1 + 100)/2")
                 .build()
             );
         feature_Define_glue_object.Given_this_data(objectList1);
 
         List<IDValue> objectList2 = List.of(
              new IDValue.Builder()
-                .iD("A")
-                .value("100")
+                .setID("A")
+                .setValue("100")
                 .build()
             , new IDValue.Builder()
-                .iD("B")
-                .value("1")
+                .setID("B")
+                .setValue("1")
                 .build()
             , new IDValue.Builder()
-                .iD("C")
-                .value("(1 + 100)/2")
+                .setID("C")
+                .setValue("(1 + 100)/2")
                 .build()
             );
         feature_Define_glue_object.Then_should_be_equal_to_data(objectList2);

@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Tic_Tac_Toe_Game{
 
 
@@ -29,9 +30,9 @@ class Feature_Tic_Tac_Toe_Game{
 
         List<Move> objectList2 = List.of(
              new Move.Builder()
-                .row("1")
-                .column("2")
-                .mark("X")
+                .setRow("1")
+                .setColumn("2")
+                .setMark("X")
                 .build()
             );
         feature_Tic_Tac_Toe_Game_glue_object.When_move_is(objectList2);
@@ -107,14 +108,14 @@ class Feature_Tic_Tac_Toe_Game{
 
         List<Move> objectList2 = List.of(
              new Move.Builder()
-                .row("1")
-                .column("2")
-                .mark("X")
+                .setRow("1")
+                .setColumn("2")
+                .setMark("X")
                 .build()
             , new Move.Builder()
-                .row("2")
-                .column("3")
-                .mark("O")
+                .setRow("2")
+                .setColumn("3")
+                .setMark("O")
                 .build()
             );
         feature_Tic_Tac_Toe_Game_glue_object.When_moves_are(objectList2);

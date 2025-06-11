@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Tables_and_Strings;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ExampleClass{
     String fieldA = "y";
     String fieldB = "x";
@@ -27,14 +30,17 @@ class ExampleClass{
                 && !_ExampleClass.fieldB.equals("?DNC?"))
                 if (! _ExampleClass.fieldB.equals(this.fieldB)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String fieldA = "y";
         private String fieldB = "x";
-        public Builder fieldA(String fieldA) {
+        public Builder setFieldA(String fieldA) {
             this.fieldA = fieldA;
             return this;
             }
-        public Builder fieldB(String fieldB) {
+        public Builder setFieldB(String fieldB) {
             this.fieldB = fieldB;
             return this;
             }
@@ -49,10 +55,75 @@ class ExampleClass{
                  ,fieldB
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "ExampleClass {"
-        +"fieldA = " + fieldA + " "
-        +"fieldB = " + fieldB + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "ExampleClass {"
+             +"fieldA = " + fieldA + " "
+             +"fieldB = " + fieldB + " "
+             + "} " + "\n"; }
+
+    public String toJson() {
+        return " {"
+         +""+"fieldA:" + "\"" + fieldA + "\""
+         + ","         +""+"fieldB:" + "\"" + fieldB + "\""
+                + "} " ; }
+
+        public static ExampleClass fromJson(String json) {
+              ExampleClass instance = new ExampleClass();
+
+              	json = json.replaceAll("\\s", "");
+                String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+
+                // Iterate over the key-value pairs
+                for (String pair : keyValuePairs) {
+                    // Split each pair by the colon
+                    String[] entry = pair.split(":");
+
+                    // Remove the quotes from the key and value
+                    String key = entry[0].replace("\"", "").trim();
+                    String value = entry[1].replace("\"", "").trim();
+
+
+          // Assign the value to the corresponding field
+                    switch (key) {
+              case "fieldA":
+                  instance.fieldA = value;
+                  break;
+              case "fieldB":
+                  instance.fieldB = value;
+                  break;
+        				default:
+        				    System.err.println("Invalid JSON element " + key);
+                    }
+                }
+                return instance;
+            }
+
+
+             public static String listToJson(List<ExampleClass> list) {
+                 StringBuilder jsonBuilder = new StringBuilder();
+                 jsonBuilder.append("[");
+
+                 for (int i = 0; i < list.size(); i++) {
+                     jsonBuilder.append(list.get(i).toJson());
+                     if (i < list.size() - 1) {
+                         jsonBuilder.append(",");
+                     }
+                 }
+
+                 jsonBuilder.append("]");
+                 return jsonBuilder.toString();
+             }
+
+             public static List<ExampleClass> listFromJson(String json) {
+                    List<ExampleClass> list = new ArrayList<>();
+            		json = json.replaceAll("\\s", "");
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
+                    for (String jsonObject : jsonObjects) {
+                         list.add(ExampleClass.fromJson(jsonObject));
+                         }
+                    return list;
+                }
+
     }

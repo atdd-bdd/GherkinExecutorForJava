@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Starting;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class FandCInternal{
      Integer f;
      Integer c;
@@ -36,11 +39,12 @@ class FandCInternal{
                  && ( _FandCInternal.c.equals(this.c))
                  && ( _FandCInternal.notes.equals(this.notes))
              ;  }
-    @Override
-    public String toString() {
-        return "FandCInternal {"
-        +"f = " + f + " "
-        +"c = " + c + " "
-        +"notes = " + notes + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "FandCInternal {"
+             +"f = " + f + " "
+             +"c = " + c + " "
+             +"notes = " + notes + " "
+             + "} " + "\n"; }
+
     }

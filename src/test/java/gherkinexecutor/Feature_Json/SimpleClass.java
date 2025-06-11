@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Json;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class SimpleClass{
     String anInt = "0";
     String aString = "Q";
@@ -27,6 +30,9 @@ class SimpleClass{
                 && !_SimpleClass.aString.equals("?DNC?"))
                 if (! _SimpleClass.aString.equals(this.aString)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String anInt = "0";
         private String aString = "Q";
@@ -60,7 +66,7 @@ class SimpleClass{
         return " {"
          +""+"anInt:" + "\"" + anInt + "\""
          + ","         +""+"aString:" + "\"" + aString + "\""
-        + "} " ; }
+                + "} " ; }
 
         public static SimpleClass fromJson(String json) {
               SimpleClass instance = new SimpleClass();

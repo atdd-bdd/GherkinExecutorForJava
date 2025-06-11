@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class LabelValueInternal{
      ID iD;
      Integer value;

@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class FandC{
     String f = "0";
     String c = "0";
@@ -34,6 +37,9 @@ class FandC{
                 && !_FandC.notes.equals("?DNC?"))
                 if (! _FandC.notes.equals(this.notes)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String f = "0";
         private String c = "0";

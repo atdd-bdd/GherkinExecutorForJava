@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Tables_and_Strings;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Tables_and_Strings{
 
 
@@ -72,56 +73,56 @@ class Feature_Tables_and_Strings{
 
         List<ExampleClass> objectList3 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_Object(objectList3);
 
         List<ExampleClass> objectList4 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_Object(objectList4);
 
         List<ExampleClass> objectList5 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
+                .setFieldA("a")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
+                .setFieldA("c")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_Object_with_Defaults(objectList5);
 
         List<ExampleClassWithBlanks> objectList6 = List.of(
              new ExampleClassWithBlanks.Builder()
-                .field_1(" ")
-                .field_2("b")
+                .setField_1(" ")
+                .setField_2("b")
                 .build()
             , new ExampleClassWithBlanks.Builder()
-                .field_1("c")
-                .field_2(" ")
+                .setField_1("c")
+                .setField_2(" ")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Values(objectList6);
 
         List<ExampleClassWithBlanks> objectList7 = List.of(
              new ExampleClassWithBlanks.Builder()
-                .field_1(" ")
+                .setField_1(" ")
                 .build()
             , new ExampleClassWithBlanks.Builder()
-                .field_1("c")
+                .setField_1("c")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Star_A_table_to_List_of_Object_with_Blanks_in_Defaults(objectList7);
@@ -157,22 +158,22 @@ class Feature_Tables_and_Strings{
 
         List<ExampleClass> objectList1 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
+                .setFieldA("a")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
+                .setFieldA("c")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Given_A_table_to_List_of_Object_with_Defaults(objectList1);
 
         List<ExampleClass> objectList2 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("x")
+                .setFieldA("a")
+                .setFieldB("x")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("x")
+                .setFieldA("c")
+                .setFieldB("x")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Then_table_should_be_same_as(objectList2);
@@ -183,24 +184,24 @@ class Feature_Tables_and_Strings{
 
         List<ExampleClass> objectList1 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Given_A_table_to_List_of_Object(objectList1);
 
         List<ExampleClass> objectList2 = List.of(
              new ExampleClass.Builder()
-                .fieldA("a")
-                .fieldB("b")
+                .setFieldA("a")
+                .setFieldB("b")
                 .build()
             , new ExampleClass.Builder()
-                .fieldA("c")
-                .fieldB("d")
+                .setFieldA("c")
+                .setFieldB("d")
                 .build()
             );
         feature_Tables_and_Strings_glue_object.Then_transposed_table_to_List_of_Object_should_be_the_same(objectList2);

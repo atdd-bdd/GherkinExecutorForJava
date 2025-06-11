@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Json;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class SimpleClassInternal{
      Integer anInt;
      String aString;

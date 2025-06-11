@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Include;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Include{
 
 
@@ -42,28 +43,28 @@ class Feature_Include{
 
         List<CSVContents> objectList1 = List.of(
              new CSVContents.Builder()
-                .a("a")
-                .b("b,c")
-                .c("d,")
+                .setA("a")
+                .setB("b,c")
+                .setC("d,")
                 .build()
             , new CSVContents.Builder()
-                .a("1")
-                .b("2")
-                .c("3")
+                .setA("1")
+                .setB("2")
+                .setC("3")
                 .build()
             );
         feature_Include_glue_object.Given_a_table(objectList1);
 
         List<CSVContents> objectList2 = List.of(
              new CSVContents.Builder()
-                .a("a")
-                .b("b,c")
-                .c("d,")
+                .setA("a")
+                .setB("b,c")
+                .setC("d,")
                 .build()
             , new CSVContents.Builder()
-                .a("1")
-                .b("2")
-                .c("3")
+                .setA("1")
+                .setB("2")
+                .setC("3")
                 .build()
             );
         feature_Include_glue_object.Then_Should_be_equal_to_table(objectList2);

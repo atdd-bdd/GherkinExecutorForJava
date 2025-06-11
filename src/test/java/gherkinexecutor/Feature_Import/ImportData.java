@@ -2,6 +2,9 @@ package gherkinexecutor.Feature_Import;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ImportData{
     String myPattern = "a.*";
     String myWeekday = "MONDAY";
@@ -36,6 +39,9 @@ class ImportData{
                 && !_ImportData.myBigInt.equals("?DNC?"))
                 if (! _ImportData.myBigInt.equals(this.myBigInt)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String myPattern = "a.*";
         private String myWeekday = "MONDAY";

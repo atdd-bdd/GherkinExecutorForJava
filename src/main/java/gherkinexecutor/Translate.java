@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
-@SuppressWarnings("CommentedOutCode")
+@SuppressWarnings({"CommentedOutCode","EnhancedSwitchMigration"})
 public class Translate {
     private final Map<String, String> scenarios = new HashMap<>(); // used to check if duplicate scenario names
     private final Map<String, String> glueFunctions = new HashMap<>(); // used to make sure only one glue implementation
@@ -343,6 +343,7 @@ public class Translate {
             testPrint("import java.io.FileWriter;");
             testPrint("import java.io.IOException;");
         }
+        testPrint("@SuppressWarnings({\"NewClassNamingConvention\"})");
         checkForTagLine();
         testPrint("class " + fullName + "{");
         testPrint(logIt());
@@ -1564,6 +1565,7 @@ class DataConstruct {
         for (String line : linesToAddForDataAndGlue) {
             dataPrintLn(line);
         }
+        addSuppressionOfWarnings();
         dataPrintLn("class " + className + "{");
         List<DataValues> variables = new ArrayList<>();
         boolean doInternal = createVariableList(table, variables);
@@ -1829,6 +1831,7 @@ class DataConstruct {
     }
 
     private void createBuilderMethod(List<DataValues> variables, String className) {
+        addSuppressionOfWarnings();
         dataPrintLn("    public static class Builder {");
         for (DataValues variable : variables) {
             dataPrintLn("        private String " + variable.name + " = " + quoteIt(variable.defaultVal) + ";");
@@ -1857,6 +1860,11 @@ class DataConstruct {
         dataPrintLn("        } ");
     }
 
+    private void addSuppressionOfWarnings() {
+        dataPrintLn("//noinspection CanBeFinal");
+        dataPrintLn("//noinspection UnusedImports");
+        dataPrintLn("@SuppressWarnings({\"unused\", \"EnhancedSwitchMigration\", \"ClassCanBeRecord\", \"NewClassNamingConvention\", \"RedundantSuppression\"})");
+    }
 
     private void createEqualsMethod(List<DataValues> variables, String className) {
         dataPrintLn("    @Override");
@@ -1954,6 +1962,7 @@ class DataConstruct {
         for (String line : linesToAddForDataAndGlue) {
             dataPrintLn(line);
         }
+        addSuppressionOfWarnings();
         dataPrintLn("class " + className + "{");
         for (DataValues variable : variables) {
             dataPrintLn("     " + variable.dataType + " " + makeName(variable.name) + ";");

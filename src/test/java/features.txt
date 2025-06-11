@@ -1,1 +1,13 @@
 import.feature
+background.feature
+data_definition.feature
+datatype.feature
+examples.feature
+include.feature
+json.feature
+simple_test.feature
+tables_and_strings.feature
+tic_tac_toe.feature
+starting.feature
+optional_tests.feature
+define.feature

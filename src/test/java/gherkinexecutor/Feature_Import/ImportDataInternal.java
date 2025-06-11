@@ -2,6 +2,9 @@ package gherkinexecutor.Feature_Import;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.math.BigInteger;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ImportDataInternal{
      Pattern myPattern;
      Weekday myWeekday;

@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class ResultValue{
     String sum = "";
     public ResultValue() { }
@@ -20,6 +23,9 @@ class ResultValue{
                 && !_ResultValue.sum.equals("?DNC?"))
                 if (! _ResultValue.sum.equals(this.sum)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String sum = "";
         public Builder setSum(String sum) {

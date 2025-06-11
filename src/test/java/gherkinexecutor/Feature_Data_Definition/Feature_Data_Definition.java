@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Data_Definition;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Data_Definition{
 
 

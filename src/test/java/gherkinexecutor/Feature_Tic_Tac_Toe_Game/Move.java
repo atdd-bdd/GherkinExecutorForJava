@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Tic_Tac_Toe_Game;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class Move{
     String row = "0";
     String column = "0";
@@ -34,19 +37,22 @@ class Move{
                 && !_Move.mark.equals("?DNC?"))
                 if (! _Move.mark.equals(this.mark)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String row = "0";
         private String column = "0";
         private String mark = "^";
-        public Builder row(String row) {
+        public Builder setRow(String row) {
             this.row = row;
             return this;
             }
-        public Builder column(String column) {
+        public Builder setColumn(String column) {
             this.column = column;
             return this;
             }
-        public Builder mark(String mark) {
+        public Builder setMark(String mark) {
             this.mark = mark;
             return this;
             }
@@ -63,13 +69,82 @@ class Move{
                  ,mark
                 );   } 
         } 
-    @Override
-    public String toString() {
-        return "Move {"
-        +"row = " + row + " "
-        +"column = " + column + " "
-        +"mark = " + mark + " "
-            + "} " + "\n"; }  
+        @Override
+        public String toString() {
+            return "Move {"
+             +"row = " + row + " "
+             +"column = " + column + " "
+             +"mark = " + mark + " "
+             + "} " + "\n"; }
+
+    public String toJson() {
+        return " {"
+         +""+"row:" + "\"" + row + "\""
+         + ","         +""+"column:" + "\"" + column + "\""
+         + ","         +""+"mark:" + "\"" + mark + "\""
+                + "} " ; }
+
+        public static Move fromJson(String json) {
+              Move instance = new Move();
+
+              	json = json.replaceAll("\\s", "");
+                String[] keyValuePairs = json.replace("{", "").replace("}", "").split(",");
+
+                // Iterate over the key-value pairs
+                for (String pair : keyValuePairs) {
+                    // Split each pair by the colon
+                    String[] entry = pair.split(":");
+
+                    // Remove the quotes from the key and value
+                    String key = entry[0].replace("\"", "").trim();
+                    String value = entry[1].replace("\"", "").trim();
+
+
+          // Assign the value to the corresponding field
+                    switch (key) {
+              case "row":
+                  instance.row = value;
+                  break;
+              case "column":
+                  instance.column = value;
+                  break;
+              case "mark":
+                  instance.mark = value;
+                  break;
+        				default:
+        				    System.err.println("Invalid JSON element " + key);
+                    }
+                }
+                return instance;
+            }
+
+
+             public static String listToJson(List<Move> list) {
+                 StringBuilder jsonBuilder = new StringBuilder();
+                 jsonBuilder.append("[");
+
+                 for (int i = 0; i < list.size(); i++) {
+                     jsonBuilder.append(list.get(i).toJson());
+                     if (i < list.size() - 1) {
+                         jsonBuilder.append(",");
+                     }
+                 }
+
+                 jsonBuilder.append("]");
+                 return jsonBuilder.toString();
+             }
+
+             public static List<Move> listFromJson(String json) {
+                    List<Move> list = new ArrayList<>();
+            		json = json.replaceAll("\\s", "");
+            		json = json.replaceAll("\\[","").replaceAll("]","");
+                    String[] jsonObjects = json.split("(?<=\\}),\\s*(?=\\{)");
+                    for (String jsonObject : jsonObjects) {
+                         list.add(Move.fromJson(jsonObject));
+                         }
+                    return list;
+                }
+
     MoveInternal toMoveInternal() {
         return new MoveInternal(
          Integer.valueOf(row)

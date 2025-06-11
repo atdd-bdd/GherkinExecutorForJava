@@ -1,6 +1,7 @@
 package gherkinexecutor.Feature_Examples;
 import org.junit.jupiter.api.*;
 import java.util.List;
+@SuppressWarnings({"NewClassNamingConvention"})
 class Feature_Examples{
 
 

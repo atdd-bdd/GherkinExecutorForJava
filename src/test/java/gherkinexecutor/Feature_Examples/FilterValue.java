@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class FilterValue{
     String value = "Q0000";
     public FilterValue() { }
@@ -20,6 +23,9 @@ class FilterValue{
                 && !_FilterValue.value.equals("?DNC?"))
                 if (! _FilterValue.value.equals(this.value)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String value = "Q0000";
         public Builder setValue(String value) {

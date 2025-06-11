@@ -7,22 +7,22 @@ class Feature_Data_Types_glue {
     final String DNCString = "?DNC?";
 
 
-    void Given_type_values_are(List<AllTypes> values ) {
+    void Given_type_values_are(List<SomeTypes> values ) {
         System.out.println("---  " + "Given_type_values_are");
-        for (AllTypes value : values){
+        for (SomeTypes value : values){
              System.out.println(value);
              // Add calls to production code and asserts
-              AllTypesInternal i = value.toAllTypesInternal();
+              SomeTypesInternal i = value.toSomeTypesInternal();
               }
         fail("Must implement");
     }
 
-    void Then_this_should_be_equal(List<AllTypes> values ) {
+    void Then_this_should_be_equal(List<SomeTypes> values ) {
         System.out.println("---  " + "Then_this_should_be_equal");
-        for (AllTypes value : values){
+        for (SomeTypes value : values){
              System.out.println(value);
              // Add calls to production code and asserts
-              AllTypesInternal i = value.toAllTypesInternal();
+              SomeTypesInternal i = value.toSomeTypesInternal();
               }
         fail("Must implement");
     }

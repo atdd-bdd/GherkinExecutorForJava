@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Data_Definition;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class AllTypesInternal{
      int anInt;
      byte aByte;

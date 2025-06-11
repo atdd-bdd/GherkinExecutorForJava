@@ -1,5 +1,8 @@
 package gherkinexecutor.Feature_Examples;
 import java.util.*;
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
 class LabelValue{
     String iD = "";
     String value = "0";
@@ -27,6 +30,9 @@ class LabelValue{
                 && !_LabelValue.value.equals("?DNC?"))
                 if (! _LabelValue.value.equals(this.value)) result = false;
              return result;  }
+//noinspection CanBeFinal
+//noinspection UnusedImports
+@SuppressWarnings({"unused", "EnhancedSwitchMigration", "ClassCanBeRecord", "NewClassNamingConvention", "RedundantSuppression"})
     public static class Builder {
         private String iD = "";
         private String value = "0";
