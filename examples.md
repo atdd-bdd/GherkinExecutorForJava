@@ -24,7 +24,7 @@ Data TemperatureCalculation
 | Notes  |          | String    |        |
 ```
 
-In the test directory, it is named `examples.feature`.  The words after the keyword 
+In the test directory, it is named `examples.featurex`.  The words after the keyword 
 `Feature` are combined into the name of the feature.  Let's assume that you are using the translator with Java 
 (language suffix `.java`).  The operation is the same, the output code depends on the language. 
 
@@ -32,7 +32,7 @@ To translate this feature file, you can pass it as a parameter to the `Translate
 add it to the Configuration list of feature files, or let the directory tree search find it.      
 
 ```
-featureFiles.add("examples.feature");
+featureFiles.add("examples.featurex");
 ```
 
 A unit test file with the name `Feature_Examples.java` (with language appropriate suffix) 

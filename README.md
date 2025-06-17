@@ -55,7 +55,7 @@ You can think of a Gherkin feature file as representing the logical portion of t
 
 ### Introductory Example
 
-Here are a few introductory examples. You can view the `examples.feature` file in the main test directory 
+Here are a few introductory examples. You can view the `examples.featurex` file in the main test directory 
 and the associated files in the gherkinexecutor.Feature_Examples package in the test directory.   The first scenario shows a calculation from Fahrenheit to
 Celsius.  When it is translated, three files are created - one is a unit test file, one 
 is glue code which is revised to connect to the production code, and the third are 
@@ -125,7 +125,7 @@ Once you have downloaded the files for either IDE, if you are using a test frame
 
 - You can also run `Feature_tic_tac_toe`in the `gherkinexecutor.Feature_Tic_Tac_Toe`.
 
-- If you are able to clone, just copy the `Translate.java` and` simple_test.feature`  files into your project.
+- If you are able to clone, just copy the `Translate.java` and` simple_test.featurex`  files into your project.
 
 ##### For Eclipse
 
@@ -156,7 +156,7 @@ First, the setup.
 - Copy the `Translate` file from the GherkinExecutor source to your project.   
   If you wish, you could move the Configuration class into a different file in the gherkinexecutor package.  
 
-- Copy one of the files (say simple_test.feature) into the test directory.  
+- Copy one of the files (say simple_test.featurex) into the test directory.  
   It is specified by the Configuration value.  If you want to use a different directory, then change this value.
 
 - Make sure the Java version is at least 15.   
@@ -177,7 +177,7 @@ So, the feature file should be translated.   However, you can also put the name 
 (or add it to the file list in Configuration, e.g.)
 
 ```
-featureFiles.add("simple_test.feature");
+featureFiles.add("simple_test.featurex");
 ```
 
 #### Run it
@@ -232,7 +232,7 @@ public static final String featureSubDirectory = "src/test/java/";
 Add the name of the feature file as a program argument to the run, or add it to the file list in Configuration, e.g.
 
 ```
-featureFiles.add("my_feature.feature");
+featureFiles.add("my_feature.featurex");
 ```
 
 Note: If you already have a feature file editor in your IDE, the editor may show some errors on `Include`, `Data` and `Import` lines.  Simply change these lines to `* Include`, `* Data` and `* Import`.
@@ -246,7 +246,7 @@ You should get a failure for every scenario.   Note that` fail() `is put into ea
 
 If you don't use any comments on the steps, all data to glue methods will be passed as a `List<List<String>` 
 
-You can use `examples.feature` as a guide for your feature file.  The key difference between this feature file and one
+You can use `examples.featurex` as a guide for your feature file.  The key difference between this feature file and one
 you may see other places is the addition of `# ListOfObject FandC` after the step and a Data statement.
 
 ```
@@ -415,7 +415,7 @@ Actually used for that feature.
 
 ## A Collection Example
 
-In `examples.feature` is an example of dealing with a collection.  There is a collection 
+In `examples.featurex` is an example of dealing with a collection.  There is a collection 
 of records (objects of the `LabelValue` type).   In the glue code for the Given, they are added to the solution object. 
 The example uses the ID type for the label with the validation shown previously.   
 
@@ -521,8 +521,8 @@ Translate, you can delete the `Configuration` class in the new `Translate` and k
         public static final List<String> featureFiles = new ArrayList<>();
         // These feature files will always be translated.
         static {
-            featureFiles.add("import.feature");
-            featureFiles.add("include.feature");
+            featureFiles.add("import.featurex");
+            featureFiles.add("include.featurex");
 ```
 
 ### A Larger Domain Example

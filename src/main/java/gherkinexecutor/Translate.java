@@ -714,7 +714,7 @@ public class Translate {
                 for (File file : files) {
                     if (file.isDirectory()) {
                         collectFeatureFiles(file, featureFiles);
-                    } else if (file.getName().endsWith(".feature")) {
+                    } else if (file.getName().endsWith(".featurex")) {
                         String path = file.getPath();
                         path = path.replace(remove, "");
                         featureFiles.add(path);
@@ -2281,7 +2281,7 @@ static class Configuration {
     public static final List<String> featureFiles = new ArrayList<>();
 
     static {
-//            featureFiles.add("simple_test.feature");     // Something to try out after setup
+//            featureFiles.add("simple_test.featurex");     // Something to try out after setup
 //            featureFiles.add("full_test.feature.sav"); // used for testing Translate
     }
     public static String tagFilter = "";

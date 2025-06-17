@@ -89,15 +89,15 @@ correct behavior.   This is checked by translating the feature file for
 a facet (.e.g. Import) and executing the generated test.   The trace should
 show the calls to the glue code and the values that are passed.
 
-If that test is successful, the feature file is added to the full_test.feature
+If that test is successful, the feature file is added to the full_test.featurex
 file.  The Feature_Gherkin_Translator_Full_Test is run.  It translates
-the full_test.feature and compares the outputs to .exp files.  If no output
+the full_test.featurex and compares the outputs to .exp files.  If no output
 behavior has changed, it passes.  If the test fails, you examine the
 Test file and the .exp file for differences.  If one of the included feature files
 has changed, then it should show the appropriate difference.   If the
 difference looks correct, copy the new test or glue.tmpl file into the .exp files.
 
-The output of the tests (without any implementation) is checked by running Translate for full_test.feature with logIt and inTest true.
+The output of the tests (without any implementation) is checked by running Translate for full_test.featurex with logIt and inTest true.
 
 Then the Feature_Full_Test log.txt is compared to the log.exp.   They should be the same, unless the change that is made should have altered them.   
 
