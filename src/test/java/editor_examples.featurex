@@ -1,0 +1,33 @@
+Feature: Editor Examples 
+
+Scenario: Business Rule: Quantity Discount 
+ Discount is computed based on total quantity of items in an order
+* Discount based on quantity           # ListOfObject QuantityDiscount
+| Quantity    | Discount  | Notes                 |
+| 1           | 0%        |                       |
+| 2           | 1%        | 1-9                   |
+| 9           | 1%        | 1-9                   |
+| 10          | 5%        | 10 +                  | 
+ 
+Data QuantityDiscount 
+| Name     | Default | DataType   | Notes  |
+| Quantity | 0       | Integer    |        | 
+| Discount | 0%      | Percentage |        | 
+| Notes    |         | String     |        | 
+
+
+
+
+Scenario: Domain Term Password 
+* Password must contain 4 letters and 1 number      # ListOfObject ValueValid
+| Value    | Valid  | Notes                 |
+| abcd1    | Yes    |                       |
+| abcde    | No     | no number             |
+| abc1     | No     | less than 4 letters   |
+
+Data ValueValid
+| Name  | Default | DataType  |
+| Value | 0       | String    |
+| Valid | false   | Boolean   |
+| Notes |         | String    |
+

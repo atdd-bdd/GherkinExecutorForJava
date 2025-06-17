@@ -9,33 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Suppressed some warnings for automatically generated code for methods or imports that are not used.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design.md" beforeDir="false" afterPath="$PROJECT_DIR$/design.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples.md" beforeDir="false" afterPath="$PROJECT_DIR$/examples.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/GherkinTranslatorFullTest.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/background.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/bowling.feature.test.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/calculator.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data_definition.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/data_definition_error.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/datatype.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/define.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/examples.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/features.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/features.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/forth.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/full_test.feature.sav" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/full_test.feature.sav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/import.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/include.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/json.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/optional_tests.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/simple_test.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/starting.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tables_and_strings.feature" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/tic_tac_toe.feature" beforeDir="false" />
-    </list>
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changed .feature to .featurex" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -205,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00017" summary=".exp values updated">
-      <created>1740271726849</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1740271726849</updated>
     </task>
     <task id="LOCAL-00018" summary="Updating the documention">
       <created>1740370852249</created>
@@ -549,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1749663775510</updated>
     </task>
-    <option name="localTasksCounter" value="66" />
+    <task id="LOCAL-00066" summary="Changed .feature to .featurex">
+      <created>1750175475446</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1750175475447</updated>
+    </task>
+    <option name="localTasksCounter" value="67" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -564,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added parameters to command line" />
     <MESSAGE value="Refactoring makeFunctionTemplate" />
     <MESSAGE value="Clean Code according to analysis (with a few suppressions)" />
     <MESSAGE value="To/from JSON added" />
@@ -589,7 +562,8 @@
     <MESSAGE value="Added option for single data file, so that this version can be used as the basis for other languages." />
     <MESSAGE value="removed prints if filter.txt, options.txt, and features.txt cannot be found" />
     <MESSAGE value="Suppressed some warnings for automatically generated code for methods or imports that are not used." />
-    <option name="LAST_COMMIT_MESSAGE" value="Suppressed some warnings for automatically generated code for methods or imports that are not used." />
+    <MESSAGE value="Changed .feature to .featurex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed .feature to .featurex" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
