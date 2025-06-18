@@ -12,14 +12,7 @@
     <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changed .feature to .featurex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/design.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/details.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/examples.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/miscellaneous.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/other.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gherkinexecutor/Translate.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tags.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cargo.featurex" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
