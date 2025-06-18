@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Changed .feature to .featurex">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cargo.featurex" beforeDir="false" />
-    </list>
+    <list default="true" id="dadff6b2-e081-428f-8651-932f1abc0629" name="Changes" comment="Updated documentation" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -183,13 +179,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1738865553287</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Updating the documention">
-      <created>1740370852249</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1740370852249</updated>
     </task>
     <task id="LOCAL-00019" summary="Update documentation, fixed error in Background so it now is passed glue object.">
       <created>1740424631611</created>
@@ -527,7 +516,14 @@
       <option name="project" value="LOCAL" />
       <updated>1750175475447</updated>
     </task>
-    <option name="localTasksCounter" value="67" />
+    <task id="LOCAL-00067" summary="Updated documentation">
+      <created>1750273537261</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1750273537262</updated>
+    </task>
+    <option name="localTasksCounter" value="68" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -542,7 +538,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring makeFunctionTemplate" />
     <MESSAGE value="Clean Code according to analysis (with a few suppressions)" />
     <MESSAGE value="To/from JSON added" />
     <MESSAGE value="Reworked examples.feature to use ID in the list of numbers." />
@@ -567,7 +562,8 @@
     <MESSAGE value="removed prints if filter.txt, options.txt, and features.txt cannot be found" />
     <MESSAGE value="Suppressed some warnings for automatically generated code for methods or imports that are not used." />
     <MESSAGE value="Changed .feature to .featurex" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changed .feature to .featurex" />
+    <MESSAGE value="Updated documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated documentation" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
