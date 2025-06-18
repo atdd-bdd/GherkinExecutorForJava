@@ -260,6 +260,14 @@ public class Translate {
             case "Assert":
             case "Rule":
             case "Calculation":
+            case "Trigger":
+            case "Verify":
+            case "Assemble":
+            case "Activate":
+            case "Preconditions":
+            case "MainCourse":
+            case "Exception":
+            case "Postconditions":
                 if (pass != 3)
                     break;
                 if (skipSteps)

@@ -398,6 +398,14 @@ Actually used for that feature.
     "Arrange"
     "Act"
     "Assert"
+    "Trigger"
+	"Verify"
+	"Assemble"
+	"Activate"
+	"Preconditions"
+	"MainCourse"
+	"Exception"
+    "Postconditions"
     "Rule"   -  this is just a step, not something special as in Cucumber. 
     "Calculation"
     "*"  - this is the * from Gherkin.   Note it is converted to `Star` for the glue code method
