@@ -1944,6 +1944,8 @@ class DataConstruct {
                 return "Double";
             case "string":
                 return "String";
+            case "Text":
+                return "String";
             default:
                 return s;
         }
